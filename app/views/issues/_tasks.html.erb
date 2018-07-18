@@ -1,9 +1,0 @@
-<table width="735">
-  <% @open_tasks.each do |issue|%>
-    <%= render :partial => "content", :locals => { :issue => issue} %>
-  <% end %>
-
-  <% @done_tasks.each do |issue|%>
-    <%= render :partial => "content", :locals => { :issue => issue} %>
-  <% end %>
-</table>

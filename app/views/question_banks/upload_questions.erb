@@ -1,7 +1,0 @@
-<%= stylesheet_link_tag 'question_bank' %>
-
-<form accept-charset="UTF-8" action="/questions/save_questions/<%= @question_bank.id %>" enctype="multipart/form-data" method="post">
-  <%= render :partial => "/question_banks/upload_questions_header" %>
-  <%= render :partial => "/question_banks/upload_questions_body" %>
-  <%= render :partial => "/question_banks/upload_questions_footer" %>
-</form>

@@ -1,1 +1,0 @@
-page.replace_html :right_panel_question_list, :partial => 'right_panel_multi_page_test', :object => @current_learner

@@ -1,4 +1,0 @@
-<% @months = ["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-for i in 1..(@months.length - 1) %>
-  <option <% if @date.mon == i %>selected<% end %> value="<%= i %>"><%= @months[i] %></option>
-<% end %>

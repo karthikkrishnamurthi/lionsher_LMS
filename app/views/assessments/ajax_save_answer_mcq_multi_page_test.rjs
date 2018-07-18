@@ -1,5 +1,0 @@
-if @current_learner.assessment.test_pattern.pattern_name == "CMAT"
-	page.replace_html :right_panel_question_list, :partial => 'right_panel_questions_for_cmat', :object => @current_learner
-else
-	page.replace_html :right_panel_question_list, :partial => 'right_panel_multi_page_test', :object => @current_learner
-end	
