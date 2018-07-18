@@ -1,0 +1,15 @@
+<%#*Two-to-three-upgrade-error%>
+<% if @course.image_file_size.nil? %>
+  <div class="div_content_pic"><img src="/<%= @course.image_file_name %>" /></div>
+<% else %>
+  <div class="div_content_pic"><%= image_tag @course.image.url(:small) %></div>
+<% end %>
+<div class="preview">
+  <% if current_user.typeofuser == "admin" then %>
+    <a href="/courses/edit/<%=h @course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+    <a href="" onclick="javascript:window.open('/scorm/admin_audvid_preview/<%=h @course.current_learner_id %>', 'presentation', 'scrollbars=0,height=500,width=615,status=no,location=no,menubar=no,toolbar=no');">Preview Course</a>
+    <% elsif current_user.typeofuser == "individual buyer" or current_user.typeofuser == "corporate buyer" then %>
+    Valid up to:<%= @buyer_seller.buyer_course_expiry.strftime('%b %d, %Y') %>
+  <% end %>
+</div>
+

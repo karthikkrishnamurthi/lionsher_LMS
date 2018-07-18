@@ -1,0 +1,93 @@
+<head>
+  <link href="/assets/lion.png" rel="icon" />
+  <script type="text/javascript" charset="utf-8">
+    function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+  </script>
+</head>
+
+
+<title>LionSher : Features - Easy to Use</title>
+<%= stylesheet_link_tag "website/feature_highlight" %>
+<%= stylesheet_link_tag "website/easy_to_use" %>
+<div class="container-body">
+
+  <div class="LMS-header">
+    <label class="label1">
+      A cloud-based online examination platform - usable, scalable, and affordable
+    </label>
+    <a href="/pricing"><%= image_tag "website/lionsher_images/Create_test_button.png", :class =>"free-trial valign" %></a>
+    <label class="button_tag">in less than 2 minutes</label>
+  </div>
+
+  <div class="LMS-body">
+
+    <div class="navbar">
+      <a href="/features"><div id="take-tour">Take a Tour</div></a>
+      <a href="/tests"><div id="tests">Lionsher Tests</div></a>
+      <a href="/cost_effective"><div id="cost-effective">Cost Effective</div></a>
+      <a href="/easy_to_use"><div id="easy-to-use">Easy to Use</div></a>
+      <a href="/highly_secure"><div id="highly-secure">Highly Secure</div></a>
+      <a href="/customizable"><div id="customizable"> Customizable</div></a>
+      <a href="/Scalable"><div id="scalable"> Scalable</div></a>
+      <a href="/anywhere_access"><div id="anywhere-access">Anywhere Access</div></a>
+
+    </div>
+    <div class="navbar-content">
+      <div class="lms-headings">
+        <%= image_tag "website/lionsher_images/Easy_to_use.png" %>
+      </div>
+      <div class="lms-headings-content">
+        <label class="lms-heading-size">Easy To Use</label><br /><br />
+        <p class="lms-content-size">Simple, intuitive, easy to use</p>
+        <p class="lms-content-size">No dependency on IT team</p>
+        <p class="lms-content-size">No running behind tech support to generate reports</p>
+        <p class="lms-content-size">LionSher makes 'test management' truly easy </p>
+      </div>      
+    </div>
+  </div>
+  <div id="features-arrow">
+    <a href="/highly_secure"><%= image_tag "website/lionsher_images/right_arrow.png" %></a>
+  </div>
+  <div class="features-footer">
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">Set up your own account in 3 easy steps.
+      </label>
+      <p class="feature-footer-content">
+        Register -> Activate -> Start Using Lionsher!
+      </p>
+      <label class="feature-footer-heading">Manage tests in 3 easy steps.
+      </label>
+      <p class="feature-footer-content">
+        Add test questions -> Assign Learners-> Get Report
+      </p>
+    </div>
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">No Investment in Product Training
+
+      </label>
+      <p class="feature-footer-content">
+        LionSher users need ZERO product training!
+        LionSher is a ready to use product. Just sign-up and start using it instantly. Needless to say, you will not miss Help or Demo Tour!
+      </p>
+    </div>
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">Great Looking Real-time Reports
+
+      </label>
+      <p class="feature-footer-content">
+        Lionsher provides you great looking real-time reports showing completion status, scores, detailed performance of each test taker.
+
+      </p>
+    </div>
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">Reports of test takers
+
+      </label>
+      <p class="feature-footer-content">
+        Lionsher provides simple to detailed reports for the test takers. Shows the test takers their correct and wrong answers and how are they placed compared to the other test takers.
+      </p>
+    </div>
+  </div>
+
+  <%= render :partial =>"features_testimonial" %>
+</div>

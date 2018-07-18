@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag 'lionsherhome' %>
+<%= stylesheet_link_tag 'course_store' %>
+<%= stylesheet_link_tag 'store_course_styles' %>
+<%= javascript_include_tag 'course_store' %>
+<script type="text/javascript" charset="utf-8">
+  function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+<div id="container">
+  <div id="div_mainpanel">
+    <div class="div_preview_content">
+      <span class="heading_content">Sell Courses</span>
+      <p>Thank you for showing an interest in selling your courses on the Lionsher Course Store. <br/>
+        Currently, we are working on a simple process to buy and sell courses online!</p>
+      <p>In the meanwhile, please give us your contact information and we will get back to you soon.</p>
+      <form onsubmit="javascript:return validation();" action="/save_sellers_details" method="post" >
+        <ul id="buyer_form_list" type="none">
+          <li><label>Name</label><br/>
+            <input id="name" type="text" name="seller[name]" size="30" maxlength="30"/></li>
+          <li><label>Email</label><br/>
+            <input id="email" type="text" name="seller[email]" size="30" maxlength="30"/></li>
+          <li><label>Phone Number</label><br/>
+            <input id="phone_number" type="text" name="seller[phone_number]" size="15" maxlength="15"/></li>
+          <li class="submit_form"> <input class="buyer_submit_form" type="submit" value="Submit Information"/> &nbsp;or <a href="/course_store">cancel</a> </li>
+          <li><label id="error_message" style="display: none;">Please enter all your details</label></li>
+          <li><label id="email_error_message" style="display: none;">Please enter valid email id</label></li>
+        </ul>
+      </form>
+    </div>
+  </div>
+  <div id="div_sidepanel">
+    <form action="/sessions/create" name="coursestore_login" method="post">
+      <ul type="none" style="margin-left: -20px;">
+        <li>
+          <label>Email:</label><br/>
+          <input type="text" name="email" size="20" maxlength="30"/>
+        </li>
+        <li>
+          <label>Password:</label><br/>
+          <input type="password" name="password" size="20" maxlength="30"/>
+        </li>
+        <li style="margin-top: 5px;"><input type="submit" value="Submit"/></li>
+        <li style="margin-top: 5px;"><a href="/course_store/coursestore_upload">New Sellers Sign up here</a></li>
+      </ul>
+    </form>
+  </div>
+</div>

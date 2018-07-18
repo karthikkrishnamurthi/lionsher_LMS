@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+    <title>Learning Center</title>
+    <%= stylesheet_link_tag 'aieee_header' %>
+    <% end %>
+    <%= favicon_link_tag "lion.png", :rel => "icon" %>
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="header">
+        <div id="exam_center"><%= image_tag "aieee_images/exam_center.png" %></div>
+        <div id="main_content">
+          <div id="header_info">Online Assessment Platform</div>
+          <div id="header_text">Assessment Examination Center</div>
+        </div>
+   
+      </div>

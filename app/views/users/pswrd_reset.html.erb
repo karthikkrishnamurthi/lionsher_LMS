@@ -1,0 +1,51 @@
+<%#*Tenant's login page
+Author : Aarthi
+Javascripts : Surupa %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+   <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Users: <%= controller.action_name %></title>
+    <%= favicon_link_tag "lion.png", :rel => "icon" %>
+    <%= stylesheet_link_tag 'signup'  %>
+    <%= stylesheet_link_tag 'courses_header'  %>
+    <%= stylesheet_link_tag 'courses_header'  %>
+    <script type="text/javascript">
+      function validation() {
+        if(document.getElementById('password').value.trim() == ""){
+          return false;
+        } else {
+          return true;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="head">
+      <div id="div_head" style="background: <%=h @tenant.theme %>;color: <%=h @tenant.text_color %>;">
+        <div id="org" style="color: <%=h @tenant.text_color %>;"><%=h @tenant.organization %></div>
+      </div>
+    </div>
+    <div id="div_container">
+      <div id="div_mainpanel">
+        <h4> Reset your Password</h4>
+        <form action="/users/reset_password" method="post"  style="margin: 0px 0px 0px 5px;" onsubmit="javascript:return validation();">
+          <label> Username :  <%=h current_user.email %></label>
+
+          <label for="password">Password</label><br/>
+          <input id="password" name="user[password]" type="password" />
+
+          <input id="sign_up" name="commit" type="submit" value="Save" />
+
+        </form>
+      </div>
+      <div id="div_sidepanel">
+        <div id="sidebar_text">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

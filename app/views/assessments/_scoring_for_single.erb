@@ -1,0 +1,36 @@
+<h3>Question Limits & Order</h3>
+<% if params[:action] == "edit_assessment_details" and @time >= @assessment.start_time then %>
+    <label><% if @assessment.is_show_all then %>Show all questions<% else %>Show limited questions<% end %></label><br/>
+    <label><% if @assessment.is_linear %>Linear<% else %>Random<% end %></label>
+<% else %>
+  <div id="show_all_ques">
+    <input type="radio" id="show_all_questions" name="show_questions" value="all" <% if @assessment.is_show_all then %>checked<% end %> onclick="disa('assessment_no_of_questions');" />
+    <span>
+      <label class="checkbox_label">Show all questions</label>
+    </span>
+    <div id="randomlinear">
+      <input type="radio" id="show_all_questions" name="order" value="random" <% if !@assessment.is_linear %>checked<% end %>/>
+      <span><label class="checkbox_label">Random</label></span>
+      <input type="radio" id="show_all_questions" name="order" value="linear" <% if @assessment.is_linear %>checked<% end %>/>
+      <span><label class="checkbox_label">Linear</label> </span>
+    </div>
+  </div>
+
+  <div id="show_limited_ques">
+    <input type="radio" id="show_limited_questions" name="show_questions" value="limited" <% if !@assessment.is_show_all then %>checked<% end %> onclick="ena('assessment_no_of_questions');  "/>
+    <span>
+      <label class="checkbox_label">Show limited questions</label>
+    </span>
+  </div>
+
+  <div id="ques_by_total_questions">
+    <input id="assessment_no_of_questions" name="assessment[no_of_questions]" maxlength="3" <% if @assessment.is_show_all then %>disabled<% end %> size="10" onblur="number_check('assessment_no_of_questions','numeric_check_div',<%= @assessment.question_banks[0].no_of_questions %>);" type="text" value="<%= @assessment.no_of_questions %>"/>
+    <label for="assessment_no_of_questions">&nbsp;/&nbsp;<font color="#131313"> <%= @assessment.question_banks[0].no_of_questions %> </font></label>
+  </div>
+
+  <div class="no_of_quest_label">
+    <div id="blank_check_div" style="display: none;">Number of questions can not be blank</div>
+    <div id="numeric_check_div" style="display: none;">Number of questions can be numeric only</div>
+    <div id="length_check_div" style="display: none;">Number of questions can not be greater than <%= @assessment.question_banks[0].no_of_questions %></div>
+  </div>
+<% end %>

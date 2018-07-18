@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'features_customizable' %>
+<%= render :partial => "features" %>
+<div id="mid_panel">
+  <div class="next_button">  <a href="/features_scalable"><%= image_tag "lionsherhome_images/next_hover.png" %></a>  </div>
+  <div class="prev_button">  <a href="/features_highly_secure"><%= image_tag "lionsherhome_images/prev_hover.png" %></a>  </div>
+  <%= image_tag "lionsherhome_images/features_customizable.jpg", :alt => "Customizable Customize the look and feel as you want with your company logo and colors. You will also have your unique URL to access you online learnign system. Its your system. Get your company URL, logo, and brand colors." %>
+</div>
+<div class="shadow_line"> &nbsp;</div>
+<div id="lower_panel">
+  <div id="lower_content">
+    <div class="static_content">
+      <h1><%= raw @rules['Business']['customizable']['h1'] %></h1>
+      <p><%= raw @rules['Business']['customizable']['para1'] %></p>
+    </div>
+    <div class="static_content">
+      <h2><%= raw @rules['Business']['customizable']['h2'] %></h2>
+      <p><%= raw @rules['Business']['customizable']['para2'] %></p>
+    </div>
+  </div>
+</div>
+</div>

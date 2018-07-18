@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <form action="/profile_details/save_profile_details/<%=h @learner.id %>" class="form_style">
+    <h5>Provide your details before you start the test</h5>
+      <% @structure_component.profiles.each do |profile| %>
+        <label class="name_label"><%=h profile.field_name %></label><br/>
+        <% case(profile.field_type)
+        when "short text" then %>
+          <input type="text" name="profile[<%=h profile.id %>]" class="profile_style"/>
+        <% when "long text" then %>
+          <textarea name="profile[<%=h profile.id %>]" cols="50" rows="5" class="profile_style"></textarea>
+        <% when "single select list" then %>
+          <select name="profile[<%=h profile.id %>]" class="profile_style">
+            <option value="<%=h profile.profile_dropdown_values[0].value %>">Select</option>
+            <% profile.profile_dropdown_values.each do |dropdown_value| %>
+              <option value="<%=h dropdown_value.value %>"><%=h dropdown_value.value %></option>
+            <% end %>
+          </select>
+        <% end %>
+        <br/>
+      <% end %><br/><br/>
+      <input type="hidden" name="next_component" value="<%=h @next_component_id %>"/>
+      <hr/><br/>
+      <input type="submit" value="Next" class="done_button" />
+    </form>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>

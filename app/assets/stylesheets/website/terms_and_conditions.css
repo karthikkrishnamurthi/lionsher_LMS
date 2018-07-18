@@ -1,0 +1,17 @@
+p,li{
+    color:#595959;
+}
+h1{
+    border-bottom: 2px solid lightgrey;
+    color: #7F7F7F;
+    text-align:center;
+}
+#main_panel{
+    float:left;
+    width:720px;
+}
+h2{
+    font-weight:normal;
+    font-size:17px;
+    color: #404040;
+}

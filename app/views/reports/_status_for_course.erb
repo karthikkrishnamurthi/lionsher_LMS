@@ -1,0 +1,20 @@
+<% if @completed < 1 %>
+  <td align="center" valign="middle"> - </td>
+<% else %>
+  <td align="center" valign="middle"><a href="/reports/report_based_on_status?course_id=<%=h @course.id %>&status=completed" style="text-decoration: none;"><%=h @completed %></a></td>
+<% end
+if @incomplete < 1 %>
+  <td align="center" valign="middle"> - </td>
+<% else %>
+  <td align="center" valign="middle"><a href="/reports/report_based_on_status?course_id=<%=h @course.id %>&status=incomplete" style="text-decoration: none;"><%=h @incomplete %></a></td>
+<% end
+if @unattempted < 1 %>
+  <td align="center" valign="middle"> - </td>
+<% else %>
+  <td align="center" valign="middle"><a href="/reports/report_based_on_status?course_id=<%=h @course.id %>&status=not attempted" style="text-decoration: none;"><%=h @unattempted %></a></td>
+<% end
+if @timeup < 1 %>
+  <td align="center" valign="middle"> - </td>
+<% else %>
+  <td align="center" valign="middle"><a href="/reports/report_based_on_status?course_id=<%=h @course.id %>&status=time up" style="text-decoration: none;"><%=h @timeup %></a></td>
+<% end %>

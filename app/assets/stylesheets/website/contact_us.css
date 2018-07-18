@@ -1,0 +1,120 @@
+.container-body{
+    padding-bottom:40px;
+    margin-bottom:40px;
+/*    overflow: hidden;*/
+    font-family: "Lucida Grande", sans-serif;
+}
+.header-right-content #contact_us
+{
+    color:  #FF9933;
+    font-size:12px;
+}
+#main_panel{
+    float:left;
+    margin-right:20px;
+    width:660px;
+    padding-left:20px;
+}
+#side_panel{
+    padding-right:20px;
+    text-align:right;
+}
+#contact_us_div{
+    text-align:center;
+    border-bottom: 2px solid lightgrey;
+}
+#contact_us{
+    font-size:26px;
+    color: #7F7F7F;
+}
+#contact-us-content{
+    padding-top:10px;
+/*    padding-left:25px;*/
+    padding-right:20px;
+}
+#main_panel a{
+    color: #558ED5;
+    text-decoration:none;
+}
+.label-textbox{
+/*    padding-left:25px;*/
+    padding-right:15px;
+    margin-top:15px;
+    float:left;
+}
+.textbox-height{
+    height:35px;
+}
+.mandatory{
+    font-size:10px;
+    color:red;
+    padding-left:2px;
+}
+.label-textarea{
+/*    padding-left:25px;*/
+}
+.border_radius input[type="submit"] {
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 3px 10px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px }
+#send input[type="submit"] {
+    border: gray 1px solid;
+    width: 12%;
+    background-color: gray;
+    color: white;
+/*    float:right;*/
+    margin-left:540px;
+    margin-top:15px;
+    margin-bottom:20px;
+}
+#sidepanel-heading{
+/*    font-weight:bold;*/
+    font-size:21px;
+    padding-top:36px;
+    border-bottom: 1px solid lightgrey;
+    margin-left:710px;
+    padding-bottom:3px;
+    color: #404040;
+}
+
+/*#sub-heading{
+    color:black;
+}*/
+#sidepanel-content-font{
+    font-size:12px;
+    padding-top:5px;
+    margin-left:710px;
+    /*    color:black;*/
+}
+#side_panel a{
+    color:  #FF8C00;
+    text-decoration:none;
+}
+/*#side_panel #a2{
+    color :red;
+    text-decoration:none;
+}*/
+#side_panel img{
+    vertical-align:middle;
+    padding-bottom:5px;
+    padding-right:12px;
+}
+#side_panel_subheading{
+    color: #404040;
+    font-size:14px;
+     margin-left:710px;
+}
+.ie7 textarea{
+    rows:15;
+    cols:60;
+}

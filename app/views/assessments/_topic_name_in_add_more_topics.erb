@@ -1,0 +1,65 @@
+<% if (!(@assessment.test_pattern.nil? or @assessment.test_pattern.blank?)) and @assessment.test_pattern.no_of_sections >= @i and params[:action] != "edit_questions" %>
+<div id="topic_name" name="topic_name">
+  <div id="add_more_question_option_div">
+    <li><label for="topic" style="clear: left;">Topic Name - <%=h @i %></label></li>
+    <li>
+      <input id="topic" type="text" maxlength="40" name="topic_name" value="<%=h @assessment.test_pattern.section_names.split(',')[@i-1] %>" size="48" disabled/>
+      <span><input disabled type="text" name="remLen2" size="3" maxlength="3" value="40"/> Characters left</span>
+      <label id="topic_name_msg" style="display: none;">Enter the topic name</label>
+    </li>
+
+    <li><label id="label_add_question" for="question_bank_name">Add Questions</label><br /> </li>
+    
+    <li>
+      <input id="single_type" type="radio" name="upload_type" checked value="manual" onclick="show_prev_questions(this,'previous_assessments_for_multiple');"/>
+      <label for="single_type" style="clear: left;">Manually</label>
+    </li>
+
+    <li>
+      <input id="excel_type" type="radio" name="upload_type" value="excelsheet" onclick="show_prev_questions(this,'previous_assessments_for_multiple');" />
+      <label for="single_type" style="clear: left;">From a formatted spread sheet (.xls, .xlsx)</label>
+    </li>
+
+    <li id="upload_excel" style="display: none; margin-left: 24px;">
+      <input name="import[excel]" size="50" type="file" />
+    </li>
+
+    <li>
+      <input id="previous_type" type="radio" name="upload_type" value="previous_questions" onclick="show_prev_questions(this,'previous_assessments_for_multiple');" />
+      <label for="single_type" style="clear: left;">From previous assessments</label>
+    </li>
+  </div>
+</div>
+<% else %>
+<div id="topic_name" name="topic_name" style="display : none;">
+  <div id="add_more_question_option_div">
+    <li><label for="topic" style="clear: left;">Topic Name - <%=h @i %></label></li>
+    <li>
+      <input id="topic" type="text" maxlength="40" name="topic_name" value="" size="48" onkeyup="textCounter(this,document.myform.remLen2,40)" onclick="textCounter(this,document.myForm.remLen2,40)"/>
+      <span><input disabled type="text" name="remLen2" size="3" maxlength="3" value="40"/> Characters left</span>
+      <label id="topic_name_msg" style="display: none;">Enter the topic name</label>
+    </li>
+
+
+    <li><label id="label_add_question" for="question_bank_name">Add Questions</label><br /> </li>
+    <li>
+      <input id="single_type" type="radio" name="upload_type" checked value="manual" onclick="show_prev_questions(this,'previous_assessments_for_multiple');"/>
+      <label for="single_type" style="clear: left;">Manually</label>
+    </li>
+
+    <li>
+      <input id="excel_type" type="radio" name="upload_type" value="excelsheet" onclick="show_prev_questions(this,'previous_assessments_for_multiple');" />
+      <label for="single_type" style="clear: left;">From a formatted spread sheet (.xls, .xlsx)</label>
+    </li>
+
+    <li id="upload_excel" style="display: none; margin-left: 24px;">
+      <input name="import[excel]" size="50" type="file" />
+    </li>
+
+    <li>
+      <input id="previous_type" type="radio" name="upload_type" value="previous_questions" onclick="show_prev_questions(this,'previous_assessments_for_multiple');" />
+      <label for="single_type" style="clear: left;">From previous assessments</label>
+    </li>
+  </div>
+</div>
+<% end %>

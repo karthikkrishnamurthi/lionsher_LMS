@@ -1,0 +1,202 @@
+<table width="600" cellpadding="2" cellspacing="2" border="0"  style="">
+  <tr style="display: none;">
+    <td class="fieldName" width="100%"><span class="error">*</span>Account Id</td>
+    <td  align="left" width="100%"><input name="account_id" type="text"value="<%=h EBS_ACCOUNT_ID %>" />
+      <a href="https://support.ebs.in/index.php?_m=knowledgebase&_a=viewarticle&kbarticleid=15&nav=0,5,2" target="_blank "></a></td>
+  </tr>
+  <tr style="display: none;">
+    <td class="fieldName"><span class="error">*</span>Return Url</td>
+    <td align="left"><input name="return_url" type="text" size="60" value="http://<%=h request.subdomain %>.<%=h SITE_URL %>/transactions/show?DR={DR}"/></td>
+  </tr>
+  <tr style="display: none;">
+    <td class="fieldName"><span class="error">*</span>Mode</td>
+    <td align="left">
+      <input type="text" name="mode" value="<%=h EBS_TRANSACTION_MODE %>" style="display:none;"/>
+      <%#*<select name="mode" >%>
+        <%#*<option value="TEST" >TEST</option>%>
+        <%#*<option value="LIVE" selected>LIVE</option>%>
+      <%#*</select>%>
+    </td>
+  </tr>
+
+  <tr style="display: none;">
+    <td class="fieldName" width="100%"><span class="error">*</span>Reference No</td>
+    <td  align="left" width="100%"><input name="reference_no" type="text" value="<%=h @reference_no %>" /></td>
+  </tr>
+  <tr style="display: none;">
+    <td class="fieldName"><span class="error">*</span>Email</td>
+    <td align="left"><input name="email" type="text" value="<%=h current_user.email %>" />    </td>
+  </tr>
+  <tr style="display: none;">
+    <td class="fieldName"><span class="error">*</span>Name</td>
+    <td align="left">
+      <input name="name" type="text" maxlength="255" value="<%=h current_user.login %>"/> </td>
+  </tr>
+
+
+  <tr title="Enter the Price of the product that is offered for sale" style="display: none;">
+    <td class="fieldName" width="100%"><span class="error">*</span>Sale Amount</td>
+    <td  align="left" width="100%"><input name="amount" type="text" value="<%=h @buyer_seller.price %>"/>
+      <strong>INR</strong></td>
+  </tr>
+  <tr  title="Displays the description of the selected / ordered product." style="display: none;">
+    <td class="fieldName" width="100%"><span class="error">*</span>Description</td>
+    <td  align="left" width="100%"><input name="description" type="text" value="Demo transaction" /> </td>
+  </tr>
+</table>
+
+
+
+
+
+<div id="middle_content">
+  <div id="left_middle_content">
+    <span><strong>Billing Address</strong> <em>As registered on the credit card or bank</em></span>
+    <% unless @transaction.nil? %>
+    <ul class="ul_confirm_address">
+      <li>
+        <label> Address</label><br/>
+        <textarea id="address" name="address" cols="30"><%=h @transaction.billing_address %></textarea>
+      </li>
+      <li>
+        <label> City</label><br/>
+        <input id="city" name="city" type="text" value="<%=h @transaction.billing_city %>"/>
+      </li>
+      <li>
+        <label> State/Province</label><br/>
+        <input id="state" name="state" type="text"value="<%=h @transaction.billing_state %>" />
+      </li>
+      <li>
+        <label> Zip/Postal Code</label><br/>
+        <input id="postal_code" name="postal_code" type="text" value="<%=h @transaction.billing_postal_code %>"/>
+      </li>
+      <li>
+        <label> Country</label><br/>India
+        <input id="country" name="country" type="hidden" value="IND"/>
+      </li>
+      <li>
+        <label> Telephone</label><br/>
+        <input id="phone" name="phone" type="text" maxlength="20" value="<%=h @transaction.billing_phone %>"/>
+      </li>
+    </ul>
+  </div>  
+  <div id="right_middle_content">
+    <input name="ship_name" type="text" value="<%= @tenant.organization %>" style="display: none;"/>
+    <span><strong>Invoice Address</strong><em style="float: right;"><input type="checkbox" id="same_address"/><label>Same as billing address </label></em></span>
+
+    <ul class="ul_confirm_address" >
+      <li>
+        <label> Address</label><br/>
+        <textarea id="ship_address" name="ship_address" cols="30"><%=h @transaction.delivery_address %></textarea>
+      </li>
+      <li>
+        <label> City</label><br/>
+        <input id="ship_city" name="ship_city" type="text" value="<%=h @transaction.billing_city %>" />
+      </li>
+      <li>
+        <label> State/Province</label><br/>
+        <input id="ship_state" name="ship_state" type="text" value="<%=h @transaction.billing_state %>"/>
+      </li>
+      <li>
+        <label> Zip/Postal Code</label><br/>
+        <input id="ship_postal_code" name="ship_postal_code" type="text" value="<%=h @transaction.billing_postal_code %>" />
+      </li>
+      <li>
+        <label> Country</label><br/>India
+        <input id="ship_country" name="ship_country" type="hidden" value="IND"/>
+      </li>
+      <li>
+        <label> Telephone</label><br/>
+        <input id="ship_phone" name="ship_phone" type="text" maxlength="20" value="<%=h @transaction.delivery_phone %>" />
+      </li>
+    </ul>
+    <% else %>
+    <ul class="ul_confirm_address">
+      <li>
+        <label> Address</label><br/>
+        <textarea id="address" name="address" cols="30"></textarea>
+      </li>
+      <li>
+        <label> City</label><br/>
+        <input id="city" name="city" type="text" value=""/>
+      </li>
+      <li>
+        <label> State/Province</label><br/>
+        <input id="state" name="state" type="text"value="" />
+      </li>
+      <li>
+        <label> Zip/Postal Code</label><br/>
+        <input id="postal_code" name="postal_code" type="text" value=""/>
+      </li>
+      <li>
+        <label> Country</label><br/>India
+        <input id="country" name="country" type="hidden" value="IND"/>
+      </li>
+      <li>
+        <label> Telephone</label><br/>
+        <input id="phone" name="phone" type="text" maxlength="20" value=""/>
+      </li>
+    </ul>
+  </div>
+  <% if current_user.typeofuser == "corporate buyer" then %>
+  <div id="right_middle_content">
+    <input name="ship_name" type="text" value="<%= @tenant.organization %>" style="display: none;"/>
+    <span><strong>Invoice Address</strong><em style="float: right;"><input type="checkbox" id="same_address"/><label>Same as billing address </label></em></span>
+
+    <ul class="ul_confirm_address" >
+      <li>
+        <label> Address</label><br/>
+        <textarea id="ship_address" name="ship_address" cols="30"></textarea>
+      </li>
+      <li>
+        <label> City</label><br/>
+        <input id="ship_city" name="ship_city" type="text" value="" />
+      </li>
+      <li>
+        <label> State/Province</label><br/>
+        <input id="ship_state" name="ship_state" type="text" value=""/>
+      </li>
+      <li>
+        <label> Zip/Postal Code</label><br/>
+        <input id="ship_postal_code" name="ship_postal_code" type="text" value="" />
+      </li>
+      <li>
+        <label> Country</label><br/>India
+        <input id="ship_country" name="ship_country" type="hidden" value="IND"/>
+      </li>
+      <li>
+        <label> Telephone</label><br/>
+        <input id="ship_phone" name="ship_phone" type="text" maxlength="20" value="" />
+      </li>
+    </ul>
+    <% end %>
+<% end %>
+    <input type="hidden" name="plan_selected" value="<%= @buyer_seller.id %>"/>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="margin_bottom"></div>
+
+<script type="text/javascript" charset="utf-8">
+  function countChecked() {
+    var checked = $(this).attr('checked');
+    if( checked ) {
+      $('#ship_address').val( $('#address').val())
+      $('#ship_city').val($('#city').val())
+      $('#ship_state').val($('#state').val())
+      $('#ship_postal_code').val($('#postal_code').val())
+      $('#ship_country').val($('#country').val())
+      $('#ship_phone').val($('#phone').val())
+    }
+    else  {
+      $('#ship_address').val("")
+      $('#ship_city').val("")
+      $('#ship_state').val("")
+      $('#ship_postal_code').val("")
+      $('#ship_country').val("")
+      $('#ship_phone').val("")
+    }
+
+  }
+  $(":checkbox").click(countChecked);
+</script>

@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h3><b>Add list values for: <%= @profile.field_name %></b></h3>
+    <form action="/profile_dropdown_values/save_dropdown_value/<%= params[:component] %>" class="form_style">
+      <table>
+        <% i = 1 %>
+        <% @existing_profile_dropdown_values.each do |drop_down_value| %>
+          <tr>
+            <td style="text-align: left;"><%=h i %>.<%=h drop_down_value.value %></td>
+            <td style="padding-left: 10px;"><a href="/profile_dropdown_values/delete_dropdown_value/<%= drop_down_value.id %>">
+                Delete
+              </a></td>
+          </tr>
+          <% i = i + 1 %>
+        <% end %>
+      </table><br/>
+      <table>
+        <tr>
+          <th style="text-align:left;">List value</th>
+        </tr>
+        <tr>
+          <td><input type="text" name="dropdown_value" value=""/></td>
+          <td><input type="submit" value="Add"/></td>
+        </tr>
+      </table>
+      <hr/>
+      <a href="/profiles/create_profile/<%=h params[:id] %>" class="done_button">Done</a>
+      <a href="/profiles/create_profile/<%=h params[:id] %>" style="margin-left:580px;color:blue;">Cancel</a>
+    </form>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

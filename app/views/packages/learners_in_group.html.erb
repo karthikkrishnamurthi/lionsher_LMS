@@ -1,0 +1,76 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'learner_content' %>
+<%= javascript_include_tag 'manage_learners' %>
+<%= javascript_include_tag 'prototype' %>
+
+<div id="learner_container">
+  <div id="learner_mainpanel">
+    <h1>Group: <s><%=h @group.group_name %></s></h1>
+    <form action="/packages/manage/<%=h @package.id %>?group_id=<%=h @group.id %>" method="post" name="manage_learners_form" onsubmit="javascript:return learner_validation();">
+      <h4>Assigned Learners: <%=h @assigned_learners.length %> of <%=h @total_learners.length %></h4>
+      <h4><input id="select_all" type="button" onclick="select_all_learners('hid_length','chk');" value="Select All"/> | <input id="select_none" type="button" onclick="unselect_all_learners('hid_length','chk');" value="Select None"/></h4>
+      <div class="all_groups">
+        <div id="learners_big_box">
+
+          <%i=1
+          @assigned_learner_ids = Array.new
+          p = 1
+          @assigned_learners.each{|learner|
+            @assigned_learner_ids << learner.user.id %>
+            <div class="learners_box_left">
+              <input type="checkbox"  id="chk<%= i %>" name="email:<%=h p %>" value="<%=h learner.user.id %>" checked/>
+              <%=h learner.user.login %> &nbsp;&nbsp;<em><%=h learner.user.email %></em><br/>
+            </div>
+            <% p=p+1
+            i=i+1
+          } %>
+
+          <% @total_learners.each { |user|
+            if !(@assigned_learner_ids.include? user.id) %>
+              <div class="learners_box_left">
+                <input type="checkbox"  id="chk<%= i %>" name="email-<%=h p %>" value="<%=h user.id %>" />
+                <%=h user.login %> &nbsp;&nbsp;<em><%=h user.email %></em><br/>
+              </div>
+              <%  p=p+1
+              i=i+1
+            end
+          }
+        %>
+          <input type="hidden" id="hid_length" value="<%=h i-1 %>"/>
+        </div>
+
+      </div>
+
+      <div id="recently_added_learners">
+        
+      </div>
+
+      <h4 style="margin-top:25px;">Add Learners</h4>
+      <table style="margin-left:20px;">
+        <tr>
+          <td class="header">Learners Name</td>
+          <td class="header">Email</td>
+        </tr>
+        <tr>
+          <td><input id="user_login" name="user[login]" size="20" type="text" maxlength="40" /></td>
+          <td><input id="user_email" name="user[email]" size="20" type="text" maxlength="255" /></td>
+        </tr>
+      </table>
+
+      <input type="hidden" id="hid_val" value="<%= i-1 %>" /> <!-- please don't delete this line. It is useful in Javascript -->
+      <input id ="assign_learners_more" class="" name="add" value="Add this learner" type="button" onclick="rjs_add_to_learner_list('user_login','user_email',<%=h @group.id %>,<%=h @package.id %>);"/>
+      <input  type="text" value="learner" name="user[typeofuser]" style="display: none" />
+      <input type="hidden" id="admin_buyer" value="<%=h current_user.typeofuser %>" />
+      <br/>
+      <div id="learner_validation" style="display:none;margin-left:20px;">
+        Add this learner and then click Done.
+      </div>
+      <hr/>
+      <input id="assign_learners" name="commit" type="submit" value="Done"/>
+    </form>
+  </div>
+
+  <div id="learner_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

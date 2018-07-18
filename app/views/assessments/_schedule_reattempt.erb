@@ -1,0 +1,14 @@
+<h3>Reattempts</h3>
+<% if params[:action] == "edit_assessment_details" then %>
+  <% if @assessment.reattempt == "on" then %>
+  <input type="checkbox" class="checkbox_input" id="reattempt" name="assessment[reattempt]" checked/>
+  <% else %>
+  <input type="checkbox" class="checkbox_input" id="reattempt" name="assessment[reattempt]" />
+  <% end
+else %>
+<input type="checkbox" class="checkbox_input" id="reattempt" name="assessment[reattempt]"/>
+<% end %>
+<span>
+  <label class="checkbox_label">Allow reattempts of the assessment </label>
+</span>
+<span>The latest score will be shown</span>

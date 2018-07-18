@@ -1,0 +1,56 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+	<div id="div_mainpanel">
+		<form action="/component_widget_variables/save_component_widget_variables/<%= @component_widget.id %>?template=<%= @component_widget.report_component.report_template.id %>" method="post">
+			<h1>Add report variables for widget "<%= @component_widget.widget.name %>"</h1>
+			<% if @component_widget.widget.name == "text" and !(@component_widget.component_widget_variables.nil? or @component_widget.component_widget_variables.blank?) %>
+			<h1>Entered text</h1>
+			<table>
+				<tr><td><%= @component_widget.component_widget_variables[0].report_text %></td></tr>
+			</table>
+			<% else
+			 unless @existing_report_variables.nil? or @existing_report_variables.blank? %>
+			<table>
+				<tr>
+					<th align="center">Existing Variables for <%= @component_widget.widget.name %></th>
+				</tr>
+				<% if @existing_report_variables.count > 1
+				 @existing_report_variables.each do |report_variable| %>
+				<tr>
+					<td><%=h report_variable.name %></td>	
+				</tr>
+				<% end 
+				else %>
+				<tr>
+					<td><%=h @existing_report_variables[0].name %></td>	
+				</tr>
+				<% end %>
+			</table>
+			<% end %>			
+			<table>
+				<tr>
+					<td>
+						<% if @component_widget.widget.name == "text" %>
+							<textarea name="report_variable"></textarea><br/>
+							<input type="submit" name="button" value="Done"/>
+						<% else %>
+							<select name="report_variable">
+								<% @report_variables.each do |report_variable| %>
+									<option value="<%= report_variable.id %>"><%= report_variable.name %></option>
+								<% end %>
+							</select>
+							<input type="submit" name="button" value="+"/>
+						<% end %>						
+					</td>
+				</tr>
+			</table>
+			<% end # End of widget is text or not %>
+		</form>
+		<a href="/component_widgets/create_component_widgets/<%=h @component_widget.report_component.id %>?template=<%= @component_widget.report_component.report_template.id %>">Back</a>
+	</div> <%# end of div_mainpanel %>
+	<div id="div_sidepanel">
+		<%= render :partial => "/courses/logo" %>
+	</div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

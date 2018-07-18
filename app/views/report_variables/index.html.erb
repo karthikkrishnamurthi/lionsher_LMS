@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+<h1>Listing report_variables</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @report_variables.each do |report_variable| %>
+  <tr>
+    <td><%= report_variable.id %></td>
+    <td><%= report_variable.name %></td>
+    <td><%= link_to 'Edit', edit_report_variable_path(report_variable) %></td>
+    <td><a href="/report_variables/destroy/<%= report_variable.id %>">Destroy</a></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Report variable', new_report_variable_path %>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

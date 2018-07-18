@@ -1,0 +1,47 @@
+<%#*Author : Karthik%>
+<%= stylesheet_link_tag 'vcard' %>
+<style type="text/css">
+  .error_msg {
+    color: #ff6600;
+    margin: 5px 0;
+    display: none;
+    margin-left: 10px;
+    float: left;
+  }
+  #email {
+    color: gray;
+    border: 1px solid gray;
+    padding: 1px;
+    width: 260px;
+  }
+  #subscribe_submit {
+    float: right;
+    margin: 3px 0 0 0;
+  }
+</style>
+<script type="text/javascript">
+  function validate1() {
+      document.getElementById('error_email').style.display="none";
+  }
+  function validate(form_id,email) {
+    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    var address = document.forms[form_id].elements[email].value;
+    if(reg.test(address) == false) {
+      document.getElementById('error_email').style.display="block";
+      return false;
+    }
+  
+  }
+</script>
+
+<div id="dlog_vcard">
+  <h4>Want updates on LionSher?</h4><br/>
+  <form action="/subscribes" class="new_subscribe" id="new_subscribe" onsubmit="javascript:return validate('new_subscribe','email');" method="post">
+    <input title="Enter email address" id="email" name="subscribe[email]" type="text" onblur="if(this.value=='')this.value='your email';" onfocus="if(this.value=='your email')this.value='';" value="your email"/>
+    <div id="error_email" class="error_msg">
+      Provide a valid email !
+    </div>
+    <input id="subscribe_submit" name="commit" type="submit" value="Subscribe" onblur="validate1()" />
+  </form>
+</div>
+

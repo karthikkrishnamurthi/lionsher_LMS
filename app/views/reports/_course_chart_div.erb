@@ -1,0 +1,56 @@
+<% if @chart_data[0][:course_output] > 0 or @chart_data[1][:course_output] > 0 or @chart_data[2][:course_output] > 0 then
+  # The xml is obtained as a string from builder template.
+  #str_xml = render :file=>"/reports/chart",:locals=>{:course_data => @chart_data}
+
+  #Create the chart - Pie 3D Chart with data from strXML
+  #render_chart '/FusionCharts/FCF_Doughnut2D.swf', '', str_xml, 'CourseChart', 200, 200, false, false do-%>
+ 
+  <%
+       data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Assessment')
+    data_table.new_column('number', 'Hours per Day')
+
+    data_table.add_rows(@chart_data.length)
+index_val = 0
+      @chart_data.each do | var |
+    data_table.set_cell(index_val, 0, var[:course_name]     )
+    data_table.set_cell(index_val, 1, var[:course_output] )
+
+
+  index_val = index_val+1
+ end
+
+opts   = { :width => 260, :height => 260, legend:{position: 'none'}}
+    #opts   = { :width => 200, :height => 200, :is3D => true}
+    @chart = GoogleVisualr::Interactive::PieChart.new(data_table, opts)
+         
+      %>
+     <div id='pie_chart'></div>
+     <%= render_chart @chart, 'pie_chart' %>
+
+  <% @chart_data.each do | val | %>
+    <%#= val %>
+  <% end %>
+
+
+ <%  if params[:action] == 'courses_for_learner' then %>
+    <div id="graph_info">
+      <div class="inner_graph_info"><%= image_tag "white_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_assigned %><span id="graph_assnd_leanr">Assigned Courses</span></div>
+      <div class="inner_graph_info"><%= image_tag "completed_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_completed %><span>Complete</span></div>
+      <div class="inner_graph_info"><%= image_tag "incomplete_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_incomplete %><span>Incomplete</span></div>
+      <div class="inner_graph_info"><%= image_tag "unattempted_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_unattempted %><span>Unattempted</span></div>
+      <div class="inner_graph_info"><%= image_tag "timeout.jpg", :size => "15x10", :alt => "" %><%=h @total_timeup %><span>Time up</span></div>
+    </div>
+  <% else %>
+    <div id="graph_info">
+      <div class="inner_graph_info"><%= image_tag "white_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_assigned %><span id="graph_assnd_leanr">Assigned Learners</span></div>
+      <div class="inner_graph_info"><%= image_tag "completed_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_completed %><span>Completed</span></div>
+      <div class="inner_graph_info"><%= image_tag "incomplete_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_incomplete %><span>Incomplete
+          <% if @total_incomplete != 0 then %>&nbsp; &nbsp;<a href="/users/send_reminder/<%= @course.id %>?status=incomplete">Send Reminder</a><% end %> </span></div>
+      <div class="inner_graph_info"><%= image_tag "unattempted_graph.jpg", :size => "15x10", :alt => "" %><%=h @total_unattempted %><span>Unattempted
+          <% if @total_unattempted != 0 then %><a href="/users/send_reminder/<%= @course.id %>?status=not attempted">Send Reminder</a><% end %></span></div>
+    </div>
+  <% end
+else %>
+  <div id="graph_info"></div>
+<% end %>

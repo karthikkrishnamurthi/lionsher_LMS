@@ -1,0 +1,73 @@
+
+<div id="container">
+<%#= render :partial => "/layouts/home_header" %>
+<%= stylesheet_link_tag    "website/index" %>
+<%=  render :partial =>"/home/header_home_new" %>
+<%= stylesheet_link_tag 'lionsherhome' %>
+<%= stylesheet_link_tag 'signup' %>
+<%= stylesheet_link_tag 'signup_for_tests' %>
+<%= javascript_include_tag 'signup' %>
+<!-- all css ends here -->
+<%= favicon_link_tag "lion.png", :rel => "icon" %>
+
+
+
+  <h1><b>Begin with 30 free tests. Get detailed reports. </b> Sign up in less than 2 minutes!</h1>
+  <div id="mid_panel">
+    <form action="/users/signup" method="post" onsubmit="javascript:return validation();">
+      <div id="sign_up_content">
+        <div id="flash_signup"><%=h flash[:signup_notice] %></div>
+        <label id="number_text"><s>1. &nbsp;</s>Create your LionSher Tests account</label>
+        <label for="login">Your Name</label>
+        <input id="user_login" name="user[login]" type="text" onblur="validate('user_login','login_div');" style="width:250px;" maxlength="40" <% if !flash[:login_name].nil? %>value="<%=h flash[:login_name] %>"<% end %>/>
+        <div id="login_div" style="display: none;">Enter your name</div>
+
+        <label for="email">Email Address</label>
+        <input id="user_email" name="user[email]"  type="text" onblur="validate_email();" style="width:250px;" maxlength="40" <% if !flash[:email].nil? %>value="<%=h flash[:email] %>"<% end %>/>
+        <div id="email_div" style="display: none;">Enter your email address</div>
+        <div id="email_validate" style="display: none;">Enter valid email address</div>
+
+        <label for="organization">Company Name</label>
+        <input id="organization" name="tenant[organization]" type="text" onblur="validate('organization','org_div');" style="width:250px;" maxlength="40" <% if !flash[:organization].nil? %>value="<%=h flash[:organization] %>"<% end %>/>
+        <div id="org_div" style="display: none;">Enter your organization's name</div>
+
+        <%= image_tag "lionsherhome_images/icon_just2steps.png", :id => "just_2easy_steps_pic" %>
+        <label id="number_text"><s>2. &nbsp;</s>Create your Tests custom link</label><br/>
+        <label id="custom_label_link" for="url">https://</label>
+        <input id="custom_link" name="tenant[custom_link]" style="width:250px;clear: right;" type="text" onfocus="add_value();" onblur="validate('custom_link','custom_message');" maxlength="40" <% if !flash[:custom_url].nil? %>value="<%=h flash[:custom_url] %>"<% end %>/>
+        <label id="custom_label_link_1">.lionsher.com</label>
+        <div id="custom_message" style="display: none;">Custom link connot be left blank</div>
+        <input type="text" value="admin"  name="user[typeofuser]" style="display: none" />
+        <input type="text" value="<%=h params[:type_of_business] %>"  name="type_of_business" style="display: none" />
+        <input type="text" value="<%=h params[:free_trial] %>"  name="free_trial" style="display: none" />
+        <input type="hidden" value="<%=h params[:id] %>" name="selected_plan_id" />
+        <input id="sign_up" name="commit" type="submit" value=""/>
+        <label class="" style="margin: -35px 0px 0px 185px; font-size: 10px;">I have read and agree to the LionSher <a href="/terms_and_conditions" target="_blank">Terms and Conditions</a> and <a href="/privacy_policy" target="_blank">Privacy Policy</a>.</label>
+      </div>
+    </form>
+
+    <div id="mid_side_panel">
+
+      <% plan =  PricingPlan.find(params[:id]) %>
+
+      <div id="mid_side_panel_text">
+        <%= image_tag "lionsherhome_images/green_tick.png" %><p>30 Free Tests</p>
+        <%= image_tag "lionsherhome_images/green_tick.png" %><p>Create all types of tests</p>
+        <%= image_tag "lionsherhome_images/green_tick.png" %><p>Create tests manually or &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;upload excel file</p>
+        <%= image_tag "lionsherhome_images/green_tick.png" %><p>Assign tests in bulk</p>
+        <%= image_tag "lionsherhome_images/green_tick.png" %><p>Learners get the link to take &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;tests, no self-registration</p>
+        <%= image_tag "lionsherhome_images/green_tick.png" %><p>Get detailed reports</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div id="lower_panel">
+  </div>
+
+
+<%=  render :partial =>"/home/footer_home_new" %>
+  
+<%#= render :partial => "/layouts/home_footer" %>
+</div>

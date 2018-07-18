@@ -1,0 +1,2 @@
+module StructureComponentsHelper
+end

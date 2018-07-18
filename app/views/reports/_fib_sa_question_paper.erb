@@ -1,0 +1,10 @@
+<% if !(@learner_answer.nil? or @learner_answer.blank? or @learner_answer == "*") %>
+  <% if !(@test_detail.nil? or @test_detail.blank?) and @test_detail.answer_status == "wrong" then %>
+    <li>Answer given: <%=raw @learner_answer %> - <font color="red">Incorrect Answer</font><br/>
+      Correct Answer: <%=raw @answer.answer_text %></li>
+  <% elsif !(@test_detail.nil? or @test_detail.blank?) and @test_detail.answer_status == "correct" then %>
+    <li><%=raw @learner_answer %> - <font color="green">Correct Answer</font></li>
+  <% end
+else # if learner has skipped the question,else part will get executed %>
+  <li>Correct Answer: <%=raw @answer.answer_text %></li>
+<% end %>

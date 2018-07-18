@@ -1,0 +1,178 @@
+<%= render :partial => "/layouts/courses_header" %>
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'upload_course' %>
+<%= stylesheet_link_tag 'tablestyle' %>
+<%= stylesheet_link_tag 'listing_all_learners' %>
+<%= javascript_include_tag 'listing_all_learners' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <% if @activated_users.length > 0 or @inactivated_users.length > 0 or @deactivated_users.length > 0 or @bounces_users.length >0 then%>
+    <h1>Learners &nbsp;&nbsp; <a href="/users/learner_groups/<%=h current_user.id %>">Learner groups</a> </h1>
+
+      <div class="flash_confirmation"><%=h flash[:number_of_mails] %></div>
+
+  <%#* The code below displays the bounced users details %>
+      <% if @bounces_users.length > 0 %>
+        <h3>Total Bounced Learners: <%= @bounces_users.length %></h3>
+        <% i=1 %>
+        <div class= "div_table" id="display">
+          <form action="/users/edit_bounced_emails/<%=h current_user.id%>">
+            <table width="97%" cellspacing="0px" style="margin-top:10px;margin-left: 18px;">
+              <% @bounces_users.each do |user| %>
+                <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+                  <td class="name" style="width:2px;"><%= i%></td>
+                  <td class="td_name"><%= user.login %></td>
+                  <td class="td_name"><%= user.email %></td>
+                  <td><input type="text" class="bounced_input_field" id="bounced_<%= user.id %>" name="bounced[<%= user.id %>]" style="margin-bottom: 2px;"/></td>
+                  <td><a style="color: blue;" href="/users/destroy/<%= user.id %>">Delete</a></td>
+                </tr>
+                <%i=i+1%>
+              <%end%>
+            </table>
+            <div id="send_activate_mail_for_bounced"><input id="activate_button" type="submit" value="Activate"/></div>
+          </form>
+        </div><br/><br/>
+        <hr/>
+      <% end %>
+
+
+      <% if @inactivated_users.length > 0 %>
+
+    <%#* The code below displays the user details apart form bounced users and deactivated users %>
+        <h3>Inactive Learners: <%= @inactivated_users.length %></h3>
+        <div class="flash_confirmation"><%=h flash[:mails_sent_to_inavtive_users] %></div>
+        <% i=1 %>
+        <div class= "div_table" id="display">
+          <div><a id="select_all" onclick="check_all(<%= @inactivated_users.length %>);">Select All</a> | <a id="select_none" onclick="uncheck_all(<%= @inactivated_users.length %>);">Select None</a></div>
+          <form action="/users/send_activation_for_inactive_users/<%=h current_user.id%>" method="post">
+            <table width="97%" cellspacing="0px" style="margin-top:10px;margin-left: 18px;">
+              <% @inactivated_users.each do |user| %>
+                <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+                  <td class="name" style="width:2px;"><%= i%></td>
+                  <td class="name" style="width:2px;"><input type="checkbox" id="inactive_<%=h i%>" name="inactive[<%= user.id %>]" style="margin: 0px; "/></td>
+                  <td class="td_name"><%= user.login %></td>
+                  <td class="td_name"><%= user.email %></td>
+                  <% if user.typeofuser != "admin" %>
+                    <td>
+                      <a style="color: blue;" href="/users/deactivate_learner/<%= user.id %>"
+                         onclick="var strMultiLineText =
+                             'Deleting Learner: <%= user.login %>' +
+                             '\n-----------------------------------------------------------------------------------' +
+                             '\nOnce you delete' +
+                             '\n* The learner cannot access the account' +
+                             '\n* The learner is removed from all the assigned courses' +
+                             '\n* You still can access the learner\'s report' +
+                             '\n-----------------------------------------------------------------------------------';
+                           if (confirm(strMultiLineText))
+                           { var f = document.createElement('form');
+                             f.style.display = 'none';
+                             this.parentNode.appendChild(f);
+                             f.method = 'POST';
+                             f.action = this.href;
+                             var m = document.createElement('input');
+                             m.setAttribute('type', 'hidden');
+                             m.setAttribute('name', '_method');
+                             m.setAttribute('value', 'delete');
+                             f.appendChild(m);
+                             var s = document.createElement('input');
+                             s.setAttribute('type', 'hidden');
+                             s.setAttribute('name', 'authenticity_token');
+                             s.setAttribute('value', 'pQ2PxB21o509Zwzy0jYEozNpr8XBBy0MfTTJH1DEyl4=');
+                             f.appendChild(s);
+                             f.submit(); };
+                           return false;">Delete</a>
+                    </td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+                </tr>
+                <%i=i+1%>
+              <%end%>
+            </table>
+            <div id="send_activate_mail_for_bounced"><input id="send_activation_mail" type="submit" value="Send Activation Mail"/></div>
+          </form>
+        </div>
+        <hr/>
+      <% end %>
+
+  <%#* The code below displays the user details apart form bounced users and deactivated users %>
+
+      <% i=1 %>
+      <h3>Active Learners: <%= @activated_users.length %></h3>
+      <div class= "div_table" id="display">
+        <table width="97%" cellspacing="0px" style="margin-top:10px;margin-left: 18px;">
+          <% @activated_users.each do |user| %>
+            <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+              <td class="name" style="width:2px;"><%= i%></td>
+              <td class="td_name"><%= user.login %></td>
+              <td class="td_name"><%= user.email %></td>
+              <% if user.typeofuser != "admin" %>
+                <td>
+                  <a style="color: blue;" href="/users/deactivate_learner/<%= user.id %>"
+                     onclick="var strMultiLineText =
+                         'Deleting Learner: <%= user.login %>' +
+                         '\n-----------------------------------------------------------------------------------' +
+                         '\nOnce you delete' +
+                         '\n* The learner cannot access the account' +
+                         '\n* The learner is removed from all the assigned courses' +
+                         '\n* You still can access the learner\'s report' +
+                         '\n-----------------------------------------------------------------------------------';
+                       if (confirm(strMultiLineText))
+                       { var f = document.createElement('form');
+                         f.style.display = 'none';
+                         this.parentNode.appendChild(f);
+                         f.method = 'POST';
+                         f.action = this.href;
+                         var m = document.createElement('input');
+                         m.setAttribute('type', 'hidden');
+                         m.setAttribute('name', '_method');
+                         m.setAttribute('value', 'delete');
+                         f.appendChild(m);
+                         var s = document.createElement('input');
+                         s.setAttribute('type', 'hidden');
+                         s.setAttribute('name', 'authenticity_token');
+                         s.setAttribute('value', 'pQ2PxB21o509Zwzy0jYEozNpr8XBBy0MfTTJH1DEyl4=');
+                         f.appendChild(s);
+                         f.submit(); };
+                       return false;">Delete</a>
+                </td>
+              <% else %>
+                <td></td>
+              <% end %>
+            </tr>
+            <%i=i+1%>
+          <%end%>
+        </table>
+      </div>
+    <% else %>
+      <h2>&nbsp;No learners exist</h2>
+    <% end %>
+
+
+<%#* The code below displays the deactivated users details%>
+    <% if @deactivated_users.length > 0 %>
+      <hr/>
+      <h3>Deleted Learners: <%= @deactivated_users.length %></h3>
+      <% j=1 %>
+      <div class= "div_table" id="display">
+        <table width="97%" cellspacing="0px" style="margin-top:10px;margin-left: 18px;">
+          <% @deactivated_users.each do |user|
+            email = user.email.gsub("aEyGf7k0dM1x",'') %>
+            <tr <% if j%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+              <td class="name" style="width:2px;"><%= j %></td>
+              <td class="td_name"><%= user.login %></td>
+              <td class="td_name"><%= email %></td>
+            </tr>
+            <% j=j+1 %>
+          <%end%>
+        </table>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>
+<%= render :partial => "/layouts/courses_footer" %>

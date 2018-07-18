@@ -1,0 +1,75 @@
+<style>
+  #admin_panel_failures{
+    font-weight: bold;
+  }
+</style>
+<form method="post" action="/tenants/destroy_null_courses">
+  <div id="div_container">
+    <h3>Failures while uploading</h3>
+    <div class= "div_table" id="display">
+      Total Number of Courses/Assessments : <%=h @null_courses.length + @null_assessments.length %><br/><br/>
+      <table border="0" cellpadding="2px" cellspacing="0" >
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Failed on</th>
+          <th>Organization</th>
+          <th>By Admin</th>
+          <th>Email</th>
+        </tr>
+        <%
+        i = 1
+        for course in @null_courses
+          admin = User.find_by_id(course.user_id)
+          org = Tenant.find_by_user_id(course.user_id) %>
+          <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+            <td class="name"><%=h course.id %></td>
+            <td class="td_name"><%=h course.course_name %></td>
+            <td class="name"><%=h course.typeofcourse %></td>
+            <td class="name"><%=h course.created_at.strftime(" %d %b %Y ") %></td>
+            <% if !(org.nil? or org.blank?) %>
+              <td class="name"><%=h org.organization %></td>
+            <% else %>
+              <td class="name"></td>
+            <% end
+            if !(admin.nil? or admin.blank?) %>
+              <td class="name"><%=h admin.login %></td>
+              <td class="name"><%=h admin.email %></td>
+            <% else %>
+              <td class="name"></td>
+              <td class="name"></td>
+            <% end %>
+          </tr>
+          <% i = i + 1
+        end %>
+        <%
+        i = 1
+        for assessment in @null_assessments
+          admin = User.find_by_id(assessment.user_id)
+          org = Tenant.find_by_user_id(assessment.user_id) %>
+          <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+            <td class="name"><%=h assessment.id %></td>
+            <td class="td_name"><%=h assessment.name %></td>
+            <td class="name">test</td>
+            <td class="name"><%=h assessment.created_at.strftime(" %d %b %Y ") %></td>
+            <% if !(org.nil? or org.blank?) %>
+              <td class="name"><%=h org.organization %></td>
+            <% else %>
+              <td class="name"></td>
+            <% end
+            if !(admin.nil? or admin.blank?) %>
+              <td class="name"><%=h admin.login %></td>
+              <td class="name"><%=h admin.email %></td>
+            <% else %>
+              <td class="name"></td>
+              <td class="name"></td>
+            <% end %>
+          </tr>
+          <% i = i + 1
+        end %>
+      </table>
+<%#*<input id="destroy" type="submit" value="Destroy" style="width: 60px;"/>%>
+    </div>
+  </div>
+</form>

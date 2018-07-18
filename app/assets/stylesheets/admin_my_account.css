@@ -1,0 +1,331 @@
+#div_upper_right .admin_myaccount_head_bold
+{
+    font-weight: bold;
+}
+#div_upper_left .home_head_bold
+{
+    font-weight: normal;
+}
+h4
+{
+    /*background-color: red;*/
+    margin: 0px 15px 0px 17px;
+    color: black;
+    font-weight: normal;
+    border-bottom: 1px dotted #cccccc;
+}
+.my_transactions_span a
+{
+    color: blue;
+    margin-left: 5px;
+}
+#plan_details
+{
+    margin-bottom: 50px;
+    background-color: #e5e5e5;
+    margin-left: 17px;
+}
+.my_plan_details {
+    list-style-type: none;
+    margin-left: -25px;
+}
+.ie7 .my_plan_details {
+    margin-left: 15px;
+}
+.my_plan_details a, td a {
+    color: blue;
+    text-decoration: none;
+}
+.my_plan_details  li{
+    width: 108px;
+    height: 30px;
+    float:left;
+    background-color: #F0F0F0;
+    border: none;
+    padding:10px 15px 20px;
+  
+}
+.my_plan_details label{
+    font-size: 18px;
+
+
+}
+
+.change_plan {
+    margin-left: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    /*background-color: red;*/
+    margin-top: 10px;
+    margin-right: 15px;
+    border-bottom: 1px dotted #CCCCCC;
+}
+.clearfix {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+h4 {
+    padding-bottom: 5px;
+}
+
+.plans_list {
+    background-color: #F0F0F0;
+    height: 60px;
+    width: 690px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+.business_type_label {
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.plan_list_ul {
+    margin-left: -30px;
+
+}
+.plan_list_ul li {
+    list-style-type: none;
+    float: left;
+    width: 100px;
+    height: 50px;
+   padding-top: 10px;
+   padding-left: 5px;
+}
+.li_plan_img img {
+    margin-top: -5px;
+    margin-left: -35px;
+}
+.ie7 .plans_list {
+    margin-top: 10px;
+}
+.ie7 .plan_list_ul li {
+   padding-top: 10px;
+   padding-left: 10px;
+}
+.li_plan_amount span {
+    font-size: 20px;
+    /*color: #ff6600;*/
+}
+.li_plan_select_confirm {
+    font-size: 20px;
+    margin-left: 20px;
+    padding-top: 20px;
+    color: #ff6600;
+}
+
+.li_plan_users span {
+    font-size: 20px;
+}
+
+.li_plan_space  span{
+    font-size: 20px;
+}
+.li_plan_space_confirm {
+    margin-left: 85px;
+}
+.li_plan_space_confirm  span{
+    font-size: 20px;
+}
+.li_plan_users_confirm span {
+    font-size: 20px;
+}
+.li_plan_users_confirm {
+    margin-left: 10px;
+}
+.li_plan_select {
+    float: right;
+    margin: 13px 15px 0px 0px;
+    padding: 5px;
+    
+}
+.li_plan_select1 {
+    margin: 13px 15px 0px 10px;
+    padding: 5px;
+
+}
+.ie7 .li_plan_select {
+   margin: -35px 0px 0px 250px;
+ 
+}
+.plan_select_submit {
+    background-color: #999999;
+    color: #FFF;
+    text-align: center;
+    width: 80px;
+    border: none;
+    padding: 3px 3px 4px 5px;
+    cursor: pointer;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+.confirm_manual {
+    margin-left: 15px;
+}
+.transaction_table {
+    margin: 15px 5px 5px 5px;
+}
+/*.transaction_table td{
+    width: 138px;
+}*/
+.my_transactions_span {
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-right: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #cccccc;
+}
+
+.trans_id {
+    width: 105px;
+}
+.trans_date {
+    width: 90px;
+}
+.trans_desc {
+    width: 360px;
+}
+.trans_amount {
+    width: 60px;
+}
+.trans_download {
+    width: 60px;
+}
+.div_table th
+{
+    padding:0 10px 5px 0px;
+}
+.li_plan_amount1 {
+float:left;
+height:50px;
+list-style-type:none;
+padding-left:5px;
+padding-top:10px;
+width: 80px;
+}
+.li_plan_users2 {
+float:left;
+height:50px;
+list-style-type:none;
+padding-left:5px;
+padding-top:10px;
+margin-left: 60px;
+}
+.li_plan_space3 {
+float:left;
+height:50px;
+list-style-type:none;
+padding-left:5px;
+padding-top:10px;
+margin-left: 20px;
+}
+.li_plan_amount1 span,.li_plan_users2 span, .li_plan_space3 span {
+font-size:20px;
+}
+.li_plan_amount1 span {
+color: #ff6600;
+}
+
+@font-face{font-family: 'WebRupee';src: url('http://cdn.webrupee.com/WebRupee.V2.0.eot');src: local('WebRupee'), url('http://cdn.webrupee.com/WebRupee.V2.0.ttf') format('truetype'),  url('http://cdn.webrupee.com/WebRupee.V2.0.woff') format('woff'), url('http://cdn.webrupee.com/WebRupee.V2.0.svg') format('svg');font-weight: normal;font-style: normal;}
+.WebRupee{font-family: 'WebRupee';}
+.ie7 #div_mainpanel {
+  padding-bottom: 20px;
+}
+#toggle_button, #toggle_button1 {
+    color: blue;
+    font-size: 11px;
+}
+#middle_content {
+    height: 300px;
+    /*background-color: red;*/
+}
+#middle_content input, #middle_content textarea {
+    color: #4f4f4f;
+    font-family:"Lucida Sans","Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+     border: 1px solid #cccccc;
+}
+
+#left_middle_content {
+    float: left;
+    width: 340px;
+    /*background-color: orange;*/
+    border-right: 1px dotted #CCCCCC;
+    padding: 5px;
+}
+#left_middle_content span {
+    margin-left: 10px;
+}
+#left_middle_content span em{
+    font-size: 10px;
+    font-style: normal;
+}
+#right_middle_content {
+    float: right;
+    width: 340px;
+    padding: 5px;
+}
+#right_middle_content em {
+    float:right;
+    font-size: 10px;
+    margin-right: 12px;
+    font-style: normal;
+}
+.ul_confirm_address {
+    margin-left: -30px;
+    list-style-type: none;
+}
+.ul_confirm_address label {
+    color: #4c4c4c;
+}
+
+.ul_confirm_address li{
+    margin-bottom: 10px;
+}
+.margin_bottom {
+    border-bottom: 1px dotted #CCCCCC;
+    margin: 5px 10px 0px 10px;
+}
+
+.my_plan_details .plan_name_li {
+    width: 135px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+ }
+.my_plan_details .my_plan_details_l_li{
+    width: 80px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+.ie7 .ul_confirm_address, .ie8 .ul_confirm_address {
+    margin-left: 25px;
+}
+.ie8 .ul_confirm_address {
+    margin-left: -25px;
+}
+.ie7 .margin_bottom{
+    margin-top: 70px;
+}

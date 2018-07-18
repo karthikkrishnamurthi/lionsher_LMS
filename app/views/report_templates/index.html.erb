@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+<h1>Listing report_templates</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>For whom</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @report_templates.each do |report_template| %>
+  <tr>
+    <td><%= report_template.id %></td>
+    <td><%= report_template.name %></td>
+    <td><%= report_template.for_whom %></td>
+    <td><%= link_to 'Edit', edit_report_template_path(report_template) %></td>
+    <td><a href="/report_templates/destroy/<%= report_template.id %>">Destroy</a></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Report template', new_report_template_path %>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

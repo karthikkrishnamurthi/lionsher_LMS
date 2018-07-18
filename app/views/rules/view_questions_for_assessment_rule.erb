@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+<table>
+  <% @question_attributes.each do |qa| %>
+    <tr>
+      <td>Q.</td><td colspan="2"><br/><%=h qa.question.question_text %></td>
+    </tr>
+    <% i = 1
+    qa.question.answers.each do |answer| %>
+      <tr>
+      	<td></td>
+        <td><%=h (i+96).chr %>.</td>
+        <td><% if answer.answer_status == "correct" %>
+            <font color="green"/><%end%><%=h answer.answer_text %>
+        </td>
+      </tr>
+      <% i = i + 1
+    end %>
+  <% end %>
+</table><br/><br/>
+    <a class="done_button" href="/rules/create_rule/<%= @assessment_rule.section_id %>?assessment=<%= @assessment_rule.assessment_id %>" style="margin-left:12px;">Back</a>
+</div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

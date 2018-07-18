@@ -1,0 +1,52 @@
+<h2><%= @test_detail.serial_number %>.
+  <% unless @test_detail.marked_status == "marked" %>
+    <img src="/assets/star_unfill.png" alt="star_unfill" id="<%= @j %>_unfill"
+         style="display:block;margin-left:30px;margin-top:-28px;"
+         onclick="mark_question('<%= @j %>_unfill','<%= @j %>_fill'),new Ajax.Request('/assessments/ajax_mark_question_multi_page_test/'+<%= @test_detail.id %>
+         <% if @assessment.using_rules %>+'?structure_component='+<%= params[:structure_component] %><% end %>
+         <% if params.include? "from" %>
+          +'?from'
+         <% end %>
+    ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return true;"/>
+    <img src="/assets/star_fill.png" alt="star_fill" id="<%= @j %>_fill"
+         style="display:none;margin-left:30px;margin-top:-28px;"
+         onclick="mark_question('<%= @j %>_fill','<%= @j %>_unfill'),
+           new Ajax.Request('/assessments/ajax_unmark_question_multi_page_test/'+<%= @test_detail.id %>+'?lesson_location='+
+         <% unless @test_details[@j].nil? %>
+           <%= @test_details[@j].serial_number - 1 %>
+         <% else %>
+           <%= @test_details[0].serial_number - 1 %>
+         <% end %>
+         <% if @assessment.using_rules %>+'&structure_component='+<%= params[:structure_component] %><% end %>
+         <% if params.include? "from" %>
+        +'&from'
+         <% end %>
+    ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return true;"
+         />
+       <% else %> <%# else of @test_detail.marked_status %>
+    <img src="/assets/star_unfill.png" alt="star_unfill" id="<%= @j %>_unfill"
+         style="display:none;margin-left:30px;margin-top:-28px;"
+         onclick="mark_question('<%= @j %>_unfill','<%= @j %>_fill'),
+           new Ajax.Request('/assessments/ajax_mark_question_multi_page_test/'+<%= @test_detail.id %>
+         <% if @assessment.using_rules %>+'?structure_component='+<%= params[:structure_component] %><% end %>
+         <% if params.include? "from" %>
+          +'?from'
+         <% end %>
+    ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return true;"/>
+    <img src="/assets/star_fill.png" alt="star_fill" id="<%= @j %>_fill"
+         style="display:block;margin-left:30px;margin-top:-28px;"
+         onclick="mark_question('<%= @j %>_fill','<%= @j %>_unfill'),
+           new Ajax.Request('/assessments/ajax_unmark_question_multi_page_test/'+<%= @test_detail.id %>+'?lesson_location='+
+         <% unless @test_details[@j].nil? %>
+           <%= @test_details[@j].serial_number - 1 %>
+         <% else %>
+           <%= @test_details[0].serial_number - 1 %>
+         <% end %>
+         <% if @assessment.using_rules %>+'&structure_component='+<%= params[:structure_component] %><% end %>
+         <% if params.include? "from" %>
+        +'&from'
+         <% end %>
+    ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return true;"
+         />
+       <% end %> <%# end of check @test_detail.marked_status %>
+</h2>

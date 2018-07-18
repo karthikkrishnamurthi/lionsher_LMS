@@ -1,0 +1,17 @@
+<h4 style="margin-top:20px;">Add Learners</h4>
+<div id="learner_email"><p>Learner Name</p><s>Email</s></div>
+<table style="margin-left:15px;">
+  <tr>
+    <td><label for="login"></label></td>
+    <td><input id="user_login" name="user[login]" size="20" type="text" /></td>
+    <td><label for="email"></label></td>
+    <td><input id="user_email" name="user[email]" size="20" type="text" /></td>
+  </tr>
+</table>
+<input type="hidden" id="hid_val" value="<%= @i %>" /> <!-- please don't delete this line. It is useful in Javascript -->
+<input id ="assign_learners_more" class="" name="add" value="Add this learner" type="button" onclick="add_to_learner_list('user_login','user_email','mytable',<%=h @assessment.id %>);"/>
+<input  type="text" value="learner" name="user[typeofuser]" style="display: none" />
+<hr/>
+<input id="assign_learners" name="commit" type="submit" value="Assign Learners"/>
+<input type="text" value="<%=h @assessment.id %>"  name="user[assessment_id]" style="display:none" />
+<div id="assign_later"><s>or</s><a id="assign_later" href="/preview?assessment_id=<%=h @assessment.id %>">Assign Later</a></div>

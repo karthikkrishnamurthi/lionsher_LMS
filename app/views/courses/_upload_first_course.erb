@@ -1,0 +1,9 @@
+<div class="div_mainpanel_content_first">
+  <div class="div_content_pic_first"><%= image_tag "FirstImage.png" %></div>
+  <h5>Ready to upload your first course?</h5>
+  <h6>Upload your eLearning courses, learning videos or audio on the learning center</h6>
+  <div class="upload_first_course">
+    <a href="/courses/upload_course/<%=h current_user.id %>">New Course</a> |
+    <a href="/assessments/test_pattern/<%=h current_user.id %>">New Assessment</a>
+  </div>
+</div>

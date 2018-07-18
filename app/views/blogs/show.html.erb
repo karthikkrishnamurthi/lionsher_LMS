@@ -1,0 +1,38 @@
+<%#*Author : Karthik%>
+<%= stylesheet_link_tag 'show' %>
+<title>LionSher: <%=h @blog.blog_title %> - <%=h @blog.blog_name %></title>
+<div id="main_inner_left">
+  <div id="main_inner_left_in">
+
+    <h1> <%=h @blog.blog_title %></h1>
+    <span id="interview_date_type">
+      <%=h @blog.created_at.strftime("%d %b %Y") %> &nbsp;&nbsp;
+      <% if @blog.blog_type == "Interview" then%>
+         | &nbsp;&nbsp;<%=h @blog.blog_type %>
+         <% else %>
+         | &nbsp;&nbsp;<%=h @blog.author %>
+      <%end%>
+    </span>
+    <br/>
+    <div id="interview_img_with_txt">
+      <div id="interview_img_with_txt">
+          <%= image_tag @blog.profile_photo.url(:large) %>
+      </div>
+      <%= raw RedCloth.new(@blog.blog_content).to_html %>
+      <br/>
+      <!--<%= link_to 'Edit', edit_blog_path(@blog) %> | <%= link_to 'Back', blogs_path %>-->
+    </div>
+    <div class="interview_line_break"></div>
+
+    <%= render :partial => 'discuss_comments' %>
+  </div>
+</div>
+
+<div id="sidebar">
+
+  <%= render :partial => 'vcard_details' %>
+  <%= render :partial => 'subscribe' %>
+  <%= render :partial => 'featured_interviews' %>
+
+
+</div><!-- sidebar ends -->

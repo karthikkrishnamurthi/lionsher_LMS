@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag 'question_analysis_report' %>
+<%= javascript_include_tag 'pagination' %>
+<div id="div_container">
+	<form id="question_analysis_form" action="/reports/download_report/<%= @assessment.id %>" method="post">
+    <div style="width:720px;">
+      <h1><%= @assessment.name %></h1>
+    </div>    
+    <div id="logo"><%= image_tag "lionsher_logo.png" , :size => '130x50' %></div>
+    <br/>
+  	<%= render :partial => "/reports/question_analysis_report_details" %>  	
+  </form>
+</div>

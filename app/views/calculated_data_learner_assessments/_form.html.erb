@@ -1,0 +1,69 @@
+<%= form_for(@calculated_data_learner_assessment) do |f| %>
+  <% if @calculated_data_learner_assessment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@calculated_data_learner_assessment.errors.count, "error") %> prohibited this calculated_data_learner_assessment from being saved:</h2>
+
+      <ul>
+      <% @calculated_data_learner_assessment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :learner_id %><br />
+    <%= f.number_field :learner_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tenant_id %><br />
+    <%= f.number_field :tenant_id %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_id %><br />
+    <%= f.number_field :assessment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :answered %><br />
+    <%= f.number_field :answered %>
+  </div>
+  <div class="field">
+    <%= f.label :answered_correct %><br />
+    <%= f.number_field :answered_correct %>
+  </div>
+  <div class="field">
+    <%= f.label :answered_wrong %><br />
+    <%= f.number_field :answered_wrong %>
+  </div>
+  <div class="field">
+    <%= f.label :questions_marked %><br />
+    <%= f.number_field :questions_marked %>
+  </div>
+  <div class="field">
+    <%= f.label :total_score %><br />
+    <%= f.text_field :total_score %>
+  </div>
+  <div class="field">
+    <%= f.label :total_time %><br />
+    <%= f.text_field :total_time %>
+  </div>
+  <div class="field">
+    <%= f.label :percentage %><br />
+    <%= f.text_field :percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :percentile %><br />
+    <%= f.text_field :percentile %>
+  </div>
+  <div class="field">
+    <%= f.label :rank %><br />
+    <%= f.number_field :rank %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

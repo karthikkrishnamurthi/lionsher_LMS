@@ -1,0 +1,104 @@
+#sub_header
+{
+ 
+    height: 50px;
+    background-color: #eff5fb;
+}
+#feedback_mainpanel
+{
+/*    width: 74%;
+    float: left;*/
+    background:none repeat scroll 0 0 #FFFFFF;
+    border-right:1px solid black;
+    clear:both;
+    float:left;
+    height:555px;
+    margin-top:10px;
+    overflow:auto;
+    padding-left:15px;
+    width:69%;
+}
+#feedback_mainpanel h4
+{
+    font-size: 11px;
+    text-align: center;
+    font-family: verdana,arial;
+    color: #333333;
+}
+#feedback_mainpanel #feedback_form
+{
+    padding-left: 18%;
+    padding-top: 2%;
+}
+#feedback_mainpanel #feedback_form h3
+{
+    font-size: 13px;
+    font-weight: normal;
+    font-family: verdana,arial;
+    color: #333333;
+}
+#feedback_mainpanel #feedback_form .feedback_radio_button
+{
+    float: left;
+    padding-left: 5px;
+}
+textarea 
+{
+    width: 42%;
+    height: 70px;
+}
+.feedback_submit
+{  
+   margin-left: 47%;
+   margin-top: 4%;
+   background-color: #c7dcf0;
+   border: 2px solid #a9d0f5;
+}
+#feedback_sidepanel
+{
+    text-align: left;
+    color: #333333;
+    font-family: verdana,arial;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 2%;
+    margin-bottom: 40%;
+}
+#feedback_sidepanel h3
+{
+    text-align: left;
+    color: #333333;
+    font-family: verdana,arial;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 2%;
+   
+}
+
+#feedback_sidepanel img
+{
+    margin-top: 0px;
+    margin-left: 4%;
+    border-bottom: 1px solid gainsboro;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-top: 1px solid gray;
+}
+
+
+
+
+
+
+#div_mainpanel
+{
+    background-color: white;
+    width:720px;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+/*    border-right:  1px dotted #cccccc;*/
+    color: gray;
+
+}

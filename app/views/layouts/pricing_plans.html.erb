@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Tenants: <%= controller.action_name %></title>
+    <%= favicon_link_tag "lion.png", :rel => "icon" %>
+    
+  </head>
+  <style>
+    #head a{
+      text-decoration: none;
+    }
+    #admin_panel_all_plans
+    {
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <% @tenant = Tenant.find_by_custom_url(request.subdomain)
+    if @tenant.organization == "lionsher" then 
+    %>
+    <%= stylesheet_link_tag 'signup' %>
+    <%= stylesheet_link_tag 'tablestyle'  %>
+    <div id="head">
+      <div id="div_upper_left">
+        <a id="admin_panel_paid" href="/tenants">Paid</a>&nbsp; | &nbsp;
+        <a id="admin_panel_free" href="/tenants/free_trial_tenants/<%= current_user.id %>">Free Trial</a>&nbsp; | &nbsp;
+        <a id="admin_panel_expired" href="/tenants/expired_tenants/<%= current_user.id %>">Expired</a>&nbsp; | &nbsp;
+        <a id="admin_panel_all" href="/tenants/all_tenants/<%= current_user.id %>">All</a>
+      </div>
+      <div id="div_upper_right">
+        <%=h current_user.login %>&nbsp; | &nbsp;
+        <a id="admin_panel_all_plans" href="/pricing_plans">All Plans</a>&nbsp; | &nbsp;
+        <a id="admin_panel_failures" href="/tenants/null_courses/<%= current_user.id %>">Failures</a>&nbsp; | &nbsp;
+        <a id="admin_panel_buyers" href="/tenants/show_all_buyers/<%= current_user.id %>">Buyers</a>&nbsp; | &nbsp;
+        <a id="admin_panel_sellers" href="/tenants/show_all_sellers/<%= current_user.id %>">Sellers</a>&nbsp; | &nbsp;
+        <a href="/logout">Logout</a>
+      </div>
+      <div id="div_head" style="background: <%=h @tenant.theme %>;">
+        <div id="org" style="color:<%=h @tenant.text_color %>;"><%=h @tenant.organization %></div>
+      </div>
+    </div>
+    <% end %>
+    <%= yield  %>
+  </body>
+</html>

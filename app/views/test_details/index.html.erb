@@ -1,0 +1,43 @@
+<h1>Listing test_details</h1>
+
+<table>
+  <tr>
+    <th>Learner</th>
+    <th>Attempted status</th>
+    <th>Question</th>
+    <th>Answer</th>
+    <th>Question type</th>
+    <th>Learner answer text</th>
+    <th>Answer status</th>
+    <th>User</th>
+    <th>Tenant</th>
+    <th>Duration spent</th>
+    <th>Score</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @test_details.each do |test_detail| %>
+  <tr>
+    <td><%= test_detail.learner_id %></td>
+    <td><%= test_detail.attempted_status %></td>
+    <td><%= test_detail.question_id %></td>
+    <td><%= test_detail.answer_id %></td>
+    <td><%= test_detail.question_type %></td>
+    <td><%= test_detail.learner_answer_text %></td>
+    <td><%= test_detail.answer_status %></td>
+    <td><%= test_detail.user_id %></td>
+    <td><%= test_detail.tenant_id %></td>
+    <td><%= test_detail.duration_spent %></td>
+    <td><%= test_detail.score %></td>
+    <td><%= link_to 'Show', test_detail %></td>
+    <td><%= link_to 'Edit', edit_test_detail_path(test_detail) %></td>
+    <td><%= link_to 'Destroy', test_detail, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Test detail', new_test_detail_path %>

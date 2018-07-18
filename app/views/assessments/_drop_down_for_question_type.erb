@@ -1,0 +1,11 @@
+<li>
+   <div>
+    <input type="hidden" id="selected_question_type" value="<%=h params[:selected_question_type] %>" />
+    <select id="Field1" name="question_type" class="" onchange="change_div()">
+      <option  value="MCQ" > Multiple Choice Question MCQ </option>
+      <option value="MAQ"> Multiple Answer Question MAQ </option>
+      <option value="FIB"> Fill in the Blanks FIB </option>
+      <option value="SA"> Short Answers SA </option>
+    </select>
+  </div>
+</li>

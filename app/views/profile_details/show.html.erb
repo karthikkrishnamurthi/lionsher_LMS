@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Learner:</b>
+  <%= @profile_detail.learner_id %>
+</p>
+
+<p>
+  <b>Profile:</b>
+  <%= @profile_detail.profile_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @profile_detail.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_profile_detail_path(@profile_detail) %> |
+<%= link_to 'Back', profile_details_path %>

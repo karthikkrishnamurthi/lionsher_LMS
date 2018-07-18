@@ -1,0 +1,28 @@
+<%# reset for multi page test %>
+<% pattern_name = @assessment.test_pattern.pattern_name %>
+<% if pattern_name != "CMAT" and pattern_name != "CAT" and pattern_name != "AIEEE" %>
+  <a style="padding-top: 5px; color: #CCC;font-size:10px;"
+     onMouseOver="this.style.cursor='pointer'"
+     id="reset_anchor_<%= @j %>"
+     onclick="
+     <% unless @test_detail.question_type == "FIB" or @test_detail.question_type == "SA" %>
+      reset_answer('answer_id_<%= @j %>')
+     <% else %>
+      reset_fib_answer('fib_ans_<%= @j %>')
+     <% end %>
+    ,checknet(<%= @test_detail.id %>)?
+    new Ajax.Request('/assessments/ajax_reset_answer_multi_page_test/'+<%= @test_detail.id %>+'?lesson_location='+
+     <% unless @test_details[@j].nil? %>
+       <%= @test_details[@j - 1].serial_number - 1 %>
+     <% else %>
+       <%= @test_details[0].serial_number - 1 %>
+     <% end %>
+     <% if @assessment.using_rules %>+'&structure_component='+<%= params[:structure_component] %><% end %>
+     <% if params.include? "from" %>
+       +'&from'
+     <% end %>
+    ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)})
+    :
+    ajax_reset_pending_answers_multi_page_test(<%= @test_detail.id %>);">
+    Reset</a>
+<% end %>

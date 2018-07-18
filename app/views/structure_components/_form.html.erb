@@ -1,0 +1,29 @@
+<%= form_for(@structure_component) do |f| %>
+  <% if @structure_component.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@structure_component.errors.count, "error") %> prohibited this structure_component from being saved:</h2>
+
+      <ul>
+      <% @structure_component.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :assessment_id %><br />
+    <%= f.number_field :assessment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :assessment_component_id %><br />
+    <%= f.number_field :assessment_component_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tenant_id %><br />
+    <%= f.number_field :tenant_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

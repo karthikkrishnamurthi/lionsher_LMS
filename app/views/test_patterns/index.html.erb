@@ -1,0 +1,56 @@
+<h1>Listing test_patterns</h1>
+
+<table>
+  <tr>
+    <th>Pattern Id</th>
+    <th>Pattern name</th>
+    <th>No of sections</th>
+    <th>Section names</th>
+    <th>Instructions</th>
+    <th>Feedback</th>
+    <th>Total duration</th>
+    <th>Topic wise timer</th>
+    <th>Duration per section</th>
+    <th>Questions per section</th>
+    <th>Correct answer points</th>
+    <th>Wrong answer points</th>
+    <th>Random order questions</th>
+    <th>Question wise scoring</th>
+    <th>Skip question</th>
+    <th>View attempted</th>
+    <th>View unattempted</th>
+    <th>View marked</th>
+    <th>View results</th>
+  </tr>
+
+<% for test_pattern in @test_patterns %>
+  <tr>
+    <td><%=h test_pattern.id %></td>
+    <td><%=h test_pattern.pattern_name %></td>
+    <td><%=h test_pattern.no_of_sections %></td>
+    <td><%=h test_pattern.section_names %></td>
+    <td><%=h test_pattern.instructions %></td>
+    <td><%=h test_pattern.feedback %></td>
+    <td><%=h test_pattern.total_duration %></td>
+    <td><%=h test_pattern.topic_wise_timer %></td>
+    <td><%=h test_pattern.duration_per_section %></td>
+    <td><%=h test_pattern.questions_per_section %></td>
+    <td><%=h test_pattern.correct_mark %></td>
+    <td><%=h test_pattern.wrong_mark %></td>
+    <td><%=h test_pattern.random_order_questions %></td>
+    <td><%=h test_pattern.question_wise_scoring %></td>
+    <td><%=h test_pattern.skip_question %></td>
+    <td><%=h test_pattern.view_attempted %></td>
+    <td><%=h test_pattern.view_unattempted %></td>
+    <td><%=h test_pattern.view_marked %></td>
+    <td><%=h test_pattern.view_results %></td>
+    <td><%= link_to 'Show', test_pattern %></td>
+    <td><%= link_to 'Edit', edit_test_pattern_path(test_pattern) %></td>
+    <td><%= link_to 'Destroy', test_pattern, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New test_pattern', new_test_pattern_path %>

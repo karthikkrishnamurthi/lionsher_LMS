@@ -1,0 +1,50 @@
+<% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+  <%= stylesheet_link_tag 'aieee_header' %>
+  <%= stylesheet_link_tag 'question_one' %>
+<% elsif @assessment.test_pattern.pattern_name == "CMAT" %>
+  <%= stylesheet_link_tag 'cmat_test_pattern' %>
+<% elsif @assessment.test_pattern.pattern_name == "CAT" %>
+  <%#= stylesheet_link_tag 'cat_test_pattern' %>
+  <%= stylesheet_link_tag 'cat_test_welcome' %>
+<% end %>
+<div id="div_container">
+  <form name="form_assessment" id="assessment_form" action="/assessments/about_test/<%=h @current_learner.id %>" method="post">
+    <div id="div_mainpanel">
+      <% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+        Welcome to AIEEE 2011 Mock Test<br/>
+        Login<br/>
+        Roll No:<br/>
+        Password:<br/>
+        <input id="sign_in" type="submit" name="next" value="Sign In"/>
+      <% elsif @assessment.test_pattern.pattern_name == "CMAT" %>
+        <div id="header">
+          <div id="cmat_header_img"><%= image_tag "cmat_test_pattern/header.png", :width => "750" %></div>
+          <div class="cmat_header_strip">&nbsp;</div>
+        </div>
+        <p style="margin-top: 150px;margin-left: 150px;font-size: 24px;">Welcome to AICTE CMAT Mock Test - 2012</p><br/>
+        <p style="margin-top: 175px;margin-left: 230px; font-size: 13px;font-weight: bold;">Click on the "Continue" button to proceed...</p>
+      <% elsif @assessment.test_pattern.pattern_name == "CAT" %>
+        <center id="start_page">
+          <div id="CAT_heading">CAT</div>
+          <div style="color:gray;font-size: 14px;font-family: 'Verdana';padding-top:40px;"><%= @current_learner.user.login %><br/><br/>
+            IIM Common Admission Test</div>
+          <div style="font-size:12px; font-family : 'Verdana';padding-top: 70px;">
+            <b>If this information is correct, click the “Next” button with the mouse.</b>
+          </div>
+        </center>
+
+        <center>
+          <input id="sign_in" type="submit" name="next" value="Start"/>
+        </center>
+
+      <% end %>
+    </div>
+    <% if @assessment.test_pattern.pattern_name == "CMAT" %>
+      <div id="div_sidepanel">
+        <div id="right_panel" style=""></div>
+        <input id="continue" type="submit" name="next" value="Continue"/>
+      </div> <%#*end of div_sidepanel%>
+    <% end %>
+  </form>
+
+</div>

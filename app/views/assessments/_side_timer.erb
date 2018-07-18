@@ -1,0 +1,71 @@
+<%= javascript_include_tag 'counter' %>
+<div id="timer">
+  <div class="hours">
+    <%
+    time = Time.now.getutc
+    if @assessment.using_rules
+      if @section.duration_hour == 0 and @section.duration_min == 0
+        show_end_time = @current_learner.test_start_time + ((@assessment.duration_hour * 3600)+(@assessment.duration_min * 60))
+      else
+        show_end_time = @test_details[0].section_start_time + ((@section.duration_hour * 3600)+(@section.duration_min * 60))
+      end
+    else
+      show_end_time = @current_learner.test_start_time + ((@assessment.duration_hour * 3600)+(@assessment.duration_min * 60))
+    end
+    case(@current_learner.type_of_test_taker)
+    when "learner"
+      if @assessment.schedule_type == "fixed" and show_end_time >= @assessment.end_time
+        show_end_time = @assessment.end_time
+      end
+    end
+    current_month = time.strftime('%B')
+    month = show_end_time.strftime('%B')
+  %>
+  </div>
+  <div class="minutes"> <div class="min"></div> </div>
+  <div class="seconds"> <div class="sec"></div> </div>
+</div>
+
+<% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+  <div id="side_timer">
+    <div id="timer_info_container">
+
+      <div class="hours"><s>Time Left :</s>
+        <div id="countdowncontainer">
+          <script type="text/javascript">
+            var futuredate=new cdtime("countdowncontainer", "<%= month %> <%= show_end_time.day %>, <%= show_end_time.year %> <%= show_end_time.hour %>:<%= show_end_time.min %>:<%= show_end_time.sec %>", "<%= current_month %> <%= time.day %>, <%= time.year %> <%= time.hour %>:<%= time.min %>:<%= time.sec %>");
+            futuredate.displaycountdown("days", formatresults)
+          </script>
+        </div>
+      </div>
+    </div>
+
+  <%#*<div id="welcome_tag">%>
+    <div id="welcome_tag">
+      <br/> Welcome, <%= current_user.login %>
+    </div>
+  <%#*</div>%>
+  </div>
+<% else %>
+  <div id="side_timer">
+    <% if  @assessment.test_pattern.pattern_name == "CMAT" %>
+      <span> Time Left</span>
+    <% elsif @assessment.test_pattern.pattern_name == "CAT" %>
+      <span> Time Remaining</span>
+    <% else %>
+      <span> Time Left :</span>
+    <% end %>
+
+    <div class="hours">
+      <div id="countdowncontainer">
+        <script type="text/javascript">
+          var futuredate=new cdtime("countdowncontainer", "<%= month %> <%= show_end_time.day %>, <%= show_end_time.year %> <%= show_end_time.hour %>:<%= show_end_time.min %>:<%= show_end_time.sec %>", "<%= current_month %> <%= time.day %>, <%= time.year %> <%= time.hour %>:<%= time.min %>:<%= time.sec %>");
+          futuredate.displaycountdown("days", formatresults)
+        </script>
+      </div>
+      <% if  @assessment.test_pattern.pattern_name != "CMAT" and @assessment.test_pattern.pattern_name != "CAT" %>
+        <div class="hr">hr &nbsp&nbsp;min&nbsp;&nbsp;&nbsp;sec</div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

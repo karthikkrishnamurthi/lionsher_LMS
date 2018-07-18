@@ -1,0 +1,30 @@
+<% unless %w(production test).include?(RAILS_ENV) -%>
+  <h4 id="debug" onclick="$(this).remove()" style="background:pink;text-align:center;position:absolute;top:16px;left:35%;padding:0.5em;border: 2px solid red;">
+    <%= RAILS_ENV %>
+    <br />
+    <% if ActiveRecord::ConnectionAdapters::QueryCache.respond_to?(:get_stats) %>
+      <% stats = ActiveRecord::ConnectionAdapters::QueryCache.get_stats %>
+      Queries: cache:<%= stats[:hits] %> / no cache:<%= stats[:misses] %> /
+      <%= number_to_percentage((stats[:hits].to_f / (stats[:hits] + stats[:misses])) * 100, :precision => 0) %>
+      |
+    <% end
+ @@hits = @@misses = 0 %>
+    <% if ActiveRecord::ConnectionAdapters::MysqlAdapter.respond_to?(:get_stats) %>
+      <% stats = ActiveRecord::ConnectionAdapters::MysqlAdapter.get_stats %>
+      Rows: <%= stats[:rows] %> |
+      Transfer: <%= sprintf("%.1fk", stats[:bytes].to_f / 1024) %>
+    <% end
+  @@stats_queries = @@stats_bytes = @@stats_rows = 0%>
+    <p style="margin:0">
+      <a style="color:magenta" href="#" onclick="superHide()">super hide!</a>
+    </p>
+  </h4>
+  <script type="text/javascript">
+    function superHide() {
+      document.cookie = 'debug=hidden; path=/; domain=<%= request.host %>; max-age=14400';
+    }
+    if(document.cookie.indexOf('debug=hidden') != -1) {
+      $('debug').hide();
+    }
+  </script>
+<% end -%>

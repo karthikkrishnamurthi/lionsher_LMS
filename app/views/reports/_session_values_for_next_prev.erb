@@ -1,0 +1,41 @@
+<% if params[:action] == "learners_for_course" %>
+  <div id="next_prev_links">
+    <% i = 0
+    if !session[:course_ids_for_navigation].nil? or !session[:course_ids_for_navigation].blank? then
+      session[:course_ids_for_navigation].each { |id|
+        if session[:course_ids_for_navigation][i] == @course.id
+          course_obj_for_navigation = Course.find_by_id(session[:course_ids_for_navigation][i+1])
+          if !course_obj_for_navigation.nil? or !course_obj_for_navigation.blank? then %>
+            <a href="/reports/learners_for_course/<%= session[:course_ids_for_navigation][i+1] %>" title="<%= course_obj_for_navigation.course_name %>">
+              <% if course_obj_for_navigation.course_name.length > 8 %><%= course_obj_for_navigation.course_name[0..7] %>&hellip;<% else %><%= course_obj_for_navigation.course_name %><% end %>
+            </a>
+            <% session[:course_ids_for_navigation].push session[:course_ids_for_navigation].shift
+            break
+          end
+        else
+          session[:course_ids_for_navigation].push session[:course_ids_for_navigation].shift
+        end
+      }
+    end %>
+  </div>
+<% else %>
+  <div id="next_prev_links">
+    <% i = 0
+    if !session[:user_ids_for_navigation].nil? or !session[:user_ids_for_navigation].blank? then
+      session[:user_ids_for_navigation].each { |id|
+        if session[:user_ids_for_navigation][i] == @user.id
+          user_obj_for_navigation = User.find_by_id(session[:user_ids_for_navigation][i+1])
+          if !user_obj_for_navigation.nil? or !user_obj_for_navigation.blank? then %>
+            <a href="/reports/courses_for_learner/<%= session[:user_ids_for_navigation][i+1] %>" title="<%= user_obj_for_navigation.login %>">
+              <% if user_obj_for_navigation.login.length > 8 %><%= user_obj_for_navigation.login[0..7] %>&hellip;<% else %><%= user_obj_for_navigation.login %><% end %>
+            </a>
+            <% session[:user_ids_for_navigation].push session[:user_ids_for_navigation].shift
+            break
+          end
+        else
+          session[:user_ids_for_navigation].push session[:user_ids_for_navigation].shift
+        end
+      }
+    end %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+<%= stylesheet_link_tag 'upload_course'  %>
+<%= javascript_include_tag 'themes' %>
+<%= stylesheet_link_tag 'for_ie_7'  %>
+<%= javascript_include_tag 'assessment' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    
+    <h1>Coupon Codes : <%=h @assessment_course.name %></h1>
+    <label style="margin-left:14px;"><%=h @coupons_generated.length %> coupons are successfully generated</label>
+    <a href="/coupons/download_coupons_csv_file/<%=h @code_for_download%>" style="color:blue;">Download Coupon File</a>
+    <hr/>
+    <a id="anchor_style" style="margin-left:14px;" href="/assessments/manage_learners/<%= @assessment_course.id %>">Back to Manage Learners</a> &nbsp;&nbsp;&nbsp;&nbsp;
+    <a id="anchor_style" href="/">Go to Home</a>
+  </div>
+
+  <div id="div_sidepanel">
+  </div>
+
+</div>

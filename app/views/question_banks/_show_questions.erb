@@ -1,0 +1,20 @@
+<form action="/question_banks/send_all_these_questions_to_another_question_bank/<%=h @question_bank.id %>" method="post">
+  <div class="div_container">
+    <div class="back_to_qb">
+      <% if params[:from] == "subtopic_list" %>
+        <a href="/question_banks/<%= params[:from] %>/<%= params[:id] %>?topic=<%= @subtopic.topics[0].id %>">Back</a>
+      <% else %>
+        <a href="/question_banks/<%= params[:from] %>/<%= params[:id] %>">Back</a>
+      <% end %>
+        <div class="add_questions_manually_button"><a href="/question_banks/upload_questions/<%= @question_bank.id %>"><input type="button" value="Add more Questions" /></a></div>
+    </div>
+    send all these question to <select name="new_question_bank_id">
+      <% QuestionBank.find(:all, :order => "name").each do |qb| %>
+        <option value="<%= qb.id %>"<% if qb.id == @question_bank.id %>selected<% end %>><%= qb.name %></option>
+      <% end %>
+    </select><div class="done_button"> <input type="submit" value="Done" /></div>
+    <div class="questionbank_title"><%=h @question_bank.name %><i><%= @question_bank.type_of_question_bank %></i></div>
+    <div class="topic_name"></div>
+    <%= render :partial => "/question_banks/show_question_details" %>
+  </div>
+</form>

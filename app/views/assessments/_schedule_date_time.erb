@@ -1,0 +1,262 @@
+<%
+  t = Time.now
+  time_now = t.year.to_s + "-" + t.month.to_s + "-" + t.day.to_s
+%>
+<div class="shedule_details">
+  <div class="start_date_time">
+    <% if @j<2 then %>Start Date <% else %>End Date &nbsp;&nbsp;<% end %><s>Time</s>
+  </div>
+
+  <% if params[:action] == "edit_assessment_details" then %>
+    <div id="calendar_div_input">
+      <%if @assessment.schedule_type == "open" then %>
+
+        <%if @assessment_type[@j] == "open" then %>
+          <input type="text" id="<%=h @assessment_type[@j]+'[start_schedule]'%>" name="<%=h @assessment_type[@j]+'[start_schedule]' %>" value="<%=h @calander_start_date%>" />
+          <script type="text/javascript">
+            calendar.set("<%=h @assessment_type[@j]+'[start_schedule]'%>");
+          </script>
+
+        <% elsif @assessment_type[@j] == "fixed_start" then %>
+          <input type="text" id="<%=h @assessment_type[@j]+'[start_schedule]'%>" name="<%=h @assessment_type[@j]+'[start_schedule]' %>" value="<%=h time_now %>"  />
+          <script type="text/javascript">
+            calendar.set("<%=h @assessment_type[@j]+'[start_schedule]'%>");
+          </script>
+        <% elsif @assessment_type[@j] == "fixed_end" then %>
+          <input type="text" id="<%=h @assessment_type[@j]+'[start_schedule]'%>" name="<%=h @assessment_type[@j]+'[start_schedule]' %>" value="<%=h time_now %>" />
+          <script type="text/javascript">
+            calendar.set("<%=h @assessment_type[@j]+'[start_schedule]'%>");
+          </script>
+        <% end
+
+      elsif @assessment.schedule_type == "fixed" then
+        if @assessment_type[@j] == "open" then %>
+          <input type="text" id="<%=h @assessment_type[@j]+'[start_schedule]'%>" name="<%=h @assessment_type[@j]+'[start_schedule]' %>" value="<%=h time_now %>" />
+          <script type="text/javascript">
+            calendar.set("<%=h @assessment_type[@j]+'[start_schedule]'%>");
+          </script>
+        <% elsif @assessment_type[@j] == "fixed_start" then %>
+          <input type="text" id="<%=h @assessment_type[@j]+'[start_schedule]'%>" name="<%=h @assessment_type[@j]+'[start_schedule]' %>" value="<%=h @calander_start_date%>" />
+          <script type="text/javascript">
+            calendar.set("<%=h @assessment_type[@j]+'[start_schedule]'%>");
+          </script>
+        <% elsif @assessment_type[@j] == "fixed_end" then %>
+          <input type="text" id="<%=h @assessment_type[@j]+'[start_schedule]'%>" name="<%=h @assessment_type[@j]+'[start_schedule]' %>" value="<%=h @calander_end_date%>" />
+          <script type="text/javascript">
+            calendar.set("<%=h @assessment_type[@j]+'[start_schedule]'%>");
+          </script>
+        <% end %>
+
+      <%end%>
+    </div>
+
+  <% else %>
+    <div id="calendar_div_input">
+      <input type="text" id="<%=h @assessment_type[@j]+'[start_schedule]'%>" name="<%=h @assessment_type[@j]+'[start_schedule]'%>"  value="<%=h time_now %>" />
+      <script type="text/javascript">
+        calendar.set("<%=h @assessment_type[@j]+'[start_schedule]'%>");
+      </script>
+    </div>
+  <% end %>
+
+  <% if params[:action] == "edit_assessment_details" then %>
+    <%if @assessment.schedule_type == "open" then %>
+
+      <%if @assessment_type[@j] == "open" then %>
+        <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+          <% for i in 1..12 %>
+            <option <% if @selected_start_hour == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+          <% end %>
+        </select>
+
+        <select id="assessment_start_time" class="mid_select" name=<%=h @assessment_type[@j]%>[min]>
+          <option <% if @selected_start_min == 00 then %>selected<% end %> value="00">00</option>
+          <option <% if @selected_start_min == 15 then %>selected<% end %> value="15">15</option>
+          <option <% if @selected_start_min == 30 then %>selected<% end %> value="30">30</option>
+          <option <% if @selected_start_min == 45 then %>selected<% end %> value="45">45</option>
+        </select>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="am" <% if @selected_start_am_pm=="AM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">am</label>
+        </span>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="pm" <% if @selected_start_am_pm=="PM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">pm</label>
+        </span>
+        <span>(GMT <%=h @zone %>)</span>
+
+      <% elsif @assessment_type[@j] == "fixed_start" then %>
+        <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+          <% for i in 1..12 %>
+            <option <% if @hour == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+          <% end %>
+        </select>
+
+        <select id="assessment_start_time" class="mid_select" name=<%=h @assessment_type[@j]%>[min]>
+          <option value="00">00</option>
+          <option <% if @show_time.min < 15 then %>selected<% end %> value="15">15</option>
+          <option <% if @show_time.min > 15 and @show_time.min < 30 then %>selected<% end %> value="30">30</option>
+          <option <% if @show_time.min > 30 then %>selected<% end %> value="45">45</option>
+        </select>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="am" <% if @show_time.strftime("%p")=="AM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">am</label>
+        </span>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="pm" <% if @show_time.strftime("%p")=="PM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">pm</label>
+        </span>
+        <span>(GMT <%=h @zone %>)</span>
+
+      <% elsif @assessment_type[@j] == "fixed_end" then %>
+        <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+          <% for i in 1..12 %>
+            <option <% if @hour+1 == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+          <% end %>
+        </select>
+
+        <select id="assessment_start_time" class="mid_select" name=<%=h @assessment_type[@j]%>[min]>
+          <option value="00">00</option>
+          <option <% if @show_time.min < 15 then %>selected<% end %> value="15">15</option>
+          <option <% if @show_time.min > 15 and @show_time.min < 30 then %>selected<% end %> value="30">30</option>
+          <option <% if @show_time.min > 30 then %>selected<% end %> value="45">45</option>
+        </select>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="am" <% if @show_time.strftime("%p")=="AM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">am</label>
+        </span>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="pm" <% if @show_time.strftime("%p")=="PM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">pm</label>
+        </span>
+        <span>(GMT <%=h @zone %>)</span>
+
+      <% end %>
+
+
+
+
+    <% elsif @assessment.schedule_type == "fixed" then %>
+
+      <%if @assessment_type[@j] == "open" then %>
+        <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+          <% for i in 1..12 %>
+            <option <% if @hour == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+          <% end %>
+        </select>
+
+        <select id="assessment_start_time" class="mid_select" name=<%=h @assessment_type[@j]%>[min]>
+          <option value="00">00</option>
+          <option <% if @show_time.min < 15 then %>selected<% end %> value="15">15</option>
+          <option <% if @show_time.min > 15 and @show_time.min < 30 then %>selected<% end %> value="30">30</option>
+          <option <% if @show_time.min > 30 then %>selected<% end %> value="45">45</option>
+        </select>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="am" <% if @show_time.strftime("%p")=="AM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">am</label>
+        </span>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="pm" <% if @show_time.strftime("%p")=="PM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">pm</label>
+        </span>
+        <span>(GMT <%=h @zone %>)</span>
+
+      <% elsif @assessment_type[@j] == "fixed_start" then %>
+        <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+          <% for i in 1..12 %>
+            <option <% if @selected_start_hour == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+          <% end %>
+        </select>
+
+        <select id="assessment_start_time" class="mid_select" name=<%=h @assessment_type[@j]%>[min]>
+          <option <% if @selected_start_min == 00 then %>selected<% end %> value="00">00</option>
+          <option <% if @selected_start_min == 15 then %>selected<% end %> value="15">15</option>
+          <option <% if @selected_start_min == 30 then %>selected<% end %> value="30">30</option>
+          <option <% if @selected_start_min == 45 then %>selected<% end %> value="45">45</option>
+        </select>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="am" <% if @selected_start_am_pm=="AM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">am</label>
+        </span>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="pm" <% if @selected_start_am_pm=="PM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">pm</label>
+        </span>
+        <span>(GMT <%=h @zone %>)</span>
+
+      <% elsif @assessment_type[@j] == "fixed_end" then %>
+        <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+          <% for i in 1..12 %>
+            <option <% if @selected_end_hour == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+          <% end %>
+        </select>
+
+        <select id="assessment_start_time" class="mid_select" name=<%=h @assessment_type[@j]%>[min]>
+          <option <% if @selected_end_min == 00 then %>selected<% end %> value="00">00</option>
+          <option <% if @selected_end_min == 15 then %>selected<% end %> value="15">15</option>
+          <option <% if @selected_end_min == 30 then %>selected<% end %> value="30">30</option>
+          <option <% if @selected_end_min == 45 then %>selected<% end %> value="45">45</option>
+        </select>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="am" <% if @selected_end_am_pm=="AM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">am</label>
+        </span>
+
+        <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="pm" <% if @selected_end_am_pm=="PM" %>checked<% end %>></input>
+        <span>
+          <label class="checkbox_label">pm</label>
+        </span>
+        <span>(GMT <%=h @zone %>)</span>
+
+
+      <% end
+    end%>
+
+  <%else%>
+
+    <% if @assessment_type[@j] == "fixed_end" then %>
+      <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+        <% for i in 1..12 %>
+          <option <% if @hour+1 == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+        <% end %>
+      </select>
+
+    <% else %>
+
+      <select id="assessment_start_time" class="left_corner_select" name=<%=h @assessment_type[@j]%>[hour]>
+        <% for i in 1..12 %>
+          <option <% if @hour == i then %>selected<% end %> value="<%=h i %>"><%=h i %></option>
+        <% end %>
+      </select>
+    <%end%>
+
+    <select id="assessment_start_time" class="mid_select" name=<%=h @assessment_type[@j]%>[min]>
+      <option value="00">00</option>
+      <option <% if @show_time.min < 15 then %>selected<% end %> value="15">15</option>
+      <option <% if @show_time.min > 15 and @show_time.min < 30 then %>selected<% end %> value="30">30</option>
+      <option <% if @show_time.min > 30 then %>selected<% end %> value="45">45</option>
+    </select>
+
+    <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="am" <% if @show_time.strftime("%p")=="AM" %>checked<% end %>></input>
+    <span>
+      <label class="checkbox_label">am</label>
+    </span>
+
+    <input type="radio" id="am_pm" class="checkbox_input" name=<%=h @assessment_type[@j]%>[am_pm] value="pm" <% if @show_time.strftime("%p")=="PM" %>checked<% end %>></input>
+    <span>
+      <label class="checkbox_label">pm</label>
+    </span>
+    <span>(GMT <%=h @zone %>)</span>
+  <% end %>
+</div>

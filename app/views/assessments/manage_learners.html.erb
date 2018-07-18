@@ -1,0 +1,105 @@
+<%#*Control comes from courses/course_details.html%>
+<%#*Author : Surupa %>
+
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'learner_content' %>
+<%= javascript_include_tag 'prototype' %>
+<%= javascript_include_tag 'manage_learners' %>
+<%= stylesheet_link_tag 'for_ie_7'%>
+<script type="text/javascript" charset="utf-8">
+  function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+
+<div id="learner_container">
+  <div id="learner_mainpanel">
+    <div class="flash_confirmation"><%=h flash[:admin_exist] %></div>
+    <div class="flash_confirmation"><%=h flash[:other_org] %></div>
+    <div class="flash_confirmation"><%=h flash[:already_assigned] %></div>
+    <div class="flash_confirmation"><%=h flash[:learner_limit_exceeds] %></div>
+    <div class="flash_confirmation" id="learner_limit_exceeds" style="display: none;">You cannot assign more leaners</div>
+    <div class="flash_confirmation" id="learner_already_exists" style="display: none;">This learner already exists</div>
+    <div class="flash_confirmation"><%=h flash[:virus_error] %></div>
+    <div class="flash_confirmation"><%=h flash[:upload_error] %></div>
+    <% unless params[:failed_to_upload].nil? or params[:failed_to_upload].blank? then %>
+      <div class="flash_confirmation">Unable to upload these line numbers from the uploaded excel sheet: <%=h params[:failed_to_upload] %></div>
+    <% end %>
+    <h1>Learners: <s><%=h @assessment.name %></s></h1>
+
+    <%= render :partial => "/assessments/upload_learners_from_csv" %>
+
+    <h4>Assigned Learners: <%=h @assessment.learners.find(:all, :conditions => ["type_of_test_taker = 'learner' AND active='yes'"]).length %> of <%=h current_user.user.find(:all,:conditions => "deactivated_at IS NULL").length %></h4>
+
+    <form action="/assessments/manage_groups/<%=h @assessment.id %>" method="post" name="manage_learners_form">
+      <% i = 1 %>
+
+
+      <h4><input id="select_all" type="button" onclick="select_all_groups(<%= current_user.groups.length %> +1,'group_');" value="Select All"/> | <input id="select_none" type="button" onclick="unselect_all_groups(<%= current_user.groups.length %>+1,'group_')" value="Select None"/></h4>
+
+      <div class="all_groups">
+        <div id="learners_big_box">
+          <% i=1
+          current_user.groups.each { |group|
+            if group.group_name.strip.split(' ').join('').downcase != "evaluator" %>
+              <input type="checkbox" name="group[<%=h group.id %>]" id="group_<%=h i%>" /><%=h group.group_name %> &nbsp;&nbsp;
+              <a href="/assessments/learners_in_group/<%=h @assessment.id %>?group_id=<%=h group.id%>">Show</a>
+              <br/>
+              <% i = i+1%>
+            <% end
+          } %>
+
+          <input type="checkbox" name="group[1]" id="group_<%=h i%>" />Ungrouped &nbsp;&nbsp;
+          <a href="/assessments/learners_in_group/<%=h @assessment.id %>?group_id=<%=h 1 %>">Show</a><br/>
+        </div>
+      </div>
+
+      <div id="recently_added_learners">
+
+      </div>
+      <div id="mydiv" name="mydiv">
+        <div id="learners_big_box">
+          <table id="mytable" name="mytable" class="learners_box_left"></table>
+        </div>
+      </div>
+
+      <div style="display:none;">
+        <h4 style="margin-top:20px;">Add Learners</h4>
+        <table style="margin-left:15px;">
+          <tr>
+            <td class="header">Learners Name</td>
+            <td class="header">Email</td>
+            <td class="header">Group Name</td>
+          </tr>
+          <tr>
+            <td><input id="user_login" name="user[login]" size="20" type="text" maxlength="40" /></td>
+            <td><input id="user_email" name="user[email]" size="20" type="text" maxlength="255" /></td>
+            <td><input id="group_name" name="group_name" size="15" type="text" maxlength="255" /></td>
+          </tr>
+        </table>
+        <%p =1%>
+        <input type="hidden" id="hid_val" value="<%= p %>" /> <!-- please don't delete this line. It is useful in Javascript -->
+        <input id ="assign_learners_more" class="" name="add" value="Add this learner" type="button" onclick="rjs_add_to_learner_list('user_login','user_email','group_name',<%=h @assessment.id %>);"/>
+        <input  type="text" value="learner" name="user[typeofuser]" style="display: none" />
+      </div>
+      <hr/>
+      <input id="assign_learners" name="commit" type="submit" value="Done"/>
+      <div id="cancel"><s>or</s><a id="cancel" href="/courses">Cancel</a></div>
+      <input type="text" value="<%=h @assessment.id %>"  name="user[assessment_id]" style="display:none" />
+    </form>
+    <div id="learner_div" style="display: none;">Enter both learner name and email</div>
+    <input type="hidden" id="admin_buyer" value="<%=h current_user.typeofuser %>" />
+  </div>
+
+  <div id="learner_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+    <div id="coupon_code_for_learners">
+      Use <a href="/coupons/generate_codes/<%=h @assessment.id %>/?for_course_assessment_package=assessment" style="color:blue;">coupon codes</a> for learners.
+    </div>
+    <i style="color:gray;font-size:11px;padding-left:4px;">If you don't have learners name or email ids</i><br/>
+    <a href="/coupons/download_all_coupons_for_assessment/<%=h @assessment.id %>" style="color:blue;">Download all coupons for <%=h @assessment.name %> test</a>
+  </div>
+</div>
+<%
+@course_object = Course.find_all_by_user_id(current_user.id)
+@space = 0
+@course_object.each { |c| @space += c.size }
+%>

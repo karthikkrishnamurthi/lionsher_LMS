@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag 'question_bank' %>
+
+<div class="div_container">
+  <form action="/question_banks/create_new_question_bank/<%= current_user.tenant_id %>">
+    <%= render :partial => "question_bank_list_header" %>
+    <% unless @question_banks.nil? or @question_banks.blank? %>
+      <%= render :partial => "question_bank_table_data" %>
+    <% end %>
+    <%= will_paginate(@question_banks) %>
+    <%= render :partial => "question_bank_list_footer" %>
+  </form>  
+</div>

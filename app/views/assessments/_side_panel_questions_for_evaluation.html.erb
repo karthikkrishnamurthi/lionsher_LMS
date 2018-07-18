@@ -1,0 +1,42 @@
+<%
+if !@current_learner.attempted_questions.nil?
+  attempted_questions = @current_learner.attempted_questions.split(',')
+else
+  attempted_questions = ""
+end
+if !@current_learner.incomplete_questions.nil?
+  incomplete_questions = @current_learner.incomplete_questions.split(',')
+else
+  incomplete_questions = ""
+end
+if !@current_learner.marked_questions.nil?
+  marked_questions = @current_learner.marked_questions.split(',')
+else
+  marked_questions = ""
+end %>
+
+<div id="right_panel">
+  <div align="center"><h4>Questions</h4></div>
+  <table style="margin-top:-2%;" width="100%" cellspacing="0" cellpadding="0" border="0" valign="top">
+    <% k = 1
+    for i in 1..(@all_descriptive_answers.length.to_f/4).ceil
+    %>
+      <tr>
+        <% for j in 1..4
+          if k <= @all_descriptive_answers.length %>
+            <td>
+              <% if attempted_questions.include?((k - 1).to_s) %>
+                <a class="question_buttons" style="background-color: #698B22;" href="/assessments/goto_question_for_evaluation/<%=h k %>?current_learner=<%=h @current_learner.id %>"><%=h k %></a>
+              <% else %>
+                <a class="question_buttons"><%=h k %></a>
+              <% end %>
+            </td>
+            <% k = k + 1
+          end
+        end %>
+      </tr>
+    <% end %>
+  </table> 
+  <form name="form_aieee" action="/mypapers" method="post"/>
+  <a id="exit_exam" href="" onclick="exit_confirmation('/mypapers');"><input class="Instruction_profile_exit" type="submit" value="Exit"/></a>
+</div>

@@ -1,0 +1,89 @@
+#graph_info
+{
+    width:auto;
+    margin: 5px 0px 0px 6px;
+    overflow: hidden;
+    height: 160px;
+}
+#graph_info .inner_graph_info
+{
+    /*background-color: yellow;*/
+    padding: 0px;
+    margin: 0px 0px 0px 0px;
+    text-align: right;
+    float: left;
+    font-size: 20px;
+    color: gray;
+    clear: left;
+}
+#graph_info .inner_graph_info img
+{
+    margin: 0px 5px 0px 0px;
+}
+#graph_info .inner_graph_info span
+{
+    /*    background-color: green;*/
+    font-size: 10px;
+    font-style: normal;
+    padding-top: 5px;
+    margin-left: 10px;
+
+}
+#graph_info a
+{
+    /*background-color: green;*/
+    font-size: 10px;
+    font-style: normal;
+    padding-top: 5px;
+    text-align: right;
+    margin-left: 15px;
+    text-decoration: underline;
+    color: blue;
+    text-align: right;
+}
+#graph_info .inner_graph_info #graph_assnd_leanr
+{
+    /*    background-color: green;*/
+    font-size: 12px;
+    margin-top: -2px;
+    /*    background-color: yellow;*/
+}
+#graph_info  .inner_graph_info p
+{
+
+    font-size: 11px;
+    /*background-color: yellow;*/
+}
+#div_table table{
+    width: 912px;
+    color: #666666;
+    border-collapse: collapse;
+}
+#div_table #tr_alt
+{
+    font-size: 12px;
+    background-color: #f7f7f7;
+    /*text-transform: capitalize;*/
+}
+#div_table th
+{
+    font-size: 11px;
+    font-weight: normal;
+    height: 0px;
+    width: auto;
+    text-align: left;
+    background-color: #e5e5e5;
+}
+#div_table td{
+    height: 25px;
+}
+#question_analysis_select{
+    float:right;
+    vertical-align: middle;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #CCCCCC;
+}

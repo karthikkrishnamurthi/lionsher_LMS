@@ -1,0 +1,37 @@
+<%= form_for(@rule) do |f| %>
+  <% if @rule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rule.errors.count, "error") %> prohibited this rule from being saved:</h2>
+
+      <ul>
+      <% @rule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tag_id %><br />
+    <%= f.number_field :tag_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tagvalue_id %><br />
+    <%= f.number_field :tagvalue_id %>
+  </div>
+  <div class="field">
+    <%= f.label :questions_required %><br />
+    <%= f.number_field :questions_required %>
+  </div>
+  <div class="field">
+    <%= f.label :questions_picked %><br />
+    <%= f.number_field :questions_picked %>
+  </div>
+  <div class="field">
+    <%= f.label :tenant_id %><br />
+    <%= f.number_field :tenant_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

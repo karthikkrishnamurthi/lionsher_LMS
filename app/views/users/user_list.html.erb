@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title>Visuals: <%= controller.action_name %></title>
+    <%#= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag 'jq'  %>
+    <%= stylesheet_link_tag 'blue/style.css'  %>
+    <%= javascript_include_tag 'jquery-latest' %>
+    <%= javascript_include_tag 'jquery.tablesorter' %>
+    <%= javascript_include_tag 'addons/pager/jquery.tablesorter.pager' %>
+    <%= javascript_include_tag 'docs' %>
+<%#*<script type="text/javascript" src="js/chili/chili-1.8b.js"></script>%>
+
+    <script type="text/javascript">
+      $(function() {
+        $("table")
+        .tablesorter({widthFixed: true, widgets: ['zebra']})
+        .tablesorterPager({container: $("#pager")});
+       });
+    </script>
+  </head>
+  <body>
+
+<div id="banner">
+  <em> Lionsher Users List </em>
+</div>
+<div id="main">
+  <table cellspacing="0" class="tablesorter">
+    <thead>
+      <tr>
+        <th>Serial No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Status</th>
+        <th>Mobile</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+       </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>Serial No</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Status</th>
+        <th>Mobile</th>
+        <th>Show</th>
+        <th>Edit</th>
+        <th>Destroy</th>
+       </tr>
+    </tfoot>
+    <tbody>
+     <% i = 1 %>
+       <% for visual in @visuals %>
+        <tr>
+        <td><%=h i %></td>
+        <td><%=h visual.login %></td>
+        <td><%=h visual.email %></td>
+        <td><%=h visual.crypted_password %></td>
+        <td><%=h visual.designation %></td>
+        <td><%=h visual.user_id %></td>
+        <td><%= link_to 'Show', visual %></td>
+        <td></td>
+        <td><%= link_to 'Destroy', visual, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+      <%= i= i+1 %>
+    <% end %>
+    </tbody>
+ </table>
+<div id="pager" class="pager">
+    <form>
+      <%= image_tag "desc.gif", :class => "prev" %>
+      <input type="text" class="pagedisplay"/>
+      <%= image_tag "asc.gif", :class => "next" %>
+      <select class="pagesize">
+        <option selected="selected"  value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option  value="40">40</option>
+      </select>
+    </form>
+  </div>
+</div>
+  </body>
+</html>

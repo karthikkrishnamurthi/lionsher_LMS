@@ -1,0 +1,25 @@
+<%= form_for(@report_component) do |f| %>
+  <% if @report_component.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report_component.errors.count, "error") %> prohibited this report_component from being saved:</h2>
+
+      <ul>
+      <% @report_component.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :component_name %><br />
+    <%= f.text_field :component_name %>
+  </div>
+  <div class="field">
+    <%= f.label :report_template_id %><br />
+    <%= f.number_field :report_template_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

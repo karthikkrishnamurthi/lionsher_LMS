@@ -1,0 +1,33 @@
+
+<%#*This page is the home page for evaluators.%>
+<%#*Author : Surupa %>
+
+<%= stylesheet_link_tag 'upload_course' %>
+<%= stylesheet_link_tag 'courses_content' %>
+<%= javascript_include_tag 'mycourses' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div class="flash_confirmation"><%=h flash[:contact_your_admin]%></div>
+    <% if (@learners.nil? or @learners.blank?) then %>
+      <div class="div_mainpanel_content_first">
+        <h6>No Papers Assigned to you.</h6>
+      </div>
+    <% else %>
+      <% if @tenant.is_expired == "true" then
+        admin = User.find(@tenant.user_id) %>
+        <div class="flash_confirmation">The account is expired. Please contact your <a href="mailto:<%=h admin.email %>"></a>administrator to activate.</div>
+      <% end %>
+      <h1>My Papers</h1>
+      <% @i = 0
+      for @learner in @learners %>
+        <%= render :partial => "/courses/evaluators_papers" %>
+      <% end
+    end %>
+  </div>
+  <div id="div_sidepanel">
+    <div id="logo">
+      <%= render :partial => "/courses/logo" %>
+    </div>
+  </div>
+</div>

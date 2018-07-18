@@ -1,0 +1,143 @@
+<% if params[:action] == "edit" then %>
+
+  <div id="MAQ"><!content for MAQ srarts here-------------->
+    <ul><!MAQ UL starts here------------------->
+      <li class="quest_text">
+        <label >
+          Question Text
+        </label>
+        <div>
+          <textarea id="maq_question_field" name="question[question_text]" onkeyup="textCounter(this,document.myform.maq_question,5000)" onclick="textCounter(this,document.myForm.maq_question,5000)" class="field textarea medium" cols="60" ><%=h @question.question_text %></textarea>
+          <span id="info"><input disabled type="text" size="4" maxlength="4" value="5000" style="width: 30px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_maq" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+
+      <% if !@question.question_image_file_name.nil? %>
+        <%= image_tag @question.question_image.url(:small) , :style => "margin-left:5px;" %>
+        <li class="add_img_to_quest"><label> <a href="javascript:showDiv('add_image_question2')">Edit image</a> to the question (optional)</label></li>
+      <% else %>
+        <li class="add_img_to_quest"><label> <a href="javascript:showDiv('add_image_question2')">Add image</a> to the question (optional)</label></li>
+      <% end %>
+
+      <li>
+        <div id="add_image_question2" style="display:none;">
+          <div>
+            <input id="question_image_field" name="question[question_image]" type="file" size="50"/>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <table>
+          <th style="text-align:left;">Answer options <em style="font-style:italic; font-size: 9px;"> For less than five options leave some of the fields blank</em></th>
+          <th>Correct Answer</th>
+
+          <% i=1 %>
+          <% for answer in @answers %>
+            <tr><td> <%=h i %>. &nbsp;<input id="maq_field1" name="answer[<%= answer.id %>]" type="text" size="60" maxlength="240" value="<%=h answer.answer_text %>"/></td><td>  <input class="correct" id="maq_radio_field1" name="maq_radio_value[<%= answer.id %>]" value="<%= answer.id %>" type="checkbox" <% if answer.answer_status == "correct" then %> checked <%end%> /> </td> </tr>
+            <tr><% if !answer.answer_image_file_name.nil? %>
+                <td class="add_img_to_quest" style="text-align: left;"><%= image_tag answer.answer_image.url(:small) ,:style => "margin-left: 20px;" %>
+                  <a href="javascript:showDiv('answer_image_field_<%=h i%>')">Edit image</a></td>
+              <% else %>
+                <td class="add_img_to_quest" style="text-align: left;"><a style="margin-left: 20px;" href="javascript:showDiv('answer_image_field_<%=h i%>')">Add image</a></td>
+              <% end %>
+            </tr>
+            <tr><td><input id="answer_image_field_<%=h i%>" name="ans[<%= answer.id %>]" type="file" size="50" style="display: none;margin-left: 20px;margin-bottom: 15px;"/></td></tr>
+            <% i = i +1
+          end %>
+          <tr>
+          <label id="option_blank_msg_for_maq" style="color: red;display: none;">Enter at least 2 options </label>
+          </tr>
+          <tr>
+          <label id="radio_blank_msg_for_maq" style="color:red; display: none;">Select at least one as correct</label>
+          </tr>
+        </table>
+      </li>
+      <li class="quest_explanation">
+        <label>
+          Question Explanation
+        </label>
+        <div>
+          <textarea id="mcq_question_field" name="question[explanation]" onkeyup="textCounter(this,document.myform.mcq_question,5000)" onclick="textCounter(this,document.myForm.mcq_question,5000)" class="field textarea medium" cols="60" ><% unless @question.explanation.nil? %><%= @question.explanation %><% end %></textarea>
+          <span id="info"><input disabled type="text" name="mcq_question" size="4" maxlength="4" value="5000" style="width: 30px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_mcq" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+      <hr/>
+      <li class="done">
+        <em class="add_next"><input id="Done" type="submit" name="Done" value="Done" /> </em>
+        <% if params.include? 'control_from_edit_questions_page' then %>
+          <label class="cancel"><a class="cancel" href="/question_banks/show/<%= params[:question_bank_id] %>?assessment_id=<%= params[:assessment_id] %>&control_from_edit_questions_page="> Cancel</a></label>
+        <% else %>
+          <label class="cancel"><a class="cancel" href="/question_banks/show/<%= params[:question_bank_id] %>?assessment_id=<%= params[:assessment_id] %>"> Cancel</a></label>
+        <% end %>
+      </li>
+
+    </ul><!MAQ UL ends here -------------->
+  </div><!MAQ ends here ---------------------->
+
+
+<% else %>
+
+  <div id="MAQ" style="display:none;"><!content for MAQ srarts here-------------->
+    <ul><!MAQ UL starts here------------------->
+      <li class="quest_text">
+        <label >
+          Question Text
+        </label>
+        <div>
+          <textarea id="maq_question_field" name="maq_question[question_text]" onkeyup="textCounter(this,document.myform.maq_question,240)" onclick="textCounter(this,document.myForm.maq_question,240)" class="field textarea medium" cols="60" ></textarea>
+          <span id="info"><input disabled type="text" name="maq_question" size="3" maxlength="3" value="240" style="width: 20px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_maq" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+
+      <li class="add_img_to_quest"><label> <a href="javascript:showDiv('add_image_question2')">Add image</a> to the question (optional)</label></li>
+
+      <li>
+        <div id="add_image_question2" style="display:none;">
+          <div>
+            <input id="question_image_field" name="maq_question[question_image]" type="file" size="50"/>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <table>
+          <th style="text-align:left;">Answer options <em style="font-style:italic; font-size: 9px;"> For less than five options leave some of the fields blank</em></th>
+          <th>Correct Answer</th>
+          <tr><td> 1. &nbsp;<input id="maq_field1" name="maq_option_1" type="text" size="60" maxlength="240"/></td><td>  <input class="correct" id="maq_radio_field1" name="maq_radio_value1" type="checkbox" /> </td> </tr>
+          <tr><td> 2. &nbsp;<input id="maq_field2" name="maq_option_2" type="text" size="60" maxlength="240"/></td><td>  <input class="correct" id="maq_radio_field2" name="maq_radio_value2" type="checkbox" /> </td></tr>
+          <tr><td> 3. &nbsp;<input id="maq_field3" name="maq_option_3" type="text" size="60" maxlength="240"/></td><td>  <input class="correct" id="maq_radio_field3" name="maq_radio_value3" type="checkbox" /> </td></tr>
+          <tr><td> 4. &nbsp;<input id="maq_field4" name="maq_option_4" type="text" size="60" maxlength="240"/></td><td>  <input class="correct" id="maq_radio_field4" name="maq_radio_value4" type="checkbox" /> </td></tr>
+          <tr><td> 5. &nbsp;<input id="maq_field5" name="maq_option_5" type="text" size="60" maxlength="240"/></td><td>  <input class="correct" id="maq_radio_field5" name="maq_radio_value5" type="checkbox" /> </td></tr>
+          <tr>
+          <label id="option_blank_msg_for_maq" style="color: red;display: none;">Enter at least 2 options </label>
+          </tr>
+          <tr>
+          <label id="radio_blank_msg_for_maq" style="color:red; display: none;">Select at least one as correct</label>
+          </tr>
+        </table>
+      </li>
+      <li class="quest_explanation">
+        <label>
+          Question Explanation
+        </label>
+        <div>
+          <textarea id="mcq_question_field" name="maq_question[explanation]" onkeyup="textCounter(this,document.myform.mcq_question,5000)" onclick="textCounter(this,document.myForm.mcq_question,5000)" class="field textarea medium" cols="60" ></textarea>
+          <span id="info"><input disabled type="text" name="mcq_question" size="4" maxlength="4" value="5000" style="width: 30px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_mcq" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+      <hr/>
+      <li class="done">
+        <em class="add_next"><input id="Done" type="submit" name="Done" value="Add Next Question" /> </em>
+        &nbsp; or &nbsp;<input id="done_adding_quest" type="submit" name="Done" value="Done Adding Questions" />
+        <label class="cancel"><a class="cancel" href="/assessments/create_assessment/<%=h current_user.id %>"> Cancel</a></label>
+      </li>
+
+    </ul><!MAQ UL ends here -------------->
+  </div><!MAQ ends here ---------------------->
+
+<% end %>

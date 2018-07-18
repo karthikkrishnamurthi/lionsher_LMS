@@ -1,0 +1,60 @@
+<%#*Author : Karthik%>
+<%= stylesheet_link_tag 'vcard' %>
+<div id="ad_area">
+  <a href="/pricing_rupees" target="blank"><%= image_tag "free_trial.png" %></a>
+  <a href="/contact_us" target="blank"><%= image_tag "contact_us.png" %></a>
+</div>
+<% blog = Blog.find_by_id(@blog.id) %>
+<div id="dlog_vcard">
+  <% if blog.blog_type == "Interview" %>
+  <h4><%= blog.blog_name %> </h4><br/>
+  <%= raw RedCloth.new(blog.designation).to_html %><br/>
+  <%else%>
+  <h4></h4>
+  <%end%>
+  <h3>Follow <%= blog.blog_name %> on</h3>
+  <div id="dlog_vcard_contact">
+    <% if !(blog.linkedin.nil? or blog.linkedin.blank?)%>
+    <div class="dlog_vcard_contact_box">
+      <%= image_tag "linkedin.png" %>
+      <span>LinkedIn</span>
+      <a href="<%= blog.linkedin %>" target="_blank"><%= blog.linkedin[0..22] %>...</a>
+    </div>
+    <% end %>
+    <% if !(blog.blog.nil? or blog.blog.blank?) %>
+    <div class="dlog_vcard_contact_box">
+      <%= image_tag "blogger.png" %>
+      <span>Blog</span>
+      <a href="<%= blog.blog %>" target="_blank"><%= blog.blog[0..22] %>...</a>
+    </div>
+    <%end%>
+    <% if !(blog.twitter.nil? or blog.twitter.blank?)%>
+    <div class="dlog_vcard_contact_box">
+      <%= image_tag "twitter.png" %>
+      <span>Twitter</span>
+      <a href="<%= blog.twitter %>" target="_blank"><%= blog.twitter[0..22] %>...</a>
+    </div>
+    <%end%>
+    <% if !(blog.facebook.nil? or blog.facebook.blank?) %>
+    <div class="dlog_vcard_contact_box">
+      <%= image_tag "fb.png" %>
+      <span>Facebook</span>
+      <a href="<%= blog.facebook %>" target="_blank"><%= blog.facebook[0..22] %>...</a>
+    </div>
+    <%end%>
+    <% if !(blog.orkut.nil? or blog.orkut.blank?) %>
+    <div class="dlog_vcard_contact_box">
+      <%= image_tag "orkut.png" %>
+      <span>Orkut</span>
+      <a href="<%= blog.orkut %>" target="_blank"><%= blog.orkut[0..22] %>...</a>
+    </div>
+    <%end%>
+    <% if !(blog.website.nil? or blog.website.blank?) %>
+    <div class="dlog_vcard_contact_box">
+      <%= image_tag "globe.png" %>
+      <span>Website</span>
+      <a href="<%= blog.website %>" target="_blank"><%= blog.website[0..22] %>...</a>
+    </div>
+    <%end%>
+  </div >
+</div>

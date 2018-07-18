@@ -1,0 +1,63 @@
+<div id="show_home">
+  <a id="home" href="/issues/user_issues/<%= current_user.id %>">Home</a>
+</div>
+<div id="show_form">
+<form action="/issues/reassign/<%= @issue.id %>" class="reassign" enctype="multipart/form-data" id="reassign" method="post">
+     <b><%=h @issue.issue_type%></b>  Assigned to
+      <% @users = User.find_all_by_user_id(18825,:order => 'login') %>
+      <select name="issue[assigned_to]">
+        <% @users.each do |user| %>
+        <option id="show_assign" value="<%= user.id%>" <% if @issue.assigned_to == user.id then %> selected <% end %>><%= user.login %></option>
+        <% end %>
+      </select><font color="grey"> by <%=h @assigned_by.login%></font>
+      <input id="reassign_issue" name="commit" type="submit" value="Reassign" />
+</form>
+</div>
+<div class="show_short_description">
+ <%=h @issue.short_description %>
+</div>
+
+<div class="detailed_desciption">
+  <%if @issue.image.exists? %>
+    <%= image_tag @issue.image.url(:medium) %>
+  <%end%>
+  <% if !@issue.detailed_description.nil? %>
+    <p>
+     <%=raw @issue.detailed_description %>
+    </p>
+  <% end %>
+</div>
+<div id="comments">
+  <% if !@posts.nil? %>
+    <div class="comment">
+      <h2 class="title">
+        <table>
+          <% @posts.each do |post|
+            user = User.find_by_id(post.user_id) %>
+            <tr>
+              <td valign="top" width="42">
+                <% if user.bugz_profile.exists? %>
+                  <%= image_tag user.bugz_profile.url(:thumb) %>
+                <% end %>
+              </td>
+              <td>
+                <label title="<%= post.id %>"><%= user.login %></label>
+                <p>
+		<%=raw post.message %>
+                </p>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+      </h2>
+    </div>
+  <%end%>
+  <div id="newcomment">
+    <form name="newpost" action="/posts/create/<%= @issue.id %>" method="post">
+      <textarea cols="60" id="message" name="message" rows="5"></textarea><br />
+      <input id="submit" name="commit" type="submit" value="Add Comment" />
+    </form>
+  </div>
+</div>
+
+

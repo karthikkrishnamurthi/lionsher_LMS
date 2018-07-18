@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Component name:</b>
+  <%= @report_component.component_name %>
+</p>
+
+<p>
+  <b>Report template:</b>
+  <%= @report_component.report_template_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_report_component_path(@report_component) %> |
+<%= link_to 'Back', report_components_path %>

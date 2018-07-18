@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+<%= stylesheet_link_tag 'question_bank' %>
+<div id="div_container">
+  <div id="div_mainpanel">    
+    <h1>Listing question_banks</h1>
+
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>No of questions</th>
+      </tr>
+
+      <% for question_bank in @question_banks %>
+        <tr>
+          <td><%=h question_bank.id %></td>
+          <td><%=h question_bank.name %></td>
+          <td><%=h question_bank.no_of_questions %></td>
+          <%#*<td>%>
+            <%#= link_to 'Destroy', question_bank, :method => :delete %>
+          <%#*</td>%>
+        </tr>
+      <% end %>
+    </table>
+
+    <br />
+
+    <%= link_to 'New question_bank', new_question_bank_path %>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+#main_header #main_tabs #tests
+{
+    background-color: #efefef;
+}
+#main_header #main_tabs #pricing
+{
+    background-color: white;
+}
+#container #mid_panel #mid_side_panel
+{
+    /*background-color: fuchsia;*/
+    overflow: hidden;
+    text-align: left;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    background: none;
+}

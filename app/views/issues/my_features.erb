@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag 'bugz/my_style' %>
+<%= stylesheet_link_tag 'bugz/my_features' %>
+<div id="my_issues_header">
+  <div id="my_issues_title">
+    <div class="my_issues_title_left">
+      <b>My Features</b>
+    </div>
+    <%= render :partial => "my_panel"%>
+  </div>
+  <div id="my_issues_title_bottom">
+    <a href="/issues/user_issues/<%=current_user.id %>">Show Everyone's Issues</a>
+  </div>
+</div>
+<% if !@features.empty? %>
+  <h3>Features</h3>
+  <%= render :partial => "features"%>
+<%end%>
+ <% if !@assigned_by_me.empty? %>
+  <h3>Features Assigned By Me</h3>
+  <%= render :partial => "assigned_by_me"%>
+<%end%>
+  <br/>

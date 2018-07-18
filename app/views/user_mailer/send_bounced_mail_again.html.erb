@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+Hi <%=h @user.login %>,<br/><br/>
+
+An account has been created for you on this learning center. <br/>
+Username: <%=h @user.email %><br/><br/>
+
+<a href="<%=h @url %>"><%=h @url %></a><br/>
+If you cannot click the above link, copy and paste the above link in the browser.<br/><br/>
+
+Regards,<br/>
+<%=h User.find_by_id(@user.user_id).login %>
+
+</body>
+</html>

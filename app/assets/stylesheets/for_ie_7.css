@@ -1,0 +1,856 @@
+
+.ie7 #div_mainpanel #assmt_name {
+    padding-bottom: 0px;
+
+}
+.ie7 #div_mainpanel #assmt_name span {
+    margin:0px;
+}
+.ie7 #div_mainpanel #assmt_name label {
+    padding-bottom: 4px;
+}
+.ie7 #div_mainpanel #assmt_desc textarea {
+    width: 300px;
+}
+.ie7 #div_mainpanel #assmt_desc  {
+    padding-top: 0px;
+}
+.ie7 #div_mainpanel #assmt_desc  label{
+    padding-bottom: 5px;
+}
+.ie7 #div_mainpanel #test_schedule{
+    float: left;
+    clear: left;
+}
+.ie7 #div_container #edit_assmnt_form #test_schedule .am input, .pm input{
+    border: none;
+    /*   background-color: yellowgreen;*/
+}
+.ie7 #div_container #edit_assmnt_form #test_schedule  .pm input{
+    border: none;
+    /*   background-color: yellowgreen;*/
+}
+
+.ie7 #div_mainpanel #test_schedule .date, .time, .am, .pm{
+    float:left;
+}
+.ie7 #div_mainpanel #test_schedule .am{
+    padding-top: 7px;
+}
+.ie7 #div_mainpanel #test_schedule .pm{
+    padding-top: 7px;
+}
+
+.ie7 #div_mainpanel #test_schedule .am .am_label, .pm .pm_label{
+    padding-top: 3px;
+    border: none;
+    float: left;
+}
+.ie7 #div_mainpanel #test_schedule .date {
+    float: left;
+    clear: left;
+    padding-bottom: 0px;
+}
+.ie7 #div_mainpanel #test_schedule .date .date_label{
+    padding-bottom: 2px;
+}
+.ie7 #div_mainpanel #test_schedule .date .date_select{
+    padding-top: 5px;
+    padding-left: 16px;
+}
+.ie7 #div_mainpanel #test_schedule .time .time_label{
+    padding-bottom: 2px;
+    padding-left: 5px;
+
+}
+.ie7 #div_mainpanel #test_schedule .time .time_select{
+    padding-top: 5px;
+    padding-left: 20px;
+}
+.ie7 #div_mainpanel #test_schedule .duration input {
+    width:30px;
+}
+.ie7 #div_mainpanel #test_schedule .duration span {
+    padding-top: 6px;
+    font-style: normal;
+    float:left;
+}
+.ie7 #div_mainpanel #test_schedule .duration label {
+    padding-bottom: 3px;
+
+}
+.ie7 #div_mainpanel #scoring {
+    width: 300px;
+    position: relative;
+    clear: both;
+
+}
+.ie7 #div_mainpanel #scoring .correct_points {
+    float: left;
+    width: 49%;
+    position: relative;
+    float: left;
+}
+.ie7 #div_mainpanel #scoring .correct_points input{
+    float: left;
+}
+.ie7 #div_mainpanel #scoring .wrong_points {
+    float: left;
+    width: 50%;
+    position: relative;
+    float: right;
+}
+.ie7 #div_mainpanel #scoring .correct_points span {
+    margin-top: 20px;
+    font-style: normal;
+
+}
+.ie7 #div_mainpanel #scoring .correct_points label {
+    padding-bottom: 3px;
+
+}
+.ie7 #div_mainpanel #scoring .wrong_points label {
+    padding-bottom: 3px;
+
+}
+.ie7 #div_mainpanel #scoring .wrong_points span {
+    font-style: normal;
+    margin-top: 20px;
+    margin-left: -46px;
+
+}
+.ie7 #div_mainpanel #scoring .correct_points input,.wrong_points input{
+    width:30px;
+}
+.ie7 #div_mainpanel #scoring .correct_points input {
+    padding-top: 5px;
+}
+.ie7 #div_mainpanel #scoring .wrong_points input{
+    padding-top: 5px;
+}
+.ie7 #div_mainpanel #question_limit {
+    width: 350px;
+    height:120px;
+    position: relative;
+    clear: both;
+}
+.ie7 #div_mainpanel #question_limit .random_answ {
+    margin:0px 0px 0px 0px;
+}
+.ie7 #div_mainpanel #question_limit .no_of_quest input {
+    width:30px;
+    float:left;
+}
+.ie7 #div_mainpanel #question_limit .no_of_quest .no_of_quest_label {
+
+    float: left;
+}
+.ie7 #div_mainpanel #question_limit .random_quest_label, .random_answ_label {
+    float: left;
+    margin-left: -2px;
+}
+.ie7 #div_mainpanel #result_format {
+    float: left;
+    clear: left;
+}
+.ie7 #div_mainpanel #result_format .show_status {
+    float: left;
+    clear: left;
+}
+.ie7 #div_mainpanel #result_format .pass_score {
+    float: left;
+    clear: left;
+    margin-top: -2px;
+    padding-left: 20px;
+}
+.ie7 #div_mainpanel #result_format .show_status .show_status_label {
+    float: left;
+    margin-left: -2px;
+}
+.ie7 #div_mainpanel #result_format .show_status {
+    float: left;
+    width: 200px;
+    margin-left: -2px;
+}
+.ie7 #div_mainpanel #result_format .pass_score input {
+    width: 30px;
+}
+.ie7 #div_mainpanel #result_format .show_score {
+    clear: left;
+    width: 150px;
+    padding-bottom:10px;
+}
+
+.ie7 #div_mainpanel #result_format .pass_score_label, .show_score_label {
+    float: left;
+    margin-left: -2px;
+}
+.ie7 #div_mainpanel #result_format .pass_score_label{
+    padding-top: 2px;
+}
+.ie7 #div_mainpanel #result_format .pass_score{
+    margin: 2px 0px 5px 5px;
+    width: 300px;
+}
+.ie7 #div_mainpanel #result_format .pass_score, .pass_score_label_marks{
+    float: left;
+    margin-left: 0px;
+    padding-top: 1px;
+}
+.ie7 #div_mainpanel #result_format .pass_score, .pass_score_label_marks #total_marks{
+    margin: 0px;
+    color: gray;
+    border: none;
+}
+.ie7 #div_mainpanel #result_assessment {
+    float: left; clear: left;
+    width: 400px;
+    margin-top: 20px;
+}
+.ie7 #div_mainpanel #result_assessment .score_by_mail_label, .score_after_label {
+    float: left;
+    padding-left: -10px;
+    margin-left: -2px;
+}
+.ie7 #div_mainpanel #assmt_name, #assmt_desc, #test_schedule, #scoring, #question_limit, #result_format, #result_assessment, #border, #border{
+    padding-left: 5px;
+}
+.ie7 #scoring{
+    margin-top:10px;
+}
+.ie7 #div_mainpanel p {
+    margin-top: 10px;
+    padding-left: 5px;
+    /*    font-weight: bold;*/
+    /*    color: #666666;*/
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+.ie7 #div_mainpanel label{
+    font-size: 12px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+.ie7 #div_mainpanel #border_3 {
+    margin-top: 0px;
+    border-bottom: 1px dotted #cccccc;
+    width: 680px;
+    margin-left: 22px;
+}
+.ie7 #div_mainpanel #submit_btn{
+    margin: 20px 0px 0px 10px;
+}
+.ie7 #div_mainpanel #assessment_date_3i, #assessment_date_2i, #assessment_date_1i, #assessment_start_time, #assessment_start_time
+{
+    background-color: yellow;
+    background-color: white;
+    border: 1px #e6e6e6 solid;
+    color: #666666;
+    font-size: 11px;
+}
+.ie7 #div_mainpanel #submit_btn input{
+    border: gray 1px solid;
+    font-size: 12px;
+    padding: 3px 10px 3px 10px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+/*--------------coustomize page css fix ----------------*/
+
+.ie7 #main_panel #cancel{
+    margin-bottom: 50px;
+}
+.ie7 #main_panel .save_chang {
+    margin-bottom: 50px;
+    /*    background-color: red;*/
+}
+.ie7 #div_mainpanel
+{
+    padding-bottom: 5px;
+}
+.ie7 #div_mainpanel .wrap
+{
+    height: 100px;
+    /*    background-color: red;*/
+}
+.ie7 #learner_mainpanel
+{
+    padding-bottom: 15px;
+}
+.ie7 #div_mainpanel label.logo_lab
+{
+    padding-bottom: 0px;
+    width: 250px;
+}
+.ie7 #div_mainpanel #display_logo{
+    clear: left;
+}
+
+/*--------------login page fix -----------------*/
+
+.ie7 #div_sidepanel #forgot-pass {
+    width: 200px;
+    height:10px;
+    position: relative;
+    clear: both;
+}
+.ie7 #div_sidepanel #forgot-pass .forgot-pass_check{
+    width: 15%;
+    position: relative;
+    float: left;
+}
+.ie7 #div_sidepanel #forgot-pass .forgot-pass_label {
+    width: 85%;
+    padding-top:5px;
+    position: relative;
+    float: right;
+}
+.ie7 #div_sidepanel #show_pass {
+    width: 300px;
+    height:30px;
+    position: relative;
+    clear: both;
+}
+.ie7 #div_sidepanel #email_validate {
+
+}
+.ie7 #div_sidepanel #forgot-pass .show_pass_text{
+    width: 49%;
+    position: relative;
+    float: left;
+}
+.ie7 #div_sidepanel #forgot-pass .show_pass_forgot {
+    width: 50%;
+    padding-top:5px;
+    position: relative;
+    float: right;
+}
+.ie7 #div_sidepanel #forgot-pass .forgot-pass_check .checkbox_input {
+    border:none;
+}
+
+/*------------edit_assessment fix------*/
+
+
+.ie7 #div_mainpanel .date {
+    width: 290px;
+    height:30px;
+    position: relative;
+    clear: both;
+}
+.ie7 #div_mainpanel .date .date_label{
+    width: 49%;
+    position: relative;
+    clear: left;
+
+}
+.ie7 #div_mainpanel .date .date_select {
+    width: 50%;
+    position: relative;
+    clear: left;
+
+}
+.ie7 #div_mainpanel .time {
+    width: 200px;
+    height:30px;
+
+}
+.ie7 #div_mainpanel .time .time_label{
+    width: 49%;
+    position: relative;
+    clear: left;
+
+}
+.ie7 #div_mainpanel .time .time_select {
+    width: 50%;
+    position: relative;
+    clear: left;
+
+}
+.ie7 #div_mainpanel .am{
+    margin: 15px 0px 0px 0px;
+}
+.ie7 #div_mainpanel .pm{
+    margin: 15px 0px 0px 0px;
+
+}
+.ie7 #div_mainpanel #assmt_name span{
+    margin: 0px 0px 0px 0px;
+
+}
+.ie7 #div_mainpanel label.download_csv{
+    margin: 70px 0px 0px 0px;
+}
+.ie7 #div_mainpanel ol input {
+    border-style: none;
+}
+.ie7 #div_mainpanel .next  {
+    padding-left: 20px;
+}
+.ie7 #div_mainpanel #scoring .correct_points label {
+    /*    padding-left: 20px;*/
+    background-color: red;
+}
+
+
+
+
+/*--------------create assessment button --------------------*/
+
+.ie7 #div_mainpanel .type_of_uploads #course_assessment_button_for_ie7{
+    padding-top: 2px;
+}
+
+/*--------------import_convert next button --------------------*/
+
+.ie7 #div_mainpanel #import_next
+{
+    margin: 2px 0px 0px 0px;
+}
+
+/*--------------assessment_edit --------------------*/
+
+.ie7 #div_mainpanel .pass_score input
+{
+    padding-left: 10px;
+}
+
+/*-------------------assessment take page -----------*/
+
+.ie7 #div_sidepanel #side_timer .hours .hr{
+    margin: 15px 0px 0px -80px;
+    font-size: 10px;
+    width: 105px;
+
+}
+.ie7 #div_sidepanel #side_timer #countdowncontainer{
+    margin: 0px 0px 0px -10px;
+    font-size: 14px;
+    float:left;
+    width: 80px;
+}
+.ie7 #div_mainpanel #border{
+    border-bottom: 1px dotted #cccccc;
+    width:590px;
+    padding-top: 0px;
+    margin:0px 0px 0px -10px;
+
+}
+.ie7 #div_mainpanel #question_list .answers_now .next {
+    margin: 15px 0px 0px -15px;
+    float: left;
+
+}
+.ie7 #div_mainpanel #question_list .answers_now .back_question a{
+    padding-top: 11px;
+    margin: 15px 0px 0px -75px;
+    float: left;
+    width: 60px;
+    text-decoration: underline;
+    color: #3B87FF;
+}
+
+/*------------------------login page----------------------*/
+
+.ie7 #login_form #email_div {
+    margin-left: 10px;
+}
+.ie7 #login_form #password_div {
+    margin-left: 10px;
+}
+.ie7 #login_form #email_validate {
+    margin-left: 10px;
+}
+
+
+/*-----------------------------for course details page----------------------------------*/
+
+.ie7 #div_mainpanel .char_fourty{
+    margin: 18px 0px 0px 185px;
+}
+.ie7 #div_mainpanel .char_left_course_details{
+    margin: 60px 0px 0px -120px;
+}
+.ie7 #div_mainpanel .in_hrs_course_details{
+    margin: 155px 0px 0px -304px;
+}
+.ie7 #div_mainpanel .feedback_course_details{
+    margin: 190px 0px 0px -335px;
+    font-style: normal;
+}
+
+.ie7 #div_mainpanel .course_details_continue{
+    margin: 0px 0px 0px 8px;
+    padding-bottom: 16px;
+}
+.ie7 #div_mainpanel .asmnt_edit_char{
+    margin: 43px 0px 0px 40px;
+
+}
+.ie7 #div_mainpanel .asmnt_char_left{
+    margin: 25px 0px 0px 53px;
+}
+.ie7 #div_mainpanel .edit_details_wrng_points, .edit_details_crct_points {
+    margin-left: -50px;
+    margin-top: 0px;
+}
+.ie7 #div_mainpanel .edit_details_crct_points {
+    margin-left: -50px;
+    margin-top: 0px;
+}
+.ie7 #div_mainpanel .edit_details_in_hrs{
+    margin-left: -10px;
+    margin-top: 20px;
+}
+.ie7 #div_mainpanel .checkbox_label {
+    margin:-190px 0px 0px 345px;
+}
+.ie7 #course_details_submit {
+    /*     background-color: red;*/
+}
+
+/*--------------------------- Learner My Account IE FIX ----------------------------------- */
+
+
+.ie7 #div_mainpanel #learner_myaccount_form #personal_details .my_account_email{
+    clear: left;
+    width: 140px;
+    margin:-20px 0px 0px 70px;
+}
+.ie7 #div_mainpanel #learner_myaccount_form #personal_details .my_account_astriks{
+    clear: left;
+    margin:-20px 0px 0px 70px;
+}
+.ie7 #div_mainpanel #learner_myaccount_form #personal_details #change_password_link{
+    clear: left;
+    margin:-20px 0px 0px 104px;
+}
+
+.ie7 #div_mainpanel #learner_myaccount_form #phone_details #mobile_numbre{
+    clear: left;
+    margin:-20px 0px 0px 68px;
+}
+.ie7 #div_mainpanel #learner_myaccount_form #course_submit{
+    clear: left;
+    margin:-8px 0px 0px -17px;
+
+}
+.ie7 #div_mainpanel #learner_myaccount_form #cancel {
+    margin:-3px 0px 0px 0px;
+}
+.ie7 #div_mainpanel #learner_myaccount_form #cancel a{
+    width: 40px;
+}
+.ie7 #div_mainpanel #learner_myaccount_form #personal_details #password_input {
+    margin:0px 20px 0px -4px;
+}
+
+/*--------------Admin customize page -------------------*/
+
+.ie7 #div_mainpanel #save_chang, #cancel{
+    margin-bottom: 0px;
+}
+.ie7 #div_mainpanel #cancel{
+    margin-bottom: 25px;
+}
+
+/*-------------Learner_Reports_assessments --------------------*/
+
+.ie7 #div_sidepanel #graph_info {
+    /*    background-color: yellow;*/
+    clear: right;
+    clear: both;
+    margin: 10px 0px 0px 0px;
+}
+.ie7 #div_sidepanel #graph_info .inner_graph_info{
+    /*
+        background-color: yellow;*/
+    width: 200px;
+    float: left;
+    clear: none;
+    clear: both;
+    text-align: left;
+
+}
+.ie7 #div_sidepanel #graph_info .inner_graph_info img{
+    /*
+        background-color: yellow;*/
+    clear: none;
+    clear: both;
+    margin: 0px 5px 0px 30px;
+}
+.ie7 #div_sidepanel #graph_info .inner_graph_info p ,.ie7 #div_sidepanel #graph_info .inner_graph_info #graph_assnd_leanr
+{
+    width: 200px;
+}
+.ie7 #div_sidepanel #graph_info .inner_graph_info p
+{
+    margin: 10px 5px 0px 30px;
+}
+
+/*------------learner information page------------------*/
+
+.ie7 #div_mainpanel #learnr_instructions h5
+{
+    padding: 0px 0px 0px 0px;
+}
+.ie7 #div_mainpanel #learnr_instructions ul
+{
+    padding-left: 0px;
+}
+.ie7 #div_mainpanel #age_div em
+{
+    top: 22px;
+    left: 75px;
+}
+
+
+
+/*------------set password------*/
+
+.ie7 #div_mainpanel #set_password #image_type_ie
+{
+
+    margin: 80px 0px 0px -170px;
+}
+.ie7 #div_mainpanel #set_password #zone_type_ie
+{
+    margin: 139px 0px 0px -530px;
+}
+.ie7 #div_mainpanel #set_password #logo_label
+{
+    width: 100px;
+}
+
+/*-----------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gecko .example {
+    background-color: gray
+}
+.win.gecko .example {
+    background-color: red
+}
+.linux.gecko .example {
+    background-color: pink
+}
+.opera .example {
+    background-color: green
+}
+.konqueror .example {
+    background-color: blue
+}
+.safari .example {
+    background-color: black
+}
+.safari #div_mainpanel #border_3 {
+    margin-top: 695px;
+    border-bottom: 1px dotted #cccccc;
+    width: 680px;
+    margin-left: 22px;
+}
+.chrome .example {
+    background-color: cyan
+}
+.example {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+.no_js { display: block }
+.has_js { display: none }
+.js .no_js { display: none }
+.js .has_js { display: block }
+
+
+
+
+
+/*-----------------------------------------*/
+
+
+
+.ie7 #div_mainpanel #question_list .answers_now .next
+{
+    width: 470px;
+    padding-left: 220px;
+}
+.ie7 #div_mainpanel #question_list .next #next_mark
+{
+    /*    padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 2px;
+        padding-bottom: 2px;*/
+    padding: 2px;
+
+}
+.ie7 #div_mainpanel #question_border
+{
+    /* color:*/
+}
+.ie7 #div_mainpanel #question_border hr
+{
+    width: 135%;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    overflow: hidden;
+    padding: 0px;
+}
+/*.ie7 #div_sidepanel #right_panel
+{
+
+    padding-bottom: 0px;
+    margin-top: 38px;
+    overflow-y: scroll;
+    height: 400px;
+}*/
+/*.ie7 #div_sidepanel #right_panel table
+{
+    width: 200px;
+}*/
+.ie7 #div_side_panel_buttons a .Instruction_profile_exit{
+    margin-bottom: 2px;
+}
+.ie7 #div_side_panel_buttons #exit_exam
+{
+    margin-top: 0px;
+    /*    background-color: red;*/
+}
+.ie7 #div_mainpanel #question_numb_aieee
+{
+    margin-left: 2px;
+    margin-top: -13px;
+    font-weight: normal;
+}
+.ie7 #div_mainpanel #question_list .question_now
+{
+    margin-top: -24px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    font-weight: normal;
+}
+.ie7 #div_mainpanel #question_list 
+{
+
+    font-weight: bolder;
+    color: #000000;
+}
+.ie7 #div_mainpanel #border
+{
+    border-bottom: none;
+
+}
+.ie7 #div_sidepanel #side_timer #timer_info_container
+{
+    /*    width: 180px;*/
+}
+/*.ie7 #div_sidepanel #side_timer #timer_info_container s
+{
+    font-size: 15px;
+}*/
+/*.ie7 #div_sidepanel #side_timer
+{
+    text-align: right;
+}
+*/.ie7 #div_sidepanel #side_timer .hours #countdowncontainer
+{
+    margin: 0px;
+}/*
+.ie7 #div_sidepanel #side_timer #timer_info_container s{
+    float: none;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------*/
+
+.ie8 #div_mainpanel #question_list .answers_now .next
+{
+
+    margin-left: 250px;
+}
+.ie7  #right_panel
+{
+    /*    margin-top: 45%;
+        height: 400px;*/
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.ie8  #right_panel
+{
+    /*    margin-top: 45%;
+        height: 400px;*/
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.ie7 #div_sidepanel #side_timer #welcome_tag
+{
+
+    margin-top: 15px;
+}
+.ie8 #div_mainpanel #question_list .question_now
+{
+    font-size: 16px;
+}
+.ie8 hr
+{
+    margin-left: 0px;
+}
+
+
+/*---------------- cat test pattern css for ie------------------*/
+.ie7 img{
+    border:none;
+}
+.ie7 #question_answer_content{
+    margin-top: 20px;
+}
+.ie7 .timer_position{
+    margin-left: 820px;
+    /*margin-top: -5px;
+    position: relative;
+    z-index: 1;
+    color:white;*/
+}
+/*----------single page test sidepanel table------------*/
+.ie7 #right_panel_lms #questions_table_single_page{
+    width: 24%;
+}

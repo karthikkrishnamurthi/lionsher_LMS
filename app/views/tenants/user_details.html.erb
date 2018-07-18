@@ -1,0 +1,37 @@
+<div id="div_container">
+  <h3>Users in <%=h @tenant.organization %></h3>
+  <div class= "div_table" id="display">
+    <table border="0" cellpadding="2px" cellspacing="0" >
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Type of Learner</th>
+      </tr>
+      <tr>
+        <td class="name"><%=h @user.id %></td>
+        <td class="td_name"><a href="/tenants/all_courses/<%=h @user.id %>" title="click to know its course details" style="color: blue;"><%=h @user.login %></a></td>
+        <td class="name"><%=h @user.email %></td>
+        <td class="name"><%=h @user.typeofuser %></td>
+      </tr>
+      <% i = 1
+      for learner in @learners %>
+        <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+          <td class="name"><%=h learner.id %></td>
+          <td class="td_name">
+            <% if learner.crypted_password.nil? then %>
+              <a><%=h learner.login %></a>
+            <% else %>
+              <a href="/tenants/course_details/<%=h learner.id %>" title="click to know its course details" style="color: blue;"><%=h learner.login %></a>
+            <% end %>
+          </td>
+          <td class="name"><%=h learner.email %></td>
+          <td class="name"><%=h learner.typeofuser %></td>
+          <td><a href="/tenants/user_destroy/<%=h learner.id %>" style="color: blue;">Destroy</a></td>
+        </tr>
+        <% i = i + 1
+      end %>
+    </table>
+  </div>
+  <a href="/tenants" style="color: blue;">Back</a>
+</div>

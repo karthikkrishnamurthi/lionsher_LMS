@@ -1,0 +1,48 @@
+<div id="tabs-1"><!--Tab-1 div starts here -->
+  <ul class="upload_form_ul" type="none" style="margin-left: 0px;">
+    <li ><h4> Lets get some information about the course </h4></li>
+    <li>
+      What is the course name ?<br/>
+      <input id="courses[course_name]" name="courses[course_name]" size="30" maxlength="30" type="text"/>
+    </li>
+    <li>
+      What is the course about ? <br/>
+      <textarea cols="50" id="courses[description]" name="courses[description]" onkeyup="textCounter(this,document.myForm.remLen,150)" onclick="textCounter(this,document.myForm.remLen,150)"></textarea>
+    </li>
+    <li>
+      Course objective<br/>
+      <textarea cols="70" id="courses[course_objective]" name="courses[course_objective]" onkeyup="textCounter(this,document.myForm.remLen,150)" onclick="textCounter(this,document.myForm.remLen,150)"></textarea>
+    </li>
+    <li>
+      Duration<br/>
+      <select id="duration_hour" class="left_corner_select" name="courses[duration_hour]" style="margin-left: 15px;">
+        <% for i in 0..12 %>
+          <option <% if i == 1 %>selected<% end %>value="<%=h i %>"><%=h i %> hr</option>
+        <% end %>
+      </select><span></span>
+
+      <select id="duration_min" class="mid_select" name="courses[duration_min]" >
+        <% (0..55).step(5) { |j| %>
+          <option value="<%=h j %>"><%=h j %> min</option>
+        <% } %>
+      </select>
+    </li>
+    <li>
+      <strong>Course Image </strong>To represent your course and attract buyers attention<br/>
+      <input id="courses[image_file_name]" name="courses[image]" size="30" maxlength="30" type="file" />
+    </li>
+    <li>
+      Learners <br/>
+      <input id="courses[learners_type]" name="courses[learners_type]" size="60" maxlength="30" type="text" />
+    </li>
+    <li>
+      Domain<br/>
+      <input id="courses[domain]" name="courses[domain]" size="60" maxlength="30" type="text" />
+    </li>
+    <li>
+      Keywords<br/>
+      <input id="courses[keywords]" name="courses[keywords]" size="60" maxlength="30" type="text" />
+    </li>
+    <li><input id="courses[lms_cs]" name="courses[lms_cs]" size="60" maxlength="30" type="text" value="course_store" style="display: none;" /></li>
+  </ul>
+</div><!--Tab-1 div ends here -->

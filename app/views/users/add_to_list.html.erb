@@ -1,0 +1,7 @@
+<% if !@user.nil? %>
+<%=h @user.login %> <%=h @user.email %>,
+<% elsif !@learner_limit_exceeds.nil? %>
+<%=h @learner_limit_exceeds %>
+<% elsif !@learner_already_exists.nil? %>
+<%=h @learner_already_exists %>
+<% end %>

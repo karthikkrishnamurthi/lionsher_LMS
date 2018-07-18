@@ -1,0 +1,54 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h3><b>Profile</b></h3>
+    <form action="/profiles/save_profile/<%=h @structure_component.id %>" method="post" class="form_style">
+      <% unless @existing_profile_components.nil? or @existing_profile_components.blank? %>
+        <table id="existing_components">
+          <% i = 1 %>
+          <% @existing_profile_components.each do |profile_component| %>
+            <tr>
+              <td><%=h i %>.&nbsp;
+                  <a href="/profiles/edit_profile_component/<%=h @structure_component.id %>?component=<%=h profile_component.id %>"><%=h profile_component.field_name %></a>
+              </td>
+              <% if profile_component.field_type.eql? "single select list" %>
+                <td><a href="/profile_dropdown_values/add_list_values/<%=h @structure_component.id %>?component=<%= profile_component.id %>">&nbsp;&nbsp;Add list values</a></td>
+              <% end %>
+            </tr>
+            <% i = i + 1 %>
+          <% end %>
+        </table>
+      <% end %>
+      <br/>
+      <table id="add_components">
+        <tr>
+          <th>Type of information</th>
+          <th>Name of information</th>
+        </tr>
+        <tr>
+          <td><select name="field_type">
+              <option value="short text">short text</option>
+              <option value="long text">long text</option>
+              <option value="single select list">single select list</option>
+            </select>
+          </td>
+          <td><input type="text" name="field_name"/></td>
+          <td>
+            <input type="submit" name="button" value="Add"/>
+          </td>
+        </tr>
+      </table>
+      <hr/>
+      <a href="/structure_components/create_structure/<%=h @structure_component.assessment_id %>" class="done_button">Done</a>
+      <a href="/structure_components/delete_component/<%=h @structure_component.id %>" style="color:blue;margin-left:560px;">Delete</a> | 
+      <a href="/structure_components/create_structure/<%=h @structure_component.assessment_id %>" style="color:blue;">Cancel</a>
+    </form>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

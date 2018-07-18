@@ -1,0 +1,83 @@
+<script type="text/javascript">
+  //this function is called on marking the question
+  function cat_ajax_mark(position,select,deselect)
+  { 
+    select_star = document.getElementById(select);
+    deselect_star = document.getElementById(deselect);
+    select_star.style.display = "none";
+    deselect_star.style.display = "block";
+    // create request object
+    var req = AjaxRequest();
+    // set up request parameters - uses POST method
+    req.open('POST','/assessments/ajax_mark_question/'+<%= @current_learner.id %>,false);
+    // send header information along with the POST data
+    var params = 'position='+position;
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    // submit to the server for processing
+    req.send(params);
+    // process returned data - error condition
+    if (req.status != 200) {
+      alert('Problem with Request');
+      return "false";
+    }
+    // process returned data - OK
+    else {
+      return "true";
+    }
+  }
+
+    //this function is called on unmarking the question
+  function cat_ajax_unmark(position,select,deselect)
+  { 
+    select_star = document.getElementById(select);
+    deselect_star = document.getElementById(deselect);
+    select_star.style.display = "none";
+    deselect_star.style.display = "block";
+    // create request object
+    var req = AjaxRequest();
+    // set up request parameters - uses POST method
+    req.open('POST','/assessments/cat_ajax_unmark/'+<%= @current_learner.id %>,false);
+    // send header information along with the POST data
+    var params = 'position='+position;
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    // submit to the server for processing
+    req.send(params);
+    // process returned data - error condition
+    if (req.status != 200) {
+      alert('Problem with Request');
+      return "false";
+    }
+    // process returned data - OK
+    else {
+      return "true";
+    }
+  }
+
+  function AjaxRequest()
+  {
+    var request;
+    // Opera 8.0+, Firefox, Safari
+    try {
+      request = new XMLHttpRequest();
+    }
+    // Internet Explorer Browsers
+    catch (tryIE) {
+      try {
+        request = new ActiveXObject("Msxml2.XMLHTTP");
+      }
+      catch (tryOlderIE) {
+        try {
+          request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (failed) {
+          alert("Error creating XMLHttpRequest");
+        }
+      }
+    }
+    return request;
+  }
+</script>

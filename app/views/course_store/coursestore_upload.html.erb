@@ -1,0 +1,45 @@
+<%= javascript_include_tag 'upload_course' %>
+<!--if IE 7 >
+<%= stylesheet_link_tag 'for_ie_7' %>
+< end if -->
+<%= stylesheet_link_tag 'store_course_styles' %>
+<%= render :partial => 'jquery_scripts' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <form name="myform" action="/course_store/save_coursestore_details" method="post" enctype="multipart/form-data">
+  <style>
+    .upload_form_ul  li,  .upload_form_ul  label{
+      margin-left: -25px;
+    }
+    .upload_form_ul  label {
+      margin-top: 10px;
+    }
+  </style>
+  <%= render :partial => 'course_store/upload_flash' %>
+
+  <% if !flash[:nonscorm_notice].nil? or !flash[:nonscorm_notice].blank? then %>
+    <div style="color: green; margin-left: 20px;"><%= flash[:nonscorm_notice] %></div>
+  <% end %>
+  <% if !flash[:course_not_uploaded].nil? or !flash[:course_not_uploaded].blank? then %>
+    <div style="color: green; margin-left: 20px;"><%= flash[:course_not_uploaded] %></div>
+  <% end %>
+  <div class="demo"><!--Demo start -->
+    <div id="tabs"><!--Tabs start -->
+      <ul>
+        <li><a href="#tabs-1">Course Details</a></li>
+        <li><a href="#tabs-2">Course Pricing</a></li>
+        <li><a href="#tabs-3">Your Details</a></li>
+      </ul>
+      <%= render :partial => 'tab_1' %>
+      <%= render :partial => 'tab_2' %>
+      <%= render :partial => 'tab_3' %>
+    </div><!--Ends Tabs -->
+  </div><!-- End demo -->
+</form>
+  </div><!--End main_pannel -->
+
+  <div id="div_sidepanel">
+  </div>
+
+</div><!--End container-->

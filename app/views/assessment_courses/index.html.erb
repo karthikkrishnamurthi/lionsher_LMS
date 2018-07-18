@@ -1,0 +1,29 @@
+<h1>Listing assessment_courses</h1>
+
+<table>
+  <tr>
+    <th>Assessment</th>
+    <th>Course</th>
+    <th>Package</th>
+    <th>Assessment package</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assessment_courses.each do |assessment_course| %>
+  <tr>
+    <td><%= assessment_course.assessment_id %></td>
+    <td><%= assessment_course.course_id %></td>
+    <td><%= assessment_course.package_id %></td>
+    <td><%= assessment_course.assessment_package_id %></td>
+    <td><%= link_to 'Show', assessment_course %></td>
+    <td><%= link_to 'Edit', edit_assessment_course_path(assessment_course) %></td>
+    <td><%= link_to 'Destroy', assessment_course, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Assessment course', new_assessment_course_path %>

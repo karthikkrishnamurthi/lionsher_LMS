@@ -1,0 +1,9 @@
+<table>
+<% i = 0
+@a.each do |a| %>
+<tr>
+<td><%= a %></td><td><%= @g %></td><td><%= @c %></td>
+</tr>
+<% i = i + 1
+end %>
+</table>

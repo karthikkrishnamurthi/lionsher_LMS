@@ -1,0 +1,124 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_rules">
+    <h3><b>Create rule for <%= @section.name %></b></h3>
+    <form action="/rules/post_rule/<%= params[:id] %>?assessment=<%= @assessment.id %>" method="post" class="form_style">
+      <% unless @assessment_rules.nil? or @assessment_rules.blank? %>
+        <div id="scroll_table">
+          <table id="existing_components">
+            <tr>
+              <th>Question Bank</th>
+              <th>Question Type</th>
+              <th>Difficulty</th>
+              <% @tags.each do |tag| %>
+                <th><%= tag.name %></th>
+              <% end %>
+              <th>required</th>
+              <th>available</th>
+              <th>positive mark</th>
+              <th>negative mark</th>
+            </tr>
+            <% @assessment_rules.each do |assessment_rule| %>
+              <tr <% if assessment_rule.questions_picked < assessment_rule.questions_required %>style="background-color:#ffbdbd;color:white;"<% end %>>
+                <td><% unless assessment_rule.question_bank.nil? %><%= assessment_rule.question_bank.name %><% end %></td>
+                <td><% unless assessment_rule.question_type.nil? %><%= assessment_rule.question_type.value %><% end %></td>
+                <td><% unless assessment_rule.difficulty.nil? %><%= assessment_rule.difficulty.difficulty_value %><% else %>Any<% end %></td>
+                <% assessment_rule.rules.each do |rule| %>
+                  <td><%= rule.tagvalue.value %></td>
+                <% end %>
+                <td><%=h assessment_rule.questions_required %></td>
+                <td><%= assessment_rule.questions_picked %></td>
+                <td><%= assessment_rule.positive_mark %></td>
+                <td><%= assessment_rule.negative_mark %></td>
+                <td><a href="/rules/view_questions_for_assessment_rule/<%= assessment_rule.id %>" <% if assessment_rule.questions_picked == 0 then %>style="display:none"<% else %>style="display:block;"<% end %> >View</a></td>
+                <%#*<td><a href="/rules/edit_assessment_rule/<%= assessment_rule.id >?assessment=<%= @assessment.id >">edit</a></td>%>
+                <td><a href="/rules/delete_assessment_rule/<%= assessment_rule.id %>?assessment=<%= @assessment.id %>">Delete</a></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
+      <br/>
+      <table border="0" cellspacing="0" id="create_rule_table">
+        <tr>
+          <td>Question Bank</td>
+          <td><select name="question_bank">
+              <option value="" selected>Any</option>
+              <% @question_banks.each do |qb| %>
+                <option value="<%= qb.id %>"><%=h qb.name %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr><th class="th_heading_padding"><b>Tags</b></th></tr>
+        <% @tags.each do |tag| %>
+          <tr>
+            <td><%= tag.name %></td>
+            <td>
+              <select name="tagvalue[<%= tag.id %>]">
+                <option value="">Any</option>
+                <% tag.tagvalues.each do |tagvalue| %>
+                  <option value="<%= tagvalue.id %>"><%=h tagvalue.value %></option>
+                <% end %>
+              </select>
+            </td>
+          </tr>
+        <% end %>
+        <tr><th class="th_heading_padding"><b>Attributes</b></th></tr>
+        <tr>
+          <td>Difficulty</td>
+          <td><select name="difficulty">
+              <option value="">Any</option>
+              <% @difficulties.each do |difficulty| %>
+                <option value="<%= difficulty.id %>"><%=h difficulty.difficulty_value %></option>
+              <% end %>
+            </select></td>
+        </tr>
+        <tr>
+          <td>Question Type</td>
+          <td><select name="question_type">
+              <option value="">Any</option>
+              <% @question_types.each do |question_type| %>
+                <option value="<%= question_type.id %>"><%=h question_type.value %></option>
+              <% end %>
+            </select></td>
+        </tr>
+        <tr><th class="th_heading_padding"><b>Calculated Attributes</b></th></tr>
+        <tr>
+          <td>Difficulty Index</td>
+          <td>Between <input type="text" name="difficulty_lower" size="3" />
+              and <input type="text" name="difficulty_higher" size="3" />
+          </td>
+        </tr>
+        <tr>
+          <td>Discrimination Index</td>
+          <td>Between <input type="text" name="discrimination_lower" size="3" />
+              and <input type="text" name="discrimination_higher" size="3" />
+          </td>
+        </tr>
+        <tr><th class="th_heading_padding"><b>Required</b></th></tr>
+        <tr>
+          <td>Questions</td>
+          <td><input name="no_of_questions" type="text" size="6"/></td>
+        </tr>
+        <tr>
+          <td>Positive Mark</td>
+          <td><input name="positive_mark" type="text" size="6" maxlength="2" value="1"/></td>
+        </tr>
+        <tr>
+          <td>Negative Mark</td>
+          <td><input name="negative_mark" type="text" size="6" maxlength="5" value="0"/></td>
+        </tr>
+      </table><br/>
+      <input type="submit" name="button" value="Add Rules" class="done_button"/>
+      <hr/>
+      <a href="/structure_components/create_structure/<%= @assessment.id %>?section=<%= @section.id %>" class="done_button">Done</a>
+      <a href="/structure_components/delete_component/<%= @structure_component.id%>" style="color:blue;margin-left:560px;">Delete</a> | 
+      <a href="/structure_components/create_structure/<%= @assessment.id %>?section=<%= @section.id %>" style="color:blue;">Cancel</a>
+    </form>
+  </div>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

@@ -1,0 +1,47 @@
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js"></script> <%# script for supporting fixed position in IE %>
+<script src="/assets/prototype.js?body=1" type="text/javascript"></script>
+<% if request.env['HTTP_USER_AGENT'].downcase =~ /msie/i %>
+<%= stylesheet_link_tag 'for_ie_7' %>
+<% end %>
+<%= stylesheet_link_tag 'for_ie_7' %>
+<%= stylesheet_link_tag 'assessment_style'%>
+<%= stylesheet_link_tag 'timer_footer'%>
+<%= stylesheet_link_tag 'right_panel_questions_for_lms' %>
+<%= render :partial => "/assessments/single_page_save_answer" %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div id="imported_questions">
+      <form name="form_assessment" id="assessment_form" action="/assessments/single_page_test/<%= @current_learner.id %>" method="post">
+        <b><%= @assessment.name %></b><br/><br/>
+        <% @j = 1
+        prev_mtf_id = 0
+        @test_details.each do |test_detail|
+          @test_detail = test_detail %>
+          <% if @assessment.using_rules %>
+            Tags:<br/> 
+            <% @test_detail.question.tagvalues.each do |tagvalue| %>
+               <%= tagvalue.tag.name %>: <%= tagvalue.value %><br/>
+            <% end # end of @test_detail.question.tagvalues.each loop
+          end # end of whether assessment is created using rules or not check %>
+          <% @i = 1 %>
+          <%= render :partial => "/assessments/question_answer_for_single_page_test" %>
+          <% @j = @j + 1 %>
+        <% end %>
+      </form>
+    </div> <%# end of div imported_questions %>
+    <hr/>
+    <a href="/assessments/quit_assessment/<%= @current_learner.id %>" id="submit_test">Submit Test</a>
+    <br/><br/>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <div class="pos-fixed">
+      <%= render :partial => "/courses/logo" %>
+      <% if @assessment.time_bound != "not_time_bound" then %>
+        <%= render :partial => "/assessments/side_timer"  %>
+      <% end %><br/>
+      <div id="right_panel_question_list">
+        <%= render :partial => "/assessments/right_panel_single_page_test"  %>
+      </div> <%# end of div right_panel_question_list %>
+    </div> <%# end of div pos-fixed %>
+  </div> <%# end of div div_sidepanel %>
+</div> <%# end of div container %>

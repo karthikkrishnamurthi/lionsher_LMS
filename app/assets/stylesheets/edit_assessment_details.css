@@ -1,0 +1,98 @@
+#div_container #div_mainpanel h1
+{
+    font-size:20px;
+    font-weight:normal;
+    margin-bottom:7px;
+    margin-left:15px;
+    margin-top:0;
+    color: black;
+}
+#div_container #div_mainpanel h1 s
+{
+    color:#666633;
+    text-decoration:none;
+}
+
+h1.tab_style {
+    border-bottom: 1px solid #bbbbbb;
+    width: 97%;
+}
+.tab_questions {
+    background: -moz-linear-gradient(top, #e9e9e9, #bbbbbb) ;
+    background: -webkit-gradient(top, #e9e9e9, #bbbbbb) ;
+    background-color: #bbbbbb;
+    padding: 5px 15px 2px 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: 1px solid #bbbbbb;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    
+}
+.tab_questions_now {
+    background: -moz-linear-gradient(top, #FFFFFF, #FFFFFF);
+    padding: 5px 15px 3.4px 15px;
+    margin-left: 10px;
+    font-size: 14px;
+    border: 1px solid #bbbbbb;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: #FFF;
+}
+.quest_table_data {
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.edit_questions_add_topic {
+    margin: 10px 0px 10px 25px;
+    width: 650px;
+}
+.ie7 .add_new_topic { margin-left: 5px; }
+
+.edit_questions_add_topic a {
+    color:blue;
+    margin-left: -10px;
+    cursor: pointer;
+}
+#question_limit {
+padding-bottom: 1px;
+}
+.edit_of_quest_data {
+    text-align: left;
+    width: 60px;
+}
+.edit_prev_data a{
+    text-decoration:none;
+}
+.assessment_name #destroy_course {
+    font-size: 12px;
+    width: 500px;
+    width: 115px;
+    color: blue;
+    margin-top:5px;
+}
+#scoring_table_form {
+    margin-left: 15px;
+}
+#scoring_table_form td{text-align: left;}
+table th {font-weight:300;}
+table td {text-align: center;}
+#tr{font-size: 11px; height: 10px; background-color: #e5e5e5;}
+#tr_alt{ font-size: 11px;    height: 10px;}
+/*.ie7 #demographic_list_name { margin-top: 0.5px;}*/
+/*.ie7 #demographic_list_age { margin: 30px 0px 0px -40px}*/
+/*.ie7 #demographic_list_gender { margin: 60px 0px 0px -49px}*/
+/*.ie7 #demographic_list_qualiftn { margin: 90px 0px 0px -56px}*/
+.ie7 #assessment_info_name_label {margin: 20px 0px 0px 200px;}
+.ie7 #assessment_info_description_label {margin:48px 0px 0px -180px; }
+.ie7 #assessment_info_char_left_label {margin: 65px 0px 0px -50px;}
+.ie7 #assessment_info_char_left_desc_label {margin: 142px 0px 0px -150px;}
+.ie7 #assessment_send_score_info_label {margin: 275px 0px 0px -320px;}
+.ie7 #assessment_inst_left_particpant {margin: 160px 0px 0px 20px;}
+.ie7 #assessment_send_score_info_mail {width: 300px;}
+.ie7 #assessment_info_char_left_test_instruction {margin: 180px 0px 0px 10px;}
+.ie7 #formatting_guide{width: 300px;}
+.ie7 #demographics_list {margin-top: -50px;}
+.ie7 .tab_questions {background-color: #BBB;}
+.ie8 .tab_questions {background-color: #BBB;}
+.ie7 .edit_questions_add_topic { margin-left: 20px; }

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Assessment:</b>
+  <%= @structure_component.assessment_id %>
+</p>
+
+<p>
+  <b>Assessment component:</b>
+  <%= @structure_component.assessment_component_id %>
+</p>
+
+<p>
+  <b>Tenant:</b>
+  <%= @structure_component.tenant_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_structure_component_path(@structure_component) %> |
+<%= link_to 'Back', structure_components_path %>

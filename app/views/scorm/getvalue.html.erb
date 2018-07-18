@@ -1,0 +1,22 @@
+<%#*Control comes from scorm/getvalue method.
+Response object to be given to listener api (i.e. scorm/api.html) Author : Karthik %>
+
+<% @learner = User.find_by_id(@scormvalue.user_id) %>
+(((((<%=h @scormvalue.user_id %>(((((
+)))))<%=h @learner.login %>)))))
+@@@@@<%=h @scormvalue.score_raw %>@@@@@
+?????<%=h @scormvalue.score_max %>?????
+/////<%=h @scormvalue.score_min %>/////
+#####<%=h @scormvalue.lesson_status %>#####
+*****<%=h @scormvalue.lesson_location %>*****
+$$$$$<%=h @scormvalue.lesson_mode %>$$$$$
+!!!!!<%=h @scormvalue.session_time %>!!!!!
+[[[[[<%=h @scormvalue.total_time %>[[[[[
+]]]]]<%=h @scormvalue.suspend_data %>]]]]]
+|||||<%=h @scormvalue.launch_data %>|||||
+^^^^^<%=h @scormvalue.entry %>^^^^^
+~~~~~<%=h @scormvalue.lesson_exit %>~~~~~
+-----<%=h @scormvalue.credit %>-----
+
+
+

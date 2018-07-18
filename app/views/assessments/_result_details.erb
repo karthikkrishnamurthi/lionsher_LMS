@@ -1,0 +1,49 @@
+<h3>Results</h3>
+
+<% if @assessment.show_status == "on" then %>
+  <input id="show_result" class="checkbox_input" type="checkbox" name="assessment[show_status]" checked onclick="show_div(this,'send_result_to_learner')"/>
+<% else %>
+  <input id="show_result" class="checkbox_input" type="checkbox" name="assessment[show_status]" onclick="show_div(this,'send_result_to_learner')"/>
+<% end %>
+<span>
+  <label class="checkbox_label">Show results to the test taker</label>
+</span>
+
+<div id="send_result_to_learner" <% if @assessment.show_status == "on" then %>style="display:block;"<% else %>style="display:none;"<% end %>>
+  <% if @assessment.send_score_by_mail == "on" then %>
+    <input id="assessment_send_score_by_mail" class="checkbox_input" style="margin-left: 40px;" name="assessment[send_score_by_mail]" type="checkbox" checked />
+  <% else %>
+    <input id="assessment_send_score_by_mail" class="checkbox_input" style="margin-left: 40px;" name="assessment[send_score_by_mail]" type="checkbox" />
+  <% end %>
+
+  <span>
+    <label class="checkbox_label" for="assessment_send_score_by_mail">Send results by email to learners</label>
+  </span>
+
+
+  <div id="show_question_wise_score_to_learner" >
+    <% if @assessment.show_question_wise_scoring == "on" then %>
+      <input id="assessment_show_question_wise_score" class="checkbox_input" style="margin-left: 40px;" name="assessment[show_question_wise_scoring]" type="checkbox" checked onclick="show_div(this,'show_question_explanation')" />
+    <% else %>
+      <input id="assessment_show_question_wise_score" class="checkbox_input" style="margin-left: 40px;" name="assessment[show_question_wise_scoring]" type="checkbox" onclick="show_div(this,'show_question_explanation')" />
+    <% end %>
+
+    <span>
+      <label class="checkbox_label" for="assessment_send_score_by_mail">Show question wise score in report to learners</label>
+    </span>
+  </div>
+  <div id="show_question_explanation" <% if @assessment.show_question_wise_scoring == "on" then %>style="display:block;"<% else %>style="display:none;"<% end %>>
+    <input id="show_question_explanation" class="checkbox_input" type="checkbox" name="assessment[show_question_explanation]" <% if @assessment.show_question_explanation %>checked<% end %>/>
+    <span><label class="checkbox_label">Show question explanation</label></span>
+  </div>
+</div>
+<% if params[:action] == "scoring" then %>
+  <hr/>
+  <div id="submit_btn">
+    <input id="assessment_submit" name="commit" type="submit" value="Next" />
+  </div>
+  <script type="text/javascript">
+    $("#assessment_submit").click(function(){$("input[name^='question_bank[limit_']").removeAttr('disabled'); });
+    $("#assessment_submit").click(function(){$("input[name='assessment[no_of_questions]']").removeAttr('disabled'); });
+  </script>
+<% end %>

@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+Hello <%=h @user.login%>,<br/><br/>
+
+You have recently taken the test named <%=h @assessment.name %>.<br/><br/>
+
+Your score is: <%=h @learner.score_raw %> out of <%=h @learner.score_max%>
+<%if @assessment.show_status == "on"
+if @learner.credit == "fail" then %>
+and you have Failed.
+<%elsif @learner.credit == "pass" then %>
+and you have Passed.
+<%end
+end%>
+<br/><br/>
+Regards,<br/>
+LionSher Team
+</body>
+</html>

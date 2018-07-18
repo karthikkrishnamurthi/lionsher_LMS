@@ -1,0 +1,44 @@
+h2{
+    margin-left: 15px;
+    width: 690px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.top_right_content {
+    float: right;
+    font-size: 12px;
+    font-weight: normal;
+    color: blue;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+.top_left_obj_name {
+    width: 690px;
+}
+.top_left_obj_name .score_top_right_content {
+    float: right;
+}
+#list_report_question_paper {
+    list-style-type: none;
+    margin-left: 15px;
+}
+#list_report_question_paper li {
+    padding: 5px 5px 5px 5px;
+}
+.reports_question{
+    width: 650px;
+    margin-top: 15px;
+}
+.question_points {
+    float: right;
+    margin-top: 0px;
+    font-weight: bold;
+    margin-right:15px;
+}
+.question_points_list {
+    margin: 5px 0px 0px 5px;
+}
+#div_report_question_paper li {
+    width: 500px;
+}
+

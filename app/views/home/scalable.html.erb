@@ -1,0 +1,87 @@
+<head>
+  <link href="/assets/lion.png" rel="icon" />
+  <script type="text/javascript" charset="utf-8">
+    function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+  </script>
+</head>
+
+<title>LionSher : Features - Scalable</title>
+<%= stylesheet_link_tag "website/feature_highlight" %>
+<%= stylesheet_link_tag "website/scalable" %>
+<div class="container-body">
+
+  <div class="LMS-header">
+    <label class="label1">
+      A cloud-based online examination platform - usable, scalable, and affordable
+    </label>
+    <a href="/pricing"><%= image_tag "website/lionsher_images/Create_test_button.png", :class =>"free-trial valign" %></a>
+    <label class="button_tag">in less than 2 minutes</label>
+
+  </div>
+
+  <div class="LMS-body">
+    <div class="navbar">
+      <a href="/features"><div id="take-tour">Take a Tour</div></a>
+      <a href="/tests"><div id="tests">Lionsher Tests</div></a>
+      <a href="/cost_effective"><div id="cost-effective">Cost Effective</div></a>
+      <a href="/easy_to_use"><div id="easy-to-use">Easy to Use</div></a>
+      <a href="/highly_secure"><div id="highly-secure">Highly Secure</div></a>
+      <a href="/customizable"><div id="customizable"> Customizable</div></a>
+      <a href="/scalable"><div id="scalable"> Scalable</div></a>
+      <a href="/anywhere_access"><div id="anywhere-access">Anywhere Access</div></a>
+    </div>
+    <div class="navbar-content">
+      <div class="lms-headings">
+        <%= image_tag "website/lionsher_images/Scalable.jpg" %>
+      </div>
+      <div class="lms-headings-content">
+        <label class="lms-heading-size">Scalable</label><br /><br />
+        <p class="lms-content-size">
+          LionSher is built on a framework that is highly scalable</p>
+        <p class="lms-content-size"> Scale up to support 1000's of test takers without batting an eyelid!</p>
+
+
+      </div>
+
+    </div>
+  </div>
+  <div id="features-arrow">
+    <a href="/anywhere_access"><%= image_tag "website/lionsher_images/right_arrow.png" %></a>
+  </div>
+  <div class="features-footer">
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">
+      </label>
+      <p class="feature-footer-content">
+      </p>
+
+    </div>
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">Supports 1000's of test takers
+      </label>
+      <p class="feature-footer-content">
+
+        LionSher seamlessly scales up to support thousands of test takers at any time. While traditional test platform needs additional hardware and software to do this, LionSher scales instantly to support this. Flexible plans allow you to scale as per your needs.
+      </p>
+    </div>
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">Cloud based platform
+
+      </label>
+      <p class="feature-footer-content">
+        LionSher's servers are cloud based which makes scaling up for more tests automatic. Our cloud provider will automatically increase the server space and speed as more test takers start taking the tests, without any interruptions for you.
+      </p>
+    </div>
+    <div class="feature-footer1">
+      <label class="feature-footer-heading">
+
+      </label>
+      <p class="feature-footer-content">
+
+      </p>
+    </div>
+  </div>
+
+
+  <%= render :partial =>"features_testimonial" %>
+</div>

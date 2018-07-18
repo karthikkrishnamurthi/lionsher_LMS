@@ -1,0 +1,38 @@
+<p>
+  <b>Email type:</b>
+  <%=h @email.email_type %>
+</p>
+
+<p>
+  <b>From:</b>
+  <%=h @email.from %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%=h @email.subject %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @email.body %>
+</p>
+
+<p>
+  <b>Tenant:</b>
+  <%=h @email.tenant_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @email.user_id %>
+</p>
+
+<p>
+  <b>Is parsed:</b>
+  <%=h @email.is_parsed %>
+</p>
+
+
+<%= link_to 'Edit', edit_email_path(@email) %> |
+<%= link_to 'Back', emails_path %>

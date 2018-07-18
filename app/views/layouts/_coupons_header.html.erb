@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+
+    <title>Learning Center</title>
+
+    <!-- all css starts here -->
+    <%= stylesheet_link_tag 'courses_header'  %>
+    <%= stylesheet_link_tag 'courses_footer'  %>
+    <%= javascript_include_tag 'themes' %>
+    <%= javascript_include_tag 'ui/jquery-1.4.4' %>
+    <%= javascript_include_tag 'ui/corner_style' %>
+    <script type="text/javascript">
+      $(function(){
+
+        $('div#div_head, div.type_of_uploads, div.inner').each(function() {
+          var t = $('p', this).text();
+          eval(t);
+        });
+
+      });
+    </script>
+    <!-- all css ends here -->
+    <%= favicon_link_tag "lion.png", :rel => "icon" %>
+  </head>
+  <body>
+    <% tenant = Tenant.find_by_custom_url(request.subdomain) %>
+
+    <!--head begins-->
+    <div id="head">
+
+      <div id="div_head" style="background: <%=h tenant.theme %>;">
+        <div id="org" style="color:<%=h tenant.text_color %>;"><%=h tenant.organization %></div>
+        <p style="display:none;">$(this).corner("top");</p>
+      </div>
+    </div>
+    <!--head ends-->

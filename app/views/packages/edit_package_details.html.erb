@@ -1,0 +1,54 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+<%#= stylesheet_link_tag 'upload_course'  %>
+<%#= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag "edit_assessment_details" %>
+<%= javascript_include_tag 'add_more_topics_to_assessment' %>
+<%= javascript_include_tag 'assessment' %>
+<%= stylesheet_link_tag 'packages' %>
+
+<script type="text/javascript" charset="utf-8">
+  function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div id="container">
+      <h1 class="assessment_name">Edit: <s><%=h @package.name %></s> <a id="destroy_course" style="float: right;" href="" onclick="destroy('/packages/destroy/<%=h @package.id %>','<%=h @package.id %>');">Delete Package</a></h1>
+      <br/>
+      <h1 class="tab_style"><a class="tab_questions" href="/packages/edit_package/<%=h @package.id %>">Course/Tests</a>  <a class="tab_questions_now" href=""> Package Details</a></h1>
+
+      <form action="/packages/update/<%=h @package.id %>" method="post" enctype="multipart/form-data" style="margin-left:20px;">
+        <input type="hidden" name="assessment_course[tenant_id]" value="<%=h current_user.tenant_id %>"/>
+        <input type="hidden" name="assessment_course[user_id]" value="<%=h current_user.id %>"/>
+        <input type="hidden" name="assessment_course[package_id]" value="<%=h params[:id] %>"/>
+
+        <label class="label-align">Name</label><br/>
+        <input id="package_name" type="text" name="package[name]" size="35" value="<%=h @package.name %>"/><br/>
+
+        <label class="label-align">Description</label>
+        <i style="margin-left:314px;margin-top:18px;position:absolute;font-size:10px;">150<br/> characters</i><br />
+        <textarea id="package_description" name="package[description]" maxlength="150" rows="3" cols="50">
+        <%=h @package.description %></textarea><br/>
+
+        <label class="label-align">Cover Image</label><br/>
+        <% if @package.package_image_file_size.nil? or @package.package_image_file_size.blank? %>
+          <div id="display_course_image"><%= image_tag "Package-120x90.png" %></div>
+        <% else %>
+        <div id="display_course_image"><%= image_tag @package.package_image.url(:small) %></div>
+      <% end %>
+        <input id="course_image" name="package[package_image]" size="45" type="file" />
+      <div id="image_type_div" style="display: block; color: red; float:left;margin:6px 0px 0px 14px;">
+        <% if !flash[:wrong_image_type].nil? or !flash[:wrong_image_type].blank? then %>
+          <%=h flash[:wrong_image_type] %>
+        <% end %>
+      </div><br/><br/>
+          <div id="dotted_line"></div>
+        <input class="submit_button" type="submit" value="submit"/>
+        <a href="/courses" style="color:blue;margin-left:620px;">cancel</a>
+      </form>
+    </div>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

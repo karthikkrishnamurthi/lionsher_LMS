@@ -1,0 +1,26 @@
+<% @i = 1
+options = Question.find_all_by_mtf_id(@question.id, :order => 'id') %>
+<table border=0 width=100% style='table-layout:fixed'>
+  <col width=3%/>
+  <col width=5%/>
+  <col width=45%/>
+  <col width=3%/>
+  <col width=45%/>
+  <% for option in options
+    answer = Answer.find_by_question_id(Answer.find_by_question_id(option.id).answer_status.to_i)
+  %>
+    <tr>
+      <% if @assessment.test_pattern.id == 1 %><td><label><%=h (@i+96).chr %>.</label>&nbsp;</td><% end %>
+      <% if @answer_id.nil? or @answer_id.blank? or !@answer_id.include? '*' then %>
+        <td><input class="radio_answer" type="text" name="answer_id" size="1" maxlength="1" id="ans_<%= @i %>" value=""/></td>
+      <% else
+        answers = @answer_id.split(',') %>
+        <td><input class="radio_answer" type="text" name="answer_id" size="1" maxlength="1" id="ans_<%= @i %>" value="<%=h answers[@i-1] %>" /></td>
+      <% end %>
+      <td class="mtf_input"><%=h option.question_text %><input id="option_<%= @i %>" name="<%=h option.id %>" size="25" type="text" value="<%=h option.question_text %>" style="display: none" disabled/></td>
+      <td><label><%=h @i %>.</label>&nbsp;</td>
+      <td class="mtf_input"><%=raw answer.answer_text %><input id="answer_<%= @i %>" name="<%= answer.question_id %>" size="25" type="text" value="<%=h answer.answer_text %>" style="display: none" disabled/></td>
+    </tr>
+    <% @i = @i + 1
+  end %>
+</table>

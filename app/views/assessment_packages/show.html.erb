@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @assessment_package.name %>
+</p>
+
+<p>
+  <b>Tenant:</b>
+  <%=h @assessment_package.tenant_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @assessment_package.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_assessment_package_path(@assessment_package) %> |
+<%= link_to 'Back', assessment_packages_path %>

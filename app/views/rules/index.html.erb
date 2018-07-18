@@ -1,0 +1,31 @@
+<h1>Listing rules</h1>
+
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>Tagvalue</th>
+    <th>Questions required</th>
+    <th>Questions picked</th>
+    <th>Tenant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rules.each do |rule| %>
+  <tr>
+    <td><%= rule.tag_id %></td>
+    <td><%= rule.tagvalue_id %></td>
+    <td><%= rule.questions_required %></td>
+    <td><%= rule.questions_picked %></td>
+    <td><%= rule.tenant_id %></td>
+    <td><%= link_to 'Show', rule %></td>
+    <td><%= link_to 'Edit', edit_rule_path(rule) %></td>
+    <td><%= link_to 'Destroy', rule, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rule', new_rule_path %>

@@ -1,0 +1,4 @@
+<label class="question_para"style="font-weight: normal; font-size: 13px;"><%= raw RedCloth.new(@direction.question_text).to_html %></label><br/>
+<% unless @direction.question_image_file_size.nil? %>
+  <%= image_tag @direction.question_image.url(:original), :alt => "Image" %><br/>
+<% end %>

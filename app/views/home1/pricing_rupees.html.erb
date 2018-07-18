@@ -1,0 +1,79 @@
+<%= stylesheet_link_tag 'pricing_rupees' %>
+<%= render :partial => "pricing" %>
+
+<div id="pricing_mid_panel">
+
+  <div class="type_of_business">
+    <h5> <%= raw @rules['Business']['small1']['type'] %></h5>
+    <div class="sub_type_of_business_left">
+      <div class="plan_details"><b><s><label class="WebRupee">Rs.</label><%= raw @rules['Business']['small1']['price'] %></s> </b></div>
+      <span>per year</span>
+      <div class="plan_details">14 days free trial</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['small1']['learners'] %></s> Learners</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['small1']['space_in_GB']%></s> Space</div>
+      <a href="/users/signup/5?type_of_business=small business"><div class="signup_div"></div></a>
+    </div>
+
+    <div class="sub_type_of_business_right">
+      <div class="plan_details"><b><s><label class="WebRupee">Rs.</label><%= raw @rules['Business']['small2']['price'] %></s> </b></div>
+      <span>per year</span>
+      <div class="plan_details">14 days free trial</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['small2']['learners'] %></s> Learners</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['small2']['space_in_GB']%></s> Space</div>
+      <a href="/users/signup/6?type_of_business=small business"><div class="signup_div"></div></a>
+    </div>
+  </div>
+
+
+  <div class="type_of_business">
+    <h5> <%= raw @rules['Business']['corporate1']['type'] %></h5>
+    <div class="sub_type_of_business_left">
+      <div class="plan_details"><b><s><label class="WebRupee">Rs.</label><%= raw @rules['Business']['corporate1']['price'] %></s> </b></div>
+      <span>per year</span>
+      <div class="plan_details">14 days free trial</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['corporate1']['learners'] %></s> Learners</div>
+      <div class="plan_details"><s> <%= raw @rules['Business']['corporate1']['space_in_GB']%></s> Space</div>
+      <a href="/users/signup/7?type_of_business=corporate"><div class="signup_div"></div></a>
+    </div>
+
+    <div class="sub_type_of_business_right">
+      <div class="plan_details"><b><s><label class="WebRupee">Rs.</label><%= raw @rules['Business']['corporate2']['price'] %></s> </b></div>
+      <span>per year</span>
+      <div class="plan_details">14 days free trial</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['corporate2']['learners'] %></s> Learners</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['corporate2']['space_in_GB']%></s> Space</div>
+      <a href="/users/signup/8?type_of_business=corporate"><div class="signup_div"></div></a>
+    </div>
+  </div>
+
+
+  <div class="type_of_business">
+    <h5> <%= raw @rules['Business']['enterprise1']['type'] %></h5>
+    <div class="sub_type_of_business_left">
+      <div class="plan_details"><b><s><label class="WebRupee">Rs.</label><%= raw @rules['Business']['enterprise1']['price'] %></s> </b></div>
+      <span>per year</span>
+      <div class="plan_details">14 days free trial</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['enterprise1']['learners'] %></s> Learners</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['enterprise1']['space_in_GB']%></s> Space</div>
+      <a href="/users/signup/9?type_of_business=enterprise"><div class="signup_div"></div></a>
+    </div>
+
+    <div class="sub_type_of_business_right">
+      <div class="plan_details"><b><s><label class="WebRupee">Rs.</label><%= raw @rules['Business']['enterprise2']['price'] %></s> </b></div>
+      <span>per year</span>
+      <div class="plan_details">14 days free trial</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['enterprise2']['learners'] %></s> Learners</div>
+      <div class="plan_details"><s><%= raw @rules['Business']['enterprise2']['space_in_GB']%></s> Space</div>
+      <a href="/users/signup/10?type_of_business=enterprise"><div class="signup_div"></div></a>
+    </div>
+  </div>
+
+
+</div>
+<div class="shadow_line"> &nbsp;</div>
+<div id="lower_panel">
+  <%= image_tag "lionsherhome_images/icon_email.png" %>
+  <p><%= raw @rules['Business']['moreinfo']['contactsales'] %><s><%= raw @rules['Business']['moreinfo']['salesemail'] %></s></p>
+  <p><%= raw @rules['Business']['moreinfo']['emailsupport'] %></p>
+</div>
+

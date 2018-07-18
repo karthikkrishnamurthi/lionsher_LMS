@@ -1,0 +1,2 @@
+module ComponentWidgetVariablesHelper
+end

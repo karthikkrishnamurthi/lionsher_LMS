@@ -1,0 +1,19 @@
+<% unless @mcq_learner_answer.nil? or @mcq_learner_answer.blank? 
+  if @answer.answer_status == "correct" and @mcq_learner_answer.answer_text == @answer.answer_text then %>
+    <li><%=h (@j+96).chr %>.<%=raw @mcq_learner_answer.answer_text %> - <font color="green">Correct Answer</font></li>
+    <span class="question_points"></span>
+  <% elsif @answer.answer_status == "correct" and @mcq_learner_answer.answer_text != @answer.answer_text then %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %> - Correct Option</li>
+  <% elsif @answer.answer_status != "correct" and @mcq_learner_answer.answer_text == @answer.answer_text then %>
+    <li><%=h (@j+96).chr %>.<%=raw @mcq_learner_answer.answer_text %> - <font color="red">Incorrect Answer</font></li>
+    <span class="question_points"></span>
+  <% else %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %></li>
+  <% end
+else # if learner has skipped the question,else part will get executed 
+  if @answer.answer_status == "correct" %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %> - Correct Option</li>
+  <% else %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %></li>
+  <% end
+end %>

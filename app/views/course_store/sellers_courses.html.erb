@@ -1,0 +1,133 @@
+<%= stylesheet_link_tag 'upload_course' %>
+<%= stylesheet_link_tag 'courses_content' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h1>All Courses</h1>
+    <% i = 0
+    for course in @courses
+     obj_buyer_seller = BuyerSeller.find_all_by_course_id(course.id,:conditions => "course_payment_done = 1")
+     total_no_of_license = 0
+     total_price = 0
+     obj_buyer_seller.each {|buyer_seller|
+        total_no_of_license += buyer_seller.no_of_license
+        total_price += buyer_seller.price*75/100
+     }
+      if i == 0 %>
+        <div class="div_mainpanel_content">
+          <% i = 1
+        else %>
+          <div class = "div_mainpanel_content_alt">
+            <% i = 0
+          end%>
+          <div class="div_content_type"><%=h course.typeofcourse %> &nbsp;
+            <%if !course.duration_hour.nil? and !course.duration_min.nil?  then%> | &nbsp; <%= course.duration_hour %> hr <%= course.duration_min %> min
+            <%elsif course.duration_hour.nil? and !course.duration_min.nil?  then%> | &nbsp; <%= course.duration_min %> min
+            <%elsif !course.duration_hour.nil? and course.duration_min.nil?  then%> | &nbsp; <%= course.duration_hour %> hr<%end%>
+          </div>
+          <div class="div_course_title"><%=h course.course_name %></div>
+          <div class="div_description">
+            <% if !(course.description.nil?) or !(course.description.blank?) then %>
+              <% if course.description.length >= 150 %><%=h course.description[0..150] %>&hellip;<% else %><%=h course.description %><% end %>
+            <% end %>
+          </div>
+          <div class="div_course_price">Price <em>Rs. <%=h course.course_price.to_i %></em></div>
+          <div style="height: 90px; border-right: #cccccc 1px dotted; position: absolute; top: 5px; right: 200px;"></div>
+          <% if course.typeofcourse == "e-learning" then %>
+
+            <% if course.image_file_name.nil? %>
+              <div class="div_content_pic"><%= image_tag "Elearning.png" %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+            <% end %>
+            <div class="preview">
+              <a href="/course_store/edit/<%=h course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+              <a href="" onclick="javascript:window.open('/scorm/admin_scorm_preview/<%=h course.id %>', 'elearning', 'location=no,status=0,scrollbars=no,menubar=no,toolbar=no');">Preview Course</a>
+            </div>
+
+          <% elsif course.typeofcourse == "audio" then %>
+
+            <%  if course.image_file_name.nil? %>
+              <div class="div_content_pic"><%= image_tag "Audio.png" %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+            <% end %>
+            <div class="preview">
+              <a href="/course_store/edit/<%=h course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+              <a href="" onclick="javascript:window.open('/scorm/admin_audvid_preview/<%=h course.id %>','audio','scrollbars=0,height=5,width=565,status=no,location=no,menubar=no,toolbar=no');">Preview Course</a>
+            </div>
+
+          <% elsif course.typeofcourse == "video" then %>
+
+            <% if course.image_file_size.nil? %>
+              <div class="div_content_pic"><%= image_tag course.image_file_name %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+            <% end %>
+            <div class="preview">
+              <a href="/course_store/edit/<%=h course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+              <a href="" onclick="javascript:window.open('/scorm/admin_audvid_preview/<%=h course.id %>', 'media', 'scrollbars=0,height=425,width=565,status=no,location=no,menubar=no,toolbar=no');">Preview Course</a>
+            </div>
+
+          <% elsif course.typeofcourse == "flash" then %>
+
+            <% if course.image_file_name.nil? %>
+              <div class="div_content_pic"><%= image_tag "Elearning.png" %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+            <% end %>
+            <div class="preview">
+              <a href="/course_store/edit/<%=h course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+              <a href="" onclick="javascript:window.open('/scorm/admin_audvid_preview/<%=h course.id %>', 'flash' ,'scrollbars=0,height=500,width=615,status=no,location=no,menubar=no,toolbar=no');">Preview Course</a>
+            </div>
+
+          <% elsif course.typeofcourse == "presentation" then %>
+
+            <% if course.image_file_size.nil? %>
+              <div class="div_content_pic"><%= image_tag course.image_file_name %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+            <% end %>
+            <div class="preview">
+              <a href="/course_store/edit/<%=h course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+              <a href="" onclick="javascript:window.open('/scorm/admin_audvid_preview/<%=h course.id %>', 'presentation', 'scrollbars=0,height=500,width=615,status=no,location=no,menubar=no,toolbar=no');">Preview Course</a>
+            </div>
+
+          <% elsif course.typeofcourse == "document" then %>
+
+            <% if course.image_file_size.nil? %>
+              <div class="div_content_pic"><%= image_tag course.image_file_name %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+            <% end %>
+            <div class="preview">
+              <a href="/course_store/edit/<%=h course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+              <a href="/document_viewer/<%= course.id %>" target="_blank">View Document</a>
+            </div>
+
+          <% end %>
+          <div id="learners_star_display_div" style="left: 500px;top: 40px;"><%=h total_no_of_license %> Sold</div>
+          <div class="div_takecourse" >
+            <a href="/course_store/publish/<%=h course.id %>" style="top: 65px; right: 90px; width: 100px;">
+              <% if course.published == false %>
+                Publish Course
+              <% else %>
+                Remove
+              <% end %>
+            </a>
+          </div>
+          <div class="status_text" style="font-size: 22px;">Rs.<%=h total_price %></div>
+        </div>
+      <% end %>
+    </div>
+
+
+    <div id="div_sidepanel">
+      <div id="logo"><%= image_tag @seller.logo.url(:small) %></div>
+      <div class="type_of_uploads" style="width: 120px;margin-left: 53px;">
+        <div class="course_assessment_button"><a href="/course_store/upload_course/<%= current_user.id %>">Upload New Course</a></div>
+      </div>
+      Rs.<%=h @seller.total_amount %><br/><br/>
+      <%=h @seller.no_of_licenses_sold %> Sold
+    </div>
+  </div>

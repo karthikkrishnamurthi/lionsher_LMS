@@ -1,0 +1,28 @@
+<input id="previous_button" type="button" value="Previous" onclick="goto_next_previous_question('question_answer_div_<%= @j %>','question_answer_div_<%= @j-1 %>')" <% if @j == 1 then %>style="display:none;" <% else %> style="display:block;" <% end %> />
+<% unless @test_details[@j].nil? %>
+	<% unless @test_detail.question_type == "FIB" or @test_detail.question_type == "SA" %>
+  		<input id="next_button" type="button" value="Next" 
+                       onclick="goto_next_previous_question('question_answer_div_<%= @j %>','question_answer_div_<%= @j+1 %>')"
+                       <% if @j == 1 then %>style="margin-left:160px;" <% end %> />
+  	<% else %>
+  		<input id="next_button" type="button" value="Next" onclick="goto_next_previous_question('question_answer_div_<%= @j %>','question_answer_div_<%= @j+1 %>'),
+                  checknet(<%= @test_detail.id %>)?
+                  new Ajax.Request('/assessments/ajax_save_answer_fib_multi_page_test/'+<%= @test_detail.id %>+'?fib_answer_text='+document.getElementById('fib_ans_<%= @j %>').value+'&lesson_location='+<%= @test_details[@j - 1].serial_number - 1 %>
+                  <% if params.include? "from" %>
+                  +'&from'
+                  <% end %>
+  		  ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)})
+                  :
+                  save_fib_pending_answers_multi_page_test(<%= @test_detail.id %>,'fib_ans_<%= @j %>');"
+                 <% if @j == 1 then %>style="margin-left:160px;" <% end %> />
+  	<% end %>
+<% end %>
+<% if @j == @test_details.count %>
+	<% if @test_detail.question_type == "FIB" or @test_detail.question_type == "SA" %>
+		<input name="fib_test_detail_id" type="hidden" value="<%= @test_detail.id %>"/>
+	<% else %>
+		<input type="hidden" name="fib_answer_text" value=""/>
+	<% end %>
+	<input id="next_button" type="submit" value="Next" />
+<% end %>
+<br/><br/>

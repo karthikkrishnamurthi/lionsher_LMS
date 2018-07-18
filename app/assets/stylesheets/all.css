@@ -1,0 +1,84 @@
+/* layout */
+body {
+    /*background:url('../images/lionSher_blog.png') repeat-x;*/
+    background:url('bg_tile.jpg');
+    background-color: #fbfaf5;
+    margin:0;
+    padding:0;
+    font-family: arial;
+    font-size: 12px;
+}
+/*#main_main {
+background-color: red;
+background:url('../images/lionSher_blog.png') repeat-x;
+padding: 10px;
+}*/
+#main {
+    margin: 0 auto 0 auto;
+    /*background-color: gray;*/
+    background:url('bg_shadow_strip.jpg') repeat-y;
+    width:1024px;
+    height:auto;
+    overflow:hidden;
+}
+#main_inner {
+    /*background-color: red;*/
+    width: 960px;
+    overflow:hidden;
+    margin: 0px auto 0 auto;
+}
+#main_bg {
+    /*background-color: yellow;*/
+    margin: 0 auto 0 auto;
+    /*background:url('../images/lionSher_bg.jpg') no-repeat;*/
+    width:1024px;
+}
+
+#main_inner_left {
+    /*background-color: lime;*/
+    left: 0px;
+    top: 0px;
+    width: 650px;
+    /*background: white;*/
+    float: left;
+    overflow: hidden;
+    font-family: verdana;
+    font-size: 9pt;
+    font-style: normal;
+    color: #333333;
+   }
+
+#main_inner_left_in {
+    /*background-color: aqua;*/
+    margin:20px 25px;
+    width: 625px;
+    font-family: verdana;
+    font-size: 9pt;
+    overflow: hidden;
+    }
+#header a img {
+        border: 0;
+}
+
+/* Text Elements */
+
+/*a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff6600;
+}*/
+
+a {
+text-decoration: underline;
+color: #ff6600;
+}
+
+#div_container
+{
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+

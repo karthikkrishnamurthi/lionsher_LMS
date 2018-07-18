@@ -1,0 +1,95 @@
+body
+{
+    margin: 0px;
+    padding:0px;
+    background:url('bg_tile.jpg');
+    font-family: "lucida grande", sans-serif;
+    font-size: 12px;
+    /*background-color: fuchsia;*/
+}
+#main_header
+{
+    width: 960px;
+    background-color: #ffffff;
+    height: 110px;
+    margin: 0px auto;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    /*background-color: yellow;*/
+}
+#main_header #logo
+{
+    /*background-color: gray;*/
+    width: 200px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+#main_header #logo a
+{
+    color: #ffffff;
+    border: none;
+}
+#main_header #logo a img
+{
+    border: none;
+}
+#main_header #main_tabs
+{
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    /*right: 80px;*/
+    right: 12px;
+}
+#main_header #main_tabs .tab
+{
+    /*background-color: green;*/
+    float: left;
+    padding-top: 50px;
+    text-align: center;
+    margin: 0px 10px 0px 10px;
+    font-size: 12px;
+    position: relative;
+}
+#main_header #main_tabs #tests
+{
+  margin-left: 60px;
+  margin-right: -40px;
+}
+#main_header #main_tabs #course_store
+{
+    margin-left: 60px;
+}
+
+#main_header #main_tabs a
+{
+    text-decoration: none;
+    font-weight: bold;
+    color: #333333;
+    padding-top : 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#main_header #main_tabs img
+{
+    position: absolute;
+    top: 15px;
+    left: 13px;
+    border: none;
+}
+#main_header #main_tabs .tab:hover
+{
+    background-color: #efefef;
+}
+#main_header .shadow_line
+{
+    position: absolute;
+    /*top:122px;*/
+    top: 80px;
+    left: 0px;
+    width: 960px;
+    background: url("lionsherhome_images/tile_band.jpg") repeat-x scroll 0 0 transparent;
+}
+

@@ -1,0 +1,18 @@
+<p>
+  <b>Value:</b>
+  <%=h @tagvalue.value %>
+</p>
+
+<p>
+  <b>Tag:</b>
+  <%=h @tagvalue.tag_id %>
+</p>
+
+<p>
+  <b>Tagvalue:</b>
+  <%=h @tagvalue.tagvalue_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_tagvalue_path(@tagvalue) %> |
+<%= link_to 'Back', tagvalues_path %>

@@ -1,0 +1,59 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag 'structure_components'%>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h3><b>Assessment Structure: <%=h @assessment.name%></b></h3>
+    <form method="post" action="/structure_components/post_component/<%= @assessment.id %>" enctype="multipart/form-data" class="form_style">
+      <% unless @existing_structure.nil? or @existing_structure.blank? %>
+        <table>
+          <% i = 1  %>
+          <% @existing_structure.each do |structure| %>
+            <tr>
+              <td style="text-align:left;"><%=h i%>.
+                <% unless Section.find_by_structure_component_id(structure.id).nil? or Section.find_by_structure_component_id(structure.id).blank? %>
+                  <a href="/rules/create_rule/<%= Section.find_by_structure_component_id(structure.id).id %>?assessment=<%= @assessment.id %>">
+                    <!-- highlight a component if it is filled -->
+                    <font <% if structure.is_saved == "true"%>color="green"<% end %>>
+                    section: <%=h Section.find_by_structure_component_id(structure.id).name %>
+                    </font>
+                  </a>
+                <% else %>
+                 <a href="/structure_components/component_details/<%=h structure.id %>">
+                  <font <% if structure.is_saved == "true"%>color="green"<% end %>>
+                    <%=h structure.assessment_component.name %>
+                  </font>  
+                 </a>
+                <% end %> <%# end of unless section check %>
+              </td>
+            </tr>
+            <% i = i + 1 %>
+          <% end %> <%# end of @existing_structure loop %>
+        </table>
+      <% end %> <%# end of @existing_structure nil check %>
+      <br/>
+      <table>
+        <tr>
+          <td>Component</td>
+          <td>
+            <select name="assessment_component">
+              <% @assessment_components.each do |assessment_component| %>
+                <option value="<%=h assessment_component.id %>"><%=h assessment_component.name %></option>
+              <% end %>
+            </select>
+            <input type="submit" name="button" value="Add"/>
+          </td>
+        </tr>
+      </table>
+      <hr/>
+      <a href="/assessments/store_admin_preview_details_using_rules/<%= @assessment.id %>" class="done_button">Done</a>
+      <a href="/assessments/destroy/<%= @assessment.id %>" style="color:blue;margin-left:540px;">Delete</a> |
+      <span class="add_more_cancel"><a class="link_cancel" href="/courses">Cancel</a></span>
+    </form>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

@@ -1,0 +1,27 @@
+<h1>Listing structure_components</h1>
+
+<table>
+  <tr>
+    <th>Assessment</th>
+    <th>Assessment component</th>
+    <th>Tenant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @structure_components.each do |structure_component| %>
+  <tr>
+    <td><%= structure_component.assessment_id %></td>
+    <td><%= structure_component.assessment_component_id %></td>
+    <td><%= structure_component.tenant_id %></td>
+    <td><%= link_to 'Show', structure_component %></td>
+    <td><%= link_to 'Edit', edit_structure_component_path(structure_component) %></td>
+    <td><%= link_to 'Destroy', structure_component, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Structure component', new_structure_component_path %>
