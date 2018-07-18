@@ -1,0 +1,23 @@
+<% if @assessment.test_pattern.pattern_name == "AIEEE" and @assessment.test_pattern.no_of_sections > 1 %>
+  <div id="section_info">
+    <fieldset id="sections" width="100%"/>
+    <legend>Sections</legend>
+    <% (1..@assessment.test_pattern.no_of_sections).each do |i| %>
+      <div class="section_tab"><a href="/assessments/goto_section/<%=h i %>?current_learner=<%=h @current_learner.id %>">Section <%=h i %></a></div>
+    <% end %>
+  </div>
+<% end %>
+<div id="question_answer_content">
+  <div id="question_list">
+    <% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+      <div id="question_border">
+        Question:<hr/><br/>
+      </div>
+    <% end %>
+    <div id="question_numb_aieee">
+      <%=h @current_learner.lesson_location.to_i + 1 %>.
+    </div>
+    <div style="color:black;font-weight:bold;"><h8>Options:</h8></div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  </div>
+</div>

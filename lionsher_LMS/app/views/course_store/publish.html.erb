@@ -1,0 +1,44 @@
+<%#*Saves course details. Control comes from courses/upload_course.html%>
+<%#*Authors : Surupa, Aarthi %>
+
+<%= stylesheet_link_tag 'courses_content'  %>
+<%= stylesheet_link_tag 'upload_course'  %>
+<%= stylesheet_link_tag 'course_details'  %>
+<%= javascript_include_tag 'course_details' %>
+<%= javascript_include_tag 'player' %>
+<%= stylesheet_link_tag 'for_ie_7'%>
+<script type="text/javascript" charset="utf-8">
+  function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+
+    <form name="myForm" onsubmit="javascript:return validation();" action="/course_store/save_account_details/<%=h @course.id %>" class="new_course" enctype="multipart/form-data" id="new_course" method="post">
+      <h1><% if @course.published == false %>Publish<% else %>Remove<% end %>: <%=h @course.course_name %></h1>
+      <label for="course_course_name">Bank Name</label>
+      <input id="course_course_name" onblur="validate('course_course_name','display_course_name');" name="seller[bank_name]" maxlength="40" size="52" type="text" <% if !(@seller.bank_name.nil? or @seller.bank_name.blank?) %>value="<%=h @seller.bank_name %>"<% end %>/>
+      <span class="char_fourty"> 40 Characters</span>
+      <div id="display_course_name" style="display: none;">Mention the bank name</div>
+
+      <label>Account Name</label>
+      <input type="text" size="52" maxlength="40" name="seller[account_name]"<% if !(@seller.account_name.nil? or @seller.account_name.blank?) %>value="<%=h @seller.account_name %>"<% end %>/>
+
+      <label>Account Number</label>
+      <input type="text" size="52" maxlength="40" name="seller[account_number]"<% if !(@seller.account_number.nil? or @seller.account_number.blank?) %>value="<%=h @seller.account_number %>"<% end %>/>
+
+      <label for="course_description">Postal Address</label>
+      <textarea cols="50" id="course_description" name="seller[postal_address]" onkeyup="textCounter(this,document.myForm.remLen,150)" onclick="textCounter(this,document.myForm.remLen,150)"><% if !(@seller.postal_address.nil? or @seller.postal_address.blank?) %><%=h @seller.postal_address %><% end %></textarea>
+      <span class="char_left_course_details"><input disabled type="text" name="remLen" size="3" maxlength="3" value="150"/> Characters left</span>
+      
+      <hr/>
+      <label class="course_details_continue"><input id="course_submit" name="commit" type="submit" <% if @course.published == false %>value="Publish"<% else %>value="Remove"<% end %> /></label>
+      <div id="cancel"><s>or</s><a id="cancel" href="/course_store/sellers_courses/<%=h current_user.id %>">Cancel</a></div>
+
+    </form>
+  </div>
+
+  <div id="div_sidepanel">
+    <%= image_tag @seller.logo.url(:small) %>
+  </div>
+</div>

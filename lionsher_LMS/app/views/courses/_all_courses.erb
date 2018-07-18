@@ -1,0 +1,94 @@
+<% unless @user_courses.nil? or @user_courses.blank? then
+  @user_courses.each do |course|
+    @course = course
+    if @course.current_learner_id.nil? or @course.current_learner_id.blank?
+      learner = Learner.find_by_course_id_and_type_of_test_taker(@course,"admin")
+      if learner.nil?
+        learner = @course.store_admin_details(@course,current_user)
+      end
+      @course.update_attribute(:current_learner_id,learner.id)
+    end
+    if current_user.typeofuser == "individual buyer" or current_user.typeofuser == "corporate buyer" then
+      @buyer_seller = BuyerSeller.find_by_course_id_and_buyer_user_id(@course.id,current_user.id)
+    end
+    if @i == 0 then %>
+
+      <div class="div_mainpanel_content">
+        <% @i = 1
+      else%>
+        <div class = "div_mainpanel_content_alt">
+          <% @i = 0
+        end %>
+        <div class="div_content_type"><%=h @course.typeofcourse %> &nbsp;
+          <%if !@course.duration_hour.nil? and !@course.duration_min.nil?  then%> | &nbsp; <%= @course.duration_hour %> hr <%= @course.duration_min %> min
+          <%elsif @course.duration_hour.nil? and !@course.duration_min.nil?  then%> | &nbsp; <%= @course.duration_min %> min
+          <%elsif !@course.duration_hour.nil? and @course.duration_min.nil?  then%> | &nbsp; <%= @course.duration_hour %> hr<%end%>
+        </div>
+
+        <div class="div_course_title"><%=h @course.course_name %></div>
+        <div class="div_description">
+          <% if !(@course.description.nil?) or !(@course.description.blank?) then %>
+            <%=h @course.description %>
+          <% end %>
+        </div>
+        <div style="height: 90px; border-right: #cccccc 1px dotted; position: absolute; top: 5px; right: 200px;"></div>
+        <% if current_user.typeofuser == "individual buyer" or current_user.typeofuser == "corporate buyer" then %>
+          <div class="licenses_used" style="text-align: center;font-size:10px;position: absolute;top: 4px ;right: 5px;">
+            <em style="font-style: normal; font-size:14px; "><%=h @course.total_learners %>/<%=h @buyer_seller.no_of_license %></em>
+            <br/>
+            Licenses used
+          </div>
+        <% end %>
+        <div class="comments"><% if @course.no_of_comments > 0 and @course.feedback == "checked" then %><a href="/courses/comments/<%=h @course.id %>"><%= @course.no_of_comments %><%= image_tag "comment.png", :alt => "missing" %></a><% end %></div>
+        <div class="assign_manage_learners">
+          <% if @course.total_learners > 0 then %>
+            <a href="/reports/learners_for_course/<%= @course.id %>">Course Report</a> &nbsp; | &nbsp;
+            <a href="/courses/manage_learners/<%=h @course.id %>">Manage Learners</a>
+          <% else %>
+            <a class="assign_learners_button" style="text-decoration: none;" href="/courses/manage_learners/<%=h @course.id %>">Assign Learners</a>
+          <% end %>
+        </div>
+        <% case(@course.typeofcourse)
+        when "e-learning" then %>
+
+          <%= render :partial => "/courses/course_elearning"  %>
+
+        <% when "audio" then %>
+
+          <%= render :partial => "/courses/course_audio" %>
+
+        <% when "video" then %>
+          <%= render :partial => "/courses/course_video" %>
+
+        <% when "flash" then %>
+
+          <%= render :partial => "/courses/course_flash" %>
+
+        <% when "presentation" then %>
+
+          <%= render :partial => "/courses/course_ppt" %>
+
+        <% when "document" then %>
+
+          <%= render :partial => "/courses/course_document" %>
+
+        <% end %>
+
+        <%  if @course.feedback == "checked" and @course.average_rating > 0 then %>
+          <% j = 0
+          while j <= 4
+            if j < @course.average_rating then%>
+              <div class="star_admin"><%= image_tag "star_fill_small.png"%></div>
+            <%else%>
+              <div class="star_admin"><%= image_tag "star_unfill_small.png"%></div>
+            <%end
+            j = j + 1
+          end
+        %>
+        <% end
+        if @course.total_learners > 0 then %>
+          <div class="status_text"><%= @course.completed_learners %><em>/<%= @course.total_learners %> Completed</em></div>
+        <% end %>
+      </div>
+    <% end
+  end %>

@@ -1,0 +1,35 @@
+<%#*TODO : Write Documentation and change name of methods and corresponding file%>
+<%#*Author : Karthik%>
+<%#*TODO : Remove hard coded url%>
+
+<% logger.info"PARAMS in launch #{params.inspect}"
+@learner_course = Learner.find_by_id(params[:learner_id].to_i) %>
+<%  obj_course = Course.find_by_id(params[:id])%>
+  <% if params[:type] == "e-learning" then %>
+    <frameset frameborder="0" framespacing="0" border="0" rows="20,*" cols="*">
+      <frame src="/scorm/api?SCOInstanceID=<%=h @learner_course.id %>" name="API" noresize />
+      <% if obj_course.scorm_url_parameters.nil? or obj_course.scorm_url_parameters.blank? then %>
+        <frame src="/<%=h obj_course.url %>" name="course" />
+      <% else %>
+        <frame src="/<%=h obj_course.url %>?<%=h obj_course.scorm_url_parameters %>" name="course" />
+      <% end %>
+    </frameset>
+  <% end %>
+  <% if params[:type] == "audio" or params[:type] == "video" then %>
+    <frameset frameborder="0" framespacing="0" border="0" rows="20,*" cols="*">
+      <frame src="/scorm/api?SCOInstanceID=<%=h @learner_course.id %>" name="API" noresize />
+      <frame src="/scorm/audvid_player?course_url=<%=h obj_course.url %>&type=<%=h params[:type] %>" name="course" />
+    </frameset>
+  <%end%>
+  <% if params[:type] == "presentation" then %>
+  <frameset frameborder="0" framespacing="0" border="0" rows="20,*" cols="*">
+    <frame src="/scorm/api?SCOInstanceID=<%=h @learner_course.id %>" name="API" noresize />
+    <frame src="/scorm/audvid_player?course_url=<%=h obj_course.url %>&type=<%=h params[:type] %>&SCOInstanceID=<%=h @learner_course.id %>" name="course" />
+  </frameset>
+  <%end%>
+  <% if params[:type] == "flash" then %>
+  <frameset frameborder="0" framespacing="0" border="0" rows="20,*" cols="*">
+    <frame src="/scorm/api?SCOInstanceID=<%=h @learner_course.id %>" name="API" noresize />
+    <frame src="/scorm/audvid_player?course_url=<%=h obj_course.url %>&type=<%=h params[:type] %>&SCOInstanceID=<%=h @learner_course.id %>" name="course" />
+  </frameset>
+  <% end %>

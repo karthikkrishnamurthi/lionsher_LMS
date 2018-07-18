@@ -1,0 +1,7 @@
+<% @left_learners = 0 %>
+<% if @total_learners.length != 0 then %>
+  <h4>Assigned Learners - <%= @learners.length %> of <%= @total_learners.length %> <input id="select_all" type="button" onclick="checkall(<%= @learners.length %>);" value="Select All"/> | <input id="select_none" type="button" onclick="uncheckall(<%= @learners.length %>);" value="Select None"/></h4>
+    <% @left_learners = (@total_learners.length)/2 %>
+  <% end %>
+  <% @i = 1
+  @j = 0 %>

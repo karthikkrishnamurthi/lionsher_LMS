@@ -1,0 +1,33 @@
+<%#*Author : Surupa%>
+<%= stylesheet_link_tag 'course_report' %>
+<%= stylesheet_link_tag 'tablestyle'  %>
+<%= javascript_include_tag "test" %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div class="inner_mainpanel">
+      <div id="reports_heading">
+        <h1>Reports <span></span></h1>
+      </div>
+      <form id="course_report_form" name="course_report_form">
+        <select id="all_courses_learners_ddl" NAME="select" ONCHANGE="courses('course_report_form');" SIZE="1">
+          <option VALUE="/reports/learner_report/<%= current_user.id %>">All Learners</option>
+          <option VALUE="/reports/course_report/<%= current_user.id %>">All Courses/Assessments</option>
+        </select>
+        <%= render :partial => "/reports/quarter_select" %>
+        <% @all_learners = Learner.find_all_by_admin_id_and_active(params[:id],'yes')
+        if @all_learners.length == 0 then %>
+          <div class="empty_reports">Currently there are no learners assigned. Assign learners to a course or assessment to see reports</div>
+        <% elsif @all_learners.length > 0 and @learners_id.length == 0 then %>
+          <div class="empty_reports">No learners found for the selected quarter</div>
+        <% else %>
+          <div id="results">
+            <%= render :partial => "learners" %>
+          </div>
+        <% end %>
+      </form>
+    </div>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

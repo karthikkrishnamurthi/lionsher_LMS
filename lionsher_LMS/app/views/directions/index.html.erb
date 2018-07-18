@@ -1,0 +1,27 @@
+<h1>Listing directions</h1>
+
+<table>
+  <tr>
+    <th>Direction text</th>
+    <th>Question bank</th>
+    <th>Tenant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @directions.each do |direction| %>
+  <tr>
+    <td><%= direction.direction_text %></td>
+    <td><%= direction.question_bank_id %></td>
+    <td><%= direction.tenant_id %></td>
+    <td><%= link_to 'Show', direction %></td>
+    <td><%= link_to 'Edit', edit_direction_path(direction) %></td>
+    <td><%= link_to 'Destroy', direction, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Direction', new_direction_path %>

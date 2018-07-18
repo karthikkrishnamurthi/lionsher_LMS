@@ -1,0 +1,18 @@
+<%= render :partial => "/layouts/courses_header" %>
+
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'learner_content' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <label><%=h @transaction.response_message %></label>
+
+    
+    </div>
+
+  <div id="div_sidepanel">
+    <div id="logo"><%= image_tag @tenant.logo.url(:small) %></div>
+  </div>
+</div>
+
+<%= render :partial => "/layouts/courses_footer" %>

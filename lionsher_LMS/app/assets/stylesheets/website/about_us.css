@@ -1,0 +1,95 @@
+.container-body{
+    padding-bottom:40px;
+/*    overflow: hidden;*/
+}
+.header-right-content #about_us
+{
+    color:  #FF9933;
+    font-size:12px;
+}
+#main_panel{
+    float:left;
+    margin-right:20px;
+    width:695px;
+    padding-left:25px;
+/*    background-color:yellow;*/
+}
+#side_panel{
+    padding-right:20px;
+    text-align:right;
+    margin-left:760px;
+/*    position:fixed;*/
+/*    margin-top:20px;*/
+/*    background-color:lightblue;*/
+}
+#about_us_div{
+    text-align:center;
+    border-bottom: 2px solid lightgrey;
+}
+#about_us{
+    font-size:26px;
+    color: #7F7F7F;
+}
+#our_philosophy{
+    font-size:18px;
+    color: #595959;
+}
+#philosophy_div{
+    margin-top:20px;
+    text-align: right;
+    border-bottom: 1px solid #EDEDED;
+}
+#about-us-content{
+    padding-top:10px;
+    color:#595959;
+}
+#person{
+    margin-top: 40px;
+    padding-bottom:15px;
+}
+#person-image{
+    padding-left:0px;
+    padding-right:10px;
+    float:left;
+}
+#person-image1{
+    float:right;
+    padding-left:10px;
+}
+#sidepanel-heading{
+    font-size:21px;
+    padding-top:30px;
+    color: #404040;
+}
+.founders{
+    padding-top:15px;
+    border-bottom: 1px solid lightgrey;
+/*    margin-left:745px;*/
+}
+a{
+    text-decoration:none;
+    color: #558ED5;    
+}
+#horizontal-line{
+    border-bottom: 1px solid lightgrey;
+    margin-left:145px;
+}
+#horizontal-line1{
+    border-bottom: 1px solid lightgrey;
+    margin-right:146px;
+}
+.person-position{
+    float:left;
+    padding-right:300px;
+}
+.person-links{
+    margin-left:20px;
+}
+.person-links img{
+    padding-bottom:3px;
+}
+s{
+    text-decoration:none;
+    font-size:10px;
+    padding-left:3px;
+}

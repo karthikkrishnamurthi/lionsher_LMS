@@ -1,0 +1,21 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'upload_course' %>
+<%= stylesheet_link_tag 'for_ie_7' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h1>Question Bank</h1>
+    <form action="/imports/create_question_bank/<%=h current_user.id %>" class="new_question_bank" enctype="multipart/form-data" id="new_question_bank" method="post">
+      <p>
+        <label for="question_bank_upload_question_bank">Upload questions from formatted excel file</label><br />
+        <input id="question_bank_import" name="import[csv]" size="50" type="file" />
+      </p>
+      <p>
+        <input id="question_bank_submit" name="commit" type="submit" value="Upload Excel File" />
+      </p>
+      <br/>
+    </form>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

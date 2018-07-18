@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @section.name %>
+</p>
+
+<p>
+  <b>Structure component:</b>
+  <%= @section.structure_component_id %>
+</p>
+
+<p>
+  <b>Tenant:</b>
+  <%= @section.tenant_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

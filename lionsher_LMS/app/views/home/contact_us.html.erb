@@ -1,0 +1,64 @@
+<head>
+  <link href="/assets/lion.png" rel="icon" />
+  <script type="text/javascript" charset="utf-8">
+    function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+  </script>
+</head>
+
+<title>LionSher : Contact Us</title>
+
+<%= javascript_include_tag 'contact_us' %>
+<%= stylesheet_link_tag "website/contact_us" %>
+
+<div class="container-body">
+  <div id="main_panel">
+    <div id="contact_us_div"><label id="contact_us">Contact Us</label>
+    </div>
+    <p id="contact-us-content">We provide 24 hours email support to all our customers. However if you have any questions about our service or product please leave a message below.</p>
+    <p id="contact-us-content">If you have any other enquiries please feel free to leave us a message</p>
+
+    <form name="contactusForm" method="post" action="/home/save_contact_details" onsubmit="return validation()">
+
+      <div class="label-textbox">
+        <p>Name<label class="mandatory">*</label></p>
+        <p><input type="text" name="home[name]" size="16" class="textbox-height" /></p>
+      </div>
+      <div class="label-textbox">
+        <p>Email<label class="mandatory">*</label></p>
+        <p><input type="text" name="home[email]" size="16" class="textbox-height" /></p>
+      </div>
+      <div class="label-textbox">
+        <p>Ph. No. <i style="font-size:10px;">optional</i></p>
+        <p><input type="text" name="home[mobile]" size="16" class="textbox-height" /></p><br/>
+      </div>
+      <p>Your Message<label class="mandatory">*</label></p>
+      <textarea name="home[comment]" rows="15" cols="86"></textarea>
+
+      <div id="send" class="border_radius"><input type="submit" value="send" /></div>
+
+    </form>
+
+  </div>
+  <div id="side_panel">
+    <p id="sidepanel-heading"><i>general inquiries</i></p><br />
+    <p id="side_panel_subheading">Corporate Office</p>
+    <p id="sidepanel-content-font">Kern Communications Pvt. Ltd.
+      210 B, Swapnalok Complex
+      S.D. Road
+      Secunderabad 500 003
+      India.</p>
+    <p style="color:#404040;">p: +91 40 40171313</p><br />
+    <p>Contact : <a href="mailto:inquiry@lionsher.com"> inquiry@lionsher.com</a></p>
+
+    <p id="sidepanel-heading"><i>support</i></p><br />
+    <p id="sidepanel-content-font"><a href="mailto:support@lionsher.com">
+        <%= image_tag "website/lionsher_images/icon_email.png", :style =>"float:left;"%>
+      </a>We provide 24 hours email support to all our customers.<br /><br />
+      Email us at <br /><a href="mailto:support@lionsher.com"> support@lionsher.com</a></p>
+
+    <p id="sidepanel-heading"><i>social media</i></p><br />
+    <p id="sidepanel-content-font"><a href="http://www.linkedin.com/groups/LionSher-3053190"><%= image_tag "website/lionsher_images/linkedin_logo_colour.png", :class =>"valign" %></a>Be part of the <a href="http://www.linkedin.com/groups/LionSher-3053190">LionSher Group</a></p>
+    <p id="sidepanel-content-font"><a href="http://twitter.com/#!/lionsherden"><%= image_tag "website/lionsher_images/Twitter_logo_colour.png", :class =>"valign" %></a>Follow us <a href="http://twitter.com/#!/lionsherden">@LionSherDen</a></p>
+  </div>
+
+</div>

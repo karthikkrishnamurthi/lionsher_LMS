@@ -1,0 +1,17 @@
+<% unless @answers.nil? or @answers.blank?
+  if @answer.answer_status == "correct" and @answers.include?(@answer.id.to_s) then %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %> - <font color="green">Correct Answer</font></li>
+  <% elsif @answer.answer_status == "correct" and !@answers.include?(@answer.id.to_s) then %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %> - Correct Option,<font color="red">Incorrect Answer</font></li>
+  <% elsif @answer.answer_status != "correct" and @answers.include?(@answer.id.to_s) then %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %> - <font color="red">Incorrect Answer</font></li>
+  <% else %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %></li>
+  <% end
+else # if learner has skipped the question,else part will get executed
+  if @answer.answer_status == "correct" %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %> - Correct Option</li>
+  <% else %>
+    <li><%=h (@j+96).chr %>.<%=raw @answer.answer_text %></li>
+  <% end
+end %>

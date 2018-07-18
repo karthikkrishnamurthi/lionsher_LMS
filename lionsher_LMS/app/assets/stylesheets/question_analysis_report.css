@@ -1,0 +1,110 @@
+/* 
+    Document   : question_analysis_report
+    Created on : 16 Jul, 2012, 12:55:21 PM
+    Author     : pranitha
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+#div_container
+{
+    width: 960px;
+    margin: 0px auto;
+    background-color: white;
+    overflow:hidden;
+    font-size:12px;
+    color:gray;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+#div_container h1
+{
+    padding: 0px;
+    font-weight:normal;
+    font-size: 20px;
+    color:black;
+    margin: 16px 0px 10px 10px;
+}
+#logo{
+    margin-left:780px;
+    margin-top:-48px;
+}
+select {
+    /*    margin: 0;*/
+    /*    margin-left:270px;*/
+    float:right;
+    vertical-align: middle;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    line-height: 18px;
+    color: #555555;
+    background-color: #ffffff;
+    border: 1px solid #CCCCCC;
+}
+#all_questions_table{
+    /*margin-left:14px;
+    margin-right:14px;*/
+    margin-bottom:20px;
+    border-collapse: collapse;
+}
+#all_questions_table th{
+    text-align:center;
+    width:8%;
+    font-weight: normal;
+    font-size:11px;
+}
+#all_questions_table .th1{
+    width:40%;
+    text-align: center;
+}
+#all_questions_table .tr_alt{
+    background-color:  #e5e5e5;
+}
+#all_questions_table .tr{
+    background-color:white;
+    height:30px;
+}
+#all_questions_table td{
+    text-align:center;
+    width:10%;
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+#all_questions_table .td-align{
+    text-align:left;
+    padding-left:6px;
+}
+.download_button{
+    border: none;
+    width: 112px;
+    color:blue;
+    text-align: center;
+    cursor: pointer;
+    text-indent:13px;
+    font-weight: normal;
+}
+#all_questions_table tr{
+    vertical-align:text-top;
+    height:30px;
+}
+#td_question_small{
+    width:540px;
+    overflow:hidden;
+}
+#td_question{
+    width:540px;
+    height:58px;
+    overflow:hidden;
+}
+#td_question:hover{
+    width:540px;
+    display:block;
+    height:100%;
+}

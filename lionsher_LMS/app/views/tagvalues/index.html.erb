@@ -1,0 +1,26 @@
+<h1>Listing tagvalues</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Value</th>
+    <th>Tag</th>
+    <th>Tagvalue</th>
+  </tr>
+
+<% for tagvalue in @tagvalues %>
+  <tr>
+    <td><%=h tagvalue.id %></td>
+    <td><%=h tagvalue.value %></td>
+    <td><%=h tagvalue.tag_id %></td>
+    <td><%=h tagvalue.tagvalue_id %></td>
+    <td><%= link_to 'Show', tagvalue %></td>
+    <td><%= link_to 'Edit', edit_tagvalue_path(tagvalue) %></td>
+    <td><%= link_to 'Destroy', tagvalue, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tagvalue', new_tagvalue_path %>

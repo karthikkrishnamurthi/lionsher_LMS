@@ -1,0 +1,72 @@
+<%= javascript_include_tag 'ui/jquery-1.4.4' %>
+<%= javascript_include_tag 'ui/calculation' %>
+<%= javascript_include_tag 'ui/calculation.min' %>
+<%= javascript_include_tag 'ui/jquery.validate' %>
+
+<h3>Question Limits & Order</h3>
+<% if params[:action] == "edit_assessment_details" and @time >= @assessment.start_time then %>
+  <label><% if @assessment.is_show_all then %>Show all questions<% else %>Show limited questions<% end %></label><br/>
+  <label><% if @assessment.is_linear %>Linear<% else %>Random<% end %></label>
+<% else %>
+  <div id="show_all_ques">
+
+    <input type="radio" id="show_all_questions" class="" name="show_questions" value="all" <% if @assessment.is_show_all then %>checked<% end %>  onclick="fill_input('<%=h @assessment.question_banks.length %>')"/>
+    <span>
+      <label class="checkbox_label">Show all questions</label>
+    </span>
+
+    <div id="randomlinear">
+      <input type="radio" id="show_all_questions" class="" name="order" value="random" <% if !@assessment.is_linear %>checked<% end %>/>
+      <span><label class="checkbox_label">Random</label></span>
+      <input type="radio" id="show_all_questions" class="" name="order" value="linear" <% if @assessment.is_linear %>checked<% end %>/>
+      <span><label class="checkbox_label">Linear</label> </span>
+    </div>
+
+  </div>
+
+  <div id="show_limited_ques">
+
+    <input type="radio" id="show_limited_questions" class="" name="show_questions" value="limited" <% if !@assessment.is_show_all then %>checked<% end %>/>
+    <span>
+      <label class="checkbox_label">Show limited questions</label>
+    </span>
+  </div>
+
+  <br/><br/>
+
+  <table id="scoring_table_form" cellpadding="2">
+    <tr>
+      <th>Topics</th>
+      <th>No. of Questions</th>
+      <th></th>
+    </tr>
+    <% k = 0
+    total_question_bank_no_of_questions = 0
+    for assessment_question_bank in @assessment.assessments_question_banks.find(:all, :order => 'id')
+      question_bank = QuestionBank.find_by_id(assessment_question_bank.question_bank_id)
+      if !(question_bank.no_of_questions.nil? or question_bank.no_of_questions.blank?) %>
+        <tr>
+          <td><input type="hidden" name="question_bank[qb_<%=h k %>]" value="<%=h question_bank.id %>" /><%=h k+1 %> &nbsp;<%=h question_bank.name %></td>
+          <td><input type="text" class="required number" id="question_bank_id_<%=h k %>" onchange="AppendValues()" maxlength="5" name="question_bank[limit_<%=h k %>]" value="<%=h assessment_question_bank.question_limit %>"/>&nbsp; / &nbsp;
+            <% if question_bank.no_of_questions.nil? %><label name="question_bank_no_of_questions_<%=h k %>">0</label><% else %><label name="question_bank_no_of_questions_<%=h k %>"><%=h question_bank.no_of_questions %></label><% end %>
+            <% total_question_bank_no_of_questions += question_bank.no_of_questions %>
+          </td>
+          <td><label id="error" for="question_bank_id_<%=h k %>" generated="" class="error" style="display: none; color:red; margin-top: -15px;"> Enter no.of questions</label></td>
+        </tr>
+        <% k = k + 1
+      end
+    end %>
+  </table>
+
+  <input type="hidden" id="total_number_of_questions" value="<%=h total_question_bank_no_of_questions %>" />
+  <label> Total Questions : <input disabled id="total_quest_result" type="text" value="" maxlength="5" class="total_selected_questions" style="font-size:12px; float: none; font-style: normal;display:inline;background-color:white;width:30px;"/>
+    &nbsp; / &nbsp;<%=h total_question_bank_no_of_questions %></label>
+  <label for="hidden_assessment_pass_score" generated="" class="error" id="total_mark_multi_error" style="width: 250px; color: red; display: none;"> Total questions can not be greater than <em id="total_mark_result_in_error" name="total_mark_result_in_error"></em></label>
+  <label for="total_mark_multi_zero_error" generated="" class="error" id="total_mark_multi_zero_error" style="width: 250px; color: red; display: none;"> Total questions can not be 0</label>
+  <br/>
+  <div style="display: block; color: red; float:left;margin:13px 0px 0px 15px;">
+    <% if !flash[:limit_exceeds_questions].nil? or !flash[:limit_exceeds_questions].blank? then %>
+      <%=h flash[:limit_exceeds_questions] %>
+    <% end %>
+  </div>
+<% end %>

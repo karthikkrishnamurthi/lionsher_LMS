@@ -1,0 +1,70 @@
+<div id="div_table">
+  <table border="0" cellpadding="2px" cellspacing="0" >
+    <tr id="tr" style="height: 20px;">
+      <th></th>
+      <th id="learners">Courses/Assessments</th>
+      <th>Assigned</th>
+      <th>Status </th>
+      <th>Score</th>
+    </tr>
+    <% @learners_course = Hash.new
+    @learners_assessment = Hash.new
+    for learner in @learners
+      if !learner.course_id.nil? or !learner.course_id.blank? then
+        #@course = Course.find_by_id(learner.course_id)
+        @learners_course[learner.id] = learner.course.course_name
+      elsif !(learner.assessment_id.nil? or learner.assessment_id.blank?) and learner.type_of_test_taker == 'learner' then
+        #@assessment = Assessment.find_by_id(learner.assessment_id)
+        @learners_assessment[learner.id] = learner.assessment.name
+      end
+    end
+    if !@learners_course.nil? or !@learners_course.blank? then
+      @learners_course = @learners_course.sort {|a,b| a[1]<=>b[1]}
+      i = 1
+      @learners_course.each {|hash_object|
+        @learner_object = Learner.find_by_id_and_active(hash_object[0],'yes')
+        @unattempted = Learner.find_all_by_course_id_and_lesson_status_and_active(@learner_object.course_id,'not attempted','yes')
+        @completed = Learner.find_all_by_course_id_and_lesson_status_and_active(@learner_object.course_id,'completed','yes')
+        @incomplete = Learner.find_all_by_course_id_and_lesson_status_and_active(@learner_object.course_id,'incomplete','yes')
+        created_time = (@learner_object.created_at).strftime("%d %b %Y")
+      %>
+        <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <% end %>>
+          <td><%= i %></td>
+          <td class="td_name"><a><% if hash_object[1].length > 40 %><%= hash_object[1][0..39] %>&hellip;<% else %><%= hash_object[1] %><% end %></a></td>
+          <td><%= created_time %></td>
+          <td><%= @learner_object.lesson_status %></td>
+          <% if @learner_object.score_raw.blank? or @learner_object.score_raw.nil? %>
+            <td>-</td>
+          <% else %>
+            <td><%= @learner_object.score_raw %><% if !@learner_object.score_max.nil? and @learner_object.score_max != "" %> of <%= @learner_object.score_max %><% end %></td>
+          <% end %>
+        </tr>
+        <% i = i + 1
+      }
+    end
+    if !@learners_assessment.nil? or !@learners_assessment.blank? then
+      @learners_assessment = @learners_assessment.sort {|a,b| a[1]<=>b[1]}
+      j = i
+      @learners_assessment.each {|hash_object|
+        @learner_object = Learner.find_by_id_and_active(hash_object[0],'yes')
+        @unattempted = Learner.find_all_by_assessment_id_and_lesson_status_and_active(@learner_object.assessment_id,'not attempted','yes',:conditions => ["type_of_test_taker = 'learner'"])
+        @completed = Learner.find_all_by_assessment_id_and_lesson_status_and_active(@learner_object.assessment_id,'completed','yes',:conditions => ["type_of_test_taker = 'learner'"])
+        @incomplete = Learner.find_all_by_assessment_id_and_lesson_status_and_active(@learner_object.assessment_id,'incomplete','yes',:conditions => ["type_of_test_taker = 'learner'"])
+        created_time = (@learner_object.created_at).strftime("%d %b %Y")
+      %>
+        <tr <% if j%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <% end %>>
+          <td><%= j %></td>
+          <td class="td_name"><a><% if hash_object[1].length > 40 %><%= hash_object[1][0..39] %>&hellip;<% else %><%= hash_object[1] %><% end %></a></td>
+          <td><%= created_time %></td>
+          <td><%= @learner_object.lesson_status %></td>
+          <% if @learner_object.score_raw.blank? or @learner_object.score_raw.nil? %>
+            <td>-</td>
+          <% else %>
+            <td><%= @learner_object.score_raw %><% if !@learner_object.score_max.nil? and @learner_object.score_max != "" %> of <%= @learner_object.score_max %><% end %></td>
+          <% end %>
+        </tr>
+        <% j = j + 1
+      }
+    end %>
+  </table>
+</div>

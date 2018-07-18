@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+	<div id="div_mainpanel">
+		<form action="/component_widgets/save_component_widget/<%= @report_component.id %>" method="post">
+			<h1>Add widgets to component "<%= @report_component.component_name %>"</h1>
+			<% unless @component_widgets.nil? or @component_widgets.blank? %>
+			<table>
+				<tr>
+					<th align="center">Existing widgets</th>
+				</tr>
+				<% @component_widgets.each do |component_widget| %>
+				<tr>
+					<td><%=h component_widget.widget.name %></td>
+					<td><a href="/component_widget_variables/create_component_widget_variables/<%=h component_widget.id %>?template=<%= @report_component.report_template.id %>">View details</a></td>	
+				</tr>
+				<% end %>
+			</table>
+			<% end %>			
+			<table>
+				<tr>
+					<td>
+						<select name="widget">
+							<% @widgets.each do |widget| %>
+								<option value="<%= widget.id %>"><%= widget.name %></option>
+							<% end %>
+						</select>
+						<input type="submit" name="button" value="+"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<a href="/report_components/create_report_components/<%= @report_component.report_template.id %>">Back</a>
+	</div> <%# end of div_mainpanel %>
+	<div id="div_sidepanel">
+		<%= render :partial => "/courses/logo" %>
+	</div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

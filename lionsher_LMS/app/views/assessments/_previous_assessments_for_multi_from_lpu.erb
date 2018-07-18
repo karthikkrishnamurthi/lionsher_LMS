@@ -1,0 +1,70 @@
+<% user = User.find_by_id(4905)
+if user.question_banks.find(:all,:conditions => "no_of_questions > 0").length != 0 then %>
+  <div id="previous_assessments_for_multiple" style="display:none;">
+    <table class="prev_table" border="0" cellpadding="2px" cellspacing="0">
+      <th></th>
+      <th class="name">Name</th>
+      <th class="number_of_quest">Number of Questions</th>
+      <th class="number_of_quest">Assessment</th>
+      <th class="created_on">Created on</th>
+      <% if params[:action] != "add_more_topics_to_assessment"  then %>
+        <th class="prev">Preview</th>
+      <% end %>
+      <% j=1 %>
+      <% user.question_banks.find(:all,:conditions => "no_of_questions > 0").each { |pre_ass| %>
+        <tr <% if j%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+          <td class="radio_btn"><input type="checkbox" id="checkbox_check_<%=h j %>" <% if j == 1 %>checked<% end %> name="checkbox_check" value="<%=h pre_ass.id %>"/></td>
+          <td><%=h pre_ass.name %></td>
+          <td class="number_of_quest_data"><%=h pre_ass.no_of_questions %></td>
+          <td class="number_of_quest_data"><% unless pre_ass.assessments.nil? or pre_ass.assessments.blank? %><%=h pre_ass.assessments[0].name %><% end %></td>
+          <td class="created_on"><%=h pre_ass.created_at.strftime("%d %b %Y")%></td>
+          <td class="prev_data">
+            <% if params[:action] == "edit_questions" then %>
+              <a href="/question_banks/show/<%= pre_ass.id %>?control_from_edit_questions_page=&assessment_id=<%=h @assessment.id %>">View</a>
+            <% elsif params[:action] == "add_more_topics_to_assessment"  then %>
+              <a href="/question_banks/show/<%= pre_ass.id %>?add_more_topics_to_assessment=&assessment_id=<%=h @assessment.id %>"></a>
+            <%  else %>
+              <a href="/question_banks/show/<%= pre_ass.id %>">View</a>
+            <% end %>
+          </td>
+        </tr>
+        <% j = j+1
+      } %>
+    </table>
+  </div>
+
+  <input type="hidden" id="total_prev_qb_checked" value="" name="total_prev_qb_checked" />
+<% else %>
+  <div id="previous_assessments_for_multiple" style="display:none;">
+    <li>You have no previous assessments</li>
+  </div>
+<% end %>
+
+
+<% if params[:action] == "add_more_topics_to_assessment"  then %>
+  <hr/>
+  <li class="submit_add_more_topics">
+    <% if (@assessment.test_pattern.nil? or @assessment.test_pattern.blank?) %>
+      <div id="question_bank_submit" class="course_assessment_button" style=" float: left;"><a onclick="add_more_topic();">Add New Topic</a></div>
+      <input id="hidden_submit" name="commit" type="submit" value="Add"  style="display: none; float: left;" onclick="total_no_of_checks(<%= j %>)"/>&nbsp; or &nbsp;
+    <% elsif !(@assessment.test_pattern.nil? or @assessment.test_pattern.blank?) and (@assessment.question_banks.length < @assessment.test_pattern.no_of_sections) %>
+      <input id="hidden_submit" name="commit" type="submit" value="Add"  style="float: left;" onclick="total_no_of_checks(<%= j %>)"/>&nbsp; or &nbsp;
+    <% end %>
+    <span id="link_done_adding" >
+      <a href="/assessments/assessment_details/<%=h @assessment.id %>">Done adding topics</a>
+    </span>
+    <span class="add_more_cancel"><a class="link_cancel" href="/courses">Cancel</a></span>
+  </li>
+
+<% elsif params[:action] != "edit_questions" then %>
+  <hr/>
+  <p class="submit">
+    <input id="question_bank_submit" name="commit" type="submit" value="Add" onclick="total_no_of_checks(<%= j %>)" />
+  <div id="progress_bar" style="display:none">
+    <img alt="progress bar" src="/assets/progress_bar.gif"/><br/>
+    <span>Uploading the file, it may take a few minutes depending on the size of the file.</span>
+  </div>
+  <span class="add_more_cancel"><a class="link_cancel" href="/courses">Cancel</a></span>
+  </p>
+
+<% end %>

@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h3><b>Edit Profile: <%=h @profile.field_name %></b></h3>
+    <form action="/profiles/update_profile/<%= params[:id] %>" method="post" class="form_style">
+      <table id="add_components">
+        <tr>
+          <th>Type of information</th>
+          <th>Name of information</th>
+        </tr>
+        <tr>
+          <td><select name="field_type">
+              <option value="short text">short text</option>
+              <option value="long text">long text</option>
+              <option value="single select list">single select list</option>
+            </select>
+          </td>
+          <td><input type="text" name="field_name" value="<%=h @profile.field_name %>"/></td>
+        </tr>
+      </table>
+      <hr/>
+      <input type="submit" name="button" value="Update" class="done_button" />
+      <a href="/profiles/delete_profile_component/<%= params[:id] %>" style="color:blue;margin-left:520px;">Delete</a> |
+      <a href="/profiles/create_profile/<%= @structure_component.id %>" style="color:blue;">Cancel</a>
+    </form>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

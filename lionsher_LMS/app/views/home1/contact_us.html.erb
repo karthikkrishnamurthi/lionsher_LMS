@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag 'lionsherhome' %>
+<%= stylesheet_link_tag 'contact_us' %>
+<div id="container">
+  <div id="upper_panel">
+    <h1><%= raw @rules['Business']['contact_us']['heading'] %></h1>
+  </div>
+  <div id="mid_panel">
+    <div id="mid_left_panel">
+      <div id="mid_left_top">
+        <h2><%= raw @rules['Business']['contact_us']['side_heading1'] %></h2>
+        <%= image_tag "lionsherhome_images/icon_email.png" %>
+        <%= raw @rules['Business']['contact_us']['desc'] %>
+      </div>
+      <div id="mid_left_bottom">
+        <h2><%= raw @rules['Business']['contact_us']['mid_left_bottom']['side_heading2'] %></h2>
+        <%= raw @rules['Business']['contact_us']['mid_left_bottom']['address'] %>
+        <p>p: <%= raw @rules['Business']['contact_us']['mid_left_bottom']['phn'] %></p><br/>
+        <p>Contact: <%= raw @rules['Business']['contact_us']['mid_left_bottom']['mail'] %></p>
+      </div>
+    </div>
+    <div id="mid_right_panel">
+      <h2><%= raw @rules['Business']['contact_us']['mid_right_panel']['side_heading3'] %></h2>
+      <p><%= image_tag "lionsherhome_images/linkedin.png" %></p><br/>
+      <p><%= image_tag "lionsherhome_images/twitter.png" %></p>
+      <%= image_tag "lionsherhome_images/man_laptop.jpg" %>
+    </div>
+  </div>
+  <div id="lower_panel"></div>
+</div>

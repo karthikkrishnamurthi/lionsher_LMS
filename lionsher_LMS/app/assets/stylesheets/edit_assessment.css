@@ -1,0 +1,36 @@
+#div_mainpanel .radio{    clear: right;    margin-left: 2px;    margin-top: 0px;}
+#div_mainpanel #description textarea{    width: 300px;}
+#div_mainpanel .checkbox_input{    float: left;    clear: left;    width: 15px;    height: 15px;}
+#div_mainpanel .checkbox_label{    clear: right;    margin-left: 2px;    font-size: 12px;}
+#div_mainpanel .rand_questions{    float: left;    clear: left;    width: 15px;    height: 15px;}
+#div_mainpanel .rand_questions_label{    clear: right;    margin-left: 2px;    font-size: 12px;}
+#div_mainpanel .time_field{    float:left;}
+#div_mainpanel #time_schedule{    clear:left;    float:left;    padding-bottom: 10px;    padding-top: 10px}
+#div_mainpanel #time_schedule .date{    float:left;}
+#div_mainpanel #time_schedule .date input{    float:left;    width: 80px;}
+#div_mainpanel #time_schedule .time{    float:left;}
+#div_mainpanel #time_schedule .time input{    width: 40px;    float:left;}
+#div_mainpanel #time_schedule .am{    padding-top: 20px;    float:left;}
+#div_mainpanel #time_schedule .pm{    padding-top: 20px;    float:left;}
+#div_mainpanel #time_schedule #side_heading{    font-weight: bold;    padding-left: 15px;    font-size: 11px;}
+#div_mainpanel #duration{    padding-bottom: 10px;    float:left;    clear:left;}
+#div_mainpanel #duration .duration_hrs{    float:left;    clear:left;}
+#div_mainpanel #duration .in_hrs{    padding-top: 23px;    float:left;    font-size: 8px;}
+#div_mainpanel #correct_wrong{    float:left;    clear:left;    padding-bottom: 10px;}
+#div_mainpanel #side_heading{    font-weight: bold;}
+#div_mainpanel #correct_wrong .correct{    float:left;    clear:left;}
+#div_mainpanel #correct_wrong .correct input{    float:left;    clear:left;    width: 30px;}
+#div_mainpanel #correct_wrong .correct label{    font-weight: bold;    font-size: 11px;}
+#div_mainpanel #correct_wrong .wrong{    float:left;    padding-left: 20px;}
+#div_mainpanel #correct_wrong .wrong input{    float:left;    width: 30px;}
+#div_mainpanel #correct_wrong .wrong label{    font-weight: bold;    font-size: 11px;}
+#div_mainpanel #correct_wrong #scoring{    font-weight: bold;}
+#div_mainpanel #random .pick_check{    float:left;    clear:left;}
+#div_mainpanel #random .no_of_quest{    float:left;}
+#div_mainpanel #random .no_of_quest input{    float:left;    width: 30px;}
+#div_mainpanel #random .no_of_quest_label{    float:left;    margin:inherit;}
+#div_mainpanel #submit{    float:left;    clear:left;}
+#div_mainpanel #submit .submmit_button{    float:left;}
+#div_mainpanel #submit .or{    padding-top: 5px;    float:left;}
+#div_mainpanel #submit .cancel{    padding-top: 5px;    float:left;}
+#div_mainpanel #submit .cancel a{    float:left;    color: blue;    text-decoration: underline;}

@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Status value:</b>
+  <%= @question_status.status_value %>
+</p>
+
+
+<%= link_to 'Edit', edit_question_status_path(@question_status) %> |
+<%= link_to 'Back', question_statuses_path %>

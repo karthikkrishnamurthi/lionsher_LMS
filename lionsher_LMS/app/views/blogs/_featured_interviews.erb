@@ -1,0 +1,29 @@
+<%#*Author : Karthik%>
+<%= stylesheet_link_tag 'sidebar' %>
+<!-- sidebar chunk -->
+<div class="sidebar_chunk">
+
+  <h3>Recent Posts</h3><br/>
+  <div class="sidebar_inner">
+
+    <%@blogs=Blog.find(:all,:order => 'id desc')
+      @blogs.each do |blog|
+      if blog.id != @blog.id %>
+        <div class="sider_interviews">
+          <a href="/learningden/<%= blog.folder %>">
+            <%= image_tag blog.profile_photo.url(:medium), :alt => blog.blog_name %>
+            <h4>
+              <%= blog.blog_title %>
+              <br/>
+              <span>&#8212; <%= blog.author[0..20] %></span><br/>
+              <%= blog.created_at.strftime("%d %b %Y") %>
+            </h4>
+          </a>
+        </div>
+      <%end%>
+    <% end %>
+
+    <div id="sider_interviews_line_break"></div>
+  </div>
+</div>
+<!-- sidebar chunk ends -->

@@ -1,0 +1,45 @@
+<div id="div_container">
+  <h3>Course Details for <%=h @user.login %></h3>
+  <div class= "div_table" id="display">
+    <table border="0" cellpadding="2px" cellspacing="0" >
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Size</th>
+        <th>Uploaded</th>
+      </tr>
+      <% i = 1
+      for course in @courses %>
+        <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+          <td class="name"><%=h course.id %></td>
+          <td class="td_name"><%=h course.course_name %></td>
+          <td class="name"><%=h course.typeofcourse %></td>
+          <td class="name">
+            <% if course.size > 1048576 %>
+              <%=h (course.size.to_f/1048576).round(2) %> MB
+            <% else %>
+              <%=h (course.size.to_f/1024).round(2) %> KB
+            <% end %>
+          </td>
+          <td><%=h course.created_at.strftime("%d %b %Y") %></td>
+          <td><a href="/tenants/course_destroy/<%=h course.id %>" style="color: blue;">Destroy</a></td>
+        </tr>
+        <% i = i + 1
+      end
+      j = 1
+      for assessment in @assessments %>
+        <tr <% if j%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+          <td class="name"><%=h assessment.id %></td>
+          <td class="td_name"><%=h assessment.name %></td>
+          <td class="name">test</td>
+          <td class="name">-</td>
+          <td><%=h assessment.created_at.strftime("%d %b %Y") %></td>
+          <td><a href="/tenants/assessment_destroy/<%=h assessment.id %>" style="color: blue;">Destroy</a></td>
+        </tr>
+        <% j = j + 1
+      end %>
+    </table>
+  </div>
+  <a href="/tenants/user_details/<%=h @user.user_id %>" style="color: blue;">Back</a>
+</div>

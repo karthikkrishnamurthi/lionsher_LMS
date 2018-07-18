@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Report component:</b>
+  <%= @component_widget.report_component_id %>
+</p>
+
+<p>
+  <b>Widget:</b>
+  <%= @component_widget.widget_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_component_widget_path(@component_widget) %> |
+<%= link_to 'Back', component_widgets_path %>

@@ -1,0 +1,76 @@
+
+<div id="container">
+<%#= render :partial => "/layouts/home_header" %>
+
+  <%= stylesheet_link_tag 'lionsherhome' %>
+  <%= stylesheet_link_tag 'signup_from_email' %>
+  <%= stylesheet_link_tag 'signup' %>
+  <%= stylesheet_link_tag 'signup_for_tests' %>
+  <%= javascript_include_tag 'signup' %>
+  <!-- all css ends here -->
+  <%= favicon_link_tag "lion.png", :rel => "icon" %>
+
+  <div class="header">
+    <div class="header-image">
+      <a href="https://www.lionsher.com">
+        <%= image_tag "website/lionsher_images/Logo_small.png" %>
+      </a>
+    </div>
+    <div class="header_right_content">
+      Give your students the CAT Advantage!
+    </div>
+  </div>
+
+  <h1><b>Begin with 7 day free trial. Get detailed reports. </b> Sign up in less than 2 minutes!</h1>
+  <div id="mid_panel">
+    <form action="/users/signup" method="post" onsubmit="javascript:return validation();">
+      <div id="sign_up_content">
+        <div id="flash_signup"><%=h flash[:signup_notice] %></div>
+        <label id="number_text"><s>1. &nbsp;</s>Create your LionSher Tests account</label>
+        <label for="login">Your Name</label>
+        <input id="user_login" name="user[login]" type="text" onblur="validate('user_login','login_div');" style="width:250px;" maxlength="40" <% if !flash[:login_name].nil? %>value="<%=h flash[:login_name] %>"<% end %>/>
+        <div id="login_div" style="display: none;">Enter your name</div>
+
+        <label for="email">Email Address</label>
+        <input id="user_email" name="user[email]"  type="text" onblur="validate_email();" style="width:250px;" maxlength="40" <% if !flash[:email].nil? %>value="<%=h flash[:email] %>"<% end %>/>
+        <div id="email_div" style="display: none;">Enter your email address</div>
+        <div id="email_validate" style="display: none;">Enter valid email address</div>
+
+        <label for="organization">Company Name</label>
+        <input id="organization" name="tenant[organization]" type="text" onblur="validate('organization','org_div');" style="width:250px;" maxlength="40" <% if !flash[:organization].nil? %>value="<%=h flash[:organization] %>"<% end %>/>
+        <div id="org_div" style="display: none;">Enter your organization's name</div>
+
+        <label for="phone_number">Phone Number</label>
+        <input id="user_phone" name="user[mob_number]" type="text" onblur="validate('user_phone','contact_number');" style="width:250px;" maxlength="40" <% if !flash[:mob_number].nil? %>value="<%=h flash[:mob_number] %>"<% end %>/>
+        <div id="contact_number" style="display: none;">Enter your contact Number</div>
+
+
+        <label id="number_text"><s>2. &nbsp;</s>Create your Tests custom link</label><br/>
+        <label id="custom_label_link" for="url">https://</label>
+        <input id="custom_link" name="tenant[custom_link]" style="width:250px;clear: right;" type="text" onfocus="add_value();" onblur="validate('custom_link','custom_message');" maxlength="40" <% if !flash[:custom_url].nil? %>value="<%=h flash[:custom_url] %>"<% end %>/>
+        <label id="custom_label_link_1">.lionsher.com</label>
+        <div id="custom_message" style="display: none;">Custom link connot be left blank</div>
+        <input type="hidden" value="admin"  name="user[typeofuser]" />
+        <input type="hidden" value="small business"  name="type_of_business" />
+        <input type="hidden" value="7days free trial"  name="7days free trial"  />
+        <input type="hidden" value="20" name="selected_plan_id" />
+        <input id="sign_up" name="commit" type="submit" value=""/>
+        <label class="" style="margin: -35px 0px 0px 185px; font-size: 10px;">I have read and agree to the LionSher <a href="/terms_and_conditions" target="_blank">Terms and Conditions</a> and <a href="/privacy_policy" target="_blank">Privacy Policy</a>.</label>
+      </div>
+    </form>
+
+
+    <% plan =  PricingPlan.find(params[:id]) %>
+    <%= image_tag "lionsherhome_images/icon_just2steps.png", :id => "easy_steps_pic" %>
+    <div id="mid_side_panel_text">
+      <span id="contact_info">Call Rashmi @ <b style="font-size: 14px;">+91 77381 49490 </b><br/>
+        or email at <b style="font-size: 14px;">rashmi@lionsher.com </b>for a demo of Lionsher CAT 2012</span>
+    </div>
+
+  </div>
+
+
+  <div id="lower_panel">
+  </div>
+
+</div>

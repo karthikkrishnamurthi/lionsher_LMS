@@ -1,0 +1,71 @@
+<% pattern_name = @assessment.test_pattern.pattern_name %>
+<table>
+  <% @i = 1 %>
+  <% @test_detail.question.answers.each do | answer | %>
+    <tr>
+      <td><% unless @test_detail.question_type == "FIB" or @test_detail.question_type == "SA" %><%= (@i+96).chr %>.&nbsp;<% end %></td>
+      <td>
+        <% 
+        case(@test_detail.question_type)
+        when "MCQ"
+          selected_answer_id = @test_detail.answer_id
+            unless @test_details[@j].nil? 
+              lesson_location = @test_details[@j].serial_number - 1 
+            else 
+              lesson_location = @test_details[0].serial_number - 1 
+            end %>
+          <input class="radio_answer" type="radio"
+                 name="answer_id_<%= @j %>"
+                 id="ans_<%= @i %>" value="<%=h answer.id %>"
+                 <% unless selected_answer_id.nil? %><% if answer.id == selected_answer_id %>checked<% end %><% end %>
+                 style="float:none;"
+                 onclick="checknet(<%= @test_detail.id %>)?
+                 new Ajax.Request('/assessments/ajax_save_answer_mcq_multi_page_test/'+<%= @test_detail.id %>+'?answer_id='+this.value+'&lesson_location='+<%= lesson_location %><% if @assessment.using_rules %>+'&structure_component='+<%= params[:structure_component] %><% end %>
+                 <% if params.include? "from" %>
+                  +'&from'
+                 <% end %>
+                 ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)})
+                 :
+                 ajax_save_pending_answers_multi_page_test(<%= @test_detail.id %>,<%= answer.id %>);"
+                 />
+          <% when "MAQ"
+                 unless @test_detail.learner_answer_text.nil?
+                   selected_answers = @test_detail.learner_answer_text.split(',')
+                 end
+                 unless @test_details[@j].nil?
+                   lesson_location = @test_details[@j].serial_number - 1
+                 else
+                   lesson_location = @test_details[0].serial_number - 1
+                end %>
+          <input class="radio_answer" type="checkbox"
+                 name="answer_id_<%= @j %>"
+                 id="ans_<%= @i %>" value="<%=h answer.id %>"
+                 <% unless @test_detail.learner_answer_text.nil?
+                   if selected_answers.include?(answer.id.to_s) %>checked
+                   <% end
+                 end%>
+                 style="float:none;"
+                 onclick="checknet(<%= @test_detail.id %>)?
+                 new Ajax.Request('/assessments/ajax_save_answer_maq_multi_page_test/'+<%= @test_detail.id %>+'?answer_id='+this.value+'&lesson_location='+<%= lesson_location %>
+                 <% if params.include? "from" %>
+                  +'&from'
+                 <% end %>
+                 ,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)})
+                 :
+                 ajax_save_pending_answers_multi_page_test(<%= @test_detail.id %>,<%= answer.id %>);"
+                 />
+        <% end %> <%# end of case question_type %>
+      </td>
+      <% case
+      when answer.answer_image_file_name.nil? then  %>
+        <td id="answer" style="vertical-align:top;text-align:left;padding-bottom:8px;">
+          <% unless @test_detail.question.question_type == "FIB" or @test_detail.question.question_type == "SA" %><%=raw answer.answer_text %><% end %></td>
+      <% else %>
+        <td id="answer" style="vertical-align:top;text-align:left;padding-bottom:8px;"><%= image_tag answer.answer_image.url(:small) %></td>
+      <% end %>
+    </tr>
+    <% @i = @i + 1 %>
+  <% end %>
+</table> <%# end of answers table %>
+<%# reset for multi page test %>
+<%= render :partial => "/assessments/reset_for_multi_page_test" %>

@@ -1,0 +1,32 @@
+<div id="reports_heading">
+    <select id="question_analysis_select" name="select" onchange="page_redirect('assessment_learners_report_form');" size="1" style="float:right;">
+      <% if @assessment.reports.count > 0
+        @reports.each do |report| %>
+      <option value="/assessments/report/<%= @assessment.id %>?report=<%= report.id %>" <% if @report.id == report.id %>selected<% end %>><%=raw report.report_template.name %></option>      
+      <% end # end of @reports.each loop
+      else %>
+      <option value="/reports/learners_for_assessment/<%= @assessment.id %>" selected>Progress Report</option>
+      <option value="/reports/question_analysis_report/<%= @assessment.id %>">Question Analysis Report</option>
+      <% end %>
+    </select>
+</div><br/><br/>
+<a style="color:blue;margin-left:770px;padding-top:8px;" href="/reports/download_assessment_report_csv/<%= @assessment.id %>" title="download report"><%= image_tag "icon-ms-excel.png", :alt => "" %> Detailed Report</a><br/><br/>
+<%#*Here the drop down for multiple groups were there. See backup%>
+<table border="0" cellpadding="2px" cellspacing="0">
+  <tr id="tr" style="height: 20px;" >
+    <th id="">Name</th>
+    <th>Score</th>
+    <th>Time</th>
+    <th>Attempted/<%= @assessment.no_of_questions %></th>
+    <th>Percentage</th>
+    <th>Percentile</th>
+    <th>Rank</th>
+    <th>Status</th>
+    <% if !(@assessment.pass_score.nil? or @assessment.pass_score.blank?) and @assessment.pass_score.to_i > 0 %>
+    <th>Result</th>
+    <% end %>
+  </tr>
+  <div id="paginate_learners_for_assessment">
+    <%= render :partial => '/reports/learners_for_pagination' %>
+  </div>
+</table> 

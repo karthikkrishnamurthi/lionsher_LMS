@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title><%= @tenant.organization %> Learning Center - Activate Account</title>
+    <%= favicon_link_tag "lion.png", :rel => "icon" %>
+    <%= stylesheet_link_tag 'login_style'%>
+  </head>
+  <body>
+    <div id="login_outer_div">
+      <div id="login_container">
+        <div id="top_login_header" style="background-color: <%= @tenant.theme %>; color:<%=h @tenant.text_color %>;"><%= label(:post, :organization_name, 'Activate Your Lionsher Account',  :class => 'organization_name') %></div>
+        <div class="clearfix"></div>
+        <div id="login_left">
+          <div class="lgn_reset_pwd"><%=h flash[:email_notice] %></div>
+          <%= label(:post, :activate_lbl, "1. Check your mail "+@user.email , :class => 'activate_lbl' ) %><br/>
+          <%= label(:post, :activate_lbl, "2. You will recieve an email from team@lionsher.com" , :class => 'activate_lbl' ) %><br/>
+          <%= label(:post, :activate_lbl, "3. Click on the Activation link in the email" , :class => 'activate_lbl' ) %><br/>
+          <hr class="activation_hr"/>
+          <%= label(:post, :activate_lbl, "if you do not receive an activation email" , :class => 'activate_lbl' ) %><br/>
+          <ul type="disc" class="activation_ul">
+            <li>Check your Spam or Junk folder</li>
+            <strong>OR</strong>
+            <li><%= link_to "Request email again", '/users/send_mail_again/'+@user.id.to_s , :class => 'req_email_again' %> </li>
+          </ul>
+        </div>
+        <div id="login_right">
+          <div id="lgn_logo">
+            <div id="logo"><%= image_tag "lionsher_logo.png" , :size => '130x50' %></div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <%= label(:post, :Powered_by_Lionsher, "Powered by Lionsher" , :class => 'pwd_by_lionsher' ) %>
+    </div>
+  </body>
+</html>

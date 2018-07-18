@@ -1,0 +1,16 @@
+<div id="question_limits_order">
+  <h3>Show Questions Layout</h3>
+  <div>
+    <input type="radio" id="show_all_questions" class="checkbox_input" name="show_per_page" value="all" <% if @assessment.show_all_per_page then %>checked<% end %>/>
+    <span>
+      <label class="checkbox_label">Show all questions in single page</label>
+    </span>
+  </div>
+  
+  <div>
+    <input type="radio" id="show_one_question" class="checkbox_input" name="show_per_page" value="one" <% if !@assessment.show_all_per_page then %>checked<% end %>/>
+    <span>
+      <label class="checkbox_label">Show one question per page</label>
+    </span>
+  </div>
+</div>

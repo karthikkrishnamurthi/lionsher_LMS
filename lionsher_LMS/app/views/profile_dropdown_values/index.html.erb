@@ -1,0 +1,25 @@
+<h1>Listing profile_dropdown_values</h1>
+
+<table>
+  <tr>
+    <th>Profile</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @profile_dropdown_values.each do |profile_dropdown_value| %>
+  <tr>
+    <td><%= profile_dropdown_value.profile_id %></td>
+    <td><%= profile_dropdown_value.value %></td>
+    <td><%= link_to 'Show', profile_dropdown_value %></td>
+    <td><%= link_to 'Edit', edit_profile_dropdown_value_path(profile_dropdown_value) %></td>
+    <td><%= link_to 'Destroy', profile_dropdown_value, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Profile dropdown value', new_profile_dropdown_value_path %>

@@ -1,0 +1,18 @@
+<% if @course.image_file_name.nil? %>
+  <div class="div_content_pic"><%= image_tag "Elearning.png" %></div>
+<% else %>
+  <div class="div_content_pic"><%= image_tag @course.image.url(:small) %></div>
+<% end %>
+<div class="preview">
+  <a href="/edit/<%=h @course.id %>">Edit Course Details</a> &nbsp; | &nbsp;
+  <a href="" onclick="javascript:window.open('/scorm/admin_scorm_preview/<%=h @course.id %>', 'elearning', 'location=no,status=0,scrollbars=no,menubar=no,toolbar=no');">Preview Course</a>
+</div>
+<div class="comments"><% if @comments.length > 0 and @course.feedback == "checked" then %><a href="courses/comments/<%=h @course.id %>/?average_rating=<%=h @avg_rating %>"><%= @comments.length %><%= image_tag "comment.png", :alt => "" %></a><% end %></div>
+<div class="assign_manage_learners">
+  <% if @learners.length > 0 then %>
+    <a href="/learners_for_course/<%= @course.id %>">Course Report</a> &nbsp; | &nbsp;
+    <a href="/users/manage_learners/<%=h @course.id %>">Manage Learners</a>
+  <% else %>
+    <a style="position:absolute;top:-90px;left:0px;width:110px;font-size: 12px;" href="/users/manage_learners/<%=h @course.id %>">Assign Learners</a>
+  <% end %>
+</div>

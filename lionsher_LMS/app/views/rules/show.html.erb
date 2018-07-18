@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tag:</b>
+  <%= @rule.tag_id %>
+</p>
+
+<p>
+  <b>Tagvalue:</b>
+  <%= @rule.tagvalue_id %>
+</p>
+
+<p>
+  <b>Questions required:</b>
+  <%= @rule.questions_required %>
+</p>
+
+<p>
+  <b>Questions picked:</b>
+  <%= @rule.questions_picked %>
+</p>
+
+<p>
+  <b>Tenant:</b>
+  <%= @rule.tenant_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>

@@ -1,0 +1,96 @@
+.div_table
+{
+    
+    padding: 0px;
+    border: 0px;
+    color: #666666;
+}
+.div_table table
+{
+  
+    margin: 0px 10px 10px 10px;
+}
+.div_table th
+{
+    font-size: 11px;
+    font-weight: normal;
+    height: 0px;
+    width: auto;
+    text-align: left;
+    padding: 0px 10px 5px 10px;
+}
+.div_table #tr
+{
+    font-size: 11px;
+    height: 25px;
+    background-color: #e5e5e5;
+    /*text-transform: capitalize;*/
+}
+
+.div_table #tr_alt
+{
+    font-size: 11px;
+    height: 25px;
+    /*text-transform: capitalize;*/
+    
+}
+.div_table #tr_alt a:hover
+{
+    
+    /*color: #fff;*/
+    /*background-color:#e5e5e5;*/
+
+}
+.name
+{
+    text-align: left;
+    padding: 0px 10px;
+}
+.td_name
+{
+    text-align: left;
+    padding: 0px 5px 0px 0px;
+    /*text-transform: capitalize;*/
+}
+.td_name a
+{
+    margin: 0px 10px;
+    text-decoration: none;
+}
+.td_name a:hover
+{
+    text-decoration: none;
+}
+.td_name em
+{   clear: left;
+    clear: both;
+    font-size: 9px;
+    /*padding: 0px 5px 0px 0px;*/
+  /*  background-color: red;*/
+    margin-left: 10px;
+    /*text-transform: capitalize;*/
+}
+.checkbox
+{
+    /*background-color: red;*/
+}
+#div_upper_right
+{
+    height:17px;
+    width: auto;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: 6px;
+    right: 200px;
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #666666;
+    
+}
+/*a { color: #fff; }*/
+a:hover
+{
+    /*color: #fff;*/
+    /*background-color:#e5e5e5;*/
+}

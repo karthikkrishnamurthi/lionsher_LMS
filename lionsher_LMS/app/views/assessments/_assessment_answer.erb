@@ -1,0 +1,29 @@
+<div class="answers_now">
+  <% if !@question.question_image_file_size.nil? and @question.question_image_file_size > 0 then %>
+    <div class="image_tag">
+      <%= image_tag @question.question_image.url(:small) %>
+    </div>
+  <% end
+  case(@question.question_type)
+  when "MCQ","MAQ" %>
+    <%= render :partial => '/assessments/answer_mcq_maq' %>
+  <% when "MTF" %>
+    <%= render :partial => '/assessments/answer_mtf' %>
+  <% end %>
+  <div id="border"></div>  
+</div>
+<% if @assessment.test_pattern.pattern_name != "CMAT" %>
+  <div class="next" id="navigation_buttons">
+    <%= render :partial => "/assessments/next_question" %>
+  </div>
+<% end 
+if @assessment.test_pattern.pattern_name == "CMAT" 
+  case(@question.question_type)
+  when "FIB","SA","DTQ" %>
+    <input class="reset_lms" id="next_next" type="button" name="reset" value="Deselect" onclick="reset_radio_buttons('<%=h @i %>');"/>
+  <% when "PTQ" %>
+    <input class="reset_lms" id="next_next" type="button" name="reset" value="Deselect" onclick="reset_radio_buttons('<%=h @k-1 %>');"/>
+  <% when "MCQ","MAQ","MTF" %>
+    <input class="reset_lms" id="next_next" type="button" name="reset" value="Deselect" onclick="reset_radio_buttons('<%=h @i-1 %>');"/>
+  <% end
+end %>

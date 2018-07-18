@@ -1,0 +1,40 @@
+#container #upper_panel h1
+{
+    border-bottom: 1px dotted #ff6600;
+    font-size: 26px;
+    padding-bottom: 5px;
+}
+#container #mid_panel
+{
+    text-align: left;
+    background: none;
+}
+#container #mid_panel .mid_content
+{
+    /*background-color: red;*/
+    overflow: hidden;
+    margin: 0px 0px 30px 0px;
+}
+#container #mid_panel .mid_content h2
+{
+    /*background-color: yellow;*/
+    width: 130px;
+    text-align: right;
+    font-style: italic;
+    font-size: 18px;
+    margin: 0px 50px 0px 0px;
+    padding: 0px;
+    float: left;
+}
+#container #mid_panel .mid_content p
+{
+    /*background-color: fuchsia;*/
+    margin: 0px;
+    padding: 0px 15px 0px 0px;
+    line-height: 17px;
+}
+#container #mid_panel a
+{
+    color: #ff6600;
+    text-decoration: none;
+}

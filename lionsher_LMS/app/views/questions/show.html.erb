@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <% i = 1
+    @assessment.questions.each do |question| %>
+      <p>
+        <b><%= i %>. &nbsp;Question:&nbsp;</b>
+        <a href="/questions/show_question_attributes/<%= question.id %>"><%=h question.question_text %></a>
+      </p>
+    <% i = i + 1
+    end %>
+  </div>
+</div>

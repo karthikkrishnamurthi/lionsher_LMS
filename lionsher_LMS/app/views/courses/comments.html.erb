@@ -1,0 +1,136 @@
+<%#*Author : Surupa%>
+<%= stylesheet_link_tag 'courses_content'  %>
+<%= stylesheet_link_tag 'comments' %>
+<%= stylesheet_link_tag 'tablestyle'  %>
+
+<%
+course = Course.find_by_id(params[:id])
+completed_learners = course.learners.find(:all,:conditions => "active = 'yes' AND lesson_status = 'completed'")
+i= 0
+%>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+
+    <form id="comments_form">
+      <h1>Feedback: <%=h course.course_name %></h1>
+      <div class = "div_mainpanel_content_alt">
+        <div class= "div_course_title"></div>
+        <div class="div_description"></div>
+        <% if course.typeofcourse == "e-learning" then
+          if course.image_file_name.nil? %>
+            <div class="div_content_pic"><%= image_tag "Elearning.png" %></div>
+          <% else %>
+            <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+          <% end %>
+        <%  elsif course.typeofcourse == "audio" then
+          if course.image_file_name.nil? %>
+            <div class="div_content_pic"><%= image_tag "Audio.png" %></div>
+          <% else %>
+            <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+          <% end %>
+        <% elsif course.typeofcourse == "video" then
+          if course.image_file_size.nil? %>
+            <div class="div_content_pic"><%= image_tag course.image_file_name %></div>
+          <% else %>
+            <div class="div_content_pic"><%= image_tag course.image.url(:small) %></div>
+          <% end %>
+        <% end %>
+        <div id="average_info">
+          <div id="completed_learner_count"><%= course.completed_learners %> Learners feedback</div>
+          <div id="average_star_rating">Average </div>
+          <% j=0
+          while j<=4
+            if j < course.average_rating then%>
+              <div class="star_comments"><%=  image_tag "star_fill_small.png"%></div>
+            <%else%>
+              <div class="star_comments"><%= image_tag "star_unfill_small.png"%></div>
+            <%end
+            j=j+1
+          end
+         if  course.average_rating == '5' then %>
+              <div id="average_star_info">&nbsp;Excellent</div>
+          <% elsif course.average_rating == '4' then %>
+              <div id="average_star_info">&nbsp;Very Good</div>
+          <% elsif course.average_rating == '3' then %>
+              <div id="average_star_info">&nbsp;Good</div>
+          <% elsif course.average_rating == '2' then %>
+              <div id="average_star_info">&nbsp;Average</div>
+          <% elsif course.average_rating == '1' then %>
+              <div id="average_star_info">&nbsp;Poor</div>
+          <%end
+            excellent_count = 0
+            verygood_count = 0
+            good_count = 0
+            average_count = 0
+            poor_count = 0
+            for completed in completed_learners
+             if completed.rating == 5 then
+               excellent_count += 1 %>
+            <% elsif completed.rating == 4 then
+               verygood_count += 1 %>
+            <% elsif completed.rating == 3 then
+                good_count += 1 %>
+            <% elsif completed.rating == 2 then
+                average_count += 1 %>
+            <% elsif completed.rating == 1 then
+                poor_count += 1 %>
+            <%end
+            end%>
+        <div style="margin: 3px 0px 0px 0px;float: left;width: 90px;clear: left;" >
+        <div class="number_info">Poor <%= poor_count %></div>
+        <div class="number_info">Average <%= average_count %></div>
+        <div class="number_info">Good <%= good_count %></div>
+        </div>
+        <div style="margin: 3px 0px 0px 0px;">
+        <div class="number_info">Very Good <%= verygood_count %></div>
+        <div class="number_info">Excellent <%= excellent_count %></div>
+        </div>
+        </div>
+      </div>
+      <%  for completed in completed_learners
+        user = User.find_by_id(completed.user_id)
+        if i == 0 then %>
+          <div class="comments_content">
+            <% i = 1
+          else%>
+            <div class = "comments_content_alt">
+              <% i = 0
+            end %>
+            <div class="learner_name"> <%=  user.login%></div>
+            <% j = 0
+            while j <= 4
+              if j < completed.rating then%>
+                <div class="star_comments"><%=  image_tag "star_fill_small.png"%></div>
+              <%else%>
+                <div class="star_comments"><%= image_tag "star_unfill_small.png"%></div>
+              <%end
+              j = j + 1
+            end
+          %>
+            <% if completed.rating == 5 then %>
+              <div class="star_info">Excellent</div>
+            <% elsif completed.rating == 4 then %>
+              <div class="star_info">Very Good</div>
+            <% elsif completed.rating == 3 then %>
+              <div class="star_info">Good</div>
+            <% elsif completed.rating == 2 then %>
+              <div class="star_info">Average</div>
+            <% elsif completed.rating == 1 then %>
+              <div class="star_info">Poor</div>
+            <%end%>
+            <div class="comments_by_learner">
+              <% if completed.comments == "" then %>
+                No comment added
+              <% else %>
+                <%= completed.comments %>
+              <% end %>
+            </div>
+          </div>
+        <% end%>
+    </form>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

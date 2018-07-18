@@ -1,0 +1,84 @@
+<style>
+  #admin_panel_paid{
+    font-weight: bold;
+  }
+</style>
+<div id="div_container">
+  <h3>Paid Tenants &nbsp; | &nbsp;&nbsp;total <%=h @total_count %></h3>
+  <div class= "div_table" id="display">
+    <table border="0" cellpadding="2px" cellspacing="0" width="98%">
+      <tr>
+        <th>Id</th>
+        <th>Organization</th>
+        <th>Custom URL</th>
+        <th>Admin</th>
+        <th>L</th>
+        <th>C</th>
+        <th>A</th>
+        <th>Space</th>
+        <th>Activated</th>
+        <th>Expiry Date</th>
+        <th>Current Plan</th>
+        <th>Paid</th>
+        <th>Payment Date</th>
+        <th>Tax</th>
+      </tr>
+      <% i = 1
+      for tenant in @tenants
+        @user = User.find_by_id(tenant.user_id)
+        @plan = tenant.pricing_plan
+        @transaction = Transaction.find_by_tenant_id(tenant.id, :order => 'id desc')
+        if !(@user.nil? or @user.blank?)
+          @total_learners = User.find_all_by_user_id(tenant.user_id)
+          @total_courses = Course.find_all_by_user_id(tenant.user_id)
+          @total_assessments = Assessment.find_all_by_user_id(tenant.user_id)
+          @space = 0
+          @total_courses.each { |c| @space += c.size } %>
+          <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+            <td class="name"><%=h tenant.id %></td>
+            <td class="td_name">
+              <% if @user.crypted_password.nil? then %>
+                <a title="<%=h @user.login %>, <%=h @user.email %>"><%=h tenant.organization %></a>
+              <% else %>
+                <a href="/tenants/user_details/<%=h tenant.user_id %>" title="<%=h @user.login %>, <%=h @user.email %>" style="color: blue;"><%=h tenant.organization %></a>
+              <% end %>
+            </td>
+            <td class="name"><%=h tenant.custom_url %></td>
+            <td class="name"><%=h @user.login %></td>
+            <td class="name"><%=h @total_learners.length %></td>
+            <td class="name"><%=h @total_courses.length %></td>
+            <td class="name"><%=h @total_assessments.length %></td>
+            <td class="name">
+              <% if @space > 1048576 %>
+                <%=h (@space.to_f/1048576).round(2) %> MB
+              <% else %>
+                <%=h (@space.to_f/1024).round(2) %> KB
+              <% end %>
+            </td>
+            <% if !@user.activated_at.nil? %>
+              <td class="name"><%=h @user.activated_at.strftime("%d %b %Y") %></td>
+            <% else %>
+              <td class="name">-</td>
+            <% end %>
+
+            <% if !@user.activated_at.nil? %>
+              <td class="name"><%=h tenant.expiry_date.strftime("%d %b %Y") %></td>
+            <% else %>
+              <td class="name">-</td>
+            <% end %>
+
+            <td class="name"><%=h @plan.plan_name %></td>
+            <% if !@transaction.nil? %>
+              <td class="name"><%=h @transaction.amount %></td>
+              <td class="name"><%=h @transaction.created_at.strftime("%d %b %Y") %></td>
+            <% else %>
+              <td class="name">-</td>
+              <td class="name">-</td>
+            <% end %>
+          </tr>
+          <% i = i + 1
+        end
+      end %>
+    </table>
+  </div>
+</div>

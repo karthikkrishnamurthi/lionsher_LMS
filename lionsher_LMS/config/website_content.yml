@@ -1,0 +1,337 @@
+Business:
+  small1:
+    type: Small Business
+    learners: 50
+    space_in_GB: 10 GB
+    price: "26,500"
+    
+  small2:
+    type: Small Business
+    learners: 200
+    space_in_GB: 10 GB
+    price: "80,000"
+   
+  corporate1:
+    type: Corporate
+    learners: 500
+    space_in_GB: 15 GB
+    price: "1,60,000"
+    
+  corporate2:
+    type: Corporate
+    learners: "1,000"
+    space_in_GB: 15 GB
+    price: "2,65,000"
+     
+  enterprise1:
+    type: Enterprise
+    learners: "3,000"
+    space_in_GB: 20 GB
+    price: "3,30,000"
+     
+  enterprise2:
+    type: Enterprise
+    learners: "5,000"
+    space_in_GB: 20 GB
+    price: "3,70,000"
+
+  moreinfo:
+    contactsales: Got more learners, need more space? We'd love to hear from you.
+    salesemail: Contact sales@lionsher.com
+    emailsupport: You can send us an email at support@lionsher.com for any queries or clarifications. We will respond within 24 hours.
+
+  index:
+    top_text: <p> Individuals and organisations successfully use lionsher to train employees and manage their learning.</p>
+
+    img_details_1: 
+    img_details_2:
+    img_details_3:
+    img_details_4:
+
+    heading:  <h1><b>Why</b> go for <b>LionSher?</b></h1>
+    col_1_para_1: <p>An average LMS costs <b>$10,000</b>...</p>
+    col_1_para_2: <p>Why spend so much when you can license one for <br/><s><b>just $60</b></s>?</p>
+    col_1_img: <%= raw image_tag "lionsherhome_images/saving.jpg", :alt => "" %>
+
+    col_2_para_1: <p>When you buy an LMS, you are <b>stuck with what it offers.</b></p>
+    col_2_para_2: <p>When using Lionsher, enjoy new <s><b>features</b></s> and <s><b>benefits</b></s> that get added periodically. Add any type of courses – <s><b>SCORM</b></s> and <s><b>non-SCORM,</b></s> videos, and PPT.</p>
+
+    col_3_para_1: <p>When you buy an LMS, you spend <b>time and money</b> installing, customizing and maintaining it...</p>
+    col_3_para_2: <p>Register on LionSher and <s><b>start using it instantly.</b></s></p>
+    col_3_para_3: <p><s><b>$0</b></s> running cost!</p>
+    col_3_img: <%= image_tag "lionsherhome_images/zero_dollar.jpg", :id => "image_two", :alt => "" %>
+
+    col_4_para_1: <p>Need to run online tests?</p>
+    col_4_para_2: <p>Create and run quiz, <s><b>tests, assessments, certifications</b></s> online on Lionsher!</p>
+
+
+  costeffective:
+    h1: Zero Investment in IT Team
+    para1: Lionsher is a web-based LMS. We maintain and run it for all our users worldwide. You DO NOT need a team of IT experts to install and manage your LMS for you.
+    h2: Zero Maintenance
+    para2: Lionsher runs on powerful servers in the cloud. We offer a life time guarantee of zero downtime. You will never need to invest in maintenance, support or troubleshooting. We do that for you!
+    h3: Zero Investment in Scaling Up
+    para3: Lionsher scales up seamlessly to cater to your need for more learners. You do not need to invest in more server space or infrastructure.  Choose a plan as per your needs and continue to use the platform seamlessly.
+    h4: Zero Investment in Hardware/ Software
+    para4: Lionsher is a ready-to-use product. You DO NOT need investment in servers to set up Lionsher or download software to run Lionsher. You can register online and start using it instantly.
+    h5: Pay Only for What you Use
+    para5: Does not matter whether you have 50 learners or 5000, choose a plan to suit your need. Only pay for what you use!
+
+  easy_to_use:
+    h1: No Investment in Product Training
+    para1: Typically LMS product teams spend days training clients about using the product. Lionsher users need ZERO product training!
+    para2: Lionsher is a ready to use product. Just sign-up and start using it instantly. Needless to say, you will not miss Help or Demo Tour!
+    h2: Great Looking Real-time Reports
+    para3: Forget those incomprehensible data dumps called reports! Lionsher provides you great looking real-time reports showing completion status and grades of learners, course completion status, and pending courses.
+    para4: Tracking, managing, and monitoring learning has never been easier!
+    h3: Supports a Wide Variety of Content
+    para5: Why should learning be restricted to SCORM courses alone? Lionsher is focused on managing and delivering learning effectively for all its users. Lionsher enables you to add a wide variety of learning material – SCORM and non-SCORM eLearning courses, videos, audio files, and PPT. As for learners, they’ve never had it easier - learners can view courses in a single click!
+
+  highly_secure:
+    h1: Powerful Security
+    para1: Lionsher has information encryption levels similar to your bank! It ensures that all your data is highly safe and secure.
+    h2: Data Protection
+    para2: Your data is highly safe and secure with us. All data is written to multiple RAID disks instantly. It is backed up daily and stored in multiple locations on RackSpace. All communication is 256-bit encrypted.
+
+  customizable:
+    h1: Create Your Own URL
+    para1: You get a unique website address with your company name (say AB Tech) https://abtech.lionsher.com
+    h2: Customize with Your Own Logo
+    para2: It’s your page! Customize the look and feel, add your logo and change the color as per your brand.
+
+  scalable:
+    h1: Supports Millions of Users
+    para1: Lionsher seamlessly scales up to support millions of users at any time. While traditional LMSs need additional hardware and software to do this, Lionsher scales instantly to support this. Flexible plans allow you to scale as per your needs.
+    h2: Supports Unlimited Courses
+    para2: Lionsher scales up to virtually unlimited space. You can add any number of courses without worrying about server space and bandwidth. Well, our plans offer you a lot of space that you can use. In case you need more, we’re an email away!
+
+  any_where_access:
+    h1: Access from Any Location
+    para1: Lionsher is a web-based LMS. If you have teams spread all around the world or teams on the go, this is the best solution for you. You and your team can securely access training courses any-time from anywhere in the world. All you need to do is connect to the Internet.
+    h2: Access from Any Device
+    para2: Lionsher is device-independent. Whether you are a Mac or a PC, Lionsher does not discriminate. You can access your training from any device that supports Flash.
+    h3: Access from Any Browser
+    para3: Lionsher is browser-independent. It does not matter if your preferred browser is Firefox, Safari, IE, or Chrome... Lionsher gives all a fair treatment!
+
+  benefits:
+    image: <%= image_tag "lionsherhome_images/img_indi_trainers_big.jpg", :alt => "" %>
+    topleft_heading: Individual Trainer
+    topright_heading: Benefit from technology-assisted learning!
+    description: Want to make training sustainable? Use lionsher to have a continuous engagement with participants long after the classroom training is over.
+    point1: Cost-effective solution to blended learning
+    point2: Easy and long-term access to participants
+    point3: No set up costs, no technology investment
+    botm_point1: <h6> Extend your engagement with participants beyond classroom training </h6>
+    botm_point2: <h6>Supplement classroom training with additional online resources and activities</h6>
+    botm_point3: <h6>Provide online assignments to students</h6>
+    botm_point4: <h6>Create a blended learning environment for sustainable learning</h6>
+
+  small_business:
+    image: <%= image_tag "lionsherhome_images/img_smallbiz_big.jpg" %>
+    topleft_heading: Small Business
+    topright_heading: Manage training simply and cost-effectively using Lionsher.
+    description: You can train any number of employees across departments without spending $1000s by renting lionsher.
+    point1: No need to invest in a technical team
+    point2: No investment in hardware or software
+    point3: No capital expenditure, no upfront costs
+    botm_point1: <h6> Share content such as videos, presentation, audios files and flash</h6>
+    botm_point2: <h6>View performance reports and manage their learning simultaneously</h6>
+    botm_point3: <h6>Manage training as effortlessly as any of your online transactions</h6>
+    botm_point4: <h6>All this for as low as $60 a month! Click Pricing to know more about what lionsher offers.</h6>
+
+  mid-sized_corporate:
+    image: <%= image_tag "lionsherhome_images/img_midbiz_big.jpg" %>
+    topleft_heading: Mid-sized Corporate
+    topright_heading: Why buy an LMS when you can rent it?
+    description: Buying an LMS is just the tip of the iceberg! You usually end up investing $1000s managing and maintaining it!
+    point1: No setup cost, no software downloads
+    point2: No tech support
+    point3: No AMC, no downtime
+    botm_point1: <h6> Share your existing SCORM courses on lionsher with a single click</h6>
+    botm_point2: <h6>Create your own custom page with logo and branding in less than 5 minutes</h6>
+    botm_point3: <h6>Share videos, audio files, presentations, and Flash courses in one click</h6>
+    botm_point4: <h6>View feedback and performance reports with a single click</h6>
+
+  educational_institution:
+    image: <%= image_tag "lionsherhome_images/img_edu_big.jpg" %>
+    topleft_heading: Educational Institution
+    topright_heading: Bridge the gap between a great faculty and world-class learning!
+    description: Are you struggling to find good faculty and provide your students access to world-class learning material?
+    point1: Cost-effective access to digital learning
+    point2: Easy-to-use for HODs, lecturers, and training coordinators
+    point3: No setup cost, no software downloads
+    botm_point1: <h6> Share any type of educational content, learning resources, and assessments</h6>
+    botm_point2: <h6>Easy access to specialized courses on Course Store</h6>
+    botm_point3: <h6>Provide students access to newer subjects and cutting edge learning resources</h6>
+
+  course_store:
+    img: <%= image_tag "lionsherhome_images/banner_coursestore.jpg", :alt => "Lionsher is an easy to use, cost effective, web based learning management system" %>
+    buy_courses:
+      heading: Buy Courses
+      point1: Pick a course from an enviable catalog of courses
+      point2: Pay for a course and start using it instantly on lionsher
+      point3: Pickup any type of course - Flash tutorials,videos,audio files,PPT
+      point4: Easy, hassle-free, and user-friendly navigation
+    sell_courses:
+      heading: Sell Courses
+      point1: Sell courses effortlessly
+      point2: Sell any type of course content - Flash tutorials,videos,audio files,PPT
+      point3: An easy and secure way to sell your products and training material online
+      point4: Set your own price for the course
+      point5: Make courses available for as long as you want
+      cmg_sun_img:  <%= image_tag "lionsherhome_images/img_comingsoon.jpg" %>
+
+  images_all:
+    next_hover: <%= image_tag "lionsherhome_images/next_hover.png" %>
+    prev_hover: <%= image_tag "lionsherhome_images/prev_hover.png" %>
+    next: <%= image_tag "lionsherhome_images/next.png" %>
+    prev: <%= image_tag "lionsherhome_images/prev.png" %>
+
+  contact_us:
+    heading: Contact Us
+    side_heading1: Support
+    img:  <%= image_tag "lionsherhome_images/icon_email.png" %>
+    desc: <p>We provide 24 hours email support to all our customers.</p><p>Email us at <a href="mailto:support@lionsher.com">support@lionsher.com</a></p>
+    mid_left_bottom:
+      side_heading2: General Inquiries
+      address: <p><b> Corporate Office </b></p><br/> <p>Kern Communications Pvt. Ltd.</p><p>210 B, Swapnalok Complex</p><p>S.D. Road</p><p>Secunderabad 500 003</p><p>India.</p>
+      phn: +91 40 40171313
+      mail: <a href="mailto:query@lionsher.com">inquiry@lionsher.com</a>
+    mid_right_panel:
+      side_heading3: Social Media 
+      linkedin: <%= image_tag "lionsherhome_images/linkedin.png" %>Be a part of our <a href="">LinkedIn Group</a>
+      twitter: <%= image_tag "lionsherhome_images/twitter.png" %>Follow us on twitter <a href="">@lionsherden</a>
+      img: <%= image_tag "lionsherhome_images/man_laptop.jpg" %>
+
+  about_us:
+    heading: About Us
+    left_head1: The voice of learning professionals
+    right_para1: LionSher is the voice of learning professionals. Here, professionals from different domains, industries, and practices share their insights about 'effective training' and 'sustainable learning.'
+
+    left_head2: The voice of training managers learners and designers
+    right_para2: LionSher is also the voice of user experience professionals who have listened to endless complaints and pains of teaining managers and learners as they struggled with their learning management systems. Some are so pained with their LMS that they have stopped using them completely - such a colossal waste of learning, time and money! Many others have ventured into enquiring about LMS but are deterred by cost. "Why should i spend $10,000 on just an LMS to train only 500 Employees? I also need to build and share courses - that's additional cost!
+    right_para3: We take pride in our LMS - it is neither about technology nor about building a system - it is about
+    right_para4: creating an environment that supports, promotes, and nutures cost-effective and easy learning.
+
+    left_head3: A unique marketplace
+    right_para5: The Course Store is a unique marketplace of courses that packages the best of learning within a web-based easy-to-use system that even the most techno-phobic user can use without batting an eyelid!
+
+    left_head4: A learning activism"
+    right_para6: Lionsher is a "learning activism" that will change the future of the training and learning industry. LionSher is an initiative by <a href="http://www.kern-comm.com/">Kern Communications Pvt Ltd</a> to capture emerging trends in L&D.
+
+    management_team:
+      heading: Management Team
+      geeta:
+        img: <%= image_tag "lionsherhome_images/geeta_bose.gif" %>
+        name_desig: <b>Geeta Bose<br/> Director, Processes and Operations,  <a href="http://www.kernlearning.com">Kern Learning Solutions</a></b>
+        para1: Geeta has over 14 years of experience in the writing, learning, and training domain. She is a post graduate in journalism and business administration. She began her career as an enthusiastic journalist with the Asian Age, Business Today and Hindustan Times; then stumbled into the world of CBTs and WBTs at NIIT. Here as a language editor and instructional designer she was fascinated with learning theories and methodologies. She has authored books on business writing, project management, and “Composition” published by ATI Technical University, USA.
+        para2: Her passion for learning research and training motivated her to join the core team to form Kern in 2003. Geeta manages operations and drives research and learning at Kern. She has evolved the learner centered methodology (LCM) at Kern. She also judges the annual Brandon Hall awards. She is married and has a son. Apart from Kern, Geeta loves playing with her son, writing and tweeting. Being a foodie, she loves stirring up interesting recipes that folks appreciate only at gun point!
+
+      rashmi:
+        img: <%= image_tag "lionsherhome_images/rashmi_varma.gif" %>
+        name_desig: <b>Rashmi Varma <br/> COO, Heads Strategic Planning and Processes, <a href="http://www.kernlearning.com">Kern Learning Solutions</a> </b>
+        para1: Rashmi has over 10 years of experience in operations, finance, sales and marketing. She is a management graduate from Jamnalal Bajaj Institute of Management Studies. She began her career working closely with the top management at NIIT to revamp the current learning methodologies & introduce blended learning (a new term back then) into the curriculum. This stint helped her realize that learning and development was her passion and she decided to pursue it as a career.
+        para2: Driven by a desire to deliver innovative, user-centric solutions, she joined hands with the core team to form Kern and this founding philosophy continues to drive her to this day. Rashmi manages strategic planning and business direction at Kern. She also judges the annual Brandon Hall awards. She is married and has a daughter. Apart from Kern, Rashmi is passionate about life, people and travel. She is a positive thinker who enjoys meeting new people and sharing experiences. She loves travel and firmly agrees with the quote by St.Augustine – “The world is a book and those who don’t travel read only one page”.
+
+      ripul:
+        img: <%= image_tag "lionsherhome_images/ripul_kumar.gif" %>
+        name_desig: <b>Ripul Kumar <br/> Heads Ethnographic Research, Innovation, and Usability Consulting, <a href="http://www.kern-comm.com">Kern Communications Pvt. Ltd.</a> </b>
+        para1: Ripul has over 16 years of experience managing cross-cultural usability, visual design, and software development teams. Ripul spearheaded visual design and usability engineering for the development of acclaimed software products at Pramati, maker's of world's first J2EE server and development studio. Ripul has completed many full lifecycle usability projects for complex financial, ERP, insurance, call center, banking, supply chain, compliance, and point-of-purchase software applications. Ripul has consulted with American Express, SAP, ICICI Bank, Verizon Wireless, MetricSream, among others. Ripul regularly conducts usability workshops for software professionals. He co-founded Kern in 2004 and manages Kern's Usability Consulting practice. He works with software product companies to help make their software useful, usable, and pleasurable. Ripul is an Industrial Designer from the National Institute of Design, Ahmedabad.
+        para2: Apart from tinkering with technology, Ripul nurses the dream of skydiving some day. A broken ankle from a paragliding expedition has not discouraged him yet! 
+
+      rahul:
+        img: <%= image_tag "lionsherhome_images/rahul.jpg" %>
+        name_desig: <b>Rahul Kulkarni <br/> Director, Sales and Marketing, <a href="http://www.kernlearning.com">Kern Learning Solutions</a> </b>
+        para1: Rahul has 12 years of experience in Sales and Marketing. Rahul has worked with organizations such as Castrol, HP, and Asian Paints in various capacities.During his stint with Asian Paints & HP, he was instrumental in developing and institutionalizing various training programs for direct sales force as well as for channels. Rahul has spearheaded some sales and marketing initiatives such as development centers for sales executives, business strategy for channel partners, and channel academy for indirect sales force.
+        para2: He is a business consultant to many corporate such as Asian Paints, Schott Glass India, and Geetel India.
+        para3: Rahul is an adventure buff. His love for adventure has taken him to most parts of the world. The fact that he holds fort at Kern speaks a lot about his appetite for adventure!
+
+
+  terms_and_condtn:
+        header: Terms & Conditions
+        definitions: <p>These Terms were last updated on 21st March 2010. </p>
+        side1: <p> <b>Definitions </b> </p>
+
+        lionsher: "Lionsher" 
+        para7: <p>is the brand of Kern Communications Pvt. Ltd. </p>
+
+        license_to_use_lionsher: "Access Fee"
+        para8: <p>means the monthly fee (excluding any taxes and duties) payable by you in accordance with the fee schedule set out on the Website (which Lionsher may change from time to time on notice to you). </p>
+
+        your_resposibilities: "Confidential Information" 
+        para9: <p>includes all information exchanged between the parties to this Agreement, whether in writing, electronically or orally, including the Software but does not include information which is, or becomes, publicly available other than through unauthorised disclosure by the other party. </p>
+
+        property_data: "Data"
+        para10: <p> means any data inputted by you into the Software. </p>
+        
+        billing_payment: "Intellectual Property Right"
+        para13: <p>means any patent, trade mark, service mark, copyright, moral right, right in a design, know-how and any other intellectual or industrial property rights, anywhere in the world whether or not registered. "Software" means the software available (as may be changed or updated from time to time by Lionsher) via the Website. </p>
+
+        serv_supp: "Website" 
+        para14: <p>means any Internet site operated by Lionsher under the *.lionsher.com domain. </p>
+        para15: <p>Means Kern Communications Pvt. Ltd. </p>
+       
+        termination_cause: "you"
+        para17: <p> means you and includes your employees, trainees, consultants, representatives and agents.</p>
+
+        representations_warranties: <b>License to use Lionsher</b>
+        para18: <p> Lionsher hereby grants you a non-exclusive, non-transferable, worldwide right to use the Service, solely for your own internal business purposes, subject to the terms and conditions of this Agreement. All rights not expressly granted to you are reserved by Lionsher and its licensors. You may not access the Service if you are a direct competitor of Lionsher, unless you have the prior written consent of the Directors of Kern Communications Pvt. Ltd.  </p>
+        para19: <p> In addition, you may not access the Service for purposes of monitoring its availability, performance or functionality, or for competitive purposes. You shall not license, sublicense, sell, resell, transfer, assign, distribute or otherwise commercially exploit or make available to any third party the Service or the Content in any way unless permitted & agreed upon by Lionsher. You may not modify or make derivative works based upon the Service or the Content or create Internet links to the Service, copy any ideas, features, functions or graphics of the Service.  </p>
+
+        disclaimer: <b>Your Responsibilities</b>
+        para20: <p> You are responsible for all activity occurring under your User accounts and shall abide by all applicable local, national and international laws. You are required to immediately notify Lionsher of any unauthorized use of any password or account or if you become aware of any other breach of any of the terms of this Agreement. You are responsible for the quality, accuracy and integrity of any data and other information that you submit to Lionsher in the course of using the services. You are responsible for the quality, accuracy and integrity of any data and other information that you submit to Lionsher in the course of using the services. Lionsher will not be responsible for any corrections, deletions, or damage to your data.</p>
+
+        Limit_liabty: <b>Intellectual Property & Data </b>
+        para21: <p> Title to, and all Intellectual Property Rights in, the Data remain your property. However, your access to the Data is contingent on full payment of the Lionsher Access Fee. You must maintain copies of all Data inputted into the Software.  </p>
+        para22: <p> Lionsher adheres to its best practice policies and procedures to prevent data loss, including a daily system data back-up regime, but does not make any guarantees that there will be no loss of Data. Lionsher expressly excludes liability for any loss of Data no matter how caused.  </p>
+        para23: <p> Lionsher does not pre-screen Content, but Lionsher has the right (but not the obligation) in their sole discretion to refuse or remove any Content that is available via the Service. </p>
+
+        bill_paymnt: <b>Billing and Payment</b>
+        para24: <p> Lionsher bills for its services in advance. You are required to supply Lionsher with your complete, accurate and up-to-date billing details including your business name, and accounts payable contact details. You are required to pay all fees or charges to your account in accordance with the access fee, charges, and billing terms in effect at the time. Lionsher reserves the right to modify its access fee and charges and to introduce new charges at any time, upon at least 30 days prior notice to you, which notice may be provided by e-mail. </p>
+
+        service_support: <h2><b> Service Availability & Support </b></h2>
+        para25: <p> You understand that Lionsher uses third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run the Service. </p>
+        para26: <p> In the event of a service outage Lionsher will not and cannot be held liable for data loss, but will act immediately to restore customer server access.  </p>
+        para27: <p> You understand that the technical processing and transmission of the Service, including your Content, may be transferred unencrypted and involve (a) transmissions over various networks; and (b) changes to conform and adapt to technical requirements of connecting networks or devices. </p>
+        para28: <p> Lionsher is committed to providing an excellent level of support by email and phone. We aim to acknowledge all support requests within 12 hours and will attempt to resolve critical issues within 24 hours. Email support is available 10 am to 6 pm Indian Standard Time (GMT - 5:30)  </p>
+
+        termntn_cause: <h2><b>Termination for Cause</b></h2>
+        para29: <p> Any breach of your payment obligations or unauthorized use of the Lionsher Technology or Service will be deemed a material breach of this Agreement. Lionsher, in its sole discretion, may terminate your password, account or use of the Service if you breach or otherwise fail to comply with this Agreement. In addition, Lionsher may terminate a free account at any time in its sole discretion. You agree and acknowledge that Lionsher may delete your data, if you have materially breached this Agreement, including but not limited to failure to pay outstanding fees, and such breach has not been cured within 30 days of notice of such breach. </p>
+
+        reprtn_waranty: <h2><b> Representations & Warranties </b></h2>
+        para30: <p> Each party represents and warrants that it has the legal power and authority to enter into this Agreement. Lionsher represents and warrants that it will provide the Service in a manner consistent with general industry standards reasonably applicable to the provision thereof and that the Service will perform substantially in accordance with the Lionsher documentation. You represent and warrant that you have not falsely identified yourself nor provided any false information to gain access to the Service and that your billing information is correct.  </p>
+
+        indemnity: <h2><b> Indemnity </b></h2>
+        para31: <p> You shall indemnify and hold Lionsher, its licensors and each such party's parent organizations, subsidiaries, affiliates, officers, directors, employees, attorneys and agents harmless from and against any and all claims, costs, damages, losses, liabilities and expenses (including attorneys' fees and costs) arising out of or in connection with any claim provided in any such case that Lionsher gives you written notice of the claim promptly to you and provides you with all available information and assistance to settle such claim. Lionsher shall indemnify and hold you and your parent organizations, subsidiaries, affiliates, officers, directors, employees, attorneys and agents harmless from and against any and all claims, costs, damages, losses, liabilities and expenses (including attorneys' fees and costs) arising out of or in connection with claims alleging that the Service directly infringes a copyright, trademark of a third party or claims arising from breach of this Agreement by Lionsher; provided that you promptly give written notice of the claim and you provide Lionsher with all available information and assistance to settle such claim. </p>
+
+        disclmr_waranty: <h2><b> Disclaimer of Warranties </b></h2>
+        para32: <p> Lionsher makes no representation, warranty, or guaranty as to the reliability, timeliness, quality, suitability, truth, availability, accuracy or completeness of the service or any content. Lionsher doesn't represent or warrant that (a) the use of the service will be secure, timely, uninterrupted or error-free or operate in combination with any other hardware, software, system or data, (b) the service will meet your requirements or expectations, (c) any stored data will be accurate or reliable, (d) the quality of any products, services, information, or other material purchased or obtained by you through the service will meet your requirements or expectations, (e) errors or defects will be corrected, or (f) the service or the server(s) that make the service available are free of viruses or other harmful components. The service and all content is provided to you strictly on an "as is" basis. All conditions, representations and warranties, whether expressed, implied, statutory or otherwise, including, without limitation, any implied warranty of merchantability, fitness for a particular purpose, or non-infringement of third party rights, are hereby disclaimed to the maximum extent permitted by applicable law.  </p>
+
+        limtn_of_liablty: <h2><b> Limitation of Liability </b></h2>
+        para33: <p> NOTWITHSTANDING ANYTHING TO THE CONTRARY IN THIS AGREEMENT, LIONSHER'S MAXIMUM AGGREGATE LIABILITY TO YOU RELATED TO OR IN CONNECTION WITH THIS AGREEMENT WILL BE LIMITED TO THE TOTAL AMOUNT PAID BY YOU IN THE PRECEDING ONE MONTH PERIOD TO LIONSHER FOR THE SERVICE. </p>
+
+        notices: <h2><b>Notices</b></h2>
+        para34: <p> Lionsher may give notice by general email distribution or via notification at the Lionsher login on its website.  </p>
+
+        modftns&terms: <h2><b> Modification to Terms </b></h2>
+        para35: <p> Lionsher reserves the right to modify the terms and conditions of this Agreement or its policies relating to the Service at any time, effective upon posting an updated version of this Agreement on the Service. </p>
+
+        ind_judtn: <h2><b> India Jurisdiction </b></h2>
+        para36: <p> This Agreement is governed by and is to be interpreted in accordance with laws of India. We and you irrevocably submit to the exclusive jurisdiction of the courts of India. </p>
+
+
+  privacy_policy:
+        header: Privacy Policy 
+        para1: <p> We collect the e-mail addresses of those who communicate with us via e-mail, aggregate information on what pages consumers’ access or visit, and information volunteered by the consumer (such as survey information and/or site registrations). The information we collect is used to improve the content of our Web pages and the quality of our service, and is not shared with or sold to other organizations for commercial purposes, except to provide products or services you've requested, when we have your permission, or under the following circumstances </p>
+        list_1: It is necessary to share information in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of <a href="/terms">Terms & Conditions</a>, or as otherwise required by law.
+        list_2: We transfer information about you if Lionsher is acquired by or merged with another company. In this event, Lionsher will notify you before information about you is transferred and becomes subject to a different privacy policy.
+        info_usage: Information Gathering & Usage
+        para2: <p> When you register for Lionsher we ask for information such as your name, email and address. Lionsher uses collected information for the following general purposes products and services provision, billing, identification and authentication, services improvement, contact, and research.   </p>
+        cookies: Cookies
+        para3: <p> A cookie is a small amount of data, which often includes an anonymous unique identifier, that is sent to your browser from a web site's computers and stored on your computer's hard drive. Cookies are required to use the Lionsher system. We use cookies to record current session information, but do not use permanent cookies. You are required to log-in to Lionsher after a certain period of time has elapsed to protect you against others accidentally accessing your account contents.   </p>
+        data_storage: Data Storage
+        para4: <p> Lionsher uses third party vendors and hosting partners to provide the necessary hardware, software, networking, storage, and related technology required to run. Although Lionsher owns the code, databases, and all rights to the application, you retain all rights to your data.   </p>
+        disclosure: Disclosure
+        para5: <p> Lionsher may disclose personally identifiable information under special circumstances, such as when your actions violate the Terms & Conditions.  </p>
+        changes: Changes
+        para6: <p> Lionsher may periodically update this policy. We will notify you about significant changes in the way we treat personal information by sending a notice to the email address specified in your account or by placing a notice on the Lionsher website.  </p>

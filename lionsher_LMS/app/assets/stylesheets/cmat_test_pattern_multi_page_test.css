@@ -1,0 +1,166 @@
+#div_container
+{
+    background-color: white;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#div_mainpanel
+{
+    /*background-color: blue;*/
+    width: 960px;
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-right:  none;
+}
+#div_sidepanel
+{
+    position:absolute;
+    overflow: hidden;
+    height: 400px;
+}
+#div_sidepanel #questions_table .goto_question{
+    padding-right: 50px;
+}
+#div_mainpanel #imported_questions{
+    width: 750px;
+    position: relative;
+}
+#right_panel_lms
+{
+    /*background-color: #e5e5e5;*/
+    background:url("cmat_test_pattern/gray_strip.png") repeat-y scroll 0 0 transparent;
+    height: 390px;
+    overflow-y: scroll;
+    padding: 0px 0px 0px 5px;
+    margin-left: 760px;
+}
+#div_sidepanel table tr td
+{
+    padding: 5px 0px 0px 0px;
+}
+#div_sidepanel table tr td img
+{
+    border: none;
+    height: 14px;
+    width: 14px;
+    margin-right: 5px;
+    /*    background-color: #1192ce;*/
+}
+#div_sidepanel table tr td a
+{
+    text-decoration: none;
+    color: black;
+}
+#div_sidepanel table tr .current_loc_img
+{
+    /*    background-color: red;*/
+    width: 15px;
+}
+#div_mainpanel #cmat_navigation_buttons{
+    margin-left:750px;
+    margin-top: -40px;
+}
+#div_mainpanel #cmat_navigation_buttons tr td
+{
+    /*    background-color: red;*/
+    height: 35px;
+}
+#header #cmat_header_img
+{
+    margin-bottom: 3px;
+}
+.specifications
+{
+    overflow: hidden;
+}
+.specifications ul img
+{
+    width: 18px;
+    height: 18px;
+}
+.specifications ul
+{
+    /*background-color: fuchsia;*/
+    float: left;
+    padding: 0px 0px 0px 20px;
+    margin: 5px 0px 0px 0px;
+    font-size: 12px;
+}
+#side_timer
+{
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+    position: absolute;
+    /*    top: 540px;*/
+    margin-left: 780px;
+}
+#side_timer .hours
+{
+    /*border: solid 1px black;*/
+}
+.reset_lms,.previous_button,.next_cmat,.unflag_cmat,.flag_cmat,.submit_cmat
+{
+    width: 140px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 0px;
+    color: transparent;
+}
+.reset_lms
+{
+    margin-top: 20px;
+    margin-left: 20px;
+    background:url("cmat_test_pattern/deselect.png") repeat-x scroll 0 0 transparent;
+
+}
+.previous_button
+{
+    background:url("cmat_test_pattern/previous.png") repeat-x scroll 0 0 transparent;
+}
+.next_cmat
+{
+    background:url("cmat_test_pattern/next.png") repeat-x scroll 0 0 transparent;
+}
+.unflag_cmat
+{
+    background:url("cmat_test_pattern/unflag.png") repeat-x scroll 0 0 transparent;
+}
+.flag_cmat
+{
+    background:url("cmat_test_pattern/flag.png") repeat-x scroll 0 0 transparent;
+}
+.submit_cmat
+{
+    background:url("cmat_test_pattern/submit.png") repeat-x scroll 0 0 transparent;
+}
+#question_answer_content
+{
+    padding-left: 55px;
+}
+.cmat_header_strip
+{
+    /*background-color: red;*/
+    background:url("cmat_test_pattern/header_strip.png") repeat-x scroll 0 0 transparent;
+}
+.question_now , .answers_now
+{
+    font-size: 14px;
+}
+.ie7 #div_mainpanel .answers_now table td
+{
+    font-weight: normal;
+}
+.ie7 #div_mainpanel .question_now p
+{
+    font-size: 16px;
+}
+
+#right_panel
+{
+    background:url('cmat_test_pattern/gray_strip.png') repeat-y scroll 0 0 transparent;
+    height: 530px;
+}

@@ -1,0 +1,27 @@
+<h1>Listing profile_details</h1>
+
+<table>
+  <tr>
+    <th>Learner</th>
+    <th>Profile</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @profile_details.each do |profile_detail| %>
+  <tr>
+    <td><%= profile_detail.learner_id %></td>
+    <td><%= profile_detail.profile_id %></td>
+    <td><%= profile_detail.value %></td>
+    <td><%= link_to 'Show', profile_detail %></td>
+    <td><%= link_to 'Edit', edit_profile_detail_path(profile_detail) %></td>
+    <td><%= link_to 'Destroy', profile_detail, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Profile detail', new_profile_detail_path %>

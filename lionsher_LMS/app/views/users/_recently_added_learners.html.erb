@@ -1,0 +1,15 @@
+<% if !@user.nil? %>
+  <div class="all_groups">
+    <div id="learners_big_box">
+      <div class="learners_box_left">
+        <input type="checkbox" name="email-<%=h @i %>" value="<%=h @user.id %>" checked/>
+        <%=h @user.login %> &nbsp;&nbsp;<em><%=h @user.email %></em><br/>
+      </div>
+    </div>
+  </div>
+
+<% elsif !@learner_limit_exceeds.nil? %>
+  <div class="flash_confirmation"><%=h @learner_limit_exceeds %></div>
+<% elsif !@learner_already_exists.nil? %>
+  <div class="flash_confirmation"><%=h @learner_already_exists %></div>
+<% end %>

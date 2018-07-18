@@ -1,0 +1,39 @@
+<div id="right_panel_lms">
+  <%
+  if @assessment.using_rules
+    @test_details = @current_learner.test_details.find_all_by_section_id(@structure_component.section.id)
+    test_details = @test_details
+  else
+    test_details = @current_learner.test_details
+  end
+  total_questions = test_details.count
+  grid_cols = (total_questions.to_f/10).ceil %>
+  <table id="questions_table" width="100%" cellspacing="0" cellpadding="0" border="0" valign="top">
+    <% k = 1
+    for i in 1..grid_cols %>
+      <tr <% if i == 1 then %>class="no_border"<% else %>class="with_border"<% end %>>
+        <% for j in 1..10
+          if k <= total_questions%>
+            <% if test_details[k-1].marked_status == "marked"
+              style = "background-color:#FFCC00;"
+            elsif test_details[k-1].attempted_status == "answered"
+              style = "background-color:#CCFFCC;"
+            else
+              style = "background-color:none;"
+            end %>
+            <td id="side_panel_qno_<%= k %>" style=<%= style %>>
+              <a class="question_buttons" <% unless params.include? "from" %>style="cursor:pointer" onclick="goto_specific_question(<%= k %>,<%= total_questions %>)"<% end %>>
+                <%=h k %></a>
+            </td>
+          <% end
+          k = k + 1
+        end %>
+      </tr>
+    <% end %>
+  </table>
+  <div class="specifications"> <div style="height:15px;width:15px;background-color:#CCFFCC;float:left;"></div>&nbsp;Answered</div>
+  <div class="specifications"> <div style="height:15px;width:15px;background-color:#FFCC00;float:left;"></div>&nbsp;For Review</div>
+  <a href="/assessments/review_assessment/<%= @current_learner.id %>">
+    <span id="back_to_review">Review</span></a>
+</div>
+<input type="text" name="net_connection" id="net_connection" value="" style="visibility:hidden;border:none;width:180px;padding: 5px;margin: 20px 10px 0px 10px;"/>

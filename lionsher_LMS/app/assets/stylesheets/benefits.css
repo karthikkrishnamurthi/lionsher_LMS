@@ -1,0 +1,96 @@
+#main_header #main_tabs #benefits
+{
+    background-color: #efefef;
+}
+#container #mid_panel #mid_panel_content
+{
+    /*background-color: red;*/
+    text-align: left;
+    margin: 15px 40px 0px 50px;
+    overflow: hidden;
+}
+#container #mid_panel #mid_panel_content h3
+{
+    /*background-color: yellow;*/
+    margin: 0px;
+    padding: 0px;
+    color: #ff6600;
+    font-size: 24px;
+    width: auto;
+}
+
+#container #mid_panel #mid_panel_content img
+{
+    /*background-color: gray;*/
+    margin: 10px 0px 0px 15px;
+}
+#container #mid_panel #bullet_points
+{
+    /*background-color: red;*/
+    text-align: left;
+    margin: 20px 40px 20px 50px;
+}
+#container #mid_panel #bullet_points img
+{
+    float: left;
+    margin: 0px;
+}
+#container #mid_panel #bullet_points h6
+{
+    margin: 0px 0px 8px 0px;
+    padding: 4px 0px 0px 0px;
+    font-size: 13px;
+    font-weight: normal;
+}
+#container #mid_panel #bullet_points h5
+{
+    margin: 0px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;
+    font-size: 16px;
+    font-weight: normal;
+    border-bottom: 1px dotted #ff6600;
+    /*background-color: yellow;*/
+}
+#container #mid_panel img
+{
+    margin: 20px 0px 0px 0px;
+}
+#container #mid_panel #mid_panel_content #buzz_image
+{
+    /*background-color: red;*/
+    width: 350px;
+    float: left;
+    margin-top: 40px;
+}
+#container #mid_panel #mid_panel_content h2
+{
+    /*background-color: yellow;*/
+    margin: 0px 0px 20px 0px;
+    padding: 0px;
+    font-size: 20px;
+    width: 450px;
+    overflow: hidden;
+}
+#container #mid_panel #mid_panel_content p
+{
+    /*margin: 20px 0px 0px 0px;*/
+}
+#container #mid_panel #mid_panel_content #piggie_points
+{
+    background: url("lionsherhome_images/bg_blue_horizontal.jpg") no-repeat scroll 0 0 transparent;
+    margin: 30px 0px 0px 0px;
+    overflow: hidden;
+}
+#container #mid_panel #mid_panel_content #piggie_points ul
+{
+    color: #cc6600;
+    margin-top: 20px;
+}
+#container #mid_panel #mid_panel_content #piggie_points li p
+{
+    color: #333333;
+}
+#container #mid_panel #mid_panel_content #piggie_points img
+{
+    margin: -40px 0px 0px 350px;
+}

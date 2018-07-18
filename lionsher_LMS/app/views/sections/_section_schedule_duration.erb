@@ -1,0 +1,24 @@
+<br/>Duration: 
+<div class="shedule_details" style="margin:-15px 0px 10px 28px;">
+  <select id="duration_hour" class="left_corner_select" name="section_duration_hour">
+    <% for i in 0..12 %>
+
+      <% if params[:action] == "edit_assessment_details" && @section.time_bound == "time_bound" then %>
+        <option <% if @section.duration_hour == i %>selected<% end %> value="<%=h i %>"><%=h i %> hr</option>
+      <%  else %>
+        <option <% if i == 1 %>selected<% end %> value="<%=h i %>"><%=h i %> hr</option>
+      <% end %>
+
+    <% end %>
+  </select><span></span>
+  <select id="duration_min" class="mid_select" name="section_duration_min" style="margin-right:0px;">
+    <% (0..55).step(5) { |i| %>
+      <% if params[:action] == "edit_assessment_details" && @section.time_bound == "time_bound" then %>
+        <option <% if @section.duration_min == i %>selected<% end %> value="<%=h i %>"><%=h i %> min</option>
+      <%else%>
+        <option <% if i == 0 %>selected<% end %> value="<%=h i %>"><%=h i %> min</option>
+      <%end%>
+    <% } %>
+  </select><span></span>
+  <span id="duration_blank_div" style="display: none;">Duration can not be 0</span>
+</div>

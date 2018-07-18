@@ -1,0 +1,29 @@
+<h1>Listing assessment_rules</h1>
+
+<table>
+  <tr>
+    <th>Assessment</th>
+    <th>Questions required</th>
+    <th>Questions picked</th>
+    <th>Tenant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assessment_rules.each do |assessment_rule| %>
+  <tr>
+    <td><%= assessment_rule.assessment_id %></td>
+    <td><%= assessment_rule.questions_required %></td>
+    <td><%= assessment_rule.questions_picked %></td>
+    <td><%= assessment_rule.tenant_id %></td>
+    <td><%= link_to 'Show', assessment_rule %></td>
+    <td><%= link_to 'Edit', edit_assessment_rule_path(assessment_rule) %></td>
+    <td><%= link_to 'Destroy', assessment_rule, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Assessment rule', new_assessment_rule_path %>

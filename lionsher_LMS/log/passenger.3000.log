@@ -1,0 +1,89 @@
+2012/06/27 17:23:58 [notice] 29126#0: using the "epoll" event method
+2012/06/27 17:23:58 [notice] 29126#0: nginx/1.2.1
+2012/06/27 17:23:58 [notice] 29126#0: built by gcc 4.6.1 (Ubuntu/Linaro 4.6.1-9ubuntu3) 
+2012/06/27 17:23:58 [notice] 29126#0: OS: Linux 3.0.0-21-generic
+2012/06/27 17:23:58 [notice] 29126#0: getrlimit(RLIMIT_NOFILE): 1024:4096
+2012/06/27 17:23:58 [notice] 29167#0: start worker processes
+2012/06/27 17:23:58 [notice] 29167#0: start worker process 29168
+2012/06/27 17:23:58 [info] 29168#0: *1 client prematurely closed connection while reading client request line, client: 127.0.0.1, server: _
+2012/06/27 17:23:58 [info] 29168#0: *2 client prematurely closed connection while reading client request line, client: 127.0.0.1, server: _
+DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/01/04/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /home/aarthi/Office/lionsher_v1/config/environment.rb:5)
+cache: [HEAD /] miss
+cache: [GET /] miss
+cache: [GET /assets/login_style.css?body=1] stale, valid, store
+cache: [GET /assets/lionsher_logo.png] stale, valid, store
+cache: [GET /assets/lion.png] stale, valid, store
+cache: [POST /sessions] invalidate, pass
+cache: [GET /courses] miss
+cache: [GET /assets/courses_header.css?body=1] stale, valid, store
+cache: [GET /assets/themes.js?body=1] stale, valid, store
+cache: [GET /assets/courses_footer.css?body=1] stale, valid, store
+cache: [GET /assets/courses_content.css?body=1] stale, valid, store
+cache: [GET /assets/assessment.js?body=1] stale, valid, store
+cache: [GET /assets/for_ie_7.css?body=1] stale, valid, store
+cache: [GET /system/assessment_image/54/small/gnome.png] miss
+cache: [GET /assets/assessment.png] stale, valid, store
+cache: [GET /assets/upload_course.css?body=1] stale, valid, store
+cache: [GET /assets/themes.js?body=1] stale, valid, store
+cache: [GET /assets/comment.png] stale, valid, store
+cache: [GET /assets/Audio.png] stale, valid, store
+cache: [GET /system/assessment_image/53/small/2012-03-01-120202_6.jpg] miss
+cache: [GET /assets/Elearning.png] stale, valid, store
+cache: [GET /data/document_51/document_51.jpg] miss
+cache: [GET /data/document_49/document_49.jpg] miss
+cache: [GET /assets/star_fill_small.png] stale, valid, store
+cache: [GET /data/document_48/document_48.jpg] miss
+cache: [GET /system/images/56/small/2012-03-01-120202_6.jpg] miss
+cache: [GET /assets/star_unfill_small.png] stale, valid, store
+cache: [GET /assets/lion.png] stale, valid, store
+cache: [GET /data/presentation_40/presentation_40.jpg] miss
+cache: [GET /system/assessment_image/54/small/gnome.png] miss
+cache: [GET /system/assessment_image/51/small/report.png] miss
+cache: [GET /assets/lionsher_logo.png] stale, valid, store
+2012/06/27 17:24:58 [info] 29168#0: *3 client timed out (110: Connection timed out) while reading client request line, client: 127.0.0.1, server: 0.0.0.0:3000
+2012/06/27 17:25:58 [info] 29168#0: *43 client timed out (110: Connection timed out) while reading client request line, client: 127.0.0.1, server: 0.0.0.0:3000
+cache: [GET /courses] miss
+cache: [GET /assets/courses_header.css?body=1] stale, valid, store
+cache: [GET /assets/courses_footer.css?body=1] stale, valid, store
+cache: [GET /assets/courses_content.css?body=1] stale, valid, store
+cache: [GET /assets/upload_course.css?body=1] stale, valid, store
+cache: [GET /system/assessment_image/54/small/gnome.png] miss
+cache: [GET /assets/themes.js?body=1] stale, valid, store
+cache: [GET /assets/for_ie_7.css?body=1] stale, valid, store
+cache: [GET /system/assessment_image/53/small/2012-03-01-120202_6.jpg] miss
+cache: [GET /assets/assessment.js?body=1] stale, valid, store
+cache: [GET /system/assessment_image/51/small/report.png] miss
+cache: [GET /data/document_51/document_51.jpg] miss
+cache: [GET /system/images/56/small/2012-03-01-120202_6.jpg] miss
+cache: [GET /data/presentation_40/presentation_40.jpg] miss
+cache: [GET /assets/themes.js?body=1] stale, valid, store
+cache: [GET /data/document_48/document_48.jpg] miss
+cache: [GET /assets/lion.png] stale, valid, store
+cache: [GET /assets/Elearning.png] stale, valid, store
+cache: [GET /system/assessment_image/51/small/report.png] miss
+cache: [GET /system/assessment_image/53/small/2012-03-01-120202_6.jpg] miss
+cache: [GET /assets/assessment.png] stale, valid, store
+cache: [GET /system/images/56/small/2012-03-01-120202_6.jpg] miss
+cache: [GET /data/document_51/document_51.jpg] miss
+cache: [GET /data/presentation_40/presentation_40.jpg] miss
+cache: [GET /assets/Audio.png] stale, valid, store
+cache: [GET /system/assessment_image/54/small/gnome.png] miss
+cache: [GET /data/document_48/document_48.jpg] miss
+cache: [GET /assets/lionsher_logo.png] stale, valid, store
+cache: [GET /assets/star_fill_small.png] stale, valid, store
+cache: [GET /assets/star_unfill_small.png] stale, valid, store
+cache: [GET /assets/comment.png] stale, valid, store
+cache: [GET /data/document_49/document_49.jpg] miss
+cache: [GET /logout] miss
+cache: [GET /] miss
+cache: [GET /assets/login_style.css?body=1] stale, valid, store
+cache: [GET /assets/lionsher_logo.png] stale, valid, store
+cache: [GET /assets/lion.png] stale, valid, store
+2012/06/27 17:26:58 [info] 29168#0: *44 client timed out (110: Connection timed out) while reading client request line, client: 127.0.0.1, server: 0.0.0.0:3000
+2012/06/27 17:26:59 [info] 29168#0: *88 client prematurely closed connection while reading client request line, client: 127.0.0.1, server: _
+2012/06/27 17:26:59 [notice] 29167#0: signal 15 (SIGTERM) received, exiting
+2012/06/27 17:26:59 [notice] 29168#0: exiting
+2012/06/27 17:26:59 [notice] 29168#0: exit
+2012/06/27 17:26:59 [notice] 29167#0: signal 17 (SIGCHLD) received
+2012/06/27 17:26:59 [notice] 29167#0: worker process 29168 exited with code 0
+2012/06/27 17:26:59 [notice] 29167#0: exit

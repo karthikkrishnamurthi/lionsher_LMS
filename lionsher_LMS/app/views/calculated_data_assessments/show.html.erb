@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Assessment:</b>
+  <%= @calculated_data_assessment.assessment_id %>
+</p>
+
+<p>
+  <b>Tenant:</b>
+  <%= @calculated_data_assessment.tenant_id %>
+</p>
+
+<p>
+  <b>Started:</b>
+  <%= @calculated_data_assessment.started %>
+</p>
+
+<p>
+  <b>In-process:</b>
+  <%= @calculated_data_assessment.in_process %>
+</p>
+
+<p>
+  <b>Completed:</b>
+  <%= @calculated_data_assessment.completed %>
+</p>
+
+<p>
+  <b>Timed out:</b>
+  <%= @calculated_data_assessment.timed_out %>
+</p>
+
+<p>
+  <b>Incomplete:</b>
+  <%= @calculated_data_assessment.incomplete %>
+</p>
+
+<p>
+  <b>Lowest score:</b>
+  <%= @calculated_data_assessment.lowest_score %>
+</p>
+
+<p>
+  <b>Highest score:</b>
+  <%= @calculated_data_assessment.highest_score %>
+</p>
+
+<p>
+  <b>Average score:</b>
+  <%= @calculated_data_assessment.average_score %>
+</p>
+
+<p>
+  <b>Sd score:</b>
+  <%= @calculated_data_assessment.sd_score %>
+</p>
+
+<p>
+  <b>Lowest time:</b>
+  <%= @calculated_data_assessment.lowest_time %>
+</p>
+
+<p>
+  <b>Highest time:</b>
+  <%= @calculated_data_assessment.highest_time %>
+</p>
+
+<p>
+  <b>Average time:</b>
+  <%= @calculated_data_assessment.average_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_calculated_data_assessment_path(@calculated_data_assessment) %> |
+<%= link_to 'Back', calculated_data_assessments_path %>

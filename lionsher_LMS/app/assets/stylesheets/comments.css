@@ -1,0 +1,200 @@
+#comments_form
+{
+    /*background-color: red;*/
+    margin: 0px 0px 0px 10px;
+    font-size: 12px;
+    font-family: helvetica;
+    color:#666666;
+}
+#comments_form h1
+{
+    /*background-color: yellow;*/
+    /*margin: 0px 0px 10px 0px;*/
+    /*padding: 0px;*/
+    color: black;
+    padding: 0px;
+    font-weight:normal;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+#comments_form  .div_mainpanel_content_alt
+{
+    /*background-color: red;*/
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+#comments_form  .div_mainpanel_content_alt .div_content_pic
+{
+    border: none;
+}
+#comments_form  .div_mainpanel_content_alt .div_course_title
+{
+    top: 15px;
+    left:130px;
+}
+#comments_form  .div_mainpanel_content_alt .div_description
+{
+    top: 35px;
+    left:130px;
+}
+#comments_form  .div_mainpanel_content_alt #average_info
+{    
+    position: absolute;
+    top: 15px;
+    left:500px;
+    width: 200px;
+    margin: 0px;
+    padding: 0px;
+    font-size: 11px;
+    color: #999999;
+}
+#comments_form  .div_mainpanel_content_alt #average_info #completed_learner_count
+{
+    /*background-color: fuchsia;*/
+   
+}
+#comments_form  .div_mainpanel_content_alt #average_info #average_star_rating
+{
+    /*background-color: green;*/
+    float: left;
+    margin-right: 10px;
+    color: #666666;
+}
+#comments_form  .div_mainpanel_content_alt #average_info #average_star_info
+{
+    /*background-color:  aqua;*/
+     color: #444444;
+}
+#comments_form .comments_content
+{
+    background-color: #e5e5e5;
+    /*background-color: red;*/
+    position: relative;
+    width:690px;
+    padding: 5px;
+     -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    margin:0px 0px 5px 0px;
+}
+#comments_form  .comments_content_alt
+{
+    background-color: white;
+    /*background-color: yellow;*/
+    position: relative;
+    width:690px;
+    padding: 5px;
+     -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    margin:0px 0px 10px 0px;
+}
+#comments_form  .learner_name
+{
+    font-weight: bold;
+    float: left;
+    margin: 0px 10px 0px 0px;
+}
+#comments_form .star_rating
+{
+    /*background-color: green;*/
+    float: left;
+    margin: 0px 5px 0px 0px;
+}
+#comments_form .number_info
+{
+}
+#comments_form .comments_by_learner
+{
+    /*background-color: white;*/
+    margin: 5px 0px 0px 0px;
+}
+.comments_star-5
+{
+    float: left;
+    margin: 0px 5px 0px 0px;
+    width: 60px;
+    /*position: absolute;
+    top: 15px;
+    left: 490px;*/
+}
+
+#comments_form .comments_star
+{
+    float: left;
+    margin: 0px 5px 0px 0px;
+    width: 48px;
+    /*position: absolute;
+    top: 15px;
+    left: 490px;*/
+}
+#comments_form .star_comments
+{
+    background-color: red;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+#comments_form .star_comments img
+{
+    float: left;
+    margin: 0px 2px 0px 0px;
+}
+.comments_star-3
+{
+    float: left;
+    margin: 0px 5px 0px 0px;
+    width: 36px;
+    /*position: absolute;
+    top: 15px;
+    left: 490px;*/
+}
+
+.comments_star-2
+{
+    float: left;
+    margin: 0px 5px 0px 0px;
+    width: 24px;
+    /*position: absolute;
+    top: 15px;
+    left: 490px;*/
+}
+
+.comments_star-1
+{
+    float: left;
+    margin: 0px 5px 0px 0px;
+    width: 12px;
+    /*position: absolute;
+    top: 15px;
+    left: 490px;*/
+}
+
+.comments_star-0
+{
+    float: left;
+    margin: 0px 5px 0px 0px;
+    width: 0px;
+    /*position: absolute;
+    top: 70px;
+    left: 485px;*/
+}
+
+.rating
+{
+    background: url('stars.png') no-repeat;
+    height: 16px;
+    overflow: hidden;
+}

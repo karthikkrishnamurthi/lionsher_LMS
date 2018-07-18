@@ -1,0 +1,16 @@
+<form action="/imports/import_course_learners_from_csv" method="post" enctype="multipart/form-data" style="margin-bottom: 20px;" >
+  <label style="margin-left: 20px;">Add 100s of learners</label>
+  <a id="displayText" href="javascript:toggle();"><font color="blue">Upload Excel file</font></a>
+  <div id="toggleText" style="display: none">
+    <input id="import_emails_browse" name="import[csv]" size="50" type="file" />
+    <input type="text" value="<%=h @course.id %>"  name="user[course_id]" style="display:none" />
+
+    <% if params[:action] == "assign_learners" then%>
+      <input type="hidden" value="from_assign_learners_page" name="from_assign_learners_page"/>  <!--please dont delete this line.. This is used to know if the flow is from assign page or manage page -->
+    <% else %>
+      <input type="hidden" value="from_manage_learners_page" name="from_manage_learners_page"/>  <!--please dont delete this line.. This is used to know if the flow is from assign page or manage page -->
+    <% end %>
+    <input id="import_email_csv_button" type="submit" value="Upload"/>
+    <%= image_tag "excel_group.png", :class => "image_strip", :size => "690x150", :style => "margin-left: 20px;" %>
+  </div>
+</form>

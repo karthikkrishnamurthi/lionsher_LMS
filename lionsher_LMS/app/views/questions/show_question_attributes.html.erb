@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <% @question_attributes.each do |qa|
+      qb = QuestionBank.find(qa.question_bank_id)
+      tag = Tag.find(qa.tag_id)
+      @assessment = Assessment.find(qa.assessment_id)
+    %>
+      <p>
+        <b>Question:</b>
+        <%=h @question.question_text %>
+      </p>
+
+      <p>
+        <b>Question bank:</b>
+        <%=h qb.name %>
+      </p>
+
+      <p>
+        <b><%=h tag.name %>:</b>
+        <%=h tag.value %>
+      </p>
+
+      <p>
+        <b>Assessment:</b>
+        <%=h @assessment.name %>
+      </p>
+
+      <% end %>
+
+      <a href="/questions/<%= @assessment.id %>">Back</a>
+    </div>
+  </div>

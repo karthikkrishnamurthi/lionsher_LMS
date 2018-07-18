@@ -1,0 +1,92 @@
+#container #upper_panel h1
+{
+    border-bottom: 1px dotted #ff6600;
+    font-size: 26px;
+    padding-bottom: 5px;
+}
+#container #mid_panel
+{
+    text-align: left;
+    background: none;
+}
+#container #mid_panel #mid_left_panel
+{
+    /*background-color: yellow;*/
+    width: 570px;
+    margin: 0px 0px 0px 5px;
+    padding: 0px 0px 0px 0px;
+    float: left;
+    
+}
+#container #mid_panel h2
+{
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+#container #mid_panel #mid_left_panel #mid_left_top img
+{
+    float: left;
+    margin-top: -5px;
+    margin-right: 5px;
+}
+#container #mid_panel #mid_left_panel #mid_left_top
+{
+    /*background-color: fuchsia;*/
+    padding-bottom: 35px;
+    border-bottom: 1px dotted #ff6600;
+}
+#container #mid_panel #mid_left_panel #mid_left_top p
+{
+    margin-top: 2px;
+}
+#container #mid_panel #mid_left_panel #mid_left_bottom
+{
+    /*background-color: gray;*/
+    margin-top: 25px;
+    margin-bottom: 50px;
+}
+#container #mid_panel #mid_left_panel #mid_left_bottom p
+{
+    margin-left: 2px;
+}
+#container #mid_panel #mid_left_panel #mid_left_top h2
+{
+    color: #99991b;
+}
+#container #mid_panel #mid_left_panel #mid_left_bottom h2
+{
+    color: #cc6600;
+}
+#container #mid_panel #mid_right_panel h2
+{
+    color: #cc3333;
+    margin-bottom: 24px;
+}
+#container #mid_panel #mid_left_panel p
+{
+    margin: 0px;
+    padding: 0px;
+}
+#container #mid_panel p a
+{
+    color: #ff6600;
+    text-decoration: none;
+}
+#container #mid_panel #mid_right_panel
+{
+    width: 325px;
+    /*background-color: red;*/
+    overflow: hidden;
+    border-left: 1px dotted #ff6600;
+    padding-left: 20px;
+}
+#container #mid_panel #mid_right_panel p img
+{
+    margin-top: -8px;
+    margin-right: 10px;
+    float: left;
+}
+#container #mid_panel #mid_right_panel p
+{
+
+}

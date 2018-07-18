@@ -1,0 +1,49 @@
+<%#*Control comes from learners_for_course method of courses controller.
+It shows all the learners for a course.
+Author : Surupa %>
+<% @course = Course.find_by_id(params[:id])
+@total_completed = @chart_data[0][:course_output]
+@total_incomplete = @chart_data[1][:course_output]
+@total_unattempted = @chart_data[2][:course_output]
+@total_timeup = @chart_data[3][:course_output]
+@total_assigned = @chart_data[4][:total]%>
+<%= stylesheet_link_tag 'learners_for_assessment' %>
+<%= stylesheet_link_tag 'tablestyle'  %>
+<%#= javascript_include_tag "FusionCharts" %>
+<script src='http://www.google.com/jsapi'></script>
+<%= javascript_include_tag "test" %>
+<%= stylesheet_link_tag 'for_ie_7'  %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div class="inner_mainpanel">
+      <div id="reports_heading">
+        <p>
+          <% if @course.course_name.length > 20 %> <%= label(:post, :course_name, @course.course_name[0..19], :class => 'course_name' ) %>&hellip;<% else %> <%= label(:post, :course_name, @course.course_name, :class => 'course_name' ) %><% end %>
+          <%= render :partial => "/reports/quarter_select" %>
+          <label class="lbl_download_csv"><a style="color: blue;" href="/reports/download_elearning_report_csv/<%= @course.id %>" title="download report"><%= image_tag "icon-ms-excel.png", :class => "xl_logo", :alt => "" %> Detailed Report</a></label>
+        </p>
+
+      </div>
+      <form id="course_learners_report_form">               
+        <%= render :partial => "/reports/learners_for_course_table" %>
+        <% if @deleted_learners.length > 0 then %>
+            <span style="margin-left: 10px; font-size: 12px;"><a id="toggle" href="#"><span id="toggle_button">Show report for deleted learners</span><span id="toggle_button1" style="display: none;">Hide report for deleted learners</span></a></span>
+            <%= render :partial => "/reports/course_report_for_deleted_learners" %>
+        <% end %>
+      </form>
+      <script type="text/javascript" charset="utf-8">
+          $("#toggle").click(function () {
+            $("#show_table").toggle(100);
+            $("#toggle_button1").toggle();
+            $("#toggle_button").toggle();
+          });
+      </script>
+    </div>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+    <div id="chart_div">
+      <%= render :partial => "/reports/course_chart_div"  %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,3 @@
+<% for i in 1..31 %>
+  <option <% if @date.day == i %>selected<% end %> value="<%= i %>"><%= i %></option>
+<% end %>

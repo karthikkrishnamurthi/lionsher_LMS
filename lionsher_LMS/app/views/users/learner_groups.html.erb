@@ -1,0 +1,43 @@
+<%= render :partial => "/layouts/courses_header" %>
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'upload_course' %>
+<%= stylesheet_link_tag 'tablestyle' %>
+<%= stylesheet_link_tag 'listing_all_learners' %>
+<%= javascript_include_tag 'listing_all_learners' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h1>Learner groups &nbsp;&nbsp; <a href="/users/listing_all_learners/<%=h current_user.id%>">Learners</a></h1>
+
+      <div class="flash_confirmation"></div>
+
+        <h3>Total Groups: <%=h current_user.groups.length + 1 %></h3>
+        <% i=1 %>
+        <div class= "div_table" id="display">
+            <table width="97%" cellspacing="0px" style="margin-top:10px;margin-left: 18px;">
+              <% current_user.groups.each do |group| %>
+                <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+                  <td class="name" style="width:2px;"><%= i%></td>
+                  <td class="td_name"><%= group.group_name %></td>
+                  <td class="td_name"><%= group.users.find(:all,:conditions => ["user_id = ? AND deactivated_at IS NULL",current_user.id]).length %> learners</td>
+                  <td><a style="color: blue;" href="/users/edit_group/<%=h group.id %>">Edit</a></td>
+                </tr>
+                <%i=i+1%>
+              <%end%>
+                <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+                  <td class="name" style="width:2px;"><%= i%></td>
+                  <td class="td_name">Ungrouped</td>
+                  <td class="td_name"><%= current_user.user.find(:all, :conditions => "group_id = 1 AND deactivated_at IS NULL").length %> learners</td>
+                  <td><a style="color: blue;" href="/users/edit_group/1">Edit</a></td>
+                </tr>
+            </table>
+        </div><br/>
+        <a style="color: blue;margin-left: 20px;" href="/users/change_group_of_learner/<%=h current_user.id %>">Change the group of existing learners (to new group or existing group)</a>
+
+    </div>
+
+    <div id="div_sidepanel">
+      <%= render :partial => "/courses/logo" %>
+    </div>
+  </div>
+  <%= render :partial => "/layouts/courses_footer" %>

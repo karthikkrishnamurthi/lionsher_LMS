@@ -1,0 +1,19 @@
+.header-middle-content #features
+{
+    color:  #FF9933;
+}
+
+.ie7 a:hover #take-tour,
+.ie7 a:hover #tests,
+.ie7 a:hover #cost-effective,
+.ie7 a:hover #easy-to-use,
+.ie7 a:hover #highly-secure,
+.ie7 a:hover #customizable ,
+.ie7 a:hover #scalable,
+.ie7 a:hover #anywhere-access{
+    color:black;
+    background-color:white;
+}
+.ie7 #features-arrow{
+    margin-left:0px;
+}

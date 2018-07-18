@@ -1,0 +1,120 @@
+<% if params[:action] == "edit" then %>
+
+  <div id="FIB"> <!content for FIB srarts here-------------->
+    <ul><!FIB UL starts here------------------->
+      <li class="quest_text">
+        <label >
+          Question Text
+        </label>
+        <div>
+          <textarea id="fib_question_field" name="question[question_text]" onkeyup="textCounter(this,document.myform.fib_question,5000)" onclick="textCounter(this,document.myForm.fib_question,5000)" class="field textarea medium" cols="60" ><%=h @question.question_text %></textarea>
+          <span id="info"><input disabled type="text" name="fib_question" size="4" maxlength="4" value="5000" style="width: 30px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_fib" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+
+      <% if !@question.question_image_file_name.nil? %>
+        <%= image_tag @question.question_image.url(:small) , :style => "margin-left:5px;" %>
+        <li class="add_img_to_quest"><label> <a href="javascript:showDiv('add_image_question4')">Edit image</a> to the question (optional)</label></li>
+      <% else %>
+        <li class="add_img_to_quest"><label> <a href="javascript:showDiv('add_image_question4')">Add image</a> to the question (optional)</label></li>
+      <% end %>
+
+      <li>
+        <div id="add_image_question4" style="display: none;">
+          <div>
+            <input id="question_image_field" name="question[question_image]" maxlength="100" type="file" size="50"/>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <label> Answer </label>
+        <table>
+          <% for answer in @answers %>
+            <tr><td><input id="fib_field" name="answer[<%= answer.id %>]" type="text" size="40" maxlength="100" onkeyup="textCounter(this,document.myform.fib_correct_answer,100)" value="<%=h answer.answer_text %>" onclick="textCounter(this,document.myForm.fib_correct_answer,100)"/>
+              <%end%>
+              <span id="info"><input disabled type="text" name="fib_correct_answer" size="3" maxlength="3" value="100" style="width: 20px;"/> Characters left</span></td></tr>
+          <tr> <label id="option_blank_msg_for_fib" style="color: red;display: none;">Enter the correct answer</label></tr>
+        </table>
+      </li>
+      <li class="quest_explanation">
+        <label>
+          Question Explanation
+        </label>
+        <div>
+          <textarea id="mcq_question_field" name="question[explanation]" onkeyup="textCounter(this,document.myform.mcq_question,5000)" onclick="textCounter(this,document.myForm.mcq_question,5000)" class="field textarea medium" cols="60" ><% unless @question.explanation.nil? %><%= @question.explanation %><% end %></textarea>
+          <span id="info"><input disabled type="text" name="mcq_question" size="4" maxlength="4" value="5000" style="width: 30px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_mcq" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+      <hr/>
+
+      <li class="done">
+        <em class="add_next"><input id="Done" type="submit" name="Done" value="Done" /> </em>
+        <% if params.include? 'control_from_edit_questions_page' then %>
+          <label class="cancel"><a class="cancel" href="/question_banks/show/<%= params[:question_bank_id] %>?assessment_id=<%= params[:assessment_id] %>&control_from_edit_questions_page="> Cancel</a></label>
+        <% else %>
+          <label class="cancel"><a class="cancel" href="/question_banks/show/<%= params[:question_bank_id] %>?assessment_id=<%= params[:assessment_id] %>"> Cancel</a></label>
+        <% end %>
+      </li>
+
+    </ul><!FIB UL ends here -------------->
+
+  </div><!FIB ends here ---------------------->
+
+<% else %>
+
+  <div id="FIB" style="display:none;"> <!content for FIB srarts here-------------->
+    <ul><!FIB UL starts here------------------->
+      <li class="quest_text">
+        <label >
+          Question Text
+        </label>
+        <div>
+          <textarea id="fib_question_field" name="fib_question[question_text]" onkeyup="textCounter(this,document.myform.fib_question,240)" onclick="textCounter(this,document.myForm.fib_question,240)" class="field textarea medium" cols="60" ></textarea>
+          <span id="info"><input disabled type="text" name="fib_question" size="3" maxlength="3" value="240" style="width: 20px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_fib" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+
+      <li class="add_img_to_quest"><label> <a href="javascript:showDiv('add_image_question4')">Add image</a> to the question (optional)</label></li>
+
+      <li>
+        <div id="add_image_question4" style="display: none;">
+          <div>
+            <input id="question_image_field" name="fib_question[question_image]" maxlength="100" type="file" size="50"/>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <label> Answer </label>
+        <table>
+          <tr><td><input id="fib_field" name="fib_option" type="text" size="40" maxlength="100" onkeyup="textCounter(this,document.myform.fib_correct_answer,100)" onclick="textCounter(this,document.myForm.fib_correct_answer,100)"/>
+              <span id="info"><input disabled type="text" name="fib_correct_answer" size="3" maxlength="3" value="100" style="width: 20px;"/> Characters left</span></td></tr>
+          <tr> <label id="option_blank_msg_for_fib" style="color: red;display: none;">Enter the correct answer</label></tr>
+        </table>
+      </li>
+      <li class="quest_explanation">
+        <label>
+          Question Explanation
+        </label>
+        <div>
+          <textarea id="mcq_question_field" name="fib_question[explanation]" onkeyup="textCounter(this,document.myform.mcq_question,5000)" onclick="textCounter(this,document.myForm.mcq_question,5000)" class="field textarea medium" cols="60" ></textarea>
+          <span id="info"><input disabled type="text" name="mcq_question" size="4" maxlength="4" value="5000" style="width: 30px;"/> Characters left</span>
+          <label id="textarea_blank_msg_for_mcq" style="color:red;display: none;">Enter the question</label>
+        </div>
+      </li>
+      <hr/>
+
+      <li class="done">
+        <em class="add_next"><input id="Done" type="submit" name="Done" value="Add Next Question" /> </em>
+        &nbsp; or &nbsp;<input id="done_adding_quest" type="submit" name="Done" value="Done Adding Questions" />
+        <label class="cancel"><a class="cancel" href="/assessments/create_assessment/<%=h current_user.id %>"> Cancel </a></label>
+      </li>
+
+    </ul><!FIB UL ends here -------------->
+
+  </div><!FIB ends here ---------------------->
+<% end %>

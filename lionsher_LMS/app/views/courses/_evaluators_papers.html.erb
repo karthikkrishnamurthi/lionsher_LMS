@@ -1,0 +1,29 @@
+<% @assessment = Assessment.find_by_id(@learner.assessment_id)
+if @i == 0 then %>
+  <div class="div_mainpanel_content">
+    <% @i = 1
+  else %>
+    <div class = "div_mainpanel_content_alt">
+      <% @i = 0
+    end %>
+    <div class="div_content_type">Assessment</div>
+    <div class="div_course_title"><%=h @assessment.name %></div>
+    <% if @assessment.assessment_image_file_name.nil? %>
+              <div class="div_content_pic"><%= image_tag "assessment.png" %></div>
+          <% else %>
+              <div class="div_content_pic"><%= image_tag @assessment.assessment_image.url(:small) %></div>
+          <% end %>
+    <div class="div_description"><% if !(@assessment.description.nil?) or !(@assessment.description.blank?) %><%=h @assessment.description %><% end %></div>
+    <% if @tenant.is_expired == "false" then %>
+      <div style="height: 90px; border-right: #cccccc 1px dotted; position: absolute; top: 5px; right: 210px;"></div>
+      <div class="div_takecourse">
+        <% if @learner.lesson_status == "not attempted" or @learner.lesson_status == "incomplete" %>
+          <a href="/assessments/evaluate_test/<%=h @assessment.id %>">Evaluate Test</a>
+        <% end %>
+      </div>
+
+      <div class="div_course_status" style="width : 200px;">
+
+      </div>
+    <% end %>
+  </div>

@@ -1,0 +1,67 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+<%#= stylesheet_link_tag 'upload_course'  %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag "edit_assessment_details" %>
+<%= javascript_include_tag 'add_more_topics_to_assessment' %>
+<%= javascript_include_tag 'assessment' %>
+
+
+<script type="text/javascript" charset="utf-8">
+  function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div id="container">
+      <h1 class="assessment_name">Edit: <s><%=h @assessment.name %></s> <a id="destroy_course" style="float: right;" href="" onclick="destroy('/assessments/destroy/<%=h @assessment.id %>','<%=h @assessment.id %>');">Delete Assessment</a></h1>
+
+      <h1 class="tab_style"><a class="tab_questions_now">Questions</a>  <a class="tab_questions" href="/assessments/edit_assessment_details/<%= params[:id] %> "> Assessment Details</a></h1>
+      <form name="myform" method="post" onsubmit="javascript:return validation('topic','topic_name_msg');" action="/assessments/update_assessment/<%=h params[:id] %>/?control_from_edit_questions_page=" enctype="multipart/form-data">
+        <div id="question_limit">
+          <table class="quest_table_data" border="0" cellpadding="2px" cellspacing="0">
+            <th class="name">Topics</th>
+            <th class="number_of_quest">Number of Questions</th>
+            <th class="created_on">Created on</th>
+            <th class="prev"> </th>
+            <th></th>
+            <%
+            @i = 0
+            j = 1
+            for question_bank in @assessment.question_banks.find(:all, :order => 'id') %>
+              <tr <% if j%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+                <td class="edit_of_quest_data" ><%=h question_bank.name %></td>
+                <td class="created_on"><%=h question_bank.no_of_questions %></td>
+                <td class="edit_prev_data"><%=h question_bank.created_at.strftime("%d %b %Y") %></td>
+                <td><a style="color: blue;" href="/question_banks/show/<%= question_bank.id %>?assessment_id=<%= params[:id] %>&control_from_edit_questions_page=">View/Edit</a></td>
+              </tr>
+              <% j = j + 1
+              @i = @i + 1
+            end %>
+          </table>
+          <% if @assessment.total_learners == 0 then %>
+            <p class="edit_questions_add_topic"> <a class="add_new_topic" onclick="add_more_topic_from_edit_question();">Add New Topic</a>  </p>
+          <% end %>
+          <ul type="none">
+
+            <%= render :partial => "/assessments/topic_name_in_add_more_topics" %>
+
+            <%= render :partial => "/assessments/previous_assessments_for_multi" %>
+
+            <div id="button_and_cancel" style="display:none;">
+              <hr/>
+              <p class="submit" >
+                <input id="question_bank_submit" name="commit" type="submit" value="Add" onclick="total_no_of_checks(<%= j %>)" />
+                <span class="add_more_cancel"><a class="link_cancel" href="/courses">Cancel</a></span>
+              </p>
+            </div>
+
+          </ul>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Learner:</b>
+  <%= @calculated_data_learner_assessment.learner_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @calculated_data_learner_assessment.user_id %>
+</p>
+
+<p>
+  <b>Tenant:</b>
+  <%= @calculated_data_learner_assessment.tenant_id %>
+</p>
+
+<p>
+  <b>Assessment:</b>
+  <%= @calculated_data_learner_assessment.assessment_id %>
+</p>
+
+<p>
+  <b>Answered:</b>
+  <%= @calculated_data_learner_assessment.answered %>
+</p>
+
+<p>
+  <b>Answered correct:</b>
+  <%= @calculated_data_learner_assessment.answered_correct %>
+</p>
+
+<p>
+  <b>Answered wrong:</b>
+  <%= @calculated_data_learner_assessment.answered_wrong %>
+</p>
+
+<p>
+  <b>Questions marked:</b>
+  <%= @calculated_data_learner_assessment.questions_marked %>
+</p>
+
+<p>
+  <b>Total score:</b>
+  <%= @calculated_data_learner_assessment.total_score %>
+</p>
+
+<p>
+  <b>Total time:</b>
+  <%= @calculated_data_learner_assessment.total_time %>
+</p>
+
+<p>
+  <b>Percentage:</b>
+  <%= @calculated_data_learner_assessment.percentage %>
+</p>
+
+<p>
+  <b>Percentile:</b>
+  <%= @calculated_data_learner_assessment.percentile %>
+</p>
+
+<p>
+  <b>Rank:</b>
+  <%= @calculated_data_learner_assessment.rank %>
+</p>
+
+
+<%= link_to 'Edit', edit_calculated_data_learner_assessment_path(@calculated_data_learner_assessment) %> |
+<%= link_to 'Back', calculated_data_learner_assessments_path %>

@@ -1,0 +1,44 @@
+
+
+<%#*Author : Karthik%>
+<title>LionSher: Blog List</title>
+<div id="main_inner_left">
+  <div id="main_inner_left_in">
+<h1>Listing blogs</h1>
+
+  <table>
+  <tr>
+    <th align="left">Id</th>
+    <th>&nbsp;&nbsp;&nbsp;</th>
+    <th align="left">Blog Name</th>
+    <th>&nbsp;&nbsp;&nbsp;</th>
+    <th align="left">Blog Title</th>
+    <th>&nbsp;&nbsp;&nbsp;</th>
+    <th align="left">Type</th>
+  </tr>
+
+<% for blog in @blogs %>
+  <tr>
+    <td><%=h blog.id %></td>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td><%=h blog.blog_name %></td>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td><%=h blog.blog_title %></td>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td><%=h blog.blog_type %></td>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="/blogs/<%= blog.id %>">View</a></td>
+    <td>&nbsp;&nbsp;&nbsp;</td>
+    <td><a href="/blogs/edit/<%= blog.id %>">Edit</a></td>
+  </tr>
+<% end %>
+</table>
+
+<br/>
+
+<a href="/blogs/new">New blog</a>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+</div>

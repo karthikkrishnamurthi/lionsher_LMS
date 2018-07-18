@@ -1,0 +1,15 @@
+development:
+  adapter: mysql2
+  database: lionsher_v2
+  encoding: utf8
+  username: root
+  password: sixes9fare
+  host: localhost
+
+production:
+  adapter: mysql2
+  database: lionsher_v2
+  encoding: utf8
+  username: root
+  password: sixes9fare
+  host: localhost

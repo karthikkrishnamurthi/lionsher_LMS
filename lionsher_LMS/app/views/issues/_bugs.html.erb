@@ -1,0 +1,17 @@
+<table width="735">
+  <% @open_bugs.each do |issue| %>
+    <%= render :partial => "content", :locals => { :issue => issue} %>
+  <% end %>
+
+  <% @fixed_bugs.each do |issue| %>
+    <%= render :partial => "content", :locals => { :issue => issue} %>
+  <% end %>
+
+  <% @tested_bugs.each do |issue|%>
+    <%= render :partial => "content", :locals => { :issue => issue} %>
+  <% end %>
+
+  <% @closed_bugs.each do |issue|%>
+    <%= render :partial => "content", :locals => { :issue => issue} %>
+  <% end %>
+</table>

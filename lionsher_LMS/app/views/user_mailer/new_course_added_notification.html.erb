@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head></head>
+  <body style="background-color: #e5e5e5; font-family: sans serif; font-family: helvetica;">
+
+    <div id="email_content" style="background-color: white; margin: 0px auto; overflow:hidden; padding: 0px 0px 0px 20px; color: #333333;">
+
+      <h1 style="margin: 10px 0px 10px 0px; font-size: 16px;font-weight: normal;">New Course Assigned
+      </h1>
+
+      <div class="email_mainpanel_content" style="font-size: 12px; height: 100px; overflow: hidden;">
+
+        <div class="email_content_pic" style="float:left;">
+
+          <% if @course.typeofcourse == "e-learning" then
+            if @course.image_file_name.nil? %>
+              <%= image_tag "http://www.lionsher.com/images/Elearning.png" %>
+            <% else %>
+              <%= image_tag "http://www.lionsher.com/system/images/#{@course.id}/small/#{@course.image_file_name}" %>
+            <% end %>
+          <% elsif @course.typeofcourse == "audio" then
+            if @course.image_file_name.nil? %>
+              <%= image_tag "http://www.lionsher.com/images/Audio.png" %>
+            <% else %>
+              <%= image_tag "http://www.lionsher.com/system/images/#{@course.id}/small/#{@course.image_file_name}" %>
+            <% end %>
+          <% elsif @course.typeofcourse == "video" then
+            if @course.image_file_size.nil? %>
+              <img alt="" src="http://www.lionsher.com/<%=h @course.image_file_name %>"/>
+            <% else %>
+              <%= image_tag "http://www.lionsher.com/system/images/#{@course.id}/small/#{@course.image_file_name}" %>
+            <% end %>
+          <% elsif @course.typeofcourse == "presentation" then
+            if @course.image_file_size.nil? %>
+              <img alt="" src="http://www.lionsher.com/<%=h @course.image_file_name %>"/>
+            <% else %>
+              <%= image_tag "http://www.lionsher.com/system/images/#{@course.id}/small/#{@course.image_file_name}" %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="email_content_type" style="font-size: 10px; color: #999999;margin: 0px 0px 0px 130px;">
+
+          <%=h @course.typeofcourse %>
+          <%if !@course.duration_hour.nil? and !@course.duration_min.nil?  then%> &nbsp; | &nbsp; <%= @course.duration_hour %> hr <%= @course.duration_min %> min
+          <%elsif @course.duration_hour.nil? and !@course.duration_min.nil?  then%> &nbsp; | &nbsp; <%= @course.duration_min %> min
+          <%elsif !@course.duration_hour.nil? and @course.duration_min.nil?  then%> &nbsp; | &nbsp; <%= @course.duration_hour %> hr<%end%>
+        </div>
+
+        <div class="email_course_title" style="font-size: 16px;margin: 0px 0px 0px 130px;">
+          <a href="<%=h @url %>" title="click here to take the course" style="color: blue;"><%=h @course.course_name %></a>
+
+        </div>
+
+        <div class="email_description" style="margin:0px 0px 0px 130px;">
+          <%=h @course.description %>
+
+        </div>
+
+      </div>
+      <hr/>
+    </div>
+  </body>
+</html>

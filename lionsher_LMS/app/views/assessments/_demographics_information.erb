@@ -1,0 +1,394 @@
+<%= stylesheet_link_tag 'demographic_info_edit' %>
+<% if @time >= @assessment.start_time %><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<div id="demographic_div" style="clear: left;margin-left: 20px;">Demographics
+    <% if !(@assessment.demographics.nil? or @assessment.demographics.blank?)
+      demographics = Demographics.find_by_id(@assessment.demographics_id)
+      if !(demographics.demographic_type_1.nil? or demographics.demographic_type_1.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">1.
+          <%=h demographics.demographic_type_1 %>
+          <%=h demographics.demographic_option_1 %>
+          </div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_2.nil? or demographics.demographic_type_2.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">2.
+          <%=h demographics.demographic_type_2 %>
+          <%=h demographics.demographic_option_2 %>
+            </div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_3.nil? or demographics.demographic_type_3.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">3.
+          <%=h demographics.demographic_type_3 %>
+          <%=h demographics.demographic_option_3 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_4.nil? or demographics.demographic_type_4.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">4.
+          <%=h demographics.demographic_type_4 %>
+          <%=h demographics.demographic_option_4 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_5.nil? or demographics.demographic_type_5.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">5.
+          <%=h demographics.demographic_type_5 %>
+          <%=h demographics.demographic_option_5 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_6.nil? or demographics.demographic_type_6.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">6.
+          <%=h demographics.demographic_type_6 %>
+          <%=h demographics.demographic_option_6 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_7.nil? or demographics.demographic_type_7.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">7.
+          <%=h demographics.demographic_type_7 %>
+          <%=h demographics.demographic_option_7 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_8.nil? or demographics.demographic_type_8.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">8.
+          <%=h demographics.demographic_type_8 %>
+          <%=h demographics.demographic_option_8 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_9.nil? or demographics.demographic_type_9.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">9.
+          <%=h demographics.demographic_type_9 %>
+          <%=h demographics.demographic_option_9 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_10.nil? or demographics.demographic_type_11.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">11.
+          <%=h demographics.demographic_type_11 %>
+          <%=h demographics.demographic_option_11 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_12.nil? or demographics.demographic_type_12.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">12.
+          <%=h demographics.demographic_type_12 %>
+          <%=h demographics.demographic_option_12 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_13.nil? or demographics.demographic_type_13.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">13.
+          <%=h demographics.demographic_type_13 %>
+          <%=h demographics.demographic_option_13 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_14.nil? or demographics.demographic_type_14.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">14.
+          <%=h demographics.demographic_type_14 %>
+          <%=h demographics.demographic_option_14 %></div>
+        </div>
+      <% end
+      if !(demographics.demographic_type_15.nil? or demographics.demographic_type_15.blank?) %>
+        <div class="demographic_type"><div class="numbering_demographic">15.
+          <%=h demographics.demographic_type_15 %>
+          <%=h demographics.demographic_option_15 %></div>
+        </div>
+      <% end
+    end %>
+  </div>
+<% else %>
+  <p><%= image_tag "demographic_example.png", :class => "image_strip", :width => "690", :alt => "" %></p>
+  <div id="demographic_div">
+    <% if (@assessment.demographics.nil? or @assessment.demographics.blank?) %>
+      <div class="demographic_type"><div class="numbering_demographic">1.</div>
+        <%= text_field_tag 'demographic[demographic_type_1]',nil,  :size => 20,:class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_1]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">2.</div>
+        <%= text_field_tag 'demographic[demographic_type_2]', nil, :size => 20,  :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_2]', nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">3.</div>
+        <%= text_field_tag 'demographic[demographic_type_3]', nil, :size => 20,  :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_3]', nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">4.</div>
+        <%= text_field_tag 'demographic[demographic_type_4]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_4]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">5.</div>
+        <%= text_field_tag 'demographic[demographic_type_5]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_5]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">6.</div>
+        <%= text_field_tag 'demographic[demographic_type_6]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_6]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">7.</div>
+        <%= text_field_tag 'demographic[demographic_type_7]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_7]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">8.</div>
+        <%= text_field_tag 'demographic[demographic_type_8]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_8]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">9.</div>
+        <%= text_field_tag 'demographic[demographic_type_9]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_9]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">10.</div>
+        <%= text_field_tag 'demographic[demographic_type_10]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_10]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">11.</div>
+        <%= text_field_tag 'demographic[demographic_type_11]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_11]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">12.</div>
+        <%= text_field_tag 'demographic[demographic_type_12]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_12]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">13.</div>
+        <%= text_field_tag 'demographic[demographic_type_13]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_13]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">14.</div>
+        <%= text_field_tag 'demographic[demographic_type_14]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_14]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+      <div class="demographic_type"><div class="numbering_demographic">15.</div>
+        <%= text_field_tag 'demographic[demographic_type_15]', nil, :size => 20, :class => 'demographic_left' %>
+        <%= text_field_tag 'demographic[demographic_option_15]',nil, :size => 20,:class => 'demographic_right' %>
+      </div>
+    <% else
+      demographics = Demographics.find_by_id(@assessment.demographics_id)
+      if !(demographics.demographic_type_1.nil? or demographics.demographic_type_1.blank?) %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">1.</div><%= text_field_tag 'demographic[demographic_type_1]',demographics.demographic_type_1,  :size => 20,  :class => 'demographic_left'%>
+          <% if !(demographics.demographic_option_1.nil? or demographics.demographic_option_1.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_1]',demographics.demographic_option_1, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_1]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">1.</div><%= text_field_tag 'demographic[demographic_type_1]',nil,  :size => 20,  :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_1]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_2.nil? or demographics.demographic_type_2.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">2.</div><%= text_field_tag 'demographic[demographic_type_2]',demographics.demographic_type_2, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_2.nil? or demographics.demographic_option_2.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_2]',demographics.demographic_option_2, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_2]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">2.</div><%= text_field_tag 'demographic[demographic_type_2]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_2]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_3.nil? or demographics.demographic_type_3.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">3.</div><%= text_field_tag 'demographic[demographic_type_3]',demographics.demographic_type_3, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_3.nil? or demographics.demographic_option_3.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_3]',demographics.demographic_option_3, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_3]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">3.</div><%= text_field_tag 'demographic[demographic_type_3]',nil,  :size => 20,  :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_3]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_4.nil? or demographics.demographic_type_4.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">4.</div><%= text_field_tag 'demographic[demographic_type_4]',demographics.demographic_type_4, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_4.nil? or demographics.demographic_option_4.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_4]',demographics.demographic_option_4, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_4]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">4.</div><%= text_field_tag 'demographic[demographic_type_4]',nil,  :size => 20,:class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_4]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_5.nil? or demographics.demographic_type_5.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">5.</div><%= text_field_tag 'demographic[demographic_type_5]',demographics.demographic_type_5, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_5.nil? or demographics.demographic_option_5.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_5]',demographics.demographic_option_5, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_5]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">5.</div><%= text_field_tag 'demographic[demographic_type_5]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_5]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_6.nil? or demographics.demographic_type_6.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">6.</div><%= text_field_tag 'demographic[demographic_type_6]',demographics.demographic_type_6, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_6.nil? or demographics.demographic_option_6.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_6]',demographics.demographic_option_6, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_6]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">6.</div><%= text_field_tag 'demographic[demographic_type_6]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_6]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_7.nil? or demographics.demographic_type_7.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">7.</div><%= text_field_tag 'demographic[demographic_type_7]',demographics.demographic_type_7, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_7.nil? or demographics.demographic_option_7.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_7]',demographics.demographic_option_7, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_7]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">7.</div><%= text_field_tag 'demographic[demographic_type_7]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_7]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_8.nil? or demographics.demographic_type_8.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">8.</div><%= text_field_tag 'demographic[demographic_type_8]',demographics.demographic_type_8, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_8.nil? or demographics.demographic_option_8.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_8]',demographics.demographic_option_8, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_8]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">8.</div><%= text_field_tag 'demographic[demographic_type_8]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_8]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_9.nil? or demographics.demographic_type_9.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">9.</div><%= text_field_tag 'demographic[demographic_type_9]',demographics.demographic_type_9, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_9.nil? or demographics.demographic_option_9.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_9]',demographics.demographic_option_9, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_9]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">9.</div><%= text_field_tag 'demographic[demographic_type_9]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_9]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_10.nil? or demographics.demographic_type_10.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">10.</div><%= text_field_tag 'demographic[demographic_type_10]',demographics.demographic_type_10, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_10.nil? or demographics.demographic_option_10.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_10]',demographics.demographic_option_10, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_10]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">10.</div><%= text_field_tag 'demographic[demographic_type_10]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_10]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_11.nil? or demographics.demographic_type_11.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">11.</div><%= text_field_tag 'demographic[demographic_type_11]',demographics.demographic_type_11, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_11.nil? or demographics.demographic_option_11.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_11]',demographics.demographic_option_11, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_11]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">11.</div><%= text_field_tag 'demographic[demographic_type_11]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_11]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_12.nil? or demographics.demographic_type_12.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">12.</div><%= text_field_tag 'demographic[demographic_type_12]',demographics.demographic_type_12, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_12.nil? or demographics.demographic_option_12.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_12]',demographics.demographic_option_12, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_12]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">12.</div><%= text_field_tag 'demographic[demographic_type_12]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_12]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_13.nil? or demographics.demographic_type_13.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">13.</div><%= text_field_tag 'demographic[demographic_type_13]',demographics.demographic_type_13, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_13.nil? or demographics.demographic_option_13.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_13]',demographics.demographic_option_13, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_13]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">13.</div><%= text_field_tag 'demographic[demographic_type_13]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_13]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_14.nil? or demographics.demographic_type_14.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">14.</div><%= text_field_tag 'demographic[demographic_type_14]',demographics.demographic_type_14, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_14.nil? or demographics.demographic_option_14.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_14]',demographics.demographic_option_14, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_14]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">14.</div><%= text_field_tag 'demographic[demographic_type_14]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_14]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end
+      if !(demographics.demographic_type_15.nil? or demographics.demographic_type_15.blank?)%>
+        <div class="demographic_type">
+          <div class="numbering_demographic">15.</div><%= text_field_tag 'demographic[demographic_type_15]',demographics.demographic_type_15, :size => 20, :class => 'demographic_left' %>
+          <% if !(demographics.demographic_option_15.nil? or demographics.demographic_option_15.blank?) %>
+            <%= text_field_tag 'demographic[demographic_option_15]',demographics.demographic_option_15, :size => 20, :class => 'demographic_right' %>
+          <% else %>
+            <%= text_field_tag 'demographic[demographic_option_15]',nil, :size => 20, :class => 'demographic_right' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="demographic_type">
+          <div class="numbering_demographic">15.</div><%= text_field_tag 'demographic[demographic_type_15]',nil,  :size => 20, :class => 'demographic_left'%>
+          <%= text_field_tag 'demographic[demographic_option_15]',nil, :size => 20, :class => 'demographic_right' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+  <br/>
+  <% if @assessment.demographics_compulsory %>
+  <input type="checkbox" name="assessment_demographics_compulsory" checked/>
+  <% else %>
+  <input type="checkbox" name="assessment_demographics_compulsory" />
+  <% end %>
+  <label class="checkbox_label">Make Demographics compulsory</label>

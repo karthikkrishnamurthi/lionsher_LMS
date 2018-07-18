@@ -1,0 +1,27 @@
+<style>
+#admin_panel_sellers{
+    font-weight: bold;
+}
+</style>
+<div id="div_container">
+  <h3>Listing Buyers</h3>
+  <div class= "div_table" id="display">
+    <table border="0" cellpadding="2px" cellspacing="0" >
+      <tr>
+        <th>Id</th>
+        <th>Organization</th>
+        <th>Admin</th>
+      </tr>
+      <% i = 1
+      for seller in @sellers
+      user = User.find(seller.user_id)%>
+        <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+          <td class="name"><%=h seller.id %></td>
+          <td class="name"><a><%=h seller.organization %></a></td>
+          <td class="name"><%=h user.email %></td>
+        </tr>
+        <% i = i + 1
+      end %>
+    </table>
+  </div>
+</div>

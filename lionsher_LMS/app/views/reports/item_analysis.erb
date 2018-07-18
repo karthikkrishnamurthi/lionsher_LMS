@@ -1,0 +1,126 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+
+    <table border="1">
+      <% i = 0
+      total_learners_attempted_test = @learners.count
+      @assessment.question_banks.find(:all,:order=>'id').each do |qb| %>
+        <tr>
+          <th colspan="13">
+            <%= qb.name %> (<%=h total_learners_attempted_test %>)
+          </th>
+        </tr>
+        <tr>
+          <th>Q.No</th>
+          <th>a</th>
+          <th>b</th>
+          <th>c</th>
+          <th>d</th>
+          <th>e</th>
+          <th>attempted</th>
+          <th>unattempted</th>
+          <th>Difficulty Index</th>
+          <th>Difficulty Level</th>
+          <th>Correct Upper Group (27%)</th>
+          <th>Correct Lower Group (27%)</th>
+          <th>Discrimination Index</th>
+          <th>Discrimination</th>
+        </tr>
+        <% j = 0
+        qb.questions.find(:all,:order=>'id').each do |q|
+          attempted_count = 0
+          attempted_question_correctly = 0
+          correct_upper_group_count = 0
+          correct_lower_group_count = 0
+        %>
+          <tr>
+            <td>
+              <a href="/questions/show/<%=h q.id %>?assessment_id=<%=h @assessment.id %>"><font color="blue"><%= j+1 %></font></a>
+            </td>
+            <%
+            5.times do |i|
+              a = q.answers.find(:all,:order=>'id')[i]
+              logger.info"ANSWER OBJECT #{a.inspect}"
+              learner_count = 0
+              unless a.nil?
+                @learners.each do |learner|
+                  suspend_data = learner.suspend_data.split('|')
+                  if suspend_data.include?(a.id.to_s)
+                    learner_count = learner_count + 1
+                  end
+                end
+              end
+            %>
+              <td>
+                <% if !a.nil? and a.answer_status == "correct" %>
+                  <b><font color="green"><%=h learner_count %></font></b>
+                  <% attempted_question_correctly = learner_count
+                else %>
+                  <%= learner_count %>
+                <% end %>
+              </td>
+              <%
+              attempted_count = attempted_count + learner_count
+            %>
+            <% end
+            difficulty_index = (attempted_question_correctly.to_f/attempted_count).round(2)
+            difficulty_level = (difficulty_index >= 0.75) ? "Low" : ((difficulty_index < 0.25) ? "High" : "Medium")
+          %>
+            <td><%=h attempted_count %></td>
+            <td><%=h total_learners_attempted_test - attempted_count %></td>
+            <td><%=h difficulty_index %></td>
+            <td><%=h difficulty_level %></td>
+
+            <% q.answers.find(:all,:order=>'id').each do |a|
+              @correct_upper_group = 0
+              @upper_group.each do |learner|
+                suspend_data = learner.suspend_data.split('|')
+                if suspend_data.include?(a.id.to_s)
+                  if a.answer_status == "correct"
+                    @correct_upper_group = @correct_upper_group + 1
+                  end
+                end
+              end
+              if @correct_upper_group > 0 %>
+                <td>
+                  <%=h @correct_upper_group %>
+                </td>
+                <% correct_upper_group_count = @correct_upper_group
+              end
+            end %>
+
+            <% q.answers.find(:all,:order => 'id').each do |a|
+              @correct_lower_group = 0
+              @lower_group.each do |learner|
+                suspend_data = learner.suspend_data.split('|')
+                if suspend_data.include?(a.id.to_s)
+                  if a.answer_status == "correct"
+                    @correct_lower_group = @correct_lower_group + 1
+                  end
+                end
+              end
+              if @correct_lower_group > 0 %>
+                <td>
+                  <%=h @correct_lower_group %>
+                </td>
+                <% correct_lower_group_count = @correct_lower_group
+              end
+            end
+            discrimination_index = ((correct_upper_group_count - correct_lower_group_count).to_f / @learner_limit).round(2)
+            discrimination = (discrimination_index >= 0.6)?"very good":((discrimination_index >= 0.3 and discrimination_index < 0.6)?"good":((discrimination_index >=0 and discrimination_index < 0.3)?"ok":"bad"))
+          %>
+            <td><%=h discrimination_index %></td>
+            <td><%=h discrimination %></td>
+          </tr>
+          <% j = j + 1 %>
+        <% end %>
+        <% i = i + 1 %>
+      <% end %>
+    </table>
+
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

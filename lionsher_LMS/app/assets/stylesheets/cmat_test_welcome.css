@@ -1,0 +1,27 @@
+#about_cmat
+{
+    text-align: center;
+}
+ul
+{
+    /*background-color: red;*/
+    font-size: 13px;
+    margin-top: 40px;
+}
+ul li
+{
+    margin: 5px 0px 0px 0px;
+}
+table .total
+{
+    font-weight: bold;
+}
+.test_description_scroll
+{
+    height: 395px;
+    overflow-y: scroll;
+}
+.buttons_ul li
+{
+    margin-top: 15px;
+}

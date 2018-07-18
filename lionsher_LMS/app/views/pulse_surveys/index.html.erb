@@ -1,0 +1,24 @@
+<h1>Listing pulse_surveys</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Coupon code</th>
+  </tr>
+
+<% for pulse_survey in @pulse_surveys %>
+  <tr>
+    <td><%=h pulse_survey.name %></td>
+    <td><%=h pulse_survey.email %></td>
+    <td><%=h pulse_survey.coupon_code %></td>
+    <td><%= link_to 'Show', pulse_survey %></td>
+    <td><%= link_to 'Edit', edit_pulse_survey_path(pulse_survey) %></td>
+    <td><%= link_to 'Destroy', pulse_survey, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New pulse_survey', new_pulse_survey_path %>

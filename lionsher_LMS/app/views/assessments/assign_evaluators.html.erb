@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'learner_content' %>
+<%= javascript_include_tag 'manage_learners' %>
+
+<div id="learner_container">
+  <div id="learner_mainpanel">
+    <div class="all_groups">
+      <div id="learners_big_box">
+        <form action="/assessments/save_evaluator_details/<%=h @assessment.id %>" method="post" name="manage_learners_form">
+          <% @evaluators.each { |evaluator|
+             learner = Learner.find_by_assessment_id_and_user_id_and_type_of_test_taker(@assessment.id,evaluator.id,"evaluator") %>
+            <div class="learners_box_left">
+              <input type="checkbox" name="evaluator" value="<%=h evaluator.id %>" <% unless learner.nil? or learner.blank? %>checked<% end %>/>
+              <%=h evaluator.login %> &nbsp;&nbsp;<em><%=h evaluator.email %></em><br/>
+            </div>
+          <% } %>
+          <input id="assign_learners" name="commit" type="submit" value="Done"/>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

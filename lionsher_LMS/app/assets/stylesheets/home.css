@@ -1,0 +1,228 @@
+#main_header #main_tabs #home
+{
+    background-color: #efefef;
+}
+#container h1
+{
+    margin: 2px 20px 20px 0px;
+    padding: 0px;
+    /*background-color: red;*/
+    font-weight: normal;
+    font-size: 20px;
+    text-align: left;
+}
+#container #banner_image
+{
+    margin: 0px 0px 10px 0px;
+}
+#main_header .shadow_line
+{
+    /*display: none;*/
+}
+#container #mid_panel
+{
+    margin-bottom: 20px;
+    text-align: left;
+    overflow: hidden;
+}
+#container #mid_panel #mid_text_panel
+{
+    /*background-color: red;*/
+    float: left;
+}
+#container #mid_panel #mid_text_panel p
+{
+    margin-top: 10px;
+}
+#container #mid_panel #mid_text_panel #images
+{
+    float: none;
+    overflow: hidden;
+}
+#container #mid_panel #mid_text_panel hr
+{
+    border-bottom: 1px dotted #126172 ;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    margin: 0px 0px 15px 0px;
+    padding: 0px;
+}
+#container #mid_panel p
+{
+    /*width: 600px;*/
+    margin-left: 25px;
+    margin-top: 25px;
+}
+#container #mid_panel .image_details 
+{
+    /*background-color: yellow;*/
+    margin: 0px 10px 0px 20px;
+    float: left;
+}
+#container #mid_panel .image_details a
+{
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+#container #mid_panel .image_details img
+{
+}
+#container #mid_panel .image_details a p
+{
+    padding: 0px;
+    /*float: left;*/
+    margin: 0px 0px 0px 25px;
+    width: 100px;
+    font-size: 16px;
+    color: gray;
+    border: none;
+    position: relative;
+    /*background-color: red;*/
+}
+#container #mid_panel .image_details a p img
+{
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    color: #ffffff;
+}
+#container #mid_panel .image_details a p #arw_one
+{
+    position: absolute;
+    top: 18px;
+    left: 65px;
+}
+#container #mid_panel .image_details a p #arw_two
+{
+    position: absolute;
+    top: 18px;
+    left: 75px;
+}
+#container #mid_panel .image_details a p #arw_three
+{
+    position: absolute;
+    top: 18px;
+    left: 85px;
+}
+#container #mid_panel .image_details a p #arw_four
+{
+    position: absolute;
+    top: 18px;
+    left: 85px;
+}
+#container #mid_panel #link_button
+{
+    width: 218px;
+    height: 40px;
+    margin: 30px 0px 0px 30px;
+}
+#container #mid_panel a:focus
+{
+    outline: none;
+}
+#container #mid_panel a #view_pricing_and_signup
+{
+    width: 218px;
+    height: 40px;
+    background: url("lionsherhome_images/pricing_signup.png") repeat-x scroll 0 0 transparent;
+}
+#container #mid_panel a #view_pricing_and_signup:hover
+{
+    background: url("lionsherhome_images/pricing_signup_hover.png") repeat-x scroll 0 0 transparent;
+}
+#divider
+{
+    background: url("lionsherhome_images/divider_home_page.jpg") repeat-x scroll 0 0 transparent;
+}
+#container #lower_panel
+{
+    /*background-color: fuchsia;*/
+}
+#container #lower_panel h1
+{
+    /*background-color: yellow;*/
+    margin: 10px 0px 0px 15px;
+    font-size: 22px;
+    padding-bottom: 2px;
+    border-bottom: 1px dotted #ff6600;
+}
+#container #lower_panel .lower_bottom_text
+{
+    margin: 10px 0px 50px 20px;
+    padding: 0px 10px 0px 0px;
+    /*background-color: yellow;*/
+    /*overflow: hidden;*/
+    width: 200px;
+    float: left;
+    position: relative;
+}
+#container #lower_panel .lower_bottom_text .vert_divider
+{
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    border-right: 1px dotted #ff6600;
+    height: 300px;
+}
+#container #lower_panel .lower_bottom_text #image_one
+{
+    position: absolute;
+    top: 110px;
+    left: 50px;
+}
+#container #lower_panel .lower_bottom_text #image_two
+{
+    position: absolute;
+    top: 108px;
+    left: 130px;
+}
+#container #lower_panel .lower_bottom_text #image_three
+{
+    position: absolute;
+    top: 160px;
+    left: 120px;
+}
+#container #lower_panel .lower_bottom_text p
+{
+    margin-bottom: 15px;
+    margin-right: 0px;
+    /*background-color: red;*/
+    font-size: 12px;
+    padding: 0px;
+}
+#container #lower_panel .lower_bottom_text s
+{
+    text-decoration: none;
+    font-size: 16px;
+}
+#vert_divider_one
+{
+    border-right: 1px dotted #cc6600;
+
+}
+#flash
+{
+    color: green;
+    margin: 0px 0px 0px 32px;
+}
+#container #mid_panel #free_trial_link_button
+{
+    /*background-color: red;*/
+    width: 190px;
+    margin: 30px 0px 0px 700px;
+}
+#container #mid_panel #free_trial_link_button span
+{
+    margin-left: 10px;
+    font-size: 11px;
+    font-style: italic;
+}
+#container #mid_panel #free_trial
+{
+    width: 178px;
+    height: 37px;
+    cursor: pointer;
+    border: none;
+    background: url("lionsherhome_images/trial_14_day.jpg") repeat-x scroll 0 0 transparent;
+}

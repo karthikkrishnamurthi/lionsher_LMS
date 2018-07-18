@@ -1,0 +1,34 @@
+<table border="1">
+  <% i = 0
+  @assessment.question_banks.each do |qb| %>
+    <tr>
+      <th colspan="8">
+        <%= qb.name %>
+      </th>
+    </tr>
+    <tr>
+      <th>QID</th>
+      <th>A1</th>
+      <th>A2</th>
+      <th>A3</th>
+      <th>A4</th>
+    </tr>
+    <% j = 0 %>
+    <% qb.questions.each do |q| %>
+      <tr>
+        <td>
+          <%= q.id %>
+        </td>
+        <% k = 0 %>
+        <% q.answers.each do |a| %>
+          <td>
+            <%= a.id %>
+          </td>
+          <% k = k + 1 %>
+        <% end %>
+      </tr>
+      <% j = j + 1 %>
+    <% end %>
+    <% i = i + 1 %>
+  <% end %>
+</table>

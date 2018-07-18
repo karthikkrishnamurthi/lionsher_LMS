@@ -1,0 +1,273 @@
+#div_container #upload_scrom_course
+{
+    position: absolute;
+    top: 10px;
+    left: 140px;
+    font-style: normal;
+}
+
+
+
+#div_container h2
+{
+    /*font-weight:normal;
+    font-size: 13px;
+    color: gray;
+    font-style: italic;
+    margin: -7px 0px 20px 10px;*/
+    font-weight:normal;
+    font-size: 10px;
+    color: gray;
+    margin: -30px 0px 20px 150px;
+}
+#div_container label
+{
+    float: left;
+    display: block;
+    /*width: 115px;*/
+    clear: left;
+    font-size: 12px;
+    margin-bottom: 0px;
+    margin-left: 16px;
+    margin-right: 10px;
+    color: gray;
+}
+#div_container input
+{
+    float: left;
+    display: block;
+    clear: left;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-left: 16px;
+    padding: 2px 2px 2px 3px;
+}
+
+#div_container textarea
+{
+    font-family: helvetica;
+    height: 64px;
+    float: left;
+    display: block;
+    clear: left;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-left: 16px;
+    border:#ccc 1px solid;
+    padding: 2px 2px 2px 3px;
+}
+#div_mainpanel span
+{
+    float: left;
+    font-style: italic;
+    font-size: 9px;
+    color: gray;
+    margin: 4px 0px 0px 7px;
+}
+#div_mainpanel span input
+{
+    width: 25px;
+    border:none;
+    background-color: transparent;
+    font-size: 9px;
+    font-style:italic;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+#div_container #browse_span
+{
+    float: left;
+    font-size: 10px;
+    font-style: italic;
+    color: gray;
+    margin: 2px 0px 0px 7px;
+
+}
+#course_details_submit input
+{
+    width: 100px;
+    border: gray 1px solid;
+    font-size: 12px;
+    padding: 3px 3px 3px 3px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+#course_details_submit
+{
+    color: gray;
+    
+}
+#course_details_submit a
+{
+    color: blue;
+    margin-left: 10px;
+
+}
+#course_details_submit a:hover
+{
+    text-decoration: underline;
+}
+#course_submit
+{
+    border: gray 1px solid;
+    font-size: 12px;
+    padding: 7px 7px 7px 37px;
+    margin-right: 10px;
+    margin-top: 3px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+#course_done {
+    background: url('Done.png') no-repeat;
+    width: 90px;
+    height: 27px;
+    border: 0px;
+    cursor: pointer;
+}
+#div_container label input
+{
+    margin-left: 0px;
+    border: 0px;
+    width: 100px;
+ 
+
+}
+#div_container #course_duration {
+    width: 40px;
+}
+
+#div_container form label {
+    position: relative; 
+}
+
+#div_container #upload_cancel {
+   position: absolute;
+    top: -28px;
+    left: 150px;
+    color: blue;
+    font-size: 11px;
+    /*background-color: red;*/
+}
+#div_mainpanel #cancel_while_uploading a:hover
+{
+    text-decoration: underline;
+}
+#div_container #upload_cancel:hover
+{
+    text-decoration: underline;
+}
+#div_container #destroy_course
+{
+   width: 80px;
+   position: absolute;
+   top: -26px;
+   left: 620px;
+   color: blue;
+   font-size: 11px;
+}
+#div_container #destroy_course:hover
+{
+    text-decoration: underline;
+}
+#div_container hr {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: #ccc 1px dotted;
+    clear: left;
+    padding-top: 15px;
+    margin: 0px 10px 10px 16px;
+}
+#div_sidepanel hr
+{
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: #ccc 1px dotted;
+    clear: left;
+    padding-top: 5px;
+    margin: 0px 10px 10px 10px;
+}
+#edit_upload_cancel
+{
+    position: absolute;
+    top: -35px;
+
+}
+#validateupload
+{
+    position: absolute;
+        
+}
+#div_or
+{
+    position: absolute;
+    
+}
+#div_mainpanel #cancel
+{
+    /*background-color: red;*/
+    /*margin:6px 0px 0px 0px;*/
+    margin-top: 7px;
+    color: gray;
+    width: 75px;
+    float: left;
+}
+#div_mainpanel #cancel s
+{
+    /*background-color: fuchsia;*/
+    text-decoration: none;
+    /*margin: 0px 0px 0px 0px;*/
+    float: left;
+
+}
+#div_mainpanel #cancel a
+{
+    /*background-color: yellow;*/
+    float: right;
+    margin: 0px;
+    color: blue;
+}
+#div_mainpanel #cancel a:hover
+{
+    text-decoration: underline;
+}
+#div_container #div_mainpanel form #feedback_check
+{
+    margin: -25px 100px 10px 28px;
+}
+#div_container #div_mainpanel form #counter
+{
+    margin: -25px 100px 10px 28px;
+}
+#div_container .checkbox_label
+{
+    margin: -3px 0px 0px 0px;
+    font-style: normal;
+}
+
+#div_mainpanel #processing{
+    clear: left;
+    clear: both;
+}

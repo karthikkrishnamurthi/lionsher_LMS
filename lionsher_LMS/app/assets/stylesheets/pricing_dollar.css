@@ -1,0 +1,13 @@
+#pricing_mid_panel
+{
+    /*background-color: yellow;*/
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 13px;
+    margin-right: 16px;
+    padding: 50px 2px 2px 2px;
+    background: url("lionsherhome_images/background_pricing_dollar.jpg") repeat-x scroll 0 0 transparent;
+    overflow: hidden;
+    position: relative;
+}

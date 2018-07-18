@@ -1,0 +1,40 @@
+<div class="question_now">
+  <% @i = 1
+  if @question.question_type != "MTF"
+    if !(@question.mtf_id.nil? or @question.mtf_id.blank?)
+      @direction = Question.find_by_id(@question.mtf_id)
+    end
+  end
+  case(@question.question_type)
+  when "MCQ","MAQ"
+    if !(@question.mtf_id.nil? or @question.mtf_id.blank?) %>
+      <%= render :partial => "/assessments/ptq_question_and_image" %>
+    <% end
+    unless @question.direction_text.nil? or @question.direction_text.blank? %>
+      Direction: <%=raw @question.direction_text %>
+    <% end %>
+    <%=raw @question.question_text %>
+  <% when "MTF" %>
+    <%=raw @question.question_text %>
+  <% when "FIB"
+    underscore = "_" * @question.question.count("_")
+    question = @question.question.split(underscore)
+    if !(@question.mtf_id.nil? or @question.mtf_id.blank?) %>
+      <%= render :partial => "/assessments/ptq_question_and_image" %>
+    <% end %>
+    <%=h question[0] %><input type="text" name="answer_id" size="20" maxlength="100" id="ans_<%= @i %>" <% if !@answer_id.nil? or !@answer_id.blank? or @answer_id != '*' %>value="<%= @answer_id %>"<% end %>/><%=h question[1] %>
+  <% when "SA"
+    if !(@question.mtf_id.nil? or @question.mtf_id.blank?) %>
+      <%= render :partial => "/assessments/ptq_question_and_image" %>
+    <% end %>
+    <%=raw @question.question_text %><br/>
+    <input type="text" size="30" maxlength="100" name="answer_id" id="ans_<%= @i %>" <% if !@answer_id.nil? or !@answer_id.blank? or @answer_id != '*' %>value="<%= @answer_id %>"<% end %>/>
+  <% when "DTQ"
+    if !(@question.mtf_id.nil? or @question.mtf_id.blank?) %>
+      <%= render :partial => "/assessments/ptq_question_and_image" %>
+    <% end %>
+    <%=raw @question.question_text %><br/>
+    <textarea style="overflow: auto; " cols="" id="ans_<%= @i %>" name="descriptive_question[answer]" onkeyup="textCounter(this,document.form_assessment.remLen,2000)" onclick="textCounter(this,document.form_assessment.remLen,2000)"><% if !@answer_id.nil? or !@answer_id.blank? %><%= @answer_id %><% end %></textarea>
+    <span id="assessment_info_char_left_label"><input disabled type="text" name="remLen" maxlength="4" value="2000"/>&nbsp;characters left</span>
+    <% end %>
+</div>

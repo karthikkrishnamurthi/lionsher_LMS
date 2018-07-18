@@ -1,0 +1,55 @@
+<%= javascript_include_tag 'counter' %>
+<%= stylesheet_link_tag 'for_ie_7' %>
+<%= stylesheet_link_tag 'right_panel_questions_for_lms' %>
+<%= stylesheet_link_tag 'assessment_style' %>
+<%= stylesheet_link_tag 'review_assessment' %>
+<%= render :partial => "/assessments/single_page_save_answer" %>
+<% if current_user.typeofuser == "learner" or @current_learner.type_of_test_taker == "learner" then %>
+  <style>
+    #div_upper_left
+    {
+      display: none;
+    }
+  </style>
+<% end %>
+<div id="div_container">
+  <div id="div_mainpanel">
+      <form name="form_assessment" id="review_assessment_form" action="/assessments/quit_assessment/<%=h @current_learner.id %>" method="post">
+      <div id="assessment_name"><%=h @assessment.name %></div><br/>
+        You have viewed all questions.<br/><br/>
+
+        <div class="review_status">
+          <em>Answered: </em><s><%= @answered %></s>/<%= @assessment.no_of_questions %>
+        </div>
+        <div class="review_status">
+          <em>Skipped: </em><s><%= @skipped %></s>/<%= @assessment.no_of_questions %>
+        </div>
+        <div class="review_status">
+          <em style="margin-left: 10px;">Marked for Review: </em><s><%= @marked %></s>/<%= @assessment.no_of_questions %>
+        </div>
+
+        <div class="answers_now">
+          <div id="border"></div>
+        </div>
+        
+        <div class="next">
+          <a href="/assessments/multi_page_test/<%=h @current_learner.id %>" class="back_to_assessment_button">Back to Assessment</a>
+          <% if @skipped > 0 %>
+            <a href="/assessments/show_skipped/<%=h @current_learner.id %>" class="show_skipped_button">Show Skipped</a>
+          <% end %>
+          <% if @marked > 0 %>
+            <a href="/assessments/show_marked/<%=h @current_learner.id %>" class="show_marked" >Show Questions for Review</a>
+          <% end %>
+        </div><br/><br/><br/><br/><br/><br/><br/>
+        
+        <input class="submit_bigger" id="next_next" type="submit" value="Submit Test" /><br/>
+        <p>The score will be based on all the answers you have chosen.</p>
+      </form>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+    <% if @assessment.time_bound != "not_time_bound" then %>
+      <%= render :partial => "/assessments/side_timer"  %>      
+    <% end %><br/>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div style="margin-left:12px;">
+    <h5>Instructions</h5>
+    <% unless @structure_component.instruction.nil? or @structure_component.instruction.blank? %>
+      <%=h @structure_component.instruction.instruction_text %><br/>
+    <% end %>
+    <hr/>
+    <br/>
+    <% unless @is_last_component %>
+      <a href="/assessments/get_structure_component/<%=h @learner.id %>?component=<%=h @next_component_id %>" class="done_button">Next</a>
+    <% else %>
+      <a href="/" class="done_button">Done</a>
+    <% end %>
+    </div>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>

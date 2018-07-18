@@ -1,0 +1,17 @@
+
+<div class="label_license_pricing"> Per License Pricing</div>
+<div id="total_courses_preview">
+  <span class="price_preview">
+    <% unless @course.course_price.nil?  or @course.course_price.blank? then %>
+      <span class="WebRupee">Rs.</span><span id="price_initial"><%=h (@course.course_price).round %></span><span id="total"></span>
+    <% else %>
+      <em style="font-size: 12px;color: gray;">Coming Soon</em>
+    <% end %>
+  </span>
+
+  <form  method="post" onsubmit="javascript:return price_form_validation();" action="/course_store/save_buyers_course_details/<%=h @course.id %>">
+    <label>Licenses</label><br/>
+    <input id="no_of_license" type="text" name="buyer_seller[no_of_license]" size="3" value="1" /><br/>
+    <input class="course_store_buy_preview" type="submit" name="" value="Buy"/>
+  </form>
+</div>

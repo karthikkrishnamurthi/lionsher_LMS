@@ -1,0 +1,72 @@
+<input id="show_result" class="checkbox_input" type="checkbox" name="assessment[skip_question]" <% if @assessment.skip_question == true %>checked<% end %>/>
+<label class="checkbox_label">Learner can skip question</label><br/>
+<h3>Scoring </h3>
+<div class="correct_points">
+  <label for="assessment_correct_ans_points">Correct answer </label>
+  <input class="number" id="assessment_correct_ans_points" name="assessment[correct_ans_points]" onblur="calculate_total_mark(<%= @assessment.no_of_questions %>);" value="<%=h @assessment.correct_ans_points %>" maxlength="3" size="30" type="text" />
+  <span class="scoring_points">marks</span>
+  <label for="assessment_correct_ans_points" generated="" class="error" style="display: none; width: 200px; float: right;margin-top: -28px; font-size: 10px; color: red;">Please enter a valid number.</label>
+  <span id="correct_point_blank" style="display: none;">Correct answer marks can't be blank</span>  
+</div>
+
+<div class="correct_points">
+  <label for="assessment_wrong_ans_points">Wrong answer </label>
+  <input class="number" id="assessment_wrong_ans_points" name="assessment[wrong_ans_points]" value="<%=h @assessment.wrong_ans_points %>" maxlength="10" size="30" type="text" />
+  <span class="scoring_points">marks</span>
+  <label for="assessment_wrong_ans_points" generated="" class="error" style="display: none; width: 200px; float: right;margin-top: -28px; font-size: 10px; color: red;">Please enter a valid number.</label>
+  <span id="wrong_point_blank" style="display: none;">Wrong answer marks can't be blank</span>
+</div>
+
+<div class="correct_points">
+  <label>Pass marks</label>
+
+  <% if params[:action] == "edit_assessment_details" then %>
+    <input class="number" id="assessment_pass_score" name="assessment[pass_score]" <% if @assessment.assessment_type == "single" %>onfocus="calculate_total_mark(<%= @assessment.no_of_questions %>);"<% end %> value="<%=h @assessment.pass_score %>" maxlength="4" type="text" />
+  <% else %>
+    <input class="number" id="assessment_pass_score" name="assessment[pass_score]" <% if @assessment.assessment_type == "single" %>onfocus="calculate_total_mark(<%= @assessment.no_of_questions %>);"<% end %> value="0" maxlength="4" type="text" />
+    <input type="hidden" id="hidden_assessment_pass_score" name="assessment_pass_score" value=""/>
+  <% end %>
+  <% if params[:action] == "edit_assessment_details" then %>
+    <label id="by"> /</label>
+    <input disabled id="total_marks" name="score_max" type="text" value="<%=h @assessment.correct_ans_points.to_i * @assessment.no_of_questions.to_i %> "/>
+  <% else
+    if (@assessment.correct_ans_points.nil? or @assessment.correct_ans_points.blank?) and (@assessment.no_of_questions.nil? or @assessment.no_of_questions.blank?) then %>
+      <label id="by"> /</label>
+      <input disabled id="total_marks" type="text" name="score_max" value="0"/>
+    <% else
+      total = @assessment.correct_ans_points.to_i * @assessment.no_of_questions.to_i %>
+      <label id="by">/</label>
+      <% if @assessment.assessment_type == "single" %>
+        <input disabled id="total_marks" name="score_max" type="text" value="<%=h total %> "/>
+      <% else %>
+        <input disabled id="total_marks" name="score_max" type="text" value="" style="font-size:10px; margin-top: 2px; color: black;"/>
+      <% end %>
+      <div id="pass_score_larger_div" style="display: none;">Pass mark can not be greater than <script type="text/javascript">
+        var total = document.getElementById("total_marks").value;
+        document.write(total);
+        </script>
+      </div>
+    <% end
+  end %>
+
+  <span  style="font-style:italic;font-size: 10px;">leave blank if pass/fail status not required</span>
+  <label for="assessment_pass_score" generated="" class="error" style="display: none; width: 250px;color: red;">Please enter a valid number.</label>
+  <label for="hidden_assessment_pass_score" generated="" class="error" style="width: 250px; color: red; display: none;"> Pass mark can not be greater than <em id="total_mark_result_in_error" name="total_mark_result_in_error"></em></label>
+</div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("input[name^='question_bank[limit_']").attr("disabled","disabled");
+    $("#total_quest_result").val($("input[name^='question_bank[limit_']").sum());
+    $('#total_marks').val($("#assessment_correct_ans_points").val() * $("input[name^='question_bank[limit_']").sum())
+  });
+  $("input[id^='question_bank_id_']").keyup(function() {
+    $("#total_quest_result").val($("input[name^='question_bank[limit_']").sum());
+    $('#total_marks').val($("#assessment_correct_ans_points").val() * $("input[name^='question_bank[limit_']").sum())
+  });
+  $('#assessment_correct_ans_points').keyup(function() {
+    $('#total_marks').val($("#assessment_correct_ans_points").val() * $("input[name^='question_bank[limit_']").sum())
+  });
+  $("#show_limited_questions").click(function(){ $("input[name^='question_bank[limit_']").removeAttr('disabled'); });
+  $("#show_all_questions").click(function(){ $("input[name^='question_bank[limit_']").attr("disabled","disabled"); });
+  $("#assessment_pass_score").keyup(function(){ $("#hidden_assessment_pass_score").val($("#assessment_pass_score").val());});
+</script>

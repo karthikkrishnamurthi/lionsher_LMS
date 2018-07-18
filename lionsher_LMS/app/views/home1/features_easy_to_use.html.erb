@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag 'features_easy_to_use' %>
+<%= render :partial => "features" %>
+
+<div id="mid_panel">
+  <div class="next_button">  <a href="/features_highly_secure"><%= image_tag "lionsherhome_images/next_hover.png" %></a>  </div>
+  <div class="prev_button">  <a href="/features_cost_effective"><%= image_tag "lionsherhome_images/prev_hover.png" %></a>  </div>
+  <%= image_tag "lionsherhome_images/features_easy_to_use.jpg", :alt => "Easy to use Can you check emails, operate your mobile phone, book tickets online? Then why do you need someone else to manage you online learning system? Perform all your tasks without assistance. Lionsher is simple,intuitive and usable-no pains, no dependecies. 10 or 100,000 learners, scale up in a jiffy without breaking a sweat." %>
+</div>
+<div class="shadow_line"> &nbsp;</div>
+<div id="lower_panel">
+  <div id="lower_content">
+    <div class="static_content">
+      <h1><%= raw @rules['Business']['easy_to_use']['h1'] %> </h1>
+      <p><%= raw @rules['Business']['easy_to_use']['para1'] %></p>
+      <p><%= raw @rules['Business']['easy_to_use']['para2'] %></p>
+    </div>
+    <div class="static_content">
+      <h2><%= raw @rules['Business']['easy_to_use']['h2'] %></h2>
+      <p><%= raw @rules['Business']['easy_to_use']['para3'] %></p>
+      <p><%= raw @rules['Business']['easy_to_use']['para4'] %></p>
+    </div>
+    <div class="static_content">
+      <h3><%= raw @rules['Business']['easy_to_use']['h3'] %></h3>
+      <p><%= raw @rules['Business']['easy_to_use']['para5'] %></p>
+    </div>
+    <div class="static_content" id="no_hardware_costs">
+      <h4></h4>
+      <p></p>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,112 @@
+<%#*Upload page for course. Control comes from courses/index.html %>
+<%#*Authors : Surupa,Aarthi %>
+
+<%= stylesheet_link_tag 'courses_content'  %>
+<%= stylesheet_link_tag 'upload_course'  %>
+<%= javascript_include_tag 'upload_course' %>
+<%= stylesheet_link_tag 'for_ie_7'%>
+<script type="text/javascript" charset="utf-8">
+  function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+<script type="text/javascript">
+  function submitform()
+  {
+    document.myform.submit();
+  }
+  function gettenant()
+  {
+    var tenant = "<%=h current_user.id %>";
+    return tenant;
+  }
+  function get_error_status()
+  {
+    var req = AjaxRequest();
+    req.open('GET','/courses/get_error_status/'+<%=h current_user.id %>,false);
+    req.send(null);
+    var x = req.responseText;
+    var error_status = x.split('@@@@@')[1];
+    return error_status;
+  }
+
+  function AjaxRequest() {
+
+	var xmlhttp;
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+			  xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+			  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+		return xmlhttp;
+      }
+</script>
+<div id="div_container">
+
+  <div id="div_mainpanel">
+    <%= image_tag "progress/Upload_Course.png", :class => "image_strip", :alt => "" %>
+    <form name="myform" action="/course_store/processing" method="post">
+      <label for="upload_coursefile" id="label_upload_coursefile">Choose the course to Upload</label><br/><br/><br/>
+      <div id="flash_upload" style="overflow: hidden;margin: 0px 0px 0px 10px;">
+        <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="376" height="100" id="FileUpload" align="middle">
+          <param name="allowScriptAccess" value="sameDomain" />
+          <param name="allowFullScreen" value="false" />
+          <param name="movie" value="/FileUpload.swf" />
+          <param name="quality" value="high" />
+          <param name="bgcolor" value="#ffffff" />
+          <embed src="/FileUpload.swf" quality="high" bgcolor="#ffffff" width="376" height="90" name="FileUpload" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />
+        </object>
+      </div>
+      <% if !flash[:nonscorm_notice].nil? or !flash[:nonscorm_notice].blank? then %>
+        <div style="color: green; margin-left: 20px;"><%= flash[:nonscorm_notice] %></div>
+      <% end %>
+      <hr/>
+    </form>
+
+    <div id="div_type_of_course" class="div_type_of_course">
+      <h1>What type of courses can be uploaded ?</h1>
+      <div class="div_course_text">
+      <div class="div_course_text">
+      <%= image_tag "elearning_32.png" %><h4 style="margin-left: 50px;" >e-learning Courses</h4>
+        <ul type="none">
+          <li>.zip folder of SCORM course</li>
+          <li>.zip folder of Non-SCORM course</li>
+          <li>.swf flash course</li>
+        </ul>
+      </div>
+        <div class="div_course_text" style="margin-left: 5px;">
+        <%= image_tag "presentation_32.png" %><h4>Presentations</h4>
+        <ul type="none">
+          <li>.ppt PowerPoint(1997-2003)</li>
+          <li>.pptx PowerPoint(2007 and later)</li>
+        </ul>
+      </div>
+      </div>
+      <div class="div_course_text">
+        <%= image_tag "video_32.png" %><h4>Video</h4>
+        <ul type="none">
+          <li>.avi: Audio Video Interleave</li>
+          <li>.flv: Flash Video</li>
+          <li>.mov: Apple QuickTime Movie</li>
+          <li>.mp4: MPEG-4 Video</li>
+          <li>.rm: Real Media</li>
+          <li>.wmv: Windows Media Video</li>
+        </ul>
+      </div>
+      <div class="div_course_text">
+        <%= image_tag "audio_32.png" %><h4>Audio</h4>
+        <ul type="none">
+          <li>.mp3: MPEG-3 Audio</li>
+          <li>.ra: Real Audio</li>
+          <li>.wav: Waveform Audio</li>
+          <li>.wma: Windows Media Audio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="div_sidepanel">
+    <div id="logo"><%= image_tag @seller.logo.url(:small) %></div>
+  </div>
+</div>

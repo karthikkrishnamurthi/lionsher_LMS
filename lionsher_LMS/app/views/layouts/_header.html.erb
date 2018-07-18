@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <!-- all css starts here -->
+    <%= stylesheet_link_tag 'all' %>
+    <%= stylesheet_link_tag 'footer' %>
+    <%= stylesheet_link_tag 'sidebar' %>
+    <%= stylesheet_link_tag 'header' %>
+    <%= stylesheet_link_tag 'lionsherhome_header'  %>
+    <%= stylesheet_link_tag 'lionsherhome_footer'  %>
+
+    <!-- all css ends here -->
+    <%= favicon_link_tag "lion.png", :rel => "icon" %>
+
+  </head>
+
+  <body>
+<%#*<div id="main_main">%>
+
+    <!--main_inner bg-->
+    <div id="main">
+      <!--main bg-->
+      <div id="main_bg">
+        <div id="main_header">
+          <div id="logo"><a style="float: left;" href="/"><%= image_tag "lionsher_logo_final.png", :alt => "missing" %></a><s style="position: absolute;top: 38px;font-size:18px;text-decoration: none;color: #FF8800;">Blog</s></div>
+          <div id="main_tabs">
+            <div class="tab" id="home"><a href="/">Home</a></div>
+            <div class="tab" id="benefits"><a href="/benefits_individual_trainer">Benefits</a></div>
+            <div class="tab" id="features"><a href="/features_cost_effective">Features</a></div>
+            <div class="tab" id="pricing"><a href="/pricing_rupees">Pricing<%= image_tag "lionsherhome_images/rpdolar.png" %></a></div>
+            <div class="tab" id="tests"><a href="/tests">Tests</a></div>
+            <div class="tab" id="course_store"><a href="/course_store">Course Store</a></div>
+          </div>
+
+          <div class="shadow_line"> &nbsp;</div>
+        </div>
+<%#*<div id="header">%>
+<%#*<a href="http://www.lionsher.com"><img src="../images/lionsher_logo.png" alt="lionsher_logo"/></a>%>
+<%#*</div>%>
+        <div id="main_inner">
+
+

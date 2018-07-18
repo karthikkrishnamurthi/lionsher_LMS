@@ -1,0 +1,211 @@
+<%= javascript_include_tag 'next_prev' %>
+<script type="text/javascript">
+  function ajax_mcq_single_question(position,answer_id)
+  { 
+    // create request object
+    var req = AjaxRequest();
+    // set up request parameters - uses POST method
+    req.open('POST','/assessments/ajax_save_answer_mcq/'+<%= @current_learner.id %>,false);
+    // send header information along with the POST data
+    var params = 'position='+position+'&answer_id='+ answer_id;
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    // submit to the server for processing
+    req.send(params);
+    // process returned data - error condition
+    if (req.status != 200) {
+      alert('Problem with Request');
+      return "false";
+    }
+    // process returned data - OK
+    else {
+      return "true";
+    }
+  }
+
+  function ajax_maq_single_question(checked,position,answer_id)
+  { 
+    // create request object
+    var req = AjaxRequest();
+    // set up request parameters - uses POST method
+    if (checked == true){
+      req.open('POST','/assessments/ajax_save_answer_maq/'+<%= @current_learner.id %>,false);
+    } else {
+      req.open('POST','/assessments/ajax_remove_answer_maq/'+<%= @current_learner.id %>,false);
+    }
+    // send header information along with the POST data
+    var params = 'position='+position+'&answer_id='+ answer_id;
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    // submit to the server for processing
+    req.send(params);
+    // process returned data - error condition
+    if (req.status != 200) {
+      alert('Problem with Request');
+      return "false";
+    }
+    // process returned data - OK
+    else {
+      return "true";
+    }
+  }
+
+  function AjaxRequest()
+  {
+    var request;
+    // Opera 8.0+, Firefox, Safari
+    try {
+      request = new XMLHttpRequest();
+    }
+    // Internet Explorer Browsers
+    catch (tryIE) {
+      try {
+        request = new ActiveXObject("Msxml2.XMLHTTP");
+      }
+      catch (tryOlderIE) {
+        try {
+          request = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        catch (failed) {
+          alert("Error creating XMLHttpRequest");
+        }
+      }
+    }
+    return request;
+  }
+</script>
+<% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+  <%= stylesheet_link_tag 'aieee_header' %>
+  <%= stylesheet_link_tag 'question_one' %>
+  <% if request.env['HTTP_USER_AGENT'].downcase =~ /msie/i %>
+    <%= stylesheet_link_tag 'for_ie_7'  %>
+  <% end %>
+<% elsif @assessment.test_pattern.pattern_name == "CMAT" %>
+  <%= stylesheet_link_tag 'cmat_test_pattern' %>
+<% elsif @assessment.test_pattern.pattern_name == "CAT"%>
+  <%= stylesheet_link_tag 'cat_test_pattern' %>
+  <%= stylesheet_link_tag 'for_ie_7'  %>
+<% else %>
+  <% if request.env['HTTP_USER_AGENT'].downcase =~ /msie/i %>
+    <%= stylesheet_link_tag 'for_ie_7' %>
+  <% end %>
+  <%= stylesheet_link_tag 'right_panel_questions_for_lms'  %>
+  <%= stylesheet_link_tag 'assessment_style'%>
+<% end %>
+
+<% if current_user.typeofuser == "learner" or @current_learner.type_of_test_taker == "learner" then %>
+  <style>
+    #div_upper_left
+    {
+      display: none;
+    }
+  </style>
+<% end %>
+
+<div id="div_container">
+  <form name="form_assessment"  id="assessment_form" <% if params.include? "from" %>action="/assessments/submit/<%=h @current_learner.id %>?from=<%= params[:from] %>"<% elsif @assessment.test_pattern.pattern_name == "CMAT" and @total_attempted == @assessment.no_of_questions %>action="/assessments/feedback/<%=h @current_learner.id %>"<% else %>action="/assessments/submit/<%=h @current_learner.id %>"<% end %> method="post">
+    <div id="div_mainpanel">
+      <% if @assessment.test_pattern.pattern_name == "CMAT" %>
+        <div id="header">
+          <div id="cmat_header_img"><%= image_tag "cmat_test_pattern/header.png", :width => "760" %></div>
+          <div class="cmat_header_strip">&nbsp;</div>
+          <div class="specifications">
+            <ul style="width: 420px; ">
+              <li><%= image_tag "cmat_test_pattern/black.png" %>&nbsp; - &nbsp;Questions not attempted</li>
+              <li><%= image_tag "cmat_test_pattern/green.png" %>&nbsp; - &nbsp;Questions attempted</li>
+            </ul>
+            <ul style="width: 290px;">
+              <li><%= image_tag "cmat_test_pattern/yellow.png" %>&nbsp; - &nbsp;Questions not attempted and flagged</li>
+              <li><%= image_tag "cmat_test_pattern/red.png" %>&nbsp; - &nbsp;Questions attempted and flagged</li>
+            </ul>
+          </div>
+          <div class="cmat_header_strip">&nbsp;</div>
+        </div>
+      <% end %>
+
+      <% if @assessment.test_pattern.pattern_name == "AIEEE" and @assessment.test_pattern.no_of_sections > 1 %>
+        <div id="section_info">
+          <fieldset id="sections" width="100%"/>
+          <legend>Sections</legend>
+          <% (1..@assessment.test_pattern.no_of_sections).each do |i| %>
+            <div class="section_tab"><a href="/assessments/goto_section/<%=h i %>?current_learner=<%=h @current_learner.id %>">Section <%=h i %></a></div>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @assessment.test_pattern.pattern_name == "CAT" %>
+
+      <% end %>
+      <div id="question_answer_content">
+        <% if @assessment.test_pattern.id == 1 %>
+          <div id="test_name"> <%=h @assessment.name %></div>
+        <% end %>
+
+        <div id="question_list">
+          <% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+            <div id="question_border">
+              Question:<hr/>
+            </div>
+          <% end %>
+
+          <input type="hidden" id ="answer_list" name="answers" value=""/>
+          <% if @assessment.test_pattern.id == 1 %>
+            <div id="question_numb">
+              <%=h @current_learner.lesson_location.to_i + 1 %>
+              <div class="rem">of <%=h @assessment.no_of_questions %></div>
+            </div>
+          <% elsif @assessment.test_pattern.pattern_name == "CMAT" %>
+            <br/><br/><b><%=h @current_learner.lesson_location.to_i + 1 %> of <%=h @assessment.no_of_questions %></b>
+          <% elsif @assessment.test_pattern.pattern_name == "AIEEE" %>
+            <div id="question_numb_aieee">
+              <%=h @current_learner.lesson_location.to_i + 1 %>.
+            </div>
+          <% end %>
+          <% if @assessment.test_pattern.pattern_name == "CMAT" %>
+            <div id="test_name"><%=h @question.question_bank.name %></div>
+          <% end %>
+          <%= render :partial => "/assessments/assessment_question" %>
+          <% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+            <div style="color:black;font-weight:bold;"><h8>Options:</h8></div>
+          <% end %>
+          <%= render :partial => "/assessments/assessment_answer" %>
+          <% if @assessment.test_pattern.pattern_name != "CMAT" and  @assessment.test_pattern.pattern_name != "CAT" %>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <% end %>
+          <% if @assessment.test_pattern.pattern_name == "CAT" %>
+            <br/><br/><br/>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <% if @assessment.test_pattern.pattern_name == "AIEEE" %>
+      <div id="div_sidepanel" class="pos-fixed">
+        <div id="student_image_timer">
+          <div id="student_image"><%= image_tag "aieee_images/student.png" %></div>
+          <%= render :partial => "/assessments/side_timer"  %>
+        </div><br/>
+        <%= render :partial => "/assessments/right_panel_questions_aieee"  %>
+      </div>
+    <% elsif @assessment.test_pattern.pattern_name == "CMAT" %>
+      <div id="div_sidepanel" class="pos-fixed">
+        <%= render :partial => "/assessments/right_panel_questions_for_cmat"  %>
+        <% if @assessment.time_bound != "not_time_bound" then %>
+          <%= render :partial => "/assessments/side_timer"  %>
+        <% end %><br/>
+      </div>
+    <% elsif @assessment.test_pattern.pattern_name == "CAT"  %>
+      <%= render :partial => "/layouts/cat_test_pattern_footer" %>
+    <% else %>
+      <div id="div_sidepanel" class="pos-fixed">
+        <%= render :partial => "/courses/logo" %>
+        <% if @assessment.time_bound != "not_time_bound" then %>
+          <%= render :partial => "/assessments/side_timer"  %>
+        <% end %><br/>
+        <%= render :partial => "/assessments/right_panel_questions_for_lms"  %>
+      </div>
+    <% end %>
+
+  </form>
+</div>

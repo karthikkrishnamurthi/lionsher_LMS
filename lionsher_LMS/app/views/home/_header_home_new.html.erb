@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag "website/index" %>
+
+<head>
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  try {
+    var pageTracker = _gat._getTracker("UA-103876-7");
+    pageTracker._trackPageview();
+  } catch(err) {}
+</script>
+  <script type="text/javascript" charset="utf-8">
+    function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+  </script>
+</head>
+
+<meta name="keywords" content="tests, online tests, assessments, recruitment tests,
+                               custom reports, cloud based testing platform,
+                               test platform" />
+
+
+<div class="header">
+  <div class="header-image">
+    <a href="https://www.lionsher.com">
+       <%= image_tag "website/lionsher_images/Logo_small.png" %>
+    </a>
+  </div>
+  <div class="header-middle-content">
+    <a id="home" href="/" >Home</a>
+    <a id="features" href="/features" >Features</a>
+    <a href="/pricing" id="pricing">Pricing</a>
+    <a href="/case_studies1" id="casestudies">Case Studies</a>
+  </div>
+  <div class="header-right-content">
+    <a id="about_us"  href="/about_us"> About Us</a>&nbsp;&nbsp;
+    <a id="contact_us" href="/contact_us"> Contact Us</a>&nbsp;&nbsp;
+  </div>
+</div>

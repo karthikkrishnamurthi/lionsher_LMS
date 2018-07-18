@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+<div id="div_container">
+  <div id="div_mainpanel">
+<table>
+  <th>User_Id</th><th>Start_Time</th>
+<% for learner in @learners do %>
+  <tr><td><%= learner.user_id %></td><td><%= learner.timestamps.split('|')[0] %></td></tr>
+<% end %>
+</table>
+  </div>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+    <div id="sidebar_text">
+    </div>
+  </div>
+</div>

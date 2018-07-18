@@ -1,0 +1,6 @@
+<div id="learnr_instructions">
+  <%  if !(@assessment.instruction_for_test.nil? or @assessment.instruction_for_test.blank?) %>
+      <h5>Instructions</h5>
+      <%= raw RedCloth.new(@assessment.instruction_for_test).to_html %>
+  <% end %>
+</div>

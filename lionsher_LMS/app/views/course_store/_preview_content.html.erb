@@ -1,0 +1,46 @@
+<div class="div_preview_content">
+  <label class="course_name_preview">
+    <%=h @course.course_name %>
+    <span class="preview_span"> by <%=h @course.vendor %></span>
+    <span style="float:right;margin-top: 5px;" class="preview_span"> <% if !@course.duration_hour.nil? and !@course.duration_min.nil? then %>
+        &nbsp;&nbsp;<% if @course.duration_hour > 0 %><%= @course.duration_hour %> Hr <% end %>
+        <% if @course.duration_min > 0 %><%= @course.duration_min %> Mins
+        <% end
+      end %>
+    </span>
+  </label>
+  <div class="border_preview"></div>
+  <p>
+    <% if @course.typeofcourse == "e-learning" then %>
+      <% if @course.image_file_name.nil? %>
+      <div class="div_content_pic"><%= image_tag "Elearning.png", :size => "200x150" %></div>
+    <% else %>
+      <div class="div_content_pic"><%= image_tag @course.image.url(:medium) %></div>
+    <% end %>
+  <% elsif @course.typeofcourse == "audio" then %>
+    <%  if @course.image_file_name.nil? %>
+      <div class="div_content_pic"><%= image_tag "Audio.png", :size => "200x150" %></div>
+    <% else %>
+      <div class="div_content_pic"><%= image_tag @course.image.url(:medium), :size => "200x150" %></div>
+    <% end %>
+  <% elsif @course.typeofcourse == "video" then %>
+    <% if @course.image_file_size.nil? %>
+      <div class="div_content_pic"><%= image_tag @course.image_file_name, :size => "200x150" %></div>
+    <% else %>
+      <div class="div_content_pic"><%= image_tag @course.image.url(:medium), :size => "200x150" %></div>
+    <% end %>
+  <% elsif @course.typeofcourse == "document" then %>
+    <% if @course.image_file_size.nil? %>
+      <div class="div_content_pic"><%= image_tag @course.image_file_name, :size => "200x150" %></div>
+    <% else %>
+      <div class="div_content_pic"><%= image_tag @course.image.url(:medium), :size => "200x150" %></div>
+    <% end %>
+  <% else %>
+    <%= image_tag "Elearning.png", :size => "200x150" %>
+  <% end %>
+</p>
+<p><%=h @course.description %></p>
+<p> <%=h @course.course_objective %></p>
+<p class="course_learners_type learner_type_preview"> <%=h @course.learners_type %></p><br/>
+<p>Course Validity: <%=h @course.course_expiry %> days</p>
+</div>

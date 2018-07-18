@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lionsher</title>
+  <% unless params[:controller] == "scorm" %>
+    <%#= stylesheet_link_tag "application", :media => "all" %>
+  <% end %>
+  <%= csrf_meta_tags %>
+</head>
+<%= yield %>
+</html>

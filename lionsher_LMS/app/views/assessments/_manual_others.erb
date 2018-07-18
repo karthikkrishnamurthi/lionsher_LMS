@@ -1,0 +1,10 @@
+<%= @question.question_type %><br/>
+<%= @question.question_text %>
+<li class="done">
+  <em class="add_next"><input id="Done" type="submit" name="Done" value="Done" /></em>
+  <% if params.include? 'control_from_edit_questions_page' then %>
+    <label class="cancel"><a class="cancel" href="/question_banks/show/<%= params[:question_bank_id] %>?assessment_id=<%= params[:assessment_id] %>&control_from_edit_questions_page="> Cancel</a></label>
+  <% else %>
+    <label class="cancel"><a class="cancel" href="/question_banks/show/<%= params[:question_bank_id] %>?assessment_id=<%= params[:assessment_id] %>"> Cancel</a></label>
+  <% end %>
+</li>

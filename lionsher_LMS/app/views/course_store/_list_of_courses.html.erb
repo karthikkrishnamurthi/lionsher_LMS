@@ -1,0 +1,90 @@
+<%= javascript_include_tag 'ui/jquery-1.4.4.js' %>
+<%= javascript_include_tag 'ui/jquery.hint.js' %>
+<script type="text/javascript" charset="utf-8">
+  $(function(){
+    // find all the input elements with title attributes
+    $('input[title!=""]').hint();
+  });
+</script>
+<form id="search_course" action="course_store">
+  <input id="search" value="" name="search" type="text" size="70" title="Marketing course for Managers"/>
+  <input id="search_submit" type="submit" value="Search" />
+</form>
+<% for coursestore in @coursestore
+  unless coursestore.description.nil? or coursestore.description.blank? then
+    seller = Tenant.find_by_user_id(coursestore.user_id) %>
+    <div class="ul_div">
+      <div class="div_course_store_list">
+        <div class="div_content_pics">
+          <% if coursestore.typeofcourse == "e-learning" then %>
+            <% if coursestore.image_file_name.nil? %>
+              <div class="div_content_pic"><%= image_tag "Elearning.png", :size => "90x60" %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag coursestore.image.url(:thumb) %></div>
+            <% end %>
+          <% elsif coursestore.typeofcourse == "audio" then %>
+            <%  if coursestore.image_file_name.nil? %>
+              <div class="div_content_pic"><%= image_tag "Audio.png", :size => "90x60" %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag coursestore.image.url(:thumb) %></div>
+            <% end %>
+          <% elsif coursestore.typeofcourse == "video" then %>
+            <% if coursestore.image_file_size.nil? %>
+              <div class="div_content_pic"><%= image_tag coursestore.image_file_name, :size => "90x60" %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag coursestore.image.url(:thumb)%></div>
+            <% end %>
+          <% elsif coursestore.typeofcourse == "document" then %>
+            <% if coursestore.image_file_size.nil? %>
+              <div class="div_content_pic"><%= image_tag coursestore.image_file_name, :size => "90x60" %></div>
+            <% else %>
+              <div class="div_content_pic"><%= image_tag coursestore.image.url(:thumb) %></div>
+            <% end %>
+          <% else %>
+            <%= image_tag "Elearning.png", :size => "90x60" %>
+          <% end %>
+        </div>
+        <label class="course_name">
+          <strong>
+            <a class="course_name_link" <% if coursestore.course_price.nil? %>href=""<% else %>href="/course_store/coursestore_preview/<%=h coursestore.id %>"<% end %>>
+              <% if coursestore.course_name.length > 40 then %>
+                <%=h coursestore.course_name[0..40] %>&hellip;
+              <% else %>
+                <%=h coursestore.course_name %>
+              <% end %>
+            </a>
+          </strong> by
+          <a class="vendor_name_link" href="/coursestore/<%=h seller.custom_url %>"><%=h coursestore.vendor %></a>,
+          <% if !coursestore.duration_hour.nil? and !coursestore.duration_min.nil? then %>
+            <% if coursestore.duration_hour > 0 %><%= coursestore.duration_hour %> Hr<% end %>
+            <% if coursestore.duration_min > 0 %><%= coursestore.duration_min %> Min
+            <% end
+          end %>
+        </label><br/>
+        <label class="course_details">
+          <% unless coursestore.description.nil? or coursestore.description.blank? then %>
+            <% if coursestore.description.length > 150 %>
+              <%=h coursestore.description[0..150] %>&hellip;
+            <% else %>
+              <%=h coursestore.description %>
+            <% end %>
+          <% end %>
+        </label>
+        <br/>
+        <label class="course_learners_type"> <%=h coursestore.learners_type%></label>
+        <div class="course_store_right_content">
+
+          <div class="course_store_price">
+            <% unless coursestore.course_price.nil? or coursestore.course_price.blank? then %>
+              <em><span class="WebRupee">Rs.</span><%= (coursestore.course_price).round %></em>
+            <% else %>
+              <em style="font-size: 9px;color: gray;">Coming Soon</em>
+            <% end %>
+          </div>
+          <div class="course_store_buy" style="display:none;">Buy</div>
+        </div>
+      </div>
+    </div>
+    <hr/>
+  <% end %>
+<% end %>

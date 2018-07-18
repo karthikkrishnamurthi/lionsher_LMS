@@ -1,0 +1,23 @@
+<h1>Listing assessment_components</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @assessment_components.each do |assessment_component| %>
+  <tr>
+    <td><%= assessment_component.name %></td>
+    <td><%= link_to 'Show', assessment_component %></td>
+    <td><%= link_to 'Edit', edit_assessment_component_path(assessment_component) %></td>
+    <td><%= link_to 'Destroy', assessment_component, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Assessment component', new_assessment_component_path %>

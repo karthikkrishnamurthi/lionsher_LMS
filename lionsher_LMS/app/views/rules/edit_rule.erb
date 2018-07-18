@@ -1,0 +1,48 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'assessment_manual' %>
+<%= stylesheet_link_tag 'structure_components' %>
+<%= render :partial => '/layouts/courses_header' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h3><b>Edit rule for <%= @section.name %></b></h3>
+    <form action="/rules/update_rule/<%= params[:id] %>?assessment=<%= @assessment.id %>" method="post" class="form_style">
+      <table id="add_components">
+        <tr>
+          <% @tags.each do |tag| %>
+            <th><%= tag.name %></th>
+          <% end %>
+          <th>questions</th>
+          <th>Positive Mark</th>
+          <th>Negative Mark</th>
+        </tr>
+        <tr>
+          <% @tags.each do |tag| %>
+            <td>
+              <select name="tagvalue[<%= tag.id %>]">
+                <% tag.tagvalues.each do |tagvalue| %>
+                  <option value="<%= tagvalue.id %>"><%=h tagvalue.value %></option>
+                <% end %>
+              </select>
+            </td>
+          <% end %>
+          <td>
+            <input name="no_of_questions" type="text" size="6" value="<%=h @assessment_rule.questions_required %>"/>
+          </td>
+          <td>
+            <input name="positive_mark" type="text" size="6" maxlength="2" value="<%= @assessment_rule.positive_mark %>"/>
+          </td>
+          <td>
+            <input name="negative_mark" type="text" size="6" maxlength="5" value="<%= @assessment_rule.negative_mark %>"/>
+          </td>
+        </tr>
+      </table>
+      <hr/>
+      <input type="submit" name="button" value="Update"/>
+      <a href="/rules/create_rule/<%= @section.id %>?assessment=<%= @assessment.id %>" style="color:blue;margin-left:660px;">Cancel</a>
+    </form>
+  </div> <%# end of div_mainpanel %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>
+<%= render :partial => '/layouts/courses_footer' %>

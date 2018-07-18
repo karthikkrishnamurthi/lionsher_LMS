@@ -1,0 +1,30 @@
+<%= render :partial => "/assessments/multi_page_test_stylesheets_scripts" %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div id="imported_questions">
+      <form name="form_assessment" id="assessment_form" <% unless @is_last_component == "true" %>action="/assessments/get_structure_component/<%= @current_learner.id %>?component=<%= params[:next_component] %>&last=<%= @is_last_component %>"<% else %>action="/assessments/quit_assessment/<%= @current_learner.id %>"<% end %> method="post">
+        <b><%= @assessment.name %></b>
+        <% @j = 1
+        @test_details.each do |test_detail|
+          logger.info"TESt #{test_detail.inspect}"
+          @test_detail = test_detail %>
+          <div id="question_answer_div_<%= @j %>" <% if @current_learner.lesson_location.to_i == (@test_detail.serial_number - 1) then %>style="display : block;" <% else %>style="display : none;"<% end %>>
+            <%= render :partial => "/assessments/content_for_multi_page_test" %>
+          </div> <%# end of question_answer_div %>
+          <% @j = @j + 1 %>
+        <% end %>
+      </form>
+    </div> <%# end of imported_questions %>
+  </div> <%# end of div_mainpanel %>
+
+<%# --------sidepanel for multi page test-------- %>
+  <div id="div_sidepanel">
+    <%= render :partial => "/courses/logo" %>
+    <% if @assessment.time_bound != "not_time_bound" then %>
+      <%= render :partial => "/assessments/side_timer"  %>
+    <% end %><br/>
+    <div id="right_panel_question_list">
+      <%= render :partial => "/assessments/right_panel_multi_page_test"  %>
+    </div>
+  </div> <%# end of div_sidepanel %>
+</div> <%# end of div_container %>

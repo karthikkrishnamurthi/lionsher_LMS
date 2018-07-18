@@ -1,0 +1,101 @@
+<% if params.include? "pattern" and params[:pattern] != "Create manually" %>
+  <input name="assessment[test_pattern_id]" value="<%= @test_pattern.id %>" style="display:none;"/>
+  <li>
+    <label  for="question_bank_name">Name of Assessment</label><br />
+    <input id="question_bank_name" name="question_bank[name]" value="<%= @test_pattern.pattern_name %>" disabled size="48" type="text" maxlength="40"/>
+    <span><input disabled type="text" name="remLen" size="3" maxlength="3" value="40"/> Characters left</span>
+    <label id="name_msg" style="display: none;">Enter the name of the assessment</label>
+  </li>
+  <% if @test_pattern.no_of_sections == 1 %>
+    <li>
+      <input id="single_type" type="radio" name="assessment_type" value="single" checked/>
+      <label for="single_type" style="clear: left;">Single Topic</label><span id="info">Create assessment for a specific topic</span>
+    </li>
+  <% else %>
+    <li>
+      <input id="multiple_type" type="radio" name="assessment_type" value="multiple" checked/>
+      <label for="multiple_type" style="clear: left;">Multiple Topics</label><span id="info">Create assessment with different topics.</span>
+    </li>
+  <% end %>
+  <div id="topic_name" name="topic_name">
+    <p>
+      <label for="topic" style="clear: left;">Topic Name</label><br/>
+      <input id="topic" type="text" name="topic_name" value="<%= @test_pattern.section_names.split(',')[0] %>" disabled maxlength="40" size="40"/>
+      <span><input disabled type="text" name="remLen2" size="3" maxlength="3" value="40"/> Characters left</span>
+      <label id="topic_name_msg" style="display: none;">Enter the topic name</label>
+    </p>
+  </div>
+
+  <li class="add_questions_list"><label id="label_add_question" for="question_bank_name">Add Questions</label><br /> </li>
+
+  <li>
+    <input id="manual_type" type="radio" name="upload_type" value="manual" checked="true" onclick="show_previous_assmts('manual');"/>
+    <label for="single_type" style="clear: left;">Manually</label>
+  </li>
+
+  <li>
+    <input id="excel_type" type="radio" name="upload_type" value="excelsheet" onclick="show_previous_assmts('excelsheet');" />
+    <label for="single_type" style="clear: left;">From a formatted spreadsheet (.xls, .xlsx)</label>
+  </li>
+
+  <li id="upload_excel" style="display: none; margin-left: 24px;">
+    <input name="import[excel]" size="50" type="file" />
+    <a href="/sample_test_paper.xls"><font color="blue">Download Sample Test Paper</font></a>
+  </li>
+
+  <li>
+    <label id="radio_check_msg" style="display: none;">At least select one format for adding questions</label>
+  </li>
+<% else %>
+  <li>
+    <label  for="question_bank_name">Name of Assessment</label><br />
+    <input id="question_bank_name" name="question_bank[name]" onkeyup="textCounter(this,document.myform.remLen,40)" onclick="textCounter(this,document.myForm.remLen,40)" size="48" type="text" maxlength="40"/>
+    <span><input disabled type="text" name="remLen" size="3" maxlength="3" value="40"/> Characters left</span>
+    <label id="name_msg" style="display: none;">Enter the name of the assessment</label>
+  </li>
+
+  <li>
+    <input id="single_type" type="radio" name="assessment_type" value="single" checked onclick="take_topic_name();"/>
+    <label for="single_type" style="clear: left;">Single Topic</label><span id="info">Create assessment for a specific topic</span>
+  </li>
+
+  <li>
+    <input id="multiple_type" type="radio" name="assessment_type" value="multiple" onclick="take_topic_name();" />
+    <label for="multiple_type" style="clear: left;">Multiple Topics</label><span id="info">Create assessment with different topics.</span>
+  </li>
+
+  <div id="topic_name" name="topic_name" style="display : none;">
+    <p>
+      <label for="topic" style="clear: left;">Topic Name</label><br/>
+      <input id="topic" type="text" name="topic_name" onkeyup="textCounter(this,document.myform.remLen2,40)" onclick="textCounter(this,document.myForm.remLen2,40)" value="" maxlength="40" size="40"/>
+      <span><input disabled type="text" name="remLen2" size="3" maxlength="3" value="40"/> Characters left</span>
+      <label id="topic_name_msg" style="display: none;">Enter the topic name</label>
+    </p>
+  </div>
+
+  <li class="add_questions_list"><label id="label_add_question" for="question_bank_name">Add Questions</label><br /> </li>
+
+  <li>
+    <input id="manual_type" type="radio" name="upload_type" value="manual" checked="true" onclick="show_previous_assmts('manual');"/>
+    <label for="single_type" style="clear: left;">Manually</label>
+  </li>
+
+  <li>
+    <input id="excel_type" type="radio" name="upload_type" value="excelsheet" onclick="show_previous_assmts('excelsheet');" />
+    <label for="single_type" style="clear: left;">From a formatted spreadsheet (.xls, .xlsx)</label>
+  </li>
+
+  <li id="upload_excel" style="display: none; margin-left: 24px;">
+    <input name="import[excel]" size="50" type="file" />
+    <a href="/sample_test_paper.xls"><font color="blue">Download Sample Test Paper</font></a>
+  </li>
+
+  <li>
+    <input id="previous_type" type="radio" name="upload_type" value="previous_question_banks" />
+    <label for="single_type" style="clear: left;">From previous question banks</label>
+  </li>
+
+  <li>
+    <label id="radio_check_msg" style="display: none;">At least select one format for adding questions</label>
+  </li>
+<% end %>

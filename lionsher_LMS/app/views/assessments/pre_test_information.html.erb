@@ -1,0 +1,97 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+<%= stylesheet_link_tag 'assessment_scheduling'  %>
+<script type="text/javascript" charset="utf-8">
+  function css_browser_selector(u){var ua=u.toLowerCase(),is=function(t){return ua.indexOf(t)>-1},g='gecko',w='webkit',s='safari',o='opera',m='mobile',h=document.documentElement,b=[(!(/opera|webtv/i.test(ua))&&/msie\s(\d)/.test(ua))?('ie ie'+RegExp.$1):is('firefox/2')?g+' ff2':is('firefox/3.5')?g+' ff3 ff3_5':is('firefox/3.6')?g+' ff3 ff3_6':is('firefox/3')?g+' ff3':is('gecko/')?g:is('opera')?o+(/version\/(\d+)/.test(ua)?' '+o+RegExp.$1:(/opera(\s|\/)(\d+)/.test(ua)?' '+o+RegExp.$2:'')):is('konqueror')?'konqueror':is('blackberry')?m+' blackberry':is('android')?m+' android':is('chrome')?w+' chrome':is('iron')?w+' iron':is('applewebkit/')?w+' '+s+(/version\/(\d+)/.test(ua)?' '+s+RegExp.$1:''):is('mozilla/')?g:'',is('j2me')?m+' j2me':is('iphone')?m+' iphone':is('ipod')?m+' ipod':is('ipad')?m+' ipad':is('mac')?'mac':is('darwin')?'mac':is('webtv')?'webtv':is('win')?'win'+(is('windows nt 6.0')?' vista':''):is('freebsd')?'freebsd':(is('x11')||is('linux'))?'linux':'','js']; c = b.join(' '); h.className += ' '+c; return c;}; css_browser_selector(navigator.userAgent);
+</script>
+
+<body>
+  <div id="div_container">
+    <div id="div_mainpanel">
+      <%= image_tag "add_questions.png", :class => "image_strip", :alt => "" %>
+      <p>
+        <%= label_tag :pre_test_infrmation, 'Pre-Test Information' , :class => 'pre_test_infrmation'%> <%= label_tag :optional, 'Optional' , :class => 'optional'%><br/>
+        <%= label_tag :pre_test_example, 'Collect important learner information before the test like Employee ID, Department name, Location, etc.', :class => 'pre_test_example' %>
+      </p>
+      <p><%= image_tag "demographic_example.png", :class => "image_strip", :width => "690", :alt => "" %></p>
+      <%= form_tag '/assessments/save_pre_test_information/'+params[:id], :class => 'form_demographic' do %>
+        <p>
+          <%= label_tag :type_of_info_type, 'Type of Information' , :class => 'label_type_of_information'%>
+          <%= label_tag :type_of_info_option, 'Enter options for the learners to choose from, leave this blank if there are no options.' , :class => 'label_option_information'%>
+        </p>
+        <p>1.
+          <%= text_field_tag 'demographic[demographic_type_1]', nil,  :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_1]',nil, :size => 20  %>
+        </p>
+        <p>2.
+          <%= text_field_tag 'demographic[demographic_type_2]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_2]', nil, :size => 20%>
+        </p>
+        <p>3.
+          <%= text_field_tag 'demographic[demographic_type_3]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_3]', nil, :size => 20 %>
+        </p>
+        <p>4.
+          <%= text_field_tag 'demographic[demographic_type_4]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_4]',nil, :size => 20 %>          
+        </p>
+        <p>5.
+          <%= text_field_tag 'demographic[demographic_type_5]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_5]',nil, :size => 20 %>
+        </p>
+        <p>6.
+          <%= text_field_tag 'demographic[demographic_type_6]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_6]',nil, :size => 20 %>
+        </p>
+        <p>7.
+          <%= text_field_tag 'demographic[demographic_type_7]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_7]',nil, :size => 20 %>
+        </p>
+        <p>8.
+          <%= text_field_tag 'demographic[demographic_type_8]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_8]',nil, :size => 20 %>
+        </p>
+        <p>9.
+          <%= text_field_tag 'demographic[demographic_type_9]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_9]',nil, :size => 20 %>
+        </p>
+        <p>10.
+          <%= text_field_tag 'demographic[demographic_type_10]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_10]',nil, :size => 20 %>
+        </p>
+        <p>11.
+          <%= text_field_tag 'demographic[demographic_type_11]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_11]',nil, :size => 20 %>
+        </p>
+        <p>12.
+          <%= text_field_tag 'demographic[demographic_type_12]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_12]',nil, :size => 20 %>
+        </p>
+        <p>13.
+          <%= text_field_tag 'demographic[demographic_type_13]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_13]',nil, :size => 20 %>
+        </p>
+        <p>14.
+          <%= text_field_tag 'demographic[demographic_type_14]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_14]',nil, :size => 20 %>
+        </p>
+        <p>15.
+          <%= text_field_tag 'demographic[demographic_type_15]', nil, :size => 20, :maxlength => 100 %>
+          <%= text_field_tag 'demographic[demographic_option_15]',nil, :size => 20 %>
+        </p>
+        <p>
+          <input type="checkbox" name="assessment_demographics_compulsory"/>
+          Make Demographics complusory
+        </p>
+        <%= hidden_field_tag 'demographic[assessment_id]', params[:id].to_s %>
+        <p class="demographic_done">
+          <%= submit_tag "Done" , :class => 'snd_instrns' %>
+          <a href="/assessments/scoring/<%=h params[:id] %>" class ="snd_instrns" style=" float: right;">Skip</a>
+        </p>
+      <% end %>
+    </div>
+    <div id="div_sidepanel">
+      <%= render :partial => "/courses/logo" %>
+    </div>
+  </div>
+</body>
+

@@ -1,0 +1,47 @@
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h1>Course Details for <%=h @user.login %></h1>
+    <div class= "div_table" id="display">
+      <table border="0" cellpadding="2px" cellspacing="0" >
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Size</th>
+        </tr>
+        <% i = 1
+        for learner in @learners
+          @course = Course.find_by_id(learner.course_id)
+          @assessment = Assessment.find_by_id(learner.assessment_id)
+          if !@course.nil? %>
+            <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+              <td class="name"><%=h @course.id %></td>
+              <td class="td_name"><%=h @course.course_name %></td>
+              <td class="name"><%=h @course.typeofcourse %></td>
+              <td class="name"><%=h learner.lesson_status %></td>
+              <td class="name">
+                <% if @course.size > 1048576 %>
+                  <%=h (@course.size.to_f/1048576).round(2) %> MB
+                <% else %>
+                  <%=h (@course.size.to_f/1024).round(2) %> KB
+                <% end %>
+              </td>
+            </tr>
+          <% end
+          if !@assessment.nil? %>
+            <tr <% if i%2 != 0 then %> id="tr" <% else %> id = "tr_alt" <%  end %>>
+              <td class="name"><%=h @assessment.id %></td>
+              <td class="td_name"><%=h @assessment.name %></td>
+              <td class="name">test</td>
+              <td class="name"><%=h learner.lesson_status %></td>
+              <td class="name">-</td>
+            </tr>
+          <% end
+          i = i + 1
+        end %>
+      </table>
+    </div>
+    <a href="/tenants/user_details/<%=h @user.user_id %>" style="color: blue;">Back</a>
+  </div>  
+</div>

@@ -1,0 +1,89 @@
+body
+{
+    margin: 0px;
+    padding:0px;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #e5e5e5;
+}
+#head
+{
+    width: 960px;
+    height: 71px;
+    margin: 0px auto;
+    position: relative;
+}
+#head #div_upper_right
+{
+    height:17px;
+    padding: 0px 0px 0px 0px;
+    position: absolute;
+    top: 6px;
+    right: 0px;
+    text-align: right;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #666666;
+}
+#head #div_upper_left
+{
+    height: 17px;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #666666;
+}
+#head a:focus
+{
+    font-weight: bold;
+}
+#head #div_head
+{
+    height: 50px;
+    width: 960px;
+    position: absolute;
+    top:21px;
+    left:0px;
+    padding: 0px 0px 0px 0px;
+    -moz-border-radius-topleft : 10px;
+    -moz-border-radius-topright : 10px;
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+
+}
+#div_head #org
+{
+    padding: 16px 0px 0px 15px;
+    font-size: 15px;
+    font-weight: 700;
+}
+#preview
+{
+    padding: 0px 0px 0px 0px;
+    margin: 0px auto;
+    position: absolute;
+    left: 390px;
+    width: 180px;
+    height: 15px;
+}
+a
+{
+    text-decoration: none;
+    color: #666666;
+}
+#div_container, #learner_mainpanel, #inner_mainpanel, #Field1, input, textarea
+{
+    font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+   
+}
+#Field1, input, textarea
+{
+    color: #342826;
+    font-size: 12px;
+}
+textarea
+{
+    overflow: auto;
+}

@@ -1,0 +1,22 @@
+<%= render :partial => "/layouts/courses_header" %>
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'upload_course' %>
+<%= stylesheet_link_tag 'tablestyle' %>
+<%= stylesheet_link_tag 'listing_all_learners' %>
+<%= javascript_include_tag 'listing_all_learners' %>
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <h1>Edit Group </h1>
+
+    <form action="/users/save_edit_group/<%=h params[:id] %>">
+      <label>Change <%=h @group.group_name %> group to </label>
+      <input type="text" name="group[group_name]" />
+      <input type="submit" value="Done"/>
+    </form>
+
+  </div>
+  <div id="div_sidepanel">
+      <%= render :partial => "/courses/logo" %>
+    </div>
+</div>

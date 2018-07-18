@@ -1,0 +1,641 @@
+/*
+    Document   : store_course_styles.css
+    Created on : 17 May, 2011, 11:00:58 AM
+    Author     : rajesh
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+@font-face{font-family: 'WebRupee';src: url('http://cdn.webrupee.com/WebRupee.V2.0.eot');src: local('WebRupee'), url('http://cdn.webrupee.com/WebRupee.V2.0.ttf') format('truetype'),  url('http://cdn.webrupee.com/WebRupee.V2.0.woff') format('woff'), url('http://cdn.webrupee.com/WebRupee.V2.0.svg') format('svg');font-weight: normal;font-style: normal;}
+.WebRupee{font-family: 'WebRupee';}
+
+
+#div_container{ background-color: #FFF; margin: 0 auto; overflow: hidden;width: 960px;}
+label{font-size: 13px;}
+#div_sidepanel{ width: 238px;float: right; margin-top: 20px;margin-bottom: 20px; background-color: white;overflow: hidden; position: relative;  }
+#div_mainpanel{ background-color: #FFF; width:720px; float: left; margin-top: 20px; margin-bottom: 20px; overflow: hidden; border-right:  1px dotted #cccccc;color: gray;  }
+#div_mainpanel_content{background-color: #f2f2f2; position: relative; height: 100px; width:690px; margin:0px 20px 15px 15px;  }
+
+.clearfix{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+}
+.ie7 input {
+  border: none;
+  border-color: #ccc;
+}
+.div_course_store_list{
+    height: 75px;
+    background-color: #FFF;
+    margin-right: 10px;
+    margin-left: 25px;
+    width: 684px;
+}
+.div_content_pics{
+    background-color: white;
+    border: 2px solid #F2F2F2;
+    height: 60px;
+    margin: 3px 0 0 2px;
+    position: absolute;
+    width: 90px;
+}
+.div_course_store_list .course_name{
+    margin: 0px 0px 0px 105px;
+    color: gray;
+    font-size: 13px;
+    clear: left;
+
+}
+.course_name_link {
+    text-decoration: none;
+    color: gray;
+}
+.vendor_name_link{
+    text-decoration: none;
+    color: gray;
+}
+.vendor_name_link:hover{
+    text-decoration: none;
+    color: blue;
+}
+.div_course_store_list .course_type{
+    margin: 5px 0px 0px 130px;
+    font-size: 14px;
+    color: #999999;
+    font-size: 10px;
+    padding: 0 5px;
+    text-transform: capitalize;
+}
+.course_details {
+    margin: 0px 0px 0px 100px;
+    font-size: 14px;
+    color: #999999;
+    font-size: 12px;
+    padding: 0 5px;
+    position: absolute;
+    width: 494px;
+}
+.course_learners_type {
+    margin: 24px 0px 0px 100px;
+    font-size: 14px;
+    color: #999999;
+    font-size: 10px;
+    padding: 0 5px;
+    position: absolute;
+    text-transform: uppercase;
+}
+.div_course_store_list .course_store_right_content{
+    float: right;
+    color: #999999;
+    font-size: 10px;
+    width: 75px;
+    height: 74px;
+    margin-top: -35px;
+    /*    border-left: 1px dotted #cccccc*/;
+
+}
+
+.div_course_store_list .course_store_price {
+    margin: 5px 0px 0px -60px;
+    color: #565051;
+    font-size: 18px;
+    font-weight: 550;
+    float: right;
+
+}
+.course_duration {
+    font-size: 10px;
+    float: left;
+    margin-top: 3px;
+    margin-left: 70px;
+}
+.course_store_price img {
+    top: 2px;
+}
+
+.course_store_price em {
+    margin-left: 19px;
+    text-align: right;
+    font-style: normal;
+    width: auto;
+}
+
+.div_course_store_list .course_store_sold {
+    margin: 0px 0px 0px 5px;
+}
+
+.course_store_buy{
+    margin: 0px 0px 0px 90px;
+    background-color: #999999;
+    color: #FFF;
+    text-align: center;
+    width: 50px;
+    padding: 5px 47px 4px 48px;
+    cursor: pointer;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+.add_new_course {
+    width: 193px;
+    color: #FFF;
+    margin: 15px 0px 0px 16px;
+}
+.add_new_course a {
+    color: #FFF;
+    text-decoration: none;
+}
+hr {
+    width: 95%;
+    border: 1px #E5E5E5;
+    margin-left: 25px;
+    border-bottom: none;
+    border-top-style: dotted;
+}
+
+.pagination {
+    margin: 0px 0px 0px 45px;
+}
+.pagination a {
+    color: blue;
+    padding: 0px 3px 0px 3px;
+}
+#search_course{
+    margin-left: 42px;
+}
+
+#div_sidepanel #total_courses {
+    background-color: #e5e5e5;
+    height: 80px;
+    width: 200px;
+    text-align: center;
+    margin: 0px 0px 0px 16px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+.total_number {
+    position: absolute;
+    font-size: 36px;
+    color: #544E4F;
+    margin-left: 25px;
+    margin-top: 10px;
+    width: 150px;
+}
+.ie7 .total_number {
+    margin-left: -75px;
+}
+.total_number em {
+    font-size: 16px;
+    font-style: normal;
+}
+
+#div_sidepanel a {
+    text-decoration: none;
+    margin: 0px 0 0 17px;
+
+}
+.side_content h3{
+    color: #ff6600;
+    font-size: 14px;
+    width: 200px;
+    margin: 15px 0px 0px 15px;
+
+}
+#points li {
+    font-size: 10px;
+    color: gray;
+    margin-left: -12px;
+    width: 180px;
+}
+#points .top_list {
+    margin-top: -5px;
+}
+
+.course_name_preview{
+    font-size: 20px;
+}
+.course_name_preview .preview_span {
+    font-size: 14px;
+}
+.div_preview_content {
+    padding: 0px 20px 10px 20px;
+}
+.learner_type_preview {
+    margin: 0px;
+    padding: 0px;
+}
+/*#total_courses_preview {
+    background-color: #e5e5e5;
+    height: 40px;
+    width: 200px;
+    margin: 0px 0px 0px 16px;
+    -moz-border-radius: 5px 5px 5px 5px;
+}
+
+#total_courses_preview .price_preview {
+    float: left;
+    margin: 8px 0px 0px 8px;
+    font-size: 1.8em;
+    color: #333333;
+}
+#total_courses_preview .course_store_buy_preview {
+    float: right;
+    margin: 8px 8px 0px 0px;
+    background-color: #999999;
+    text-align: center;
+    width: 50px;
+    padding: 5px 3px 4px 5px;
+    cursor: pointer;
+    -moz-border-radius: 5px 5px 5px 5px;
+    color: #FFF;
+    text-decoration: none;
+}*/
+
+#total_courses_preview {
+
+    height: 40px;
+    width: 217px;
+    margin: 0px 0px 0px 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted #999999;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+#total_courses_preview .price_preview {
+    float: right;
+    margin: 20px 0px 0px 8px;
+    font-size: 1.8em;
+}
+#total_courses_preview .course_store_buy_preview {
+    float: right;
+    background-color: gray;
+    text-align: center;
+    width: 50px;
+    cursor: pointer;
+    color: #FFF;
+    border: none;
+    margin:20px 3px 0 14px;
+    padding:5px 106px 4px;
+    text-decoration: none;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+.ie7 #total_courses_preview {
+    height: 80px;
+}
+.ie7  #total_courses_preview .course_store_buy_preview {
+    margin-top: 20px;
+	margin-left: 0px;
+	width: 220px;
+}
+#buyer_form_list {
+    margin-left: -38px;
+}
+.ie7 #buyer_form_list {
+    margin: 0px;
+}
+.ie7 #buyer_form_list  li{
+    list-style-type: none;
+}
+.ie8 #buyer_form_list  li{
+    list-style-type: none;
+}
+#buyer_form_list li {
+    padding: 5px 0px 5px 0px;
+    margin: 5px 0px 5px 0px;
+}
+.buyer_submit_form {
+    background-color: #999999;
+    padding: 5px 7px 5px 7px;
+    cursor: pointer;
+    border-color: #999999;
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+    font-size: 12px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+li a {
+    text-decoration: none;
+}
+li.submit_form {
+    border-top: 1px dotted #e5e5e5;
+}
+.border_preview{
+    border-top: 1px dotted #e5e5e5;
+}
+.heading_content {
+    font-size: 16px;
+    color: #ff6600;
+}
+.success_flash_msg label{
+    margin: 100px 0px 0px 5px;
+}
+.vendor_header {
+    margin: 0px 10px 10px 25px;
+    font-size: 20px;
+    border-bottom: 1px dotted #e5e5e5;
+}
+#search {
+    color: #999999;
+    font-size: 12px;
+    line-height: 5px;
+    padding: 7px 0 7px 10px;
+    width: 580px;
+    font-style: italic;
+    margin:0px 0px 20px -15px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+#search_submit  , #search_submit1{
+    background-color: #999999;
+    color: #FFF;
+    width: 80px;
+    padding: 7px 7px;
+    cursor: pointer;
+    border: none;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+.ie7  #search_submit {
+     margin-top: -54px;
+}
+.ie8  #search_submit {
+     margin-top: 5px;
+	 padding-bottom: 15px;
+}
+
+
+#div_sidepanel {
+    color: gray;
+}
+
+/*get_ sellers _info page*/
+
+.ul_loginpanel li {
+    margin: 10px 0px 10px 0px;
+}
+
+
+
+#continue-tab{
+    color: white;
+    background-color: gray;
+    text-decoration: none;
+    margin:10px 0px 0px 15px; padding:5px 5px 5px 5px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;  }
+#submit-tab{
+    color: white;
+    background-color: gray;
+    margin:10px 0px 0px 0px; padding:5px 5px 5px 5px;
+    border: none;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;  }
+
+.upload_form_ul li{
+    margin: 10px 0px 10px 0px;
+    margin-left: 0px;
+}
+.upload_form_ul {
+    margin-left: -25px;
+}
+.label_license_pricing {
+    margin: 10px 10px 10px 10px ;
+    background-color: #e5e5e5;
+    padding: 5px 5px 5px 5px;
+    text-align: left;
+    color: gray;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+#no_of_license {
+    width: 50px;
+    margin-top: 3px;
+    text-align: center;
+    color: #666666;
+}
+
+.plans_list {
+    background-color: #F0F0F0;
+    height: 60px;
+    width: 685px;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    margin-top: -10px;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+.business_type_label {
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.plan_list_ul {
+    margin-left: -30px;
+
+}
+.plan_list_ul li {
+    list-style-type: none;
+    float: left;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+li em {
+    font-size: 10px;
+    margin-left: 10px;
+}
+#buyer_form_list label {
+    color: #666666;
+}
+#buyer_form_list input {
+    padding: 7px 0px 7px 2px;
+    font-size: 14px;
+}
+.ie7 .plans_list {
+    margin-top: 10px;
+}
+.ie7 .plan_list_ul li {
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.li_plan_amount span {
+    font-size: 20px;
+}
+.li_plan_amount {
+    width: 245px;
+}
+
+.li_plan_users span {
+    font-size: 20px;
+}
+.li_image span {
+    margin-top: -20px;
+    padding: 0px;
+}
+.li_plan_users {
+    margin-left: 10px;
+}
+.li_plan_space {
+    margin-left: 30px;
+
+}
+.li_plan_space  span{
+    font-size: 20px;
+}
+.li_plan_select {
+    margin: 1px 15px 0px 0px;
+    padding: 5px;
+    font-size: 20px;
+    color: #ff6600;
+}
+.li_plan_price span{
+    text-align: center;
+}
+
+.li_plan_price {
+    width: 125px;
+    text-align: center;
+    margin-top: 5px;
+
+}
+.ie7 .li_plan_select {
+    margin: -35px 0px 0px 250px;
+
+}
+.plan_select_submit {
+    background-color: #999999;
+    color: #FFF;
+    text-align: center;
+    width: 80px;
+    border: none;
+    padding: 3px 3px 4px 5px;
+    cursor: pointer;
+    -moz-border-radius-topleft : 5px;
+    -moz-border-radius-topright : 5px;
+    -moz-border-radius-bottomleft : 5px;
+    -moz-border-radius-bottomright : 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+}
+
+.li_register_heading {
+    font-size: 10px;
+    margin-top: 30px;
+    border-bottom: 1px dotted #e5e5e5;
+}
+.li_terms_cond {
+    margin-top: -12px;
+    margin-left: 115px;
+    font-size: 11px;
+}
+.ie7 .li_terms_cond {
+    margin-left: 150px;
+}
+.li_terms_cond a {
+    color: blue;
+}
+.li_terms_cond a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+.li_register_heading span {
+    font-size: 14px;
+}
+#buyer_form_list label.error { float: none; color: red; padding-left: .5em; }
+
+#cs_login {
+    margin:90px 0px 0px -20px;
+}
+.ie7 #cs_login {
+    margin:90px 0px 0px 20px;
+}
+.ie7 #cs_login  li{
+    list-style-type: none;
+}
+.ie8 #cs_login  li{
+    list-style-type: none;
+}
+.assessment_send_score_info_label { margin-left: 100px;}
+
+

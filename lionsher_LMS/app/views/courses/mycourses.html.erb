@@ -1,0 +1,53 @@
+
+<%#*This page is the home page for learners.%>
+<%#*Author : Aarthi, Karthik%>
+
+<%= stylesheet_link_tag 'upload_course' %>
+<%= stylesheet_link_tag 'courses_content' %>
+<%= javascript_include_tag 'mycourses' %>
+
+
+<div id="div_container">
+  <div id="div_mainpanel">
+    <div class="flash_confirmation"><%=h flash[:contact_your_admin]%></div>
+    <div class="flash_confirmation"><%=h flash[:test_submitted_successful] %></div>
+    <%if (@learners.nil? or @learners.blank?) then %>
+      <div class="div_mainpanel_content_first">
+        <h6>No Courses Assigned to you.</h6>
+      </div>
+    <%else%>
+      <% if @tenant.is_expired == "true" then
+        admin = User.find(@tenant.user_id)%>
+        <div class="flash_confirmation">The account is expired. Please contact your <a href="mailto:<%=h admin.email %>"></a>administrator to activate.</div>
+      <% end %>
+      <% if !flash[:test_time_over].nil? or !flash[:test_time_over].blank? then %>
+        <div class="flash_confirmation"><%= flash[:test_time_over] %></div>
+      <% end %>
+      <h1>My Courses</h1>
+      <% @i = 0
+      @time = Time.now.getutc
+      @zone = @tenant.zone
+      if @zone.include? "+"
+        @offset = @zone.gsub('+','')
+      else
+        @offset = @zone.gsub('-','')
+      end
+      offset_hour = @offset.split(':')[0].to_i
+      offset_min = @offset.split(':')[1].to_i
+      @total_offset = (offset_hour * 60 * 60) + (offset_min * 60)
+      for @learner in @learners
+        if @learner.course_id.nil? or @learner.course_id.blank? then%>
+          <%= render :partial => "/courses/learners_my_assessments" %>
+        <% else %>
+          <%= render :partial => "/courses/learners_my_courses" %>
+        <% end
+      end
+    end
+  %>
+  </div>
+  <div id="div_sidepanel">
+    <div id="logo">
+      <%= render :partial => "/courses/logo" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag 'courses_content' %>
+<%= stylesheet_link_tag 'packages' %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <%= image_tag "Package_Details-Package_bar.png", :class => "image_strip", :alt => "missing" %>
+    <form accept-charset="UTF-8" action="/packages"  method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="TzC/1TmoSTbbDGi5EDH3ctDoQ04ZJ4wrjoE1L+HEB6E=" />
+
+      <label class="label-align" for="package_name">Name</label><br />
+      <input id="package_name" name="package[name]" size="35" type="text" /><br/>
+      <label class="label-align" for="package_description">Description</label>
+      <i style="margin-left:364px;margin-top:18px;position:absolute;font-size:10px;">150<br/> characters</i><br />
+      <textarea id="package_description" name="package[description]" rows="3" cols="50" maxlength="150"></textarea><br/>
+      <input type="hidden" name="package[user_id]" value="<%=h current_user.id %>"/>
+      <input type="hidden" name="package[tenant_id]" value="<%=h current_user.tenant_id %>"/>
+      <div id="dotted_line"></div>
+      <input class="add_course_assessment_button" type="submit" name="submit_value" value="Add a Course/Test" />
+      <%#*<input class="add_course_assessment_button" type="submit" name="submit_value" value="Add a Course" />%>
+      <%#*<input class="add_course_assessment_button" type="submit" name="submit_value" value="Add a Assessment" />%>
+      &nbsp; or<a href="/courses" style="margin-left:12px;color:blue;">Cancel</a>
+    </form>
+  </div>
+  <div id="sidepanel">
+    <br/><br/>
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

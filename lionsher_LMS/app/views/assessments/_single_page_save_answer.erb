@@ -1,0 +1,125 @@
+<script type="text/javascript">
+  var global_time = 0;
+  /* global time contains the time remaining of the test */
+  function mark_question(select,deselect)
+  {
+    select_star = document.getElementById(select);
+    deselect_star = document.getElementById(deselect);
+    select_star.style.display = "none";
+    deselect_star.style.display = "block";
+  }
+
+  function reset_answer(name)
+  { 
+    answer_field_names = document.getElementsByName(name);
+    for(j=1;j<=answer_field_names.length;j++)
+    {
+      answer_id = answer_field_names[j-1];
+      if(answer_id.checked == true)
+      {
+        answer_id.checked = false;
+      }
+    }
+  }
+  
+  function reset_fib_answer(fib_ans)
+  { 
+    fib_ans_value = document.getElementById(fib_ans);
+    fib_ans_value.value = "";
+  }
+  
+  function goto_next_previous_question(current,next_previous)
+  {
+    current_question = document.getElementById(current);
+    next_previous_question = document.getElementById(next_previous);
+    current_question.style.display = "none";
+    next_previous_question.style.display = "block";
+  }
+
+  function goto_specific_question(clicked_question,total_questions)
+  { 
+    clicked_question = document.getElementById("question_answer_div_"+clicked_question);
+    for (var i = 1; i <= total_questions; i++) {
+      get_question = document.getElementById("question_answer_div_"+i);
+      get_question.style.display = "none";
+    }
+    clicked_question.style.display = "block";
+  }
+
+  // creating global array of test_detail id's and answer_id's,timestamps
+  var test_details_array = new Array();
+  var reset_test_details_array = new Array();
+  var answers_array = new Array();
+  var timestamps_array = new Array();
+  
+  function checknet(test_detail_id){
+    online = window.navigator.onLine;
+    if(online) 
+    {
+      if (test_details_array.length > 0)
+      {
+        answer_ids = answers_array.join("|");
+        test_detail_ids = test_details_array;
+        timestamps = timestamps_array.join("|");
+        // create request object
+        var req = AjaxRequest();
+        // set up request parameters - uses POST method
+        req.open('POST','/assessments/ajax_save_pending_answers_multi_page_test/'+test_detail_id,true);
+
+        // send header information along with the POST data
+        var params = 'test_detail_ids='+test_detail_ids+'&answer_ids='+answer_ids+'&timestamps='+timestamps;
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.setRequestHeader("Content-length", params.length);
+        req.setRequestHeader("Connection", "close");
+        // submit to the server for processing
+        req.send(params);
+      } //condition check of test_details_array
+      test_details_array = [];
+      answers_array = [];
+      timestamps_array = [];
+      if (reset_test_details_array.length > 0)
+      {
+        reset_test_detail_ids = reset_test_details_array;
+        // create request object
+        var req = AjaxRequest();
+        // set up request parameters - uses POST method
+        req.open('POST','/assessments/ajax_reset_pending_answers_multi_page_test/'+test_detail_id,true);
+
+        // send header information along with the POST data
+        var params = 'reset_test_detail_ids='+reset_test_detail_ids;
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.setRequestHeader("Content-length", params.length);
+        req.setRequestHeader("Connection", "close");
+
+        // submit to the server for processing
+        req.send(params);
+      } //condition check of test_details_array
+      reset_test_details_array = [];
+      return true;
+    }
+    else 
+    {
+      connection_statement = document.getElementById('net_connection');
+      connection_statement.style.visibility = 'visible';
+      connection_statement.value = "No internet connection !";
+      connection_statement.style.fontSize = "14px";
+      connection_statement.style.backgroundColor = "#6495ED";
+      return false;
+    }
+  }
+
+  function ajax_save_pending_answers_multi_page_test(test_detail_id,answer_id){
+    test_details_array.push(test_detail_id);
+    answers_array.push(answer_id);
+    timestamps_array.push(global_time);
+  }
+  function ajax_reset_pending_answers_multi_page_test(test_detail_id){
+    reset_test_details_array.push(test_detail_id);
+  }
+  function save_fib_pending_answers_multi_page_test(test_detail_id,answer_id){
+    fib_answer_text = document.getElementById(answer_id).value;
+    test_details_array.push(test_detail_id);
+    answers_array.push(fib_answer_text);
+    timestamps_array.push(global_time);
+  }
+</script>

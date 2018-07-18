@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'courses_content'  %>
+<div id="div_container">
+  <div id="div_mainpanel">
+    <form action="/assessments/assessment_creation/<%= current_user.id %>" method="post">
+    <%= "test_pattern" %><br/>
+    <select name="pattern">
+      <option value="Create manually">Create manually</option>
+      <% test_patterns = TestPattern.find(:all,:conditions=>"id != 1")
+         test_patterns.each{|pattern| %>
+      <option value="<%= pattern.pattern_name %>"><%= pattern.pattern_name %></option>
+      <% } %>
+    </select>
+      <input type="submit" value="submit"/>
+    </form>
+  </div>
+  <div id="div_sidepanel">
+    <%#*Two-to-three-upgrade-error%>
+    <%= render :partial => "/courses/logo" %>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<h1>Editing subscriptions</h1>
+
+<% form_for(@subscribe) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @subscribe %> |
+<%= link_to 'Back', subscribes_path %>

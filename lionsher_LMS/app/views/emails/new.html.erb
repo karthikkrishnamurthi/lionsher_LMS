@@ -1,0 +1,54 @@
+<%= render :partial => "/layouts/courses_header" %>
+<%= stylesheet_link_tag 'courses_content'  %>
+<%= stylesheet_link_tag 'emails' %>
+<script src="/assets/prototype.js?body=1" type="text/javascript"></script>
+<div id="div_container">
+  <div id="div_mainpanel">
+
+    <div class="flash_confirmation"><%=h flash[:notice] %></div>
+    <form accept-charset="UTF-8" action="/emails" class="new_email" id="new_email" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="qGioyqkmJaNPS8UJxqyzK6Dkut63DF9MhGzbdiwmCMI=" /></div>
+
+      <label for="email_email_type" id="customise_email"> <span style="color:gray">Customise> </span>&nbsp;Customise email message</label>
+      <select name="email[email_type]" style="width: 300px;" onchange="new Ajax.Request('/emails/get_email_content_for_email_type/'+this.value,{asynchronous:true, evalScripts:true, parameters:Form.serialize(this)}); return false;">
+        <option value="signup_assessment_learner_notification" selected>First time learner activation mail - Test</option>
+        <option value="testadd_assessment_learner_notification">New test assigned - Test</option>
+        <option value="send_score_to_learner">Send score - Test</option>
+        <option value="reminder_assessment">Reminder email - Test</option>
+        <option value="signup_package_learner_notification">First time package learner activation - Test</option>
+        <option value="signup_learner_notification">First time learner activation mail - Course</option>
+        <option value="course_added">New course assigned - Course</option>
+        <option value="reminder">Reminder email - Course</option>
+      </select><br/><br/>
+      <i style="color:gray;margin-left:12px;">Customize any of the content below except the one in gray, as it automatically adds content from Lionsher. </i>
+      <p>
+        <label for="email_from" id="label1">From</label>
+        <input id="email_from" name="email[from]" type="text" value="<%=h @all_emails.from %>" />
+      </p>
+      <p>
+        <label for="email_subject">Subject</label>
+        <input id="email_subject" name="email[subject]" type="text" value="<%=h @all_emails.subject %>" />
+      </p>
+
+      <label for="email_body">Body</label><br />
+      <textarea cols="100" id="email_body" name="email[body]" rows="100" style="height: 300px;width: 685px;"><%=h @all_emails.body %></textarea>
+
+      <input id="email_tenant_id" name="email[tenant_id]" type="hidden" value="<%=h current_user.tenant_id %>" />
+      <input id="email_user_id" name="email[user_id]" type="hidden" value="<%=h current_user.id %>"/>
+      <div id="dotted_line"></div>
+      <p>
+        <input class="create_email_button" type="submit" value="save" /> or <a id="anchor_style" href="/courses/customize">Cancel</a>
+        <%#*<a style="float:right;margin-top:10px;" href="">Show default message</a>%>
+      </p>
+
+    </form>
+  </div>
+  <div id="sidepanel">
+    <%= render :partial => "/courses/logo" %>
+    <div id="variables_list">
+      <%= render :partial => "/emails/signup_assessment_learner_notification" %>
+      You can add the above variables in the email to get system information which will apply to all the emails.
+    </div>
+    <p style="margin-top:15px;font-size:12px;">Check <a id="anchor_style" href="">detailed guide </a></p>
+  </div>
+</div>
+<%= render :partial => "/layouts/courses_footer" %>
